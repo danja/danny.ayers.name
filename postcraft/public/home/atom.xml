@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Danny Ayers' Blog</title>
+    
+    <link href="https://danny.ayers.name"/>
+    <updated>2025-01-04T12:39:23.987Z</updated>
+    <id>https://danny.ayers.name</id>
+    <author>
+        <name>Danny Ayers</name>
+        <email>danny.ayers@gmail.com</email>
+    </author>
+
+    
+    <entry>
+        <title>Entry 2025-01-04_hoard</title>
+        <link href="https://danny.ayers.name/entries/2025-01-04_hoard.html"/>
+        <id>https://danny.ayers.name/entries/2025-01-04_hoard.html</id>
+        <updated>2025-01-04T12:39:23.987Z</updated>
+        <content type="html">&lt;!-- POST CONTENT TEMPLATE --&gt;
+
+&lt;article class=&quot;post-content&quot;&gt;
+        &lt;a href=&quot;&quot;&gt;#&lt;/a&gt;
+    &lt;h1&gt;Hoard&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;hyperdata-whiteboard&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I got distracted yesterday while sorting out the #:packer #:transmission (for concat&amp;#39;ing repos for LLMs), then in the evening, when I got back to desk I was too tired to do anything, gave up. Returning to it now, I need a small repo to run it against. As it happens, this morning in bed, a passing thought led me to start another&lt;sup&gt;&lt;a id=&quot;footnote-ref-1&quot; href=&quot;#footnote-1&quot; data-footnote-ref aria-describedby=&quot;footnote-label&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; little whiteboard project (with Claude). I&amp;#39;ll make that a new repo.&lt;/p&gt;
+&lt;p&gt;Online, I&amp;#39;ve created &lt;a href=&quot;https://github.com/danja/hoard&quot;&gt;https://github.com/danja/hoard&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Locally:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;cd ~/github-danny/hyperdata/packages
+git submodule add https://github.com/danja/hoard.git hoard
+cd hoard
+npm init -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok, so now I can try :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;cd ~/github-danny/transmissions
+./trans packer ../hyperdata/packages/hoard
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok, it fails as expected...&lt;/p&gt;
+&lt;p&gt;My head&amp;#39;s a little fuzzy and Claudio&amp;#39;s pestering. Dogwalk time.&lt;/p&gt;
+&lt;section class=&quot;footnotes&quot; data-footnotes&gt;
+&lt;h2 id=&quot;footnote-label&quot; class=&quot;sr-only&quot;&gt;Footnotes&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li id=&quot;footnote-1&quot;&gt;
+&lt;p&gt;I&amp;#39;ve been around whiteboards a few times before, first time of note being a &lt;a href=&quot;https://www.xml.com/pub/a/2003/11/19/svgwiki.html&quot;&gt;SVG Wiki Whiteboard&lt;/a&gt; in 2003. &lt;a href=&quot;#footnote-ref-1&quot; data-footnote-backref aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+
+&lt;/article&gt;
+&lt;p class=&quot;post-title h-cinzel&quot;&gt;
+    &lt;a href=&quot;&quot;&gt;
+        
+    &lt;/a&gt;
+&lt;/p&gt; &lt;em&gt;&lt;/em&gt;</content>
+    </entry>
+    
+    <entry>
+        <title>Entry 2025-01-03_light</title>
+        <link href="https://danny.ayers.name/entries/2025-01-03_light.html"/>
+        <id>https://danny.ayers.name/entries/2025-01-03_light.html</id>
+        <updated>2025-01-04T12:39:23.987Z</updated>
+        <content type="html">&lt;!-- POST CONTENT TEMPLATE --&gt;
+
+&lt;article class=&quot;post-content&quot;&gt;
+        &lt;a href=&quot;&quot;&gt;#&lt;/a&gt;
+    &lt;h1&gt;Light&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;Because it is.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;media/images/2025-01/bear-of-little-brain.png&quot; alt=&quot;Bear of Very Little Brain&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Chatted with ClaudioB earlier. He&amp;#39;s planning to set up a machine at home to serve online. I started having a go a few weeks back but got distracted. Setting up #:semem in #:tbox and making it live is my main target today, but as that&amp;#39;ll involve poking around on my remote server I might as well have another look then.&lt;/p&gt;
+&lt;h2&gt;Packer&lt;/h2&gt;
+&lt;p&gt;Before any of that, I need to finish a little #:transmission I started last session. repomix has broken on me. As best I can determine, it&amp;#39;s down to nodejs version, looks like repomix uses some experimental JSON bits that have been pulled. If that is the case, I could use &lt;em&gt;that thing (?)&lt;/em&gt; to choose a version that does work. &lt;strong&gt;Faff.&lt;/strong&gt; I&amp;#39;ve been meaning to make my own on #:transmissions for a while, this tipped me over. Claude gave me some starter code, I just need to &lt;strong&gt;plumb it in and tweak it to sanity, as per Claude code&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;transmissions$ ./trans packer ./
+...
+[Error: ENOENT: no such file or directory, open &amp;#39;/home/danny/github-danny/transmissions/manifest.ttl&amp;#39;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Bum!&lt;/strong&gt; I didn&amp;#39;t get around to sorting out the command-line options.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Good-o!&lt;/strong&gt; I did start sorting out the command-line options.&lt;/p&gt;
+&lt;p&gt;Yeah, it looks reasonably well separated. The CLI entry point &lt;code&gt;./trans&lt;/code&gt; calls &lt;code&gt;src/api/cli/run.js&lt;/code&gt; which uses &lt;a href=&quot;https://yargs.js.org/&quot;&gt;yargs&lt;/a&gt; - &lt;em&gt;tee hee&lt;/em&gt;, they say it best :&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Yargs be a node.js library fer hearties tryin&amp;#39; ter parse optstrings.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;src/api/cli/run.js&lt;/code&gt; then calls &lt;code&gt;src/api/common/CommandUtils.js&lt;/code&gt;. That does a little bit of path-splitting and simple logic, calling on &lt;code&gt;src/core/ApplicationManager.js&lt;/code&gt; to get things going.&lt;/p&gt;
+&lt;p&gt;I remember now - I left a bit of refactoring around &lt;code&gt;src/core/ApplicationManager.js&lt;/code&gt; in-progress. That&amp;#39;s still not a high priority, I&amp;#39;ll get to it when I next need to do things around there.&lt;/p&gt;
+&lt;p&gt;Hmm. The options do look very broken. But shouldn&amp;#39;t take much fixing.&lt;/p&gt;
+&lt;p&gt;Well, you learn something every day. I wanted to check what was considered best practice for &lt;strong&gt;privates&lt;/strong&gt; in JS. I asked Claude, confirmed with &lt;a href=&quot;https://www.perplexity.ai/&quot;&gt;Perplexity&lt;/a&gt; :&lt;/p&gt;
+&lt;h3&gt;Private Fields in JavaScript&lt;/h3&gt;
+&lt;p&gt;Private fields, denoted by the # prefix, were introduced as part of the ECMAScript 2022 (ES13) specification. This feature provides true privacy encapsulation within classes, preventing access to these fields from outside the class&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;class Person {
+  #secret;
+  constructor(secret) {
+    this.#secret = secret;
+  }
+  getSecret() {
+    return this.#secret;
+  }
+}
+
+const person = new Person(&amp;quot;my secret&amp;quot;);
+console.log(person.getSecret()); // &amp;quot;my secret&amp;quot;
+console.log(person.#secret); // SyntaxError: Private field &amp;#39;#secret&amp;#39; must be declared in an enclosing class
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Supported in:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Node.js 12.0.0+&lt;/li&gt;
+&lt;li&gt;Chrome 74+&lt;/li&gt;
+&lt;li&gt;Firefox 90+&lt;/li&gt;
+&lt;li&gt;Safari 14.1+&lt;/li&gt;
+&lt;li&gt;Edge 79+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Closures for Encapsulation&lt;/h3&gt;
+&lt;p&gt;Closures have been a traditional way to achieve encapsulation in JavaScript before the introduction of private class fields&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function createCounter() {
+  let count = 0;
+  return {
+    increment: function() {
+      count++;
+      console.log(count);
+    }
+  };
+}
+
+const counter = createCounter();
+counter.increment(); // 1
+console.log(counter.count); // undefined
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Heh, not sure I&amp;#39;ve ever used that kind of closure in JS. I can easily imagine my confusion over that syntax. I wouldn&amp;#39;t call the private field &lt;strong&gt;#&lt;/strong&gt; syntax pretty, but it&amp;#39;s a lot more suitable for this &lt;strong&gt;bear of very little brain&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;/article&gt;
+&lt;p class=&quot;post-title h-cinzel&quot;&gt;
+    &lt;a href=&quot;&quot;&gt;
+        
+    &lt;/a&gt;
+&lt;/p&gt; &lt;em&gt;&lt;/em&gt;</content>
+    </entry>
+    
+    <entry>
+        <title>Entry 2025-01-02_fix-deploy</title>
+        <link href="https://danny.ayers.name/entries/2025-01-02_fix-deploy.html"/>
+        <id>https://danny.ayers.name/entries/2025-01-02_fix-deploy.html</id>
+        <updated>2025-01-04T12:39:23.987Z</updated>
+        <content type="html">&lt;!-- POST CONTENT TEMPLATE --&gt;
+
+&lt;article class=&quot;post-content&quot;&gt;
+        &lt;a href=&quot;&quot;&gt;#&lt;/a&gt;
+    &lt;h1&gt;Semem Fix &amp;amp; Deploy&lt;/h1&gt;
+&lt;p&gt;I made a todo list here yesterday without any explanation. Didn&amp;#39;t publish. Invisible todo list is absolutely not what I want on my blog front page! My top priority this week is doc organisation, so I&amp;#39;ll let myself off this time. I&amp;#39;ve changed the date on the file, this is it I&amp;#39;ll now fill it out...&lt;/p&gt;
+&lt;p&gt;A little job for this morning is a little explore of &lt;a href=&quot;https://github.com/danja/semem&quot;&gt;Semem&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It appears to (mostly) work, here&amp;#39;s the &lt;a href=&quot;https://danny.ayers.name/entries/2025-01-01_semem-run.html&quot;&gt;console log of a run&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;But, &lt;strong&gt;what is it doing?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;What I want right now, as a bit of scaffolding for what I want to explore, is a nodejs version of &lt;a href=&quot;https://github.com/caspianmoon/memoripy&quot;&gt;memoripy&lt;/a&gt; that uses a (remote) SPARQL store as (part of) its knowledgebase.&lt;/p&gt;
+&lt;p&gt;I only tried running it after many hours implementing it in a Claude project. Then had a couple of hours manually tweaking to get it to (mostly) run. It&amp;#39;s definitely interacting with Ollama for embeddings &amp;amp; chat, a SPARQL endpoint for persistence. I don&amp;#39;t see the extracted concepts in the SPARQL store.&lt;/p&gt;
+&lt;p&gt;Last night I had a short session with Claude, aiming to document what we had so far. I&amp;#39;ve put the artifacts over here : &lt;a href=&quot;https://github.com/danja/semem/tree/main/docs/description_2025-01-01.md&quot;&gt;https://github.com/danja/semem/tree/main/docs/description_2025-01-01.md&lt;/a&gt; It sounds marvellous, but how much is true?&lt;/p&gt;
+&lt;h2&gt;Banebane&lt;/h2&gt;
+&lt;p&gt;I had a chat with ClaudioB yesterday morning, pointed him to my notes so far on #:semem. He asked me if I had a &lt;strong&gt;live instance&lt;/strong&gt; he could play with. A very good question! Not for the first time I&amp;#39;ll quote -&lt;/p&gt;
+&lt;h3&gt;Connolly&amp;#39;s Bane&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&amp;quot;The bane of my existence is doing things that I know the
+computer could do for me&amp;quot;&lt;/strong&gt;
+&#92;– Dan Connolly&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;Which reminded me I&amp;#39;ve not been in touch with &lt;a href=&quot;https://www.ninebynine.org/&quot;&gt;Graham Klyne&lt;/a&gt; for many years. A blog post of his drew my attention to that quote. Good-o, he&amp;#39;s on Mastodon : &lt;a href=&quot;https://indieweb.social/@gklyne&quot;&gt;@gklyne@indieweb.social&lt;/a&gt;, I&amp;#39;ll ping him there.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;ClaudioB&amp;#39;s question is the kind of message I want my #:hyperdata systems to be able to deal with automatically.&lt;/p&gt;
+&lt;p&gt;Here&amp;#39;s how this human agent is handling it :&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;[prompt]&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Is there a live instance of Semem?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;[me]&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;immediate response, &amp;quot;not yet&amp;quot;&lt;/li&gt;
+&lt;li&gt;reformulate question in terms of concrete requirements
+-&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;(functioning, good-enough) Semem&lt;/li&gt;
+&lt;li&gt;hosting&lt;/li&gt;
+&lt;li&gt;deployment infrastructure&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For 1 : all I really need to do right away is minor bugfixing and whatever&amp;#39;s needed to use existing online LLMs
+For 2 : I&amp;#39;ve got a live Ubuntu server (which you are looking at now) and a domain name registered for a related plan, some nginx proxying already in place.&lt;br&gt;For 3 : I&amp;#39;ve got a Docker container in-progress for this stuff, &lt;a href=&quot;https://github.com/danja/tbox&quot;&gt;tbox&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;meta-reasoning - evaluate this against existing dev paths, consider priorities, time needed etc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;On this point there&amp;#39;s a green flag to go ahead, it&amp;#39;s near-enough in line with what I was planning to do already, slight rearrangement of immediate priorities.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I acted in several roles there. Humans are good at this. I want a community of independent autonomous intelligent agents (on #:kia).&lt;/p&gt;
+&lt;p&gt;Ops. Azzurra just reminded me that I&amp;#39;ve an appointment with her up at the comune at 15:00. Now 13:12. Clever Azzurra has me sussed. I&amp;#39;d completely forgotten. But she&amp;#39;s given me just the right amount of time to pop this online, take Claudio out for a short walk, find some clean clothes &amp;amp; have a wash.  &lt;/p&gt;
+&lt;h2&gt;Soon...&lt;/h2&gt;
+&lt;p&gt;Somewhere around my vocabs I need terms for this particular kind of input. I may already have something like &lt;strong&gt;Feature Request&lt;/strong&gt; around the project management oriented bits, but it totally ties in with agent-oriented messaging.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;#:todo fix #:semem failing on UPDATE&lt;/li&gt;
+&lt;li&gt;#:todo tease next steps from &lt;code&gt;semem/docs/description_2024-12-30/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I sorted out the UPDATE.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;#:todo deploy to #:tbox&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;#:todo #:spike for function/action calling a la ReAct&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;#:todo some FOAF&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Installed &amp;#39;Markdown Preview Mermaid Support&amp;#39; into VSCode&lt;/p&gt;
+&lt;p&gt;semem - query execution times, store metrics, total embeddings size&lt;/p&gt;
+&lt;p&gt;support Groq, Mistral, Claude, OpenAI&lt;/p&gt;
+&lt;p&gt;refactor&lt;/p&gt;
+&lt;p&gt;comments&lt;/p&gt;
+&lt;p&gt;install the willison-mentioned UI tool - has useful bits for APIs?&lt;/p&gt;
+&lt;p&gt;ditto LibreChat&lt;/p&gt;
+&lt;p&gt;LOGGER - see Perplexity&lt;/p&gt;
+
+&lt;/article&gt;
+&lt;p class=&quot;post-title h-cinzel&quot;&gt;
+    &lt;a href=&quot;&quot;&gt;
+        
+    &lt;/a&gt;
+&lt;/p&gt; &lt;em&gt;&lt;/em&gt;</content>
+    </entry>
+    
+    <entry>
+        <title>Entry 2025-01-01_semem-run</title>
+        <link href="https://danny.ayers.name/entries/2025-01-01_semem-run.html"/>
+        <id>https://danny.ayers.name/entries/2025-01-01_semem-run.html</id>
+        <updated>2025-01-04T12:39:23.987Z</updated>
+        <content type="html">&lt;!-- POST CONTENT TEMPLATE --&gt;
+
+&lt;article class=&quot;post-content&quot;&gt;
+        &lt;a href=&quot;&quot;&gt;#&lt;/a&gt;
+    &lt;pre&gt;&lt;code&gt;node src/SPARQLExample.js
+
+[INFO] Initialized FAISS index with dimension 1536
+[INFO] Loaded 1 short-term and 0 long-term memories from store http://localhost:4030/test/query graph &amp;lt;http://example.org/mcp/memory&amp;gt;
+[INFO] Adding interaction: &amp;#39;What&amp;#39;s the current state of the Semantic Web?&amp;#39;
+[INFO] Memory initialized with 1 short-term and 0 long-term memories
+[INFO] Extracting concepts...
+[INFO] Extracted concepts: [ &amp;#39;Semantic Web technologies&amp;#39;, &amp;#39;AI&amp;#39; ]
+[INFO] Retrieving relevant interactions...
+Response: Semantic Web technologies and Artificial Intelligence (AI) complement each other well, as they are both powerful tools for representing complex data in structured form, facilitating knowledge discovery and enhancing human-computer interaction. Here are some ways in which semantic Web technologies can be integrated with AI:
+
+1. **Knowledge Extraction from Semantically-Structured Data**: Semantic Web technologies provide a standardized way of defining and storing the structured information necessary to build semantic web applications. The use of these tools allows for the extraction of knowledge about large amounts of data, making it easier for AI systems to process this information.
+
+2. **Artificial Intelligence as a Knowledge Broker**: AI can be used to curate and organize vast amounts of data in semantic Web formats. This includes tasks such as categorizing documents, recognizing patterns and relationships within structured data sets, and integrating heterogeneous data sources into a single knowledge base.
+
+3. **Interactive Experience Enhancement through AI-Driven Semantic Web Applications**: AI-driven applications can provide a more personalized user experience by using techniques like recommendation systems to suggest content based on the user&amp;#39;s interests or previous behavior. These systems also use semantic Web technologies to ensure that the information presented is accurate and relevant to the user, enhancing their overall satisfaction with the application.
+
+4. **Machine Learning for Enhanced AI Capabilities**: AI can be trained with data from large volumes of structured web documents, which can then be used to improve AI models’ understanding of context, language, and relationships within web content. This integration allows machines to learn complex patterns in unstructured or semi-structured data, further enhancing their ability to perform tasks that require human-like reasoning.
+
+5. **Integration with Natural Language Processing (NLP) Systems**: Semantic Web technologies can be used with AI NLP systems to extract meaning from unstructured text and improve the understanding of natural language queries by machines. This integration allows for a more effective interaction between humans and computers, as the data is presented in a format that is easier for AI systems to interpret.
+
+6. **Knowledge Management for Autonomous Agents**: Semantic Web technologies can be utilized with artificial intelligence-driven agents to store large volumes of structured information. These agents are capable of processing complex queries, making decisions, and performing tasks based on this knowledge. By integrating semantic web technologies into AI systems, we can create more intelligent autonomous agents that are better equipped to handle complex scenarios.
+
+These integration strategies illustrate how the capabilities of both Semantic Web technologies and Artificial Intelligence can be combined to enhance our ability to process large volumes of information and solve complex problems efficiently.
+[INFO] Extracting concepts...
+[INFO] Extracted concepts: [
+  &amp;#39;Semantic Web technologies&amp;#39;,
+  &amp;#39;Artificial Intelligence (AI)&amp;#39;,
+  &amp;#39;Knowledge Extraction from Semantically-Structured Data&amp;#39;,
+  &amp;#39;Artificial Intelligence as a Knowledge Broker&amp;#39;,
+  &amp;#39;Interactive Experience Enhancement through AI-Driven Semantic Web Applications&amp;#39;,
+  &amp;#39;Machine Learning for Enhanced AI Capabilities&amp;#39;,
+  &amp;#39;Integration with Natural Language Processing (NLP) Systems&amp;#39;,
+  &amp;#39;Knowledge Management for Autonomous Agents&amp;#39;
+]
+[INFO] Adding interaction: &amp;#39;How can Semantic Web technologies be used with AI?&amp;#39;
+[INFO] Saved memory to SPARQL store http://localhost:4030/test/update graph &amp;lt;http://example.org/mcp/memory&amp;gt;. Stats: 2 short-term, 0 long-term memories
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This query gives one result, containing the prompt &amp;amp; response from the above :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sparql&quot;&gt;PREFIX mcp: &amp;lt;http://purl.org/stuff/mcp/&amp;gt;
+SELECT ?graph ?id ?prompt ?output ?timestamp
+WHERE {
+  GRAPH ?graph {
+  ?s a mcp:Interaction ;
+     mcp:id ?id ;
+     mcp:prompt ?prompt ;
+     mcp:output ?output ;
+     mcp:timestamp ?timestamp .
+    FILTER regex(str(?prompt), &amp;quot;Semantic&amp;quot;)
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This gives 2 results :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sparql&quot;&gt;SELECT *
+WHERE {
+  GRAPH ?graph {
+  ?s ?p ?o
+    FILTER regex(str(?o), &amp;quot;Semantic&amp;quot;)
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;One is the triple with the prompt, the other the triple with the LLM output.&lt;/p&gt;
+
+&lt;/article&gt;
+&lt;p class=&quot;post-title h-cinzel&quot;&gt;
+    &lt;a href=&quot;&quot;&gt;
+        
+    &lt;/a&gt;
+&lt;/p&gt; &lt;em&gt;&lt;/em&gt;</content>
+    </entry>
+    
+    <entry>
+        <title>Entry 2025-01-01_repo-boo</title>
+        <link href="https://danny.ayers.name/entries/2025-01-01_repo-boo.html"/>
+        <id>https://danny.ayers.name/entries/2025-01-01_repo-boo.html</id>
+        <updated>2025-01-04T12:39:23.987Z</updated>
+        <content type="html">&lt;!-- POST CONTENT TEMPLATE --&gt;
+
+&lt;article class=&quot;post-content&quot;&gt;
+        &lt;a href=&quot;&quot;&gt;#&lt;/a&gt;
+    &lt;h1&gt;Repo Boo&lt;/h1&gt;
+&lt;p&gt;Very annoying. I&amp;#39;ve been using Claude projects &lt;strong&gt;heavily&lt;/strong&gt; for recent dev. Made possible by &lt;a href=&quot;https://github.com/yamadashy/repomix&quot;&gt;repomix&lt;/a&gt; which essentially does an annotated concat of a repo&amp;#39;s files. Tonight my thing decided to say:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;danny@danny-desktop:~/github-danny/transmissions$ npm run rp
+
+&amp;gt; transmissions@1.0.0 rp
+&amp;gt; repomix -c repomix.config-small.json . &amp;amp;&amp;amp; repomix -c repomix.config-large.json .
+
+(node:61405) ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+📦 Repomix v0.2.12
+
+Error: Config file not found at repomix.config-small.json
+For more help, please visit: https://github.com/yamadashy/repomix/issues
+(node:61421) ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I&amp;#39;ve no idea what I&amp;#39;ve done that would impact there. Can&amp;#39;t remember if this is running a global or local install. Ok, first thing, clear caches and try again. &amp;quot;Hey Claude, how do I..?&amp;quot;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;rm -rf node_modules
+rm package-lock.json
+npm cache clean --force
+npm install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;While that&amp;#39;s running, there is something else I want to do nearby. Squat the npm registry with a couple of things. #:transmissions &amp;amp; #:semem at least, there might be a couple of others. None will be out-of-the-box usable as they should be (as I would interpret proper etiquette), but I think I&amp;#39;m at a point where I can legitimately grab those names. I&amp;#39;ve put loads of work in, am committed to making them useful for other parties.&lt;/p&gt;
+&lt;p&gt;It might even encourage me to get the GitHub CI/CD bits in place (for the badges, innit).&lt;/p&gt;
+&lt;p&gt;Golly :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm warn using --force Recommended protections disabled.
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+
+added 1141 packages in 9m
+
+237 packages are looking for funding
+  run `npm fund` for details
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Aw, &lt;code&gt;npm install squirt&lt;/code&gt; works (whatever that is), I&amp;#39;d have squatted that too. Ok, no biggy.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install squirty
+npm error code E404
+npm error 404 Not Found - GET https://registry.yarnpkg.com/squirty - Not found
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For that I only need to do some minor renaming. #:transmissions would have been a proper pain. I did it once already - had the project working label &amp;quot;treadmill&amp;quot; initially, but decided something more accurately descriptive would be better. Horrible search &amp;amp; replace - not too bad with code, but docs got messy.&lt;/p&gt;
+
+&lt;/article&gt;
+&lt;p class=&quot;post-title h-cinzel&quot;&gt;
+    &lt;a href=&quot;&quot;&gt;
+        
+    &lt;/a&gt;
+&lt;/p&gt; &lt;em&gt;&lt;/em&gt;</content>
+    </entry>
+    
+</feed>

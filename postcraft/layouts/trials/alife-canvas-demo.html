@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced A-Life Canvas Demo</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #001f3f;
+        }
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .foreground {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="foreground" style="top: 50px; left: 50px;">
+        Foreground Element 1
+    </div>
+    <div class="foreground" style="bottom: 50px; right: 50px;">
+        Foreground Element 2
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Organism {
+            constructor(x, y, size = 20) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.dx = (Math.random() - 0.5) * 2;
+                this.dy = (Math.random() - 0.5) * 2;
+                this.energy = 100;
+                this.color = `hsl(${Math.random() * 60 + 180}, 100%, 50%)`;
+                this.tentacles = Array(5).fill().map(() => ({
+                    length: Math.random() * 15 + 5,
+                    angle: Math.random() * Math.PI * 2
+                }));
+            }
+
+            update(organisms) {
+                this.move();
+                this.boundaryCheck();
+                this.foregroundCheck();
+                this.interact(organisms);
+                this.energy -= 0.1;
+            }
+
+            move() {
+                this.x += this.dx;
+                this.y += this.dy;
+                this.dx += (Math.random() - 0.5) * 0.2;
+                this.dy += (Math.random() - 0.5) * 0.2;
+                this.dx = Math.max(Math.min(this.dx, 2), -2);
+                this.dy = Math.max(Math.min(this.dy, 2), -2);
+            }
+
+            boundaryCheck() {
+                if (this.x < 0 || this.x > canvas.width) this.dx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
+            }
+
+            foregroundCheck() {
+                document.querySelectorAll('.foreground').forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (this.x > rect.left && this.x < rect.right &&
+                        this.y > rect.top && this.y < rect.bottom) {
+                        this.dx *= -1;
+                        this.dy *= -1;
+                    }
+                });
+            }
+
+            interact(organisms) {
+                organisms.forEach(other => {
+                    if (other !== this) {
+                        const dx = other.x - this.x;
+                        const dy = other.y - this.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < this.size + other.size) {
+                            // Collision response
+                            this.dx -= dx / distance;
+                            this.dy -= dy / distance;
+                            other.dx += dx / distance;
+                            other.dy += dy / distance;
+                            
+                            // Potential reproduction
+                            if (this.energy > 150 && other.energy > 150) {
+                                this.energy -= 50;
+                                other.energy -= 50;
+                                return new Organism(this.x, this.y, Math.min(this.size, other.size));
+                            }
+                        } else if (distance < 100) {
+                            // Flocking behavior
+                            this.dx += dx / distance * 0.01;
+                            this.dy += dy / distance * 0.01;
+                        }
+                    }
+                });
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Draw tentacles
+                this.tentacles.forEach(tentacle => {
+                    const endX = this.x + Math.cos(tentacle.angle) * tentacle.length;
+                    const endY = this.y + Math.sin(tentacle.angle) * tentacle.length;
+                    ctx.strokeStyle = this.color;
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(endX, endY);
+                    ctx.stroke();
+                    tentacle.angle += 0.05;
+                });
+            }
+        }
+
+        let organisms = Array.from({length: 30}, () => new Organism(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height
+        ));
+
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 31, 63, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const newOrganisms = [];
+            organisms = organisms.filter(org => {
+                org.update(organisms);
+                org.draw();
+                
+                if (org.energy <= 0) return false;
+                
+                const offspring = org.interact(organisms);
+                if (offspring) newOrganisms.push(offspring);
+                
+                return true;
+            });
+
+            organisms.push(...newOrganisms);
+
+            // Maintain population
+            while (organisms.length < 20) {
+                organisms.push(new Organism(
+                    Math.random() * canvas.width,
+                    Math.random() * canvas.height
+                ));
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>

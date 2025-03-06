@@ -1,0 +1,116 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    touch-action: none;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.story-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    transition: opacity 0.5s ease;
+}
+
+.choices {
+    display: flex;
+    height: 40vh;
+}
+
+.choice {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.choice-emoji {
+    font-size: 80px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    filter: grayscale(100%) opacity(0.7);
+}
+
+.choice-label {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    z-index: 2;
+}
+
+#choice-left {
+    background-color: #FFB3BA;
+}
+
+#choice-middle {
+    background-color: #BAFFC9;
+}
+
+#choice-right {
+    background-color: #BAE1FF;
+}
+
+.expanding {
+    position: absolute;
+    bottom: 0;
+    height: 40vh;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.expanding .choice-emoji {
+    font-size: 80px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.expanding .choice-label {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+.new-choices {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 40vh;
+    opacity: 0;
+}
+
+.new-choice {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
