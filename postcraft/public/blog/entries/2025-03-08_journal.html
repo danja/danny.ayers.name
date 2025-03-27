@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="../layout/css/fonts.css" type="text/css"/>
+        <link rel="stylesheet" href="../layout/css/grid-columns.css" type="text/css"/>
+        <link rel="stylesheet" href="../layout/css/style.css" type="text/css"/>
+        <title>Journal 2025-03-08</title>
+    </head>
+    <!-- POST PAGE TEMPLATE -->
+    <body>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
+        <h1>Journal 2025-03-08</h1>
+<p>#:todo Alongside rendering of HTML, I need a transmission to backup up store data.
+#:todo sort out <code>rootDir</code> vs <code>targetPath</code></p>
+<p>Today&#39;s mission is to get closer to pages rendering properly. One thing I need is a value in the SPARQL store for <code>published</code> (<code>schema:datePublished</code>...or use <code>dcterms</code>?)</p>
+<p>Using:</p>
+<pre><code class="language-sh">./trans sparqlstore-to-html -v ~/sites/strandz.it/postcraft
+</code></pre>
+<p>around <code>FileWriter</code>, the message contains :</p>
+<pre><code class="language-json">{
+&amp;quot;appPath&amp;quot;: &amp;quot;/home/danny/hyperdata/transmissions/src/applications/sparqlstore-to-html&amp;quot;,
+&amp;quot;subtask&amp;quot;: &amp;quot;[no key]&amp;quot;,
+&amp;quot;rootDir&amp;quot;: &amp;quot;/home/danny/hyperdata/transmissions/src/applications/sparqlstore-to-html&amp;quot;,
+&amp;quot;dataDir&amp;quot;: &amp;quot;/home/danny/hyperdata/transmissions/src/applications/sparqlstore-to-html/data&amp;quot;,
+&amp;quot;targetPath&amp;quot;: &amp;quot;/home/danny/sites/strandz.it/postcraft&amp;quot;
+}
+</code></pre>
+<p>Ok, templates at eg.</p>
+<pre><code class="language-sh">/home/danny/sites/strandz.it/postcraft/layouts/base/templates/update-article.njk
+</code></pre>
+<p>I&#39;ll need to revisit this, it&#39;s a not a layout template but a SPARQL template. Later.</p>
+<p>The template I need now will replace the object of a statement. From <a href="https://www.w3.org/TR/sparql11-update/">SPARQL 1.1 Update</a> :</p>
+<pre><code class="language-sparql">PREFIX foaf:  &amp;lt;http://xmlns.com/foaf/0.1/&amp;gt;
+
+WITH &amp;lt;http://example/addresses&amp;gt;
+DELETE { ?person foaf:givenName &amp;#39;Bill&amp;#39; }
+INSERT { ?person foaf:givenName &amp;#39;William&amp;#39; }
+WHERE
+  { ?person foaf:givenName &amp;#39;Bill&amp;#39;
+  }
+</code></pre>
+<p><code>WITH</code> is the graph, I&#39;m using default (for now at least).</p>
+<p>  ?article schema:datePublished ?published ;</p>
+<pre><code class="language-sparql">PREFIX schema: &amp;lt;http://schema.org/&amp;gt;
+PREFIX xsd: &amp;lt;http://www.w3.org/2001/XMLSchema#&amp;gt;
+PREFIX : &amp;lt;http://purl.org/stuff/transmissions/&amp;gt;
+
+DELETE { &amp;lt;{{uri}}&amp;gt; schema:datePublished ?published }
+INSERT { &amp;lt;{{uri}}&amp;gt; schema:datePublished &amp;quot;{{published}}&amp;quot; }
+WHERE  { &amp;lt;{{uri}}&amp;gt; schema:datePublished ?published }
+</code></pre>
+<p>&quot;mediaType&quot;: &quot;text/markdown&quot;,
+&quot;filepath&quot;: &quot;/home/danny/sites/strandz.it/postcraft/content-raw/knowledge/references/about.md&quot;,
+&quot;size&quot;: 0,
+&quot;created&quot;: &quot;2025-02-25T15:27:44.619Z&quot;,
+&quot;modified&quot;: &quot;2025-02-09T11:51:46.338Z&quot;,</p>
+
+        <div class="entry-footer">
+            <h2>About</h2>
+            
+        </div>
+    </body>
+</html>

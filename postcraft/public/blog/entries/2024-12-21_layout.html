@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="../layout/css/fonts.css" type="text/css"/>
+        <link rel="stylesheet" href="../layout/css/grid-columns.css" type="text/css"/>
+        <link rel="stylesheet" href="../layout/css/style.css" type="text/css"/>
+        <title>Layout</title>
+    </head>
+    <!-- POST PAGE TEMPLATE -->
+    <body>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
+        <h1>Layout</h1>
+<p>With Claude&#39;s help (I gave the <code>index.html</code> + CSS files as attachments), I&#39;ve fixed the immediate layout bug I had here. My system prompt (which I&#39;ll post in a mo) asks Claude for suggestions, and after this it suggested :
+&gt; q4: Should we implement a sticky header or navigation elements?</p>
+<p>A sticky menu button was already in my todos, so I went <code>q4</code>. Claude gave me a bunch of code using React.  To which I responded:
+&gt; It must be vanilla JS, please revise</p>
+<p>Now I have a sticky button! I&#39;ll populate it later, daylight activities to do.</p>
+<p>When I tried it on my phone it still wasn&#39;t quite right, but clearing the cache sorted it out. So I&#39;ve added this -</p>
+<pre><code class="language-html">&amp;lt;!-- #:todo remove when stable --&amp;gt;
+&amp;lt;meta http-equiv=&amp;quot;Cache-Control&amp;quot; content=&amp;quot;no-cache, no-store, must-revalidate&amp;quot;&amp;gt;
+&amp;lt;meta http-equiv=&amp;quot;Pragma&amp;quot; content=&amp;quot;no-cache&amp;quot;&amp;gt;
+&amp;lt;meta http-equiv=&amp;quot;Expires&amp;quot; content=&amp;quot;0&amp;quot;&amp;gt;
+</code></pre>
+<p>The stuff here is all lightweight, so that may stay a while.</p>
+<p>All good!</p>
+
+        <div class="entry-footer">
+            <h2>About</h2>
+            
+        </div>
+    </body>
+</html>

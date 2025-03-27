@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="../layout/css/fonts.css" type="text/css"/>
+        <link rel="stylesheet" href="../layout/css/grid-columns.css" type="text/css"/>
+        <link rel="stylesheet" href="../layout/css/style.css" type="text/css"/>
+        <title>Journal 2025-03-10</title>
+    </head>
+    <!-- POST PAGE TEMPLATE -->
+    <body>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
+        <h1>Journal 2025-03-10</h1>
+<p>#:transmissions pipeliney thing, near-future aim is to get it to render <strong>this</strong>. A small test site has its markdown at <code>~/sites/strandz.it/postcraft</code></p>
+<p>I run :</p>
+<pre><code class="language-sh">./trans md-to-sparqlstore -v ~/sites/strandz.it/postcraft
+./trans sparqlstore-to-html -v ~/sites/strandz.it/postcraft
+</code></pre>
+<p>The second line, after rendering the posts to file, should also add a <code>schema:datePublished</code> statement.</p>
+<p>This is the test query I&#39;ve been using on <a href="http://localhost:4030/test-mem/query">http://localhost:4030/test-mem/query</a> -</p>
+<pre><code class="language-sparql">PREFIX schema: &amp;lt;http://schema.org/&amp;gt;
+PREFIX xsd: &amp;lt;http://www.w3.org/2001/XMLSchema#&amp;gt;
+PREFIX : &amp;lt;http://purl.org/stuff/transmissions/&amp;gt;
+
+SELECT DISTINCT * WHERE {
+
+  ?article a schema:Article ;
+    :sourcePath ?sourcePath ;
+    :relPath ?relPath ;
+    :slug ?slug ;
+    schema:headline ?title ;
+    schema:dateModified ?modified ;
+    schema:articleBody ?content ;
+    schema:creator ?creator .
+
+  ?creator a schema:Person ;
+    schema:name ?creatorName .
+
+OPTIONAL {
+    ?article schema:datePublished ?published ;
+}
+}
+ORDER BY DESC(?published)
+</code></pre>
+<p>Time to devolve to :</p>
+<pre><code class="language-sparql">select distinct ?p where {
+    ?article a schema:Article;
+               ?p ?o
+}
+</code></pre>
+<pre><code>1
+&amp;lt;http://purl.org/stuff/transmissions/relPath&amp;gt;
+2
+schema:articleBody
+3
+schema:dateCreated
+4
+schema:headline
+5
+&amp;lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&amp;gt;
+6
+&amp;lt;http://purl.org/stuff/transmissions/sourcePath&amp;gt;
+7
+&amp;lt;http://purl.org/stuff/transmissions/slug&amp;gt;
+8
+schema:dateModified
+9
+&amp;lt;http://purl.org/stuff/transmissions/hasRepresentation&amp;gt;
+10
+schema:creator
+</code></pre>
+<p>Ok, where is <code>schema:datePublished</code>?</p>
+<p>Ew,I want extra debugging  in <code>src/processors/sparql/SPARQLUpdate.js</code> but want to get this thing working end-to-end before anything else. This is so ugly, search &amp; replace <code>logger.trace</code> in there with <code>logger.debug</code> so the <code>-v</code> will trigger the 101 <em>print</em> statements...</p>
+<pre><code class="language-sparql">PREFIX schema: &amp;lt;http://schema.org/&amp;gt;
+PREFIX xsd: &amp;lt;http://www.w3.org/2001/XMLSchema#&amp;gt;
+PREFIX : &amp;lt;http://purl.org/stuff/transmissions/&amp;gt;
+
+# must be a neater way
+INSERT DATA { &amp;lt;{{uri}}&amp;gt; schema:datePublished &amp;quot;dummy date&amp;quot; } ;
+
+DELETE { &amp;lt;{{uri}}&amp;gt; schema:datePublished ?published }
+INSERT { &amp;lt;{{uri}}&amp;gt; schema:datePublished &amp;quot;{{published}}&amp;quot; }
+WHERE  { &amp;lt;{{uri}}&amp;gt; schema:datePublished ?published }
+</code></pre>
+
+        <div class="entry-footer">
+            <h2>About</h2>
+            
+        </div>
+    </body>
+</html>
