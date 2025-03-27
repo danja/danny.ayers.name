@@ -9,10 +9,11 @@
 #######################
 # for md-to-sparqlstore
 
-:dirWalker a :ConfigSet ;
+:mts10-dirWalker a :ConfigSet ;
    :sourceDir "content/raw" .
 
-:storeArticle a :ConfigSet ;
+:mts40-storeArticle a :ConfigSet ;
+    :delay "100" ;
     :dataBlock "contentBlocks" ;
     :templateFilename "system/sparql-templates/store-article.njk" ;
     :endpointSettings "system/endpoints.json" .
@@ -50,8 +51,15 @@
     :templateFilename "layout/base/templates/article-page.njk" .
 
 :recordRendering a :ConfigSet ;
+    :delay "200" ;
     :dataBlock "contentBlocks" ;
     :templateFilename "system/sparql-templates/record-rendering.njk" ;
+    :endpointSettings "system/endpoints.json" .
+
+:articleHTML a :ConfigSet ;
+    :delay "200" ;
+    :dataBlock "contentBlocks" ;
+    :templateFilename "system/sparql-templates/save-html-chunk.njk" ;
     :endpointSettings "system/endpoints.json" .
 
 #################################
