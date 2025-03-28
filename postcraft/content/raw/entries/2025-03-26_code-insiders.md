@@ -32,7 +32,7 @@ CLI, cool.
 
 claude config add ignorePatterns node_modules
 
-claude config add ignorePatterns "node_modules/**"
+claude config add ignorePatterns "**/node_modules/**"
 claude config add ignorePatterns "**/_*/**"
 claude config add ignorePatterns "**/_*/**"
 
