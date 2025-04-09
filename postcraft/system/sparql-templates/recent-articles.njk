@@ -7,9 +7,9 @@ SELECT DISTINCT * WHERE {
   ?article a schema:Article ;
     schema:headline ?title ;
     schema:dateModified ?modified ;
-     schema:dateCreated ?created ;
+    schema:dateCreated ?created ;
     schema:creator ?creator ;
-  :htmlContent ?html .
+    :htmlContent ?html .
 
   ?creator a schema:Person ;
     schema:name ?creatorName .
