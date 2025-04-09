@@ -41,8 +41,9 @@ await SysUtils.sleep(delay)
 <p>It actually worked!
 Well, to the extent that the thing isn&#39;t crash &amp; burning any more.</p>
 <p>Hmm. This is the kind of thing that might be needed in a bunch of different processors. Performance is way down the list of considerations for #:transmissions <em>at the moment</em>, so I could stick the above in in the parent <code>Processor</code> class. But hmm...</p>
-<p>I just put it in <code>src/processors/flow/ForEach.js</code>, but inside the loop. Nah, wrong place.
-Hmmm...</p>
+<p>I just put it in <code>src/processors/flow/ForEach.js</code>, but inside the loop. Nah, wrong place.</p>
+<p>Subclass of <code>Processor</code> called <code>SlowableProcessor</code>, put delay in the <code>preProcess(message)</code> call on its way up to the one in <code>Processor</code>. Make things like <code>SPARQLUpdate</code> a child of that. Yup.
+I&#39;m wary of big inheritance trees (Java in a past life), which is why there aren&#39;t any here, dependency injection instead in most places. Grandparents is ok.</p>
 
         <div class="entry-footer">
             <h2>About</h2>

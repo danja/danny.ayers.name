@@ -50,6 +50,23 @@
 :articlePageTemplate a :ConfigSet ;
     :templateFilename "layout/base/templates/article-page.njk" .
 
+:filenameConstructor a :ConfigSet ;
+  :asPath true ;
+  :targetField "temp" ;
+  :values (:fn1 :fn2 :fn3 :fn4) .
+  :fn1 :field "targetPath" .
+  :fn2 :string "public" .
+  :fn3 :field "currentItem.relative.value" .
+  :fn4 :field "currentItem.slug.value" .
+
+:filenameExtension a :ConfigSet ;
+    :asPath false ;
+    :targetField "destinationFile" ;
+    :values (:a2 :b2 ) .
+    :a2 :field "temp" .
+    :b2 :string ".html" .
+
+
 :recordRendering a :ConfigSet ;
     :delay "200" ;
     :dataBlock "contentBlocks" ;
@@ -105,10 +122,10 @@
 :htmlFilepath a :ConfigSet ;
   :asPath true ;
   :targetField "destinationFile" ;
-  :values (:ip1 :ip2 :ip3) .
-  :ip1 :field "targetPath" .
-  :ip2 :string "public" .
-  :ip3 :string "index.html" .
+  :values (:hp1 :hp2 :hp3) .
+  :hp1 :field "targetPath" .
+  :hp2 :string "public" .
+  :hp3 :string "index.html" .
 
 :htmlField a :ConfigSet ;
    :contentField "content" .
@@ -130,10 +147,10 @@
 :atomFilepath a :ConfigSet ;
   :asPath true ;
   :targetField "destinationFile" ;
-  :values (:ip1 :ip2 :ip3) .
-  :ip1 :field "targetPath" .
-  :ip2 :string "public" .
-  :ip3 :string "atom.xml" .
+  :values (:ap1 :ap2 :ap3) .
+  :ap1 :field "targetPath" .
+  :ap2 :string "public" .
+  :ap3 :string "atom.xml" .
 
   ### for postcraft-statics
 

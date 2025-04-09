@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="/layout/css/fonts.css" type="text/css"/>
+        <link rel="stylesheet" href="/layout/css/grid-columns.css" type="text/css"/>
+        <link rel="stylesheet" href="/layout/css/style.css" type="text/css"/>
+        <title>Journal 2025-04-03</title>
+    </head>
+    <!-- POST PAGE TEMPLATE -->
+    <body>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
+        <h1>Journal 2025-04-03</h1>
+<p>My scrappy coding around <code>src/engine</code> in #:transmissions has come back to bite me on the bum.</p>
+<p>After the earliest hacky versions, I did start separating out <code>src/model</code> modules to (primarily) represent the state, <code>src/engine</code> for the operations. But because the system was working I got distracted...</p>
+<pre><code class="language-sh">./trans -v accumulate -m &amp;#39;{&amp;quot;foreach&amp;quot;: [&amp;quot;first TEST_PASSED&amp;quot;, &amp;quot;second TEST_PASSED&amp;quot;, &amp;quot;third TEST_PASSED&amp;quot;]}&amp;#39;
+</code></pre>
+<p>refactoring</p>
+<p>move SlowableProcessor to engine</p>
+<p>rename ProcessorSettings to Configuration</p>
+<p>rename AppResolver to engine/SystemResolver</p>
+<p><code>src/engine/ProcessorSettings.js</code></p>
+
+        <div class="entry-footer">
+            <h2>About</h2>
+            
+        </div>
+    </body>
+</html>
