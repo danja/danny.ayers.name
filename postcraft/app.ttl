@@ -6,6 +6,20 @@
 
 @prefix : <http://purl.org/stuff/transmissions/> .
 
+###########################
+:removePublic a :ConfigSet ;
+    :target "public" .
+
+:copyMedia a :ConfigSet ;
+    :workingDirectory "public" ;
+    :source "content/media" ;
+    :destination "public" .
+
+:copyLayout a :ConfigSet ;
+    :workingDirectory "public" ;
+    :source "layout/base" ;
+    :destination "public" .
+
 #######################
 # for md-to-sparqlstore
 
@@ -68,14 +82,15 @@
 
 
 :recordRendering a :ConfigSet ;
-    :delay "200" ;
+    :delay "100" ;
     :dataBlock "contentBlocks" ;
     :templateFilename "system/sparql-templates/record-rendering.njk" ;
     :endpointSettings "system/endpoints.json" .
 
 :articleHTML a :ConfigSet ;
-    :delay "200" ;
+    :delay "100" ;
     :dataBlock "contentBlocks" ;
+    :escape true ;
     :templateFilename "system/sparql-templates/save-html-chunk.njk" ;
     :endpointSettings "system/endpoints.json" .
 
