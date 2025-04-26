@@ -8,5 +8,7 @@ PREFIX : <http://purl.org/stuff/transmissions/>
 # https://schema.org/Article
 
 INSERT DATA {
+       GRAPH <{{graph}}> {
   <{{uri}}> :htmlContent """{{content | safe}}"""
+       }
 }

@@ -3,7 +3,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX : <http://purl.org/stuff/transmissions/>
 
 SELECT DISTINCT * WHERE {
-
+  GRAPH ?graph {
   ?article a schema:Article ;
     :sourcePath ?sourcePath ;
     :relPath ?relPath ;
@@ -22,5 +22,6 @@ OPTIONAL {
     ?article schema:datePublished ?published ;
 }
 #   FILTER(?published >= "{{startDate}}"^^xsd:dateTime)
+}
 }
 ORDER BY DESC(?modified)

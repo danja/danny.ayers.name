@@ -8,6 +8,7 @@ PREFIX : <http://purl.org/stuff/transmissions/>
 # https://schema.org/Article
 
 INSERT DATA {
+      GRAPH <{{graph}}> {
   <{{uri}}> a schema:Article ;
       :sourcePath "{{sourcePath}}" ; # remove?
       :hasRepresentation [
@@ -28,4 +29,5 @@ INSERT DATA {
 
     <{{creator.uri}}> a schema:Person ;
         schema:name "{{creator.name}}" .
+}
 }
