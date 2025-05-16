@@ -24,10 +24,10 @@
 #######################
 # for md-to-sparqlstore
 
-:mts10-dirWalker a :ConfigSet ;
+:dirWalker a :ConfigSet ;
    :sourceDir "content/raw" .
 
-:mts40-storeArticle a :ConfigSet ;
+:storeArticle a :ConfigSet ;
     :delay "100" ;
     :dataBlock "contentBlocks" ;
     :templateFilename "system/sparql-templates/store-article.njk" ;
@@ -92,7 +92,7 @@
     :endpointSettings "system/endpoints.json" ;
         :graph <http://danny.ayers.name/content> .
 
-:articleHTML a :ConfigSet ;
+:updateArticleHTML a :ConfigSet ;
     :delay "100" ;
     :dataBlock "contentBlocks" ;
     :escape true ;
@@ -133,10 +133,12 @@
 ### create HTML index
 
 :prepHTML a :ConfigSet  ;
-    :rename (:ph1)  .
+    :rename (:ph1 :ph2)  .
         # for content
         :ph1   :pre    "accumulator" ;
               :post "contentBlocks.content"  .
+        :ph2   :pre    "dummy" ;
+              :post "dummy"  .
 
 :htmlIndex a :ConfigSet ;
     :templateFilename "layout/base/templates/index-html.njk" .

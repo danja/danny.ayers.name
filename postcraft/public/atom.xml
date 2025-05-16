@@ -15,83 +15,54 @@
         This feed isn't formatted properly yet
    </title>
    <content>
-       <!-- # Bridging Agent Intelligence with Semantic Web: Introducing A2A Ontology and Revised MCP Ontology -->
-
-<header class="hero"
-    style="background: url('images/2025-04/medieval-robot.png') center/cover no-repeat; height: 60vh; display: flex; align-items: flex-end;">
-    <div style="background: rgba(0,0,0,0.5); color: white; padding: 2rem; width: 100%;">
-        <h1>Bridging Agent Intelligence with Semantic Web</h1>
-        <p>Exploring the Agent2Agent and Model Context Ontologies Through Time and Imagination</p>
-    </div>
-</header>
-
-<h2>Preample</h2>
-<p><em>This block is me. The stuff below was prepared by my colleague Claude Sonnet (3.7).</em></p>
-<p>The lines on the protocols go like this :</p>
-<blockquote>
-<p>The <a href="https://github.com/modelcontextprotocol">Model Context Protocol</a> (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools.</p>
-</blockquote>
-<blockquote>
-<p><a href="https://github.com/google/A2A">Agent2Agent</a> : An open protocol enabling communication and interoperability between opaque agentic applications.</p>
-</blockquote>
-<p>I think it&#39;s fair to say that seamlessness and opacity are relative terms in this <em>context</em>. Also that these specs are a step in the right direction. However, they&#39;re not with flaws.</p>
-<p>Recently I&#39;ve been juggling a lot of pies.</p>
-<h1>The Ontologies</h1>
-<p>We&#39;re excited to announce two major developments in the world of agent interoperability and semantic context exchange: the release of the Agent-to-Agent (A2A) Ontology and a significant revision to the Model Context Protocol (MCP) Ontology. These complementary ontologies provide a formal semantic foundation for agent communication and context management, enabling more sophisticated AI systems that can effectively share information and collaborate.</p>
-<p>The A2A Ontology focuses on structured communication between autonomous agents, defining a framework for tasks, messages, artifacts, and skills. Meanwhile, the revised MCP Ontology enhances the representation of resources, tools, and prompts that language models can leverage to access external context. Together, they create a comprehensive semantic ecosystem that bridges the gap between agent intelligence and the rich world of linked data.</p>
-<p>Both ontologies use standard RDF/OWL representations, making them immediately compatible with existing semantic web technologies and knowledge graphs. They&#39;re designed to address real-world challenges in building interconnected, context-aware AI systems that can leverage distributed information and capabilities.</p>
-<section style="margin-top: 4rem;">
-    <div style="background: url('images/2025-04/future-robot.png') center/cover no-repeat; height: 300px; position: relative;">
-        <div
-            style="position: absolute; bottom: 0; background: rgba(0,0,0,0.6); color: #fff; width: 100%; padding: 1rem;">
-            <h2 style="margin: 0;">For LLM Enthusiasts</h2>
-        </div>
-    </div>
-</section>
-
-<p>If you&#39;re working with language models, you&#39;ve likely encountered two fundamental challenges: providing relevant context to your models and enabling them to collaborate with other AI systems. The MCP and A2A ontologies directly address these pain points.</p>
-<p>The MCP Ontology creates a standardized way to represent external resources, tools, and prompts. This means your language models can access and understand a wide range of contextual information through a consistent interface. Instead of building custom integrations for every data source or tool, you can leverage the semantic structure of MCP to create a unified context layer. This is particularly valuable for RAG implementations, where the ontology provides a rich framework for resource discovery, relationship traversal, and metadata filtering that goes beyond simple vector similarity.</p>
-<p>The A2A Ontology complements MCP by enabling structured communication between agents. It provides a formal representation of tasks, messages, and artifacts that allows different agent systems to collaborate effectively. This means your language model-based agents can delegate subtasks, request information, or provide services to other agents in a standardized way. The ontology includes concepts for tracking task states, defining agent capabilities through skills, and exchanging multimodal content.</p>
-<p>These ontologies don&#39;t require you to rewrite your existing systems. They provide a semantic layer that enhances interoperability while allowing you to continue using your preferred LLM frameworks. By adopting these standards, your AI applications gain the ability to participate in broader agent ecosystems and leverage distributed capabilities.</p>
-<section style="margin-top: 4rem;">
-    <div style="background: url('images/2025-04/bright-robot.png') center/cover no-repeat; height: 300px; position: relative;">
-        <div
-            style="position: absolute; bottom: 0; background: rgba(0,0,0,0.6); color: #fff; width: 100%; padding: 1rem;">
-            <h2 style="margin: 0;">For Ontology Practitioners</h2>
-        </div>
-    </div>
-</section>
-
-<p>From a semantic web perspective, these ontologies represent a significant step toward integrating modern AI capabilities with established knowledge representation standards.</p>
-<p>The A2A Ontology defines core classes including <code>a2a:AgentCard</code>, <code>a2a:Task</code>, <code>a2a:Message</code>, <code>a2a:Artifact</code>, and <code>a2a:Skill</code>, along with properties that establish their relationships. It includes SHACL shapes for validation and follows best practices for ontology design. The design emphasizes task state management, capability representation, and multimodal content exchange, all while maintaining compatibility with existing agent frameworks.</p>
-<p>The MCP Ontology focuses on the connection between language models and external context. It defines classes like <code>mcp:Server</code>, <code>mcp:Resource</code>, <code>mcp:Tool</code>, and <code>mcp:Prompt</code>, providing a structured way to represent the resources and capabilities available to language models. The revision enhances the ontology with improved resource typing, tool parameter representation, and content modeling.</p>
-<p>Both ontologies are designed to integrate seamlessly with existing knowledge graphs and ontologies. They can be extended with domain-specific concepts while maintaining interoperability through their core vocabularies. The ontologies support standard SPARQL queries for discovery and can be used with existing RDF stores and reasoners.</p>
-<p>From an implementation perspective, the ontologies come with comprehensive documentation, example SPARQL queries, and SHACL validation rules. They&#39;re designed to be practical tools for knowledge engineers working on AI systems, bridging the gap between traditional semantic web applications and the emerging world of language model-based agents.</p>
-<p>We invite the semantic web community to explore these ontologies, provide feedback, and contribute to their evolution as we work to create a more interconnected, intelligent web of knowledge and capabilities.</p>
-<figure>
-    <img src="images/2025-04/dark-robot.png.jpg"
-        alt="Cyberpunk city where human and robotic agents exchange knowledge amidst neon-lit data networks." />
-    <figcaption>TIA Intelligence Agency: Where distributed cognition meets high-tech agency</figcaption>
-</figure>
-
-<p><em>Ready to get started with A2A and MCP? Check out the <a href="https://github.com/your-username/a2a-o">GitHub repositories</a> for documentation, examples, and implementation guides. We welcome your contributions and feedback as we continue to develop these standards for agent interoperability and context exchange.</em>
+      <h1>Journal 2025-05-16</h1>
+<p>Blog might be back...
  </p>
-<h1>Journal 2025-04-16</h1>
-<p>My notes are all over the place... I really need to get #:semem search running, but tensegrity...</p>
-<p>pull event bus out of #:squirt as #:evb</p>
-<p>need to make the browser debugger-snooper thing to direct messages through my stuff</p>
-<p>also remember umap for dimensionality reduction</p>
-<p>We need to remove jest from this project and use jasmine instead. I think the only potential problem is the use of jsdom for creating mocks. Please review the code in project knowledge and see what you think. Give me any code as complete, individual artifacts clearly labeled with their location
+<h1>Journal 2025-05-10</h1>
+<p>Setting up Linux Mint. 
  </p>
-<h1>Journal 2025-04-15</h1>
-<p><strong>Off the grid!</strong></p>
-<p>Power company planned outage this morning. Turned out useful, I got a lot of notes written up on phone before getting up. 
+<h1>Journal 2025-05-07</h1>
+<h1>Journal 2025-05-03</h1>
+<p>Here’s the trace of where your message goes and how it should reach ProcessorImpl.getProperty:</p>
+<p>CLI Entry:
+You run:</p>
+<p>This calls the bash script trans, which runs node <a href="http://_vscodecontentref_/2">run.js</a> ....</p>
+<p>Argument Parsing:
+In run.js, yargs parses the --message argument and coerces it to a JS object.</p>
+<p>CommandUtils:
+CommandUtils.handleOptions is called, which calls CommandUtils.parseOrLoadMessage.
+This wraps your message as { payload: { theSettingProperty: ... } }.</p>
+<p>AppManager:
+AppManager.start(message) is called with the message object.
+The message is merged with app context, then passed to each transmission’s process(message).</p>
+<p>Transmission:
+The transmission’s process(message) method is called, which passes the message to each processor in the pipeline.</p>
+<p>Processor (TestSetting):
+The processor’s process(message) is called.
+In TestSetting.js, it calls this.getProperty(ns.trn.theSettingProperty).</p>
+<p>ProcessorImpl.getProperty:</p>
+<p>Checks if the property is in the message (via propertyInMessage).
+If not, checks settings/config.
  </p>
-  <h1>Journal 2025-04-12</h1>
-<p>I came across <a href="https://transformer-circuits.pub/2025/attribution-graphs/biology.html">On the Biology of a Large Language Model</a> from Anthropic earlier. Very interesting material. Also a great layout - <strong>want!</strong> Oh look, is open source : <a href="https://github.com/distillpub/template">https://github.com/distillpub/template</a> (from the now-defunct <a href="https://distill.pub/about/">Distill</a>). I need to save their <a href="https://distill.pub/guide/">Guide</a> and set an assistant to work on this for my docs.</p>
-<p><strong>It just occurred to me that I could be described as a Full Stack Developer, because I&#39;m currently developing a Full Stack...</strong></p>
-<p><a href="https://github.com/Attempto/Clex">Clex</a> lexicon for <a href="">Attempto Controlled English</a>
- </p>
+<h1>Journal 2025-04-30</h1>
+<p>I broke #:transmissions!</p>
+<h2>Web fs prompt</h2>
+<p>I would like you to write a node js HTTP server app called <code>WebStore</code> using ES modules and the express library that will do the following :</p>
+<ul>
+<li>handle HTTP GET, POST, PUT, DELETE, using a preset filesystem subdirectory on the server to store</li>
+<li>there will be HTTP Basic authentication on PUT, POST and DELETE with username:password</li>
+<li>content/media type will be handled using the standard technique through filename extensions</li>
+<li>run on port 4500</li>
+</ul>
+<p>This will be put on an existing server running nginx, which will proxy to port 4500. Please create configuration <code>webstorage.conf</code></p>
+<p>Additionally I&#39;d like a simple object-oriented command-line client app called <code>wstore</code> using yargs library in ES modules that supports the same core functionality as curl.</p>
+<p>Base URL will correspond the server-side fs dir, so eg. <code>http://hyperdata.it/files</code> might correspond to <code>/home/hyperdata/webstore/files</code>. The filename with refer to both the local file and the target resource on the server.</p>
+<p>Please render all source code as complete, individual artifacts.</p>
+<p>#:todo</p>
+<p>Refactor #:semem</p>
+<ul>
+<li>rebuilt sparql graphs</li>
+</ul>
 
       </content>
     </entry>
