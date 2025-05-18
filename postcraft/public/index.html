@@ -33,7 +33,26 @@
         </div>
         <div class="main-grid-item articles">
             <article>
-                <h1>Journal 2025-05-16</h1>
+                <h1>Journal 2025-05-18</h1>
+<h2>Front-end Joys</h2>
+<p><a href="https://github.com/danja/trestle">Trestle</a> is the latest incarnation of my browser-based outliner, formally known as <em>Trellis</em>. It&#39;s <em>heavily</em> influenced by <a href="https://workflowy.com">Workflowy</a>, a great online tool I&#39;ve been using on &amp; off for years.  </p>
+<p>But the idea is that it&#39;s simply <em>Yet Another</em> view of RDF data in a SPARQL store. It just happens to focus on tree-shaped stuff.</p>
+<p><img src="/images/2025-05/front-end.png" alt="Front End"></p>
+<p>Trellis had gone stale so I updated it a few months back. Decided to rename #:trestle because it did sound rather like Trello, which is in a similar space. I swapped out a heap of JQuery based code for more recent vanilla JS, totally rebuilt the architecture (now solidly MVC with added #:evb, my minimal event bus).</p>
+<p>Right now it only captures root + parent-child relationships (with the children indexed to make the RDF easier). I want to add typing on nodes, a <em>very-soon</em> use case being sorting out my TODOs, using terms from the <a href="http://purl.org/stuff/project">project vocab</a> I threw together 20 years ago.</p>
+<p>But before that, there was a bunch of little UI bits I hadn&#39;t implemented. Hamburger menu, breadcrumbs etc.</p>
+<p>I thought this would be a quick job with AI. Nah. Took several hours with little progress. Interestingly 3 different LLMs got themselves stuck in the exact same create-break-<em>fix-no-fix-no</em>... loop (Claude Sonnet, GPT-4.1 &amp; SWI-1, whatever that is, in <a href="https://windsurf.com/editor">Windsurf formerly Codium</a>).</p>
+<p>But I found it educational, I don&#39;t really do <em>proper</em> front-end stuff very often. GPT-4.1 had me poking around for computed layout bits, posting code into the browser console.</p>
+<p>This does seem like an obvious job for MCP. I did have a quick look at a <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer">server for Puppeteer</a> the other day but couldn&#39;t get it working. I mentioned it to <a href="http://danbri.org">danbri</a>, he found <a href="https://github.com/robertheadley/chrome-debug-mcp">Chrome Debug MCP</a> and <a href="https://github.com/lxe/chrome-mcp">Chrome MCP</a>.
+Next time.
+ </p>
+<h1>Journal 2025-05-17</h1>
+<h2>Links</h2>
+<h3><a href="https://deepwiki.com/">DeepWiki</a></h3>
+<p>This thing is very nice. It uses Devin AI to analyze a given GitHub repo and generate docs. Right now it&#39;s free to use, so I&#39;ve already slapped a button on several of my repos. The docs are quite comprehensive, but it&#39;s worth noting that they focus on the nuts &amp; bolts. So for example the <a href="https://deepwiki.com/danja/transmissions">DeepWiki for Transmissions</a> dives straight into <em>Architecture Overview</em>, from a <strong>Transmissions Developer</strong>&#39;s point of view. But it&#39;s a mini-framework, the docs should start from the pov of <strong>Transmissions User</strong>. The whole point is that most of the nuts &amp; bolts are hidden.</p>
+<p>You can apparently also ask Devin about the repo via an LLM chat interface, but so far, for me it seems to time out.
+ </p>
+<h1>Journal 2025-05-16</h1>
 <p><strong>Blog <del>might be</del> is back!</strong></p>
 <p>Ok, that was arduous. I had to rewrite a big chunk of the core code for #:transmissions, my pipeliney thing. It&#39;d simply got too spaghettified. But barring a handful of minor misalignment problems, it&#39;s working again. #:postcraft is the canonical app, this blog is published using it.</p>
 <p><img src="/images/2025-05/blog-back.png" alt="Cartoon illustration"></p>
@@ -41,7 +60,7 @@
 A bunch of stuff I&#39;ve been working on is approaching the point where it might be worth putting in front of other eyebrows, if not yet eyeballs. I&#39;m planning to get <em>something</em> of each of the bits at least relatively stable &amp; written up enough to look at by the summer solstice. To allow breathing space, I&#39;ll review for a bit, properly announce anything worthwhile on 2025-07-03.</em></p>
 <p>#:postcraft is possibly the world&#39;s most over-engineered Static Site Builder. After crawling dirs for markdown files it posts the material off to a SPARQL store. Then another pipeline is set up to query the store and render the site.</p>
 <p>The over-engineering is intentional. The data in the SPARQL store is there for other uses. A couple of days ago I got #:semem, my Semantic Memory thing to create embeddings from the content and allow this to be used for &#39;semantic search&#39;.</p>
-<p>Btw, the #:semtags do have a purpose : <strong>Semantic Hashtags</strong>. I&#39;ve a very short, simly spec written for them here somewhere - the <code>#:</code> marker says the string that follows has some kind of significance in the the current domain. In practice, they are a markdown extension that I intend to use here by replacing with a link to a query on a service - a search, but ultimately using #semem as the engine.</p>
+<p>Btw, the #:semtags do have a purpose : <strong>Semantic Hashtags</strong>. I&#39;ve a very short, simple spec written for them here somewhere - the <code>#:</code> marker says the string that follows has some kind of significance in the the current domain. In practice, they are a markdown extension that I intend to use here by replacing with a link to a query on a service - a search, but ultimately using #semem as the engine.</p>
 <p>For a first pass I&#39;m thinking of templating a query, something like :</p>
 <pre><code class="language-sparql">PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#Concept&gt;
@@ -61,47 +80,6 @@ SELECT ?resources WHERE {
 <p>Setting up Linux Mint. 
  </p>
 <h1>Journal 2025-05-07</h1>
-<h1>Journal 2025-05-03</h1>
-<p>Here’s the trace of where your message goes and how it should reach ProcessorImpl.getProperty:</p>
-<p>CLI Entry:
-You run:</p>
-<p>This calls the bash script trans, which runs node <a href="http://_vscodecontentref_/2">run.js</a> ....</p>
-<p>Argument Parsing:
-In run.js, yargs parses the --message argument and coerces it to a JS object.</p>
-<p>CommandUtils:
-CommandUtils.handleOptions is called, which calls CommandUtils.parseOrLoadMessage.
-This wraps your message as { payload: { theSettingProperty: ... } }.</p>
-<p>AppManager:
-AppManager.start(message) is called with the message object.
-The message is merged with app context, then passed to each transmission’s process(message).</p>
-<p>Transmission:
-The transmission’s process(message) method is called, which passes the message to each processor in the pipeline.</p>
-<p>Processor (TestSetting):
-The processor’s process(message) is called.
-In TestSetting.js, it calls this.getProperty(ns.trn.theSettingProperty).</p>
-<p>ProcessorImpl.getProperty:</p>
-<p>Checks if the property is in the message (via propertyInMessage).
-If not, checks settings/config.
- </p>
-<h1>Journal 2025-04-30</h1>
-<p>I broke #:transmissions!</p>
-<h2>Web fs prompt</h2>
-<p>I would like you to write a node js HTTP server app called <code>WebStore</code> using ES modules and the express library that will do the following :</p>
-<ul>
-<li>handle HTTP GET, POST, PUT, DELETE, using a preset filesystem subdirectory on the server to store</li>
-<li>there will be HTTP Basic authentication on PUT, POST and DELETE with username:password</li>
-<li>content/media type will be handled using the standard technique through filename extensions</li>
-<li>run on port 4500</li>
-</ul>
-<p>This will be put on an existing server running nginx, which will proxy to port 4500. Please create configuration <code>webstorage.conf</code></p>
-<p>Additionally I&#39;d like a simple object-oriented command-line client app called <code>wstore</code> using yargs library in ES modules that supports the same core functionality as curl.</p>
-<p>Base URL will correspond the server-side fs dir, so eg. <code>http://hyperdata.it/files</code> might correspond to <code>/home/hyperdata/webstore/files</code>. The filename with refer to both the local file and the target resource on the server.</p>
-<p>Please render all source code as complete, individual artifacts.</p>
-<p>#:todo</p>
-<p>Refactor #:semem</p>
-<ul>
-<li>rebuilt sparql graphs</li>
-</ul>
 
             </article>
         </div>
