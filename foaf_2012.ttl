@@ -1,0 +1,172 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ns0: <http://www.w3.org/2000/10/swap/pim/contact#> .
+@prefix ns1: <http://purl.org/stuff/pets/> .
+@prefix ns2: <http://www.daml.org/2001/10/html/airport-ont#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix dc11: <http://purl.org/dc/elements/1.1/> .
+
+<http://danny.ayers.name/me>
+  a foaf:PersonalProfileDocument ;
+  foaf:primaryTopic "" ;
+  rdfs:seeAlso <http:/dannyayers.com/rdf/burner-facebook.ttl>, <http:/dannyayers.com/rdf/burner-gplus.ttl>, <http:/dannyayers.com/rdf/burner-linkedin.ttl>, <http:/dannyayers.com/rdf/burner-twitter.ttl> ;
+  foaf:maker [
+    a foaf:Person ;
+    foaf:isPrimaryTopicOf <http://danny.ayers.name/me> ;
+    foaf:name "Daniel Ayers" ;
+    foaf:title "Mr" ;
+    foaf:firstName "Danny" ;
+    foaf:surname "Ayers" ;
+    foaf:nick "danja" ;
+    foaf:interest <http://www.friendspace.com/groups/galway-foaf-2004> ;
+    foaf:mbox "mailto:danny.ayers@gmail.com" ;
+    foaf:homepage <http://dannyayers.com/misc/about/biog.htm> ;
+    foaf:weblog <http://dannyayers.com> ;
+    foaf:depiction <http://dannyayers.com/misc/images/marmidan.jpg> ;
+    foaf:phone <tel:+39-0583-68-99-55-> ;
+    foaf:workplaceHomepage <http://ideagraph.net> ;
+    foaf:workInfoHomepage <http://ideagraph.net> ;
+    foaf:schoolHomepage <http://www.ladymanners.org.uk/> ;
+    rdfs:seeAlso <http://dannyayers.com/misc/foaf/foaf.rdf>, <http://dannyayers.com/archives/author/site-admin/foaf.rdf>, <http://dannyayers.com/misc/foaf/sambuca.rdf>, <http://dannyayers.com/misc/foaf/sassi.rdf>, <http://dannyayers.com/misc/foaf/neo.rdf>, <http://dannyayers.com/misc/foaf/primo.rdf>, <http://dannyayers.com/misc/foaf/frumpy.rdf>, <http://dannyayers.com/misc/foaf/orlando.rdf> ;
+    ns0:nearestAirport <http://www.daml.org/cgi-bin/airport?PSA> ;
+    foaf:myersBriggs "INTP" ;
+    foaf:wishlist <http://www.amazon.co.uk/exec/obidos/wishlist/1UWOZ1WM2Z5NV> ;
+    ns1:hasPet [
+      a ns1:Pet ;
+      foaf:name "Sassi" ;
+      ns1:hasProfile <http://dannyayers.com/pets/sassi/profile.xml>
+    ], [
+      a ns1:Pet ;
+      foaf:name "Sambuca" ;
+      ns1:hasProfile <http://dannyayers.com/pets/sambuca/profile.xml>
+    ], [
+      a ns1:Pet ;
+      foaf:name "Primo" ;
+      ns1:hasProfile <http://dannyayers.com/pets/primo/profile.xml>
+    ], [
+      a ns1:Pet ;
+      foaf:name "Neo" ;
+      ns1:hasProfile <http://dannyayers.com/pets/neo/profile.xml>
+    ], [
+      a ns1:Pet ;
+      foaf:name "Frumpy" ;
+      ns1:hasProfile <http://dannyayers.com/pets/frumpy/profile.xml>
+    ], [
+      a ns1:Pet ;
+      foaf:name "Basil" ;
+      ns1:hasProfile <http://dannyayers.com/pets/basil/profile.xml>
+    ], [
+      a ns1:Pet ;
+      foaf:name "Sparql" ;
+      ns1:hasProfile <http://dannyayers.com/pets/sparql/profile.xml>
+    ] ;
+    foaf:knows [
+      a foaf:Person ;
+      foaf:name "Uldis Bojars" ;
+      foaf:nick "CaptSolo" ;
+      foaf:mbox_sha1sum "56e6f2903933a611708ebac456d45e454ddb8838" ;
+      foaf:homepage <http://captsolo.net> ;
+      foaf:weblog <http://captsolo.net/info> ;
+      rdfs:seeAlso <http://captsolo.net/semweb/foaf-captsolo.rdf>
+    ], [
+      a foaf:Person ;
+      foaf:mbox_sha1sum "24c4b5d3e71c117c9130ae0a94b4acf98cf49666" ;
+      foaf:name "Kenneth Fields" ;
+      foaf:nick "YiKe" ;
+      rdfs:seeAlso <http://cemc.ccom.edu.cn/htmlDocs/foaf.rdf>
+    ], [
+      a foaf:Person ;
+      foaf:name "Manos Batsis" ;
+      foaf:title "Mr" ;
+      foaf:firstName "Emmanuil" ;
+      foaf:surname "Batsis" ;
+      foaf:nick "mbatsis" ;
+      foaf:mbox_sha1sum "4997782d69be8ec448dce2b9af34879f1de894ab" ;
+      foaf:depiction <http://forte.netsmart.gr/foaf/Manos2.jpg> ;
+      rdfs:seeAlso <http://forte.netsmart.gr/foaf/manos_foaf.rdf>
+    ], [
+      a foaf:Person ;
+      foaf:name "Jay Fienberg" ;
+      foaf:title "Mr" ;
+      foaf:firstName "Jay" ;
+      foaf:surname "Fienberg" ;
+      foaf:mbox <mailto:siteinfo@icite.net> ;
+      foaf:homepage <http://icite.net/about/people.html> ;
+      foaf:weblog <http://icite.net/blog/> ;
+      foaf:depiction <http://icite.net/about/jay_fienberg.jpg> ;
+      rdfs:seeAlso <http://icite.net/about/foaf.rdf>
+    ], [
+      a foaf:Person ;
+      foaf:name "Morten Frederiksen" ;
+      foaf:mbox_sha1sum "65b983bb397fb71849da910996741752ace8369b" ;
+      foaf:homepage <http://purl.org/net/morten/> ;
+      rdfs:seeAlso <http://xml.mfd-consult.dk/foaf/morten.rdf>
+    ], [
+      a foaf:Person ;
+      foaf:name "Marc Canter" ;
+      foaf:title "The dude" ;
+      foaf:firstName "Marc" ;
+      foaf:surname "Canter" ;
+      foaf:nick "father of multimedia" ;
+      foaf:mbox_sha1sum "41e872618d70ba18a7af715083f522afe7fc3238" ;
+      foaf:mbox <mailto:marc@broadbandmechanics.com> ;
+      foaf:homepage <http://marc.canter.com> ;
+      foaf:weblog <http://blogs.it/0100198> ;
+      foaf:depiction <http://broadbandmechanics.com/media/photos/marc/NewMarc.jpg> ;
+      rdfs:seeAlso <http://xml.mfd-consult.dk/morten/foaf.rdf>
+    ], [
+      a foaf:Person ;
+      foaf:name "Jim Ley" ;
+      foaf:nick "JibberJim" ;
+      rdfs:seeAlso <http://jibbering.com/foaf.rdf> ;
+      foaf:mbox <mailto:jim@jibbering.com>
+    ], [
+      a foaf:Person ;
+      foaf:name "Libby Miller" ;
+      foaf:mbox <mailto:libby.miller@bristol.ac.uk> ;
+      foaf:img <http://swordfish.rdfweb.org/~libby/libby.jpg> ;
+      rdfs:seeAlso <http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf> ;
+      foaf:depiction <http://rdfweb.org/people/danbri/rdfweb/libby.gif>
+    ], [
+      a foaf:Person ;
+      foaf:name "Dan Brickley" ;
+      foaf:mbox <mailto:daniel.brickley@bristol.ac.uk>, <mailto:danbri@rdfweb.org>, <mailto:danbri@w3.org> ;
+      foaf:homepage <http://rdfweb.org/people/danbri/> ;
+      rdfs:seeAlso <http://rdfweb.org/people/danbri/rdfweb/danbri-foaf.rdf>
+    ], [
+      a foaf:Person ;
+      foaf:name "Reto Bachmann-Gmuer" ;
+      foaf:mbox <mailto:reto@gmuer.ch> ;
+      foaf:homepage <http://gmuer.ch> ;
+      rdfs:seeAlso <http://gmuer.ch/me>
+    ] ;
+    foaf:currentProject <http://ideagraph.net/>, [
+      a foaf:Project ;
+      rdfs:seeAlso <http://dannyayers.com/doap.rdf>
+    ], [
+      a foaf:Project ;
+      rdfs:seeAlso <http://semtext.org/atom/doap.rdf>
+    ], [
+      a foaf:Project ;
+      rdfs:seeAlso <http://ideagraph.net/xmlns/project/doap.rdf>
+    ]
+  ] .
+
+<http://www.daml.org/cgi-bin/airport?PSA>
+  a <http://www.daml.org/2001/10/html/airport-ont#Airport> ;
+  ns2:iataCode "PSA" ;
+  ns2:icaoCode "LIRP" ;
+  geo:lat "43.68388888888889" ;
+  geo:long "10.3925" .
+
+<http://rdfweb.org/people/danbri/rdfweb/libby.gif>
+  foaf:thumbnail <http://rdfweb.org/people/danbri/rdfweb/libby.gif> ;
+  dc11:title "Libby Miller, Oxford (1993-ish)" ;
+  dc11:description "A photo of Libby Miller, taken while at Oxford University" ;
+  dc11:format "image/gif" .
+
+<http://ideagraph.net/>
+  a foaf:Project ;
+  dc11:title "IdeaGraph" ;
+  dc11:description "Idea mapping for the Semantic Web" .
+

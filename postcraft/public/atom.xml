@@ -15,7 +15,14 @@
         This feed isn't formatted properly yet
    </title>
    <content>
-      <h1>Journal 2025-05-18</h1>
+      <h1>Journal 2025-05-19</h1>
+<h2>Inversion of control</h2>
+<p>For a change this afternoon the AI has given me directions.</p>
+<p><img src="/images/2025-05/dickens.png" alt="Robot instructs Dickension mill worker"></p>
+<p>My priority at the moment is getting #:semem organized, but to that end I need some extras in #:transmissions, and better SPARQL UI... So I&#39;ve been on a little cycle round the subprojects. Which today has led me to #:tbox, which is just a Docker setup with containers that will hopefully, eventually, run the projects in a unified, consistent, portable fashion.</p>
+<p>I&#39;m not very good with Docker, hate this kind of admin. After a bit of discussion with Claude I decided I need CI/CD on my thing. GitHub workflows are relatively new to me - and it&#39;s more of the same kind of admin. So I asked Claude how I should tidy up #:tbox and also how to do testing/CI. Two artifacts, 3 pages each, which I&#39;ve printed. This afternoon I&#39;ll just work through them. At least until I get distracted by the need to do one of the real-world chores I&#39;ve been procrastinating over. Faced with a more boring task, cleaning the kitchen seems a lot more manageable.
+ </p>
+<h1>Journal 2025-05-18</h1>
 <h2>Front-end Joys</h2>
 <p><a href="https://github.com/danja/trestle">Trestle</a> is the latest incarnation of my browser-based outliner, formally known as <em>Trellis</em>. It&#39;s <em>heavily</em> influenced by <a href="https://workflowy.com">Workflowy</a>, a great online tool I&#39;ve been using on &amp; off for years.  </p>
 <p>But the idea is that it&#39;s simply <em>Yet Another</em> view of RDF data in a SPARQL store. It just happens to focus on tree-shaped stuff.</p>
@@ -61,7 +68,6 @@ SELECT ?resources WHERE {
 <h1>Journal 2025-05-10</h1>
 <p>Setting up Linux Mint. 
  </p>
-<h1>Journal 2025-05-07</h1>
 
       </content>
     </entry>
