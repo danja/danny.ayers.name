@@ -33,7 +33,20 @@
         </div>
         <div class="main-grid-item articles">
             <article>
-                  <h1>Journal 2025-05-28</h1>
+                  <h1>Journal 2025-05-31</h1>
+<p>This morning I was woken by Federico&#39;s tractor about 15 mins before my alarm. But that was fine, last night I prepared a flask of coffee. I did about 2 hours worth of dev with Claude before getting out of bed. Then went shopping, I&#39;ve just fixed the Claude artifacts and I&#39;m very happy. A very productive morning!</p>
+<p><img src="/images/2025-05/jsdoc-rdf.png" alt="JSDoc RDF poster"></p>
+<h2>JSDoc RDF Plugin</h2>
+<p>It does what JSDoc does, with an output in RDF Turtle : <a href="https://github.com/danja/jsdoc-rdf">jsdoc-rdf</a> on GitHub. Something I&#39;ve wanted for years but never got around to. It became more pressing now I&#39;ve started integrating LLMs etc into my knowledgebase setup - in <a href="https://github.com/danja/semem">Semem</a> (which still needs a bit of tweaking for my artificial midsummer break deadline).</p>
+<h2>OpenTelemetry in Transmissions</h2>
+<p>This seems a must-have for my pipeliney thing. Ok, every node in a transmission (= pipeline) is an implementation of a <code>Processor</code>. That interface is descended from <code>ProcessorImpl</code> which does the work of running the processors. This latter now has hooks into <a href="https://github.com/open-telemetry">Open Telemetry</a>. There is space for hooks in the code responsibility for the construction of pipelines, as well as in the API bits. But being lower demand, they are lower priority.</p>
+<p>I haven&#39;t a clue yet how best to make use of this, I believe I&#39;ll need Prometheus and/or Grafana somewhere.</p>
+<h2>Filesystem watching for transmissions</h2>
+<p>Not unrelated to the telemetry thing. Right now, the #:Postcraft doc pipelines to render this blog process every single source markdown file. So I just added this fs watcher.</p>
+<p>The idea is that this will be a long-lived background process. When a file in a given dir tree changes, this thing wakes up and does a HTTP POST to a given endpoint. For the #:postcraft use case, the intention is that there will be a #:transmissions mini-service that will receive the POST and run the markdown-to-sparqlstore, sparqlstore-to-html pipelines.</p>
+<p>As yet untested, but the ability to trigger transmissions via HTTP is something I&#39;ve had in mind all along. There is something approximating implementation, but I&#39;m only now getting to the stage where I can start trying it out in practice.
+ </p>
+<h1>Journal 2025-05-28</h1>
 <h2>VNC</h2>
 <ul>
 <li>Client : <code>vinagre</code></li>
@@ -41,6 +54,7 @@
 </ul>
 <pre><code class="language-sh">sudo nano /lib/systemd/system/x11vnc.service
 </code></pre>
+<p>Edit <code>USERNAME</code> as appropriate:</p>
 <pre><code class="language-sh">[Unit]
 Description=Start x11vnc at startup.
 After=multi-user.target
@@ -164,30 +178,6 @@ sudo systemctl status x11vnc
 §</p>
 </li>
 </ul>
-<h1>Journal 2025-05-19</h1>
-<h2>Inversion of control</h2>
-<p>For a change this afternoon the <strong>AI has given me directions</strong>.</p>
-<p><img src="/images/2025-05/dickens.png" alt="Robot instructs Dickension mill worker"></p>
-<p>My priority at the moment is getting #:semem organized, but to that end I need some extras in #:transmissions, and better SPARQL UI... So I&#39;ve been on a little cycle round the subprojects. Which today has led me to #:tbox, which is just a Docker setup with containers that will hopefully, eventually, run the projects in a unified, consistent, portable fashion.</p>
-<p>I&#39;m not very good with Docker, hate this kind of admin. After a bit of discussion with Claude I decided I need CI/CD on my thing. GitHub workflows are relatively new to me - and it&#39;s more of the same kind of admin. So I asked Claude how I should tidy up #:tbox and also how to do testing/CI. Two artifacts, 3 pages each, which I&#39;ve printed. This afternoon I&#39;ll just work through them. At least until I get distracted by the need to do one of the real-world chores I&#39;ve been procrastinating over. Faced with a more boring task, cleaning the kitchen seems a lot more manageable.</p>
-<p>PS. I started following Claude&#39;s instructions, but only got so far because one of the services I want #:tbox running, Prosody XMPP, isn&#39;t working. A problem I was aware of, but I&#39;d thought it better to get the tests in place first.</p>
-<p>So now I&#39;m in the process of fixing that breakage using GPT-4.1 in Windsurf. In other words, <strong>I&#39;m delegating...</strong></p>
-<p><img src="/images/2025-05/delegate.png" alt="Dickension mill worker instructs junior robot"></p>
-<p>Progress! (As a Dickensian mill boss might say).</p>
-<p>Funnily enough, the code the junior agent is now working on is from #:tia, which I&#39;m aiming to use as an ecosystem in which to create agents. (<a href="">dogbot</a>)</p>
-<pre><code class="language-sh">...
-[SENDER] OUT
-&lt;message type=&quot;chat&quot; to=&quot;alice@localhost&quot;&gt;&lt;body&gt;Hello from dogbot client!&lt;/body&gt;&lt;/message&gt;
-[SENDER] Message sent!
-[SENDER] status closing
-[RECEIVER] IN
-&lt;message type=&quot;chat&quot; from=&quot;danja@localhost/OzwPtYKq&quot; to=&quot;alice@localhost&quot;&gt;&lt;body&gt;Hello from dogbot client!&lt;/body&gt;&lt;/message&gt;
-[RECEIVER] Received message: Hello from dogbot client!
-</code></pre>
-<p><img src="/images/2025-05/children.png" alt="Junior robot instructs children"></p>
-<p>I predict a riot!</p>
-<p><img src="/images/2025-05/riot.png" alt="Robot riot">
- </p>
 
             </article>
         </div>
