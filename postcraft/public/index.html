@@ -37,6 +37,146 @@
 <h1>Journal 2025-06-03</h1>
 <h2>The Tensegrity Suite</h2>
 <p>It occurred to me that if anyone shows interest in the stuff I&#39;ve been playing with then there needs to be a good place to discuss things. The domain (AI) is pretty hot right now, but my particular corner is niche. Still, things need to be public, must be easy to maintain. It occurred to me sticking things in Git would be useful. Then I discovered GitHub supports <a href="https://docs.github.com/en/discussions">Discussions</a> on repos. That&#39;ll do. So I&#39;ve set up a repo called <a href="https://github.com/danja/tensegrity">tensegrity</a> and on it enabled Discussions. It&#39;s new to me, but I think it should work. If you are reading this then you should probably go say hello over there.</p>
+<p><img src="/images/2025-06/victorian.png" alt="Victorian engineer figuring out tensegrity"></p>
+<h2>Bloody Paths!</h2>
+<p>What I have going on with this stuff right now is that a #:Transmissions pipeline reads content from markdown files in a particular dir tree, posts this off (lightly annotated with metadata) to a SPARQL store. This initial use case I call #:Postcraft, pulls this back out again and renders it as a static Web site. Like what you are looking at.
+This is massively over-engineered for a static site builder, but it&#39;s what seemed like a good sanity check for getting such data in and out of the store.</p>
+<p>The thing is I&#39;ve also got #:Semem looking at the contents of that store. This is intended as an LLM-oriented knowledgebase. I&#39;d already got some bits in place, like generating embeddings from the content and use of them for <em>semantic search</em> in the vector store similarity sense.</p>
+<p>I had a big push on this in the past week or so, sorting out the #:Ragno ontology for describing knowledgebases and <em>maybe</em> implementing a bunch of knowledge augmentation and retrieval algorithms. I say <em>maybe</em> because a large part of the coding was done by AI assistants, and they&#39;re not exactly great at checking their own homework. But this report on <a href="https://github.com/danja/semem/blob/main/INTERACTIONS.md">interactions</a> gives me cautious optimism.</p>
+<p>One thing I know for sure, this stuff is currently very fragile. And confusing. I don&#39;t know why I bothered asking ChatGPT for an illustration of this post because I could simply have taken a pic of my office.</p>
+<p> <img src="/images/2025-06/office1.jpeg" alt="a view of my office featuring confusing things"></p>
+<p>So anyway, the <strong>bloody paths</strong> thing. To kick the tyres of #:Semem I needed a smaller set of docs than this blog stuff. I&#39;ve hardly put any content in the #:Postcraft part of #:Semem itself yet. It will eventually look after the docs, but as of now, sod all there.</p>
+<p>So I ran the #:Postcraft transmissions over it. Bugger! Totally berserk paths. The primary motivation behind #:Transmissions is to make complex processing easier to manage. However, the decomposition comes at a cost. Here are the current commands I have to run to render this site:</p>
+<pre><code class="language-sh">cd ~/hyperdata/transmissions # my local path
+./del-dan.sh # clear SPARQL graphs
+./trans postcraft-statics ~/sites/danny.ayers.name/postcraft #
+./trans md-to-sparqlstore ~/sites/danny.ayers.name/postcraft
+./trans sparqlstore-to-html ~/sites/danny.ayers.name/postcraft
+./trans sparqlstore-to-site-indexes ~/sites/danny.ayers.name/postcraft
+</code></pre>
+<p>Here&#39;s the <a href="https://github.com/danja/transmissions/blob/main/src/apps/sparqlstore-to-html/transmissions.ttl">transmissions.ttl</a> for <code>sparqlstore-to-html</code> :</p>
+<pre><code class="language-turtle">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix : &lt;http://purl.org/stuff/transmissions/&gt; .
+
+:sparqlstore-to-html a :Transmission ;
+   :pipe (:p10 :p20 :p30  :p40 :p50  :p55  :p60 :p70
+          :p80  :p90 :p100) .
+
+:p10 a :SPARQLSelect ;
+     :settings :selectArticles .
+
+:p20 a :ForEach ;
+    :settings :resultIterator .
+
+:p30 a :Restructure ;
+    :settings :prepArticle .
+
+:p40 a :MarkdownToHTML ;
+    :settings :mdHTML .
+
+:p50 a :Templater ;
+    :settings :articleContentTemplate .
+
+# store the HTML snippet
+:p55 a :SPARQLUpdate ;
+     :settings :updateArticleHTML .
+
+# make the page
+:p60 a :Templater ;
+    :settings :articlePageTemplate .
+
+:p70 a :PathOps ;
+  :settings :filenameConstructor .
+
+:p80 a :PathOps ;
+  :settings :filenameExtension .
+
+:p90 a :FileWriter ;
+  :settings :htmlField .
+
+:p100 a :SPARQLUpdate ;
+     :settings :recordRendering .
+</code></pre>
+<p>Each of the <code>:settings</code> objects is a little block of statements. Each of the processors in the pipeline is a JS module.
+But each part <em>is</em> constructed simply, and I do have tolerable debugging facilities in place. It&#39;s just a bloody drag to trace through the pipeline nodes to find where I&#39;ve done something stupid in path resolution.
+Hey ho. Claudio tells me it&#39;s walk time again.
+When we get back I may just have play with some of the other stuff that&#39;s cluttering up the office right now.</p>
+<p><img src="/images/2025-06/office2.jpeg" alt="another view of my office featuring confusing things">
+ </p>
+<h1>Journal 2025-06-03</h1>
+<h2>The Tensegrity Suite</h2>
+<p>It occurred to me that if anyone shows interest in the stuff I&#39;ve been playing with then there needs to be a good place to discuss things. The domain (AI) is pretty hot right now, but my particular corner is niche. Still, things need to be public, must be easy to maintain. It occurred to me sticking things in Git would be useful. Then I discovered GitHub supports <a href="https://docs.github.com/en/discussions">Discussions</a> on repos. That&#39;ll do. So I&#39;ve set up a repo called <a href="https://github.com/danja/tensegrity">tensegrity</a> and on it enabled Discussions. It&#39;s new to me, but I think it should work. If you are reading this then you should probably go say hello over there.</p>
+<p><img src="/images/2025-06/victorian.png" alt="Victorian engineer figuring out tensegrity"></p>
+<h2>Bloody Paths!</h2>
+<p>What I have going on with this stuff right now is that a #:Transmissions pipeline reads content from markdown files in a particular dir tree, posts this off (lightly annotated with metadata) to a SPARQL store. This initial use case I call #:Postcraft, pulls this back out again and renders it as a static Web site. Like what you are looking at.
+This is massively over-engineered for a static site builder, but it&#39;s what seemed like a good sanity check for getting such data in and out of the store.</p>
+<p>The thing is I&#39;ve also got #:Semem looking at the contents of that store. This is intended as an LLM-oriented knowledgebase. I&#39;d already got some bits in place, like generating embeddings from the content and use of them for <em>semantic search</em> in the vector store similarity sense.</p>
+<p>I had a big push on this in the past week or so, sorting out the #:Ragno ontology for describing knowledgebases and <em>maybe</em> implementing a bunch of knowledge augmentation and retrieval algorithms. I say <em>maybe</em> because a large part of the coding was done by AI assistants, and they&#39;re not exactly great at checking their own homework. But this report on <a href="https://github.com/danja/semem/blob/main/INTERACTIONS.md">interactions</a> gives me cautious optimism.</p>
+<p>One thing I know for sure, this stuff is currently very fragile. And confusing. I don&#39;t know why I bothered asking ChatGPT for an illustration of this post because I could simply have taken a pic of my office.</p>
+<p> <img src="/images/2025-06/office1.jpeg" alt="a view of my office featuring confusing things"></p>
+<p>So anyway, the <strong>bloody paths</strong> thing. To kick the tyres of #:Semem I needed a smaller set of docs than this blog stuff. I&#39;ve hardly put any content in the #:Postcraft part of #:Semem itself yet. It will eventually look after the docs, but as of now, sod all there.</p>
+<p>So I ran the #:Postcraft transmissions over it. Bugger! Totally berserk paths. The primary motivation behind #:Transmissions is to make complex processing easier to manage. However, the decomposition comes at a cost. Here are the current commands I have to run to render this site:</p>
+<pre><code class="language-sh">cd ~/hyperdata/transmissions # my local path
+./del-dan.sh # clear SPARQL graphs
+./trans postcraft-statics ~/sites/danny.ayers.name/postcraft #
+./trans md-to-sparqlstore ~/sites/danny.ayers.name/postcraft
+./trans sparqlstore-to-html ~/sites/danny.ayers.name/postcraft
+./trans sparqlstore-to-site-indexes ~/sites/danny.ayers.name/postcraft
+</code></pre>
+<p>Here&#39;s the <a href="https://github.com/danja/transmissions/blob/main/src/apps/sparqlstore-to-html/transmissions.ttl">transmissions.ttl</a> for <code>sparqlstore-to-html</code> :</p>
+<pre><code class="language-turtle">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix : &lt;http://purl.org/stuff/transmissions/&gt; .
+
+:sparqlstore-to-html a :Transmission ;
+   :pipe (:p10 :p20 :p30  :p40 :p50  :p55  :p60 :p70
+          :p80  :p90 :p100) .
+
+:p10 a :SPARQLSelect ;
+     :settings :selectArticles .
+
+:p20 a :ForEach ;
+    :settings :resultIterator .
+
+:p30 a :Restructure ;
+    :settings :prepArticle .
+
+:p40 a :MarkdownToHTML ;
+    :settings :mdHTML .
+
+:p50 a :Templater ;
+    :settings :articleContentTemplate .
+
+# store the HTML snippet
+:p55 a :SPARQLUpdate ;
+     :settings :updateArticleHTML .
+
+# make the page
+:p60 a :Templater ;
+    :settings :articlePageTemplate .
+
+:p70 a :PathOps ;
+  :settings :filenameConstructor .
+
+:p80 a :PathOps ;
+  :settings :filenameExtension .
+
+:p90 a :FileWriter ;
+  :settings :htmlField .
+
+:p100 a :SPARQLUpdate ;
+     :settings :recordRendering .
+</code></pre>
+<p>Each of the <code>:settings</code> objects is a little block of statements. Each of the processors in the pipeline is a JS module.
+But each part <em>is</em> constructed simply, and I do have tolerable debugging facilities in place. It&#39;s just a bloody drag to trace through the pipeline nodes to find where I&#39;ve done something stupid in path resolution.
+Hey ho. Claudio tells me it&#39;s walk time again.
+When we get back I may just have play with some of the other stuff that&#39;s cluttering up the office right now.</p>
+<p><img src="/images/2025-06/office2.jpeg" alt="another view of my office featuring confusing things">
+ </p>
+<h1>Journal 2025-06-03</h1>
+<h2>The Tensegrity Suite</h2>
+<p>It occurred to me that if anyone shows interest in the stuff I&#39;ve been playing with then there needs to be a good place to discuss things. The domain (AI) is pretty hot right now, but my particular corner is niche. Still, things need to be public, must be easy to maintain. It occurred to me sticking things in Git would be useful. Then I discovered GitHub supports <a href="https://docs.github.com/en/discussions">Discussions</a> on repos. That&#39;ll do. So I&#39;ve set up a repo called <a href="https://github.com/danja/tensegrity">tensegrity</a> and on it enabled Discussions. It&#39;s new to me, but I think it should work. If you are reading this then you should probably go say hello over there.</p>
 <p><img src="media/images/2025-06/victorian.png" alt="Victorian engineer figuring out tensegrity"></p>
 <h2>Bloody Paths!</h2>
 <p>What I have going on with this stuff right now is that a #:Transmissions pipeline reads content from markdown files in a particular dir tree, posts this off (lightly annotated with metadata) to a SPARQL store. This initial use case I call #:Postcraft, pulls this back out again and renders it as a static Web site. Like what you are looking at.
@@ -104,59 +244,6 @@ Hey ho. Claudio tells me it&#39;s walk time again.
 When we get back I may just have play with some of the other stuff that&#39;s cluttering up the office right now.</p>
 <p><img src="media/images/2025-06/office2.jpeg" alt="another view of my office featuring confusing things">
  </p>
-<h1>Journal 2025-06-01</h1>
-<pre><code class="language-sh">cd /etc/nginx/sites-available
-nano tensegrity.it.conf
-</code></pre>
-<pre><code class="language-sh">server {
-        server_name tensegrity.it;
-        listen 80;
-
-        # Hide nginx version
-        server_tokens off;
-
-        location / {
-                root /home/www/tensegrity.it;
-                index index.html index.htm index.ttl;
-                autoindex on;
-        }
-}
-</code></pre>
-<pre><code class="language-sh">ln -s /etc/nginx/sites-available/tensegrity.it.conf /etc/nginx/sites-enabled/tensegrity.it.conf
-nginx -t
-systemctl restart nginx
-certbot
-</code></pre>
-<pre><code class="language-sh">ln -s /home/hyperdata/semem/docs/postcraft/public /home/www/tensegrity.it/semem
-ln -s /home/hyperdata/hyperdata/docs/postcraft/public /home/www/tensegrity.it/hyperdata
-ln -s /home/hyperdata/transmissions/docs/postcraft/public /home/www/tensegrity.it/transmissions
-</code></pre>
-<p>/home/danny/hyperdata/hyperdata/workspaces/postcrafts/hyperdata-docs/content/raw/entries/2025-05-04_the-stack.md
- </p>
-<h1>Journal 2025-05-31</h1>
-<p>This morning I was woken by Federico&#39;s tractor about 15 mins before my alarm. But that was fine, last night I prepared a flask of coffee. I did about 2 hours worth of dev with Claude before getting out of bed. Then went shopping, I&#39;ve just fixed the Claude artifacts and I&#39;m very happy. A very productive morning!</p>
-<p><img src="/images/2025-05/jsdoc-rdf.png" alt="JSDoc RDF poster"></p>
-<h2>JSDoc RDF Plugin</h2>
-<p>It does what JSDoc does, with an output in RDF Turtle : <a href="https://github.com/danja/jsdoc-rdf">jsdoc-rdf</a> on GitHub. Something I&#39;ve wanted for years but never got around to. It became more pressing now I&#39;ve started integrating LLMs etc into my knowledgebase setup - in <a href="https://github.com/danja/semem">Semem</a> (which still needs a bit of tweaking for my artificial midsummer break deadline).</p>
-<h2>OpenTelemetry in Transmissions</h2>
-<p>This seems a must-have for my pipeliney thing. Ok, every node in a transmission (= pipeline) is an implementation of a <code>Processor</code>. That interface is descended from <code>ProcessorImpl</code> which does the work of running the processors. This latter now has hooks into <a href="https://github.com/open-telemetry">Open Telemetry</a>. There is space for hooks in the code responsibility for the construction of pipelines, as well as in the API bits. But being lower demand, they are lower priority.</p>
-<p>I haven&#39;t a clue yet how best to make use of this, I believe I&#39;ll need Prometheus and/or Grafana somewhere.</p>
-<h2>Filesystem watching for transmissions</h2>
-<p>Not unrelated to the telemetry thing. Right now, the #:Postcraft doc pipelines to render this blog process every single source markdown file. So I just added this fs watcher.</p>
-<p>The idea is that this will be a long-lived background process. When a file in a given dir tree changes, this thing wakes up and does a HTTP POST to a given endpoint. For the #:postcraft use case, the intention is that there will be a #:transmissions mini-service that will receive the POST and run the markdown-to-sparqlstore, sparqlstore-to-html pipelines.</p>
-<p>As yet untested, but the ability to trigger transmissions via HTTP is something I&#39;ve had in mind all along. There is something approximating implementation, but I&#39;m only now getting to the stage where I can start trying it out in practice.</p>
-<h2>Tip of the Day</h2>
-<p>I&#39;ve currently got Windsurf hammering away at Semem. It was having diversions where it lost its thread somewhat, then repeated earlier approaches that failed... attention deficit, <em>dude!</em>
-But this seems to have helped :</p>
-<blockquote>
-<p>I suggest you create a file WINDSURF.md and in it place note on strategies which work and those which don&#39;t areas of the codebase that likely need attention etc.</p>
-</blockquote>
-<p>It&#39;s also a good read for me (same deficit).
-Also :</p>
-<blockquote>
-<p>remember to update WINDSURF.md as you go along. Leave yourself a note in it to remind yourself about it.
- </p>
-</blockquote>
 
             </article>
         </div>
