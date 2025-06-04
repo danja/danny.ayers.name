@@ -31,9 +31,10 @@
     :metaField "meta" .
 
 :entryExtras a :ConfigSet ;
-    :relMap "blog" ; # relPath goes to this
-    :loglevel "debug" ;
-    # :baseURI "/" ;
+  #  :loglevel "debug" ;
+    :rawDir "content/raw" ;
+    :renderPath "" ;
+    :baseURI <http://danny.ayers.name> ;
     :creatorName "Danny" ;
     :creatorURI <http://danny.ayers.name/me> .
 
