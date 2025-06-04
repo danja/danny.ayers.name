@@ -33,9 +33,23 @@
         </div>
         <div class="main-grid-item articles">
             <article>
-                  <h1>Journal 2025-05-04</h1>
+                  <h1>Journal 2025-06-04</h1>
 <p>So I <em>might</em> have fixed the path error I&#39;d made for myself. This is a test post to find out. I&#39;d better check image paths too. Here&#39;s Claudio having a walk -</p>
-<p><img src="/images/2025-06/claudio-walk.jpeg" alt="walking dog">
+<p><img src="/images/2025-06/claudio-walk.jpeg" alt="walking dog"></p>
+<p>Ok, a definite improvement. It has revealed another little issue. Escaping, that other bugbear. My pipelines need some escaping because representations of this content - markdown &amp; HTML - are going through SPARQL queries. Looks like I&#39;ve got a bit of it in the wrong place. While the image of Claudio resolves correctly in the <code>index.html</code> recent posts, that&#39;s not the case for the single-page renderings. The image link there looks like :</p>
+<pre><code class="language-html">&lt;img src=\&quot;/images/2025-06/claudio-walk.jpeg\&quot; alt=\&quot;walking dog\&quot;&gt;
+</code></pre>
+<p>Escaped quotes. Ops.</p>
+<h2>Eye Reasoner</h2>
+<p>That was pleasing. I&#39;ve been wanting to do something with a reasoner in #:transmissions for a while now but never really had practical justification. I just did it for fun. Took about 30 mins.</p>
+<p>The <a href="https://github.com/eyereasoner/eye-js">Eye Reasoner</a> is Euler Path-based, works with N3. The JS lib couldn&#39;t be easier in use. Here&#39;s the <code>Processor</code> (pipeline node) which contains it :</p>
+<p><img src="/images/2025-06/eye-processor.png" alt="processor source screenshot"> (<a href="https://github.com/danja/transmissions/blob/main/src/processors/reason/Eye.js">source</a>)</p>
+<p>Here&#39;s the transmission (pipeline) :</p>
+<p><img src="/images/2025-06/eye-processor.png" alt="transmission source screenshot"> (<a href="https://github.com/danja/transmissions/blob/main/src/apps/eye/transmissions.ttl">source</a>)</p>
+<ul>
+<li>and it in action :</li>
+</ul>
+<p><img src="/images/2025-06/eye-run.png" alt="transmission run screenshot">
  </p>
 <h1>Journal 2025-06-03</h1>
 <h2>The Tensegrity Suite</h2>
