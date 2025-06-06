@@ -33,7 +33,27 @@
         </div>
         <div class="main-grid-item articles">
             <article>
-                  <h1>Journal 2025-06-04</h1>
+                  <h1>Journal 2025-06-06</h1>
+<h2>Weightless Thought</h2>
+<p>Ok, Vibe Coding proper, that&#39;s mostly <strong>hands free</strong> on purpose. But recently I&#39;ve done a fair bit where I&#39;ve had a fairly solid plan (even if it isn&#39;t written down), just let the LLMs have at selected parts, in some vague approximation of systematic order. Not a dissimilar situation to working with other people. I&#39;ve only very occasionally had a management role IRL, but have collaborated on loads of projects of different sizes and shapes over the years. To move forward you have to have trust in your colleagues. Ok, you occasionally encounter arseholes with some kind of destructive contrariness, or folks with more pressing issues on their mind. Through no fault of their own, they aren&#39;t fitting the role you expect. Fair enough, you get used to those kinds of unreliability, work around as necessary. You make allowances, and from a personal standpoint do your best to mitigate disaster, avoid winding up the proverbial <em>río de mierda, senza paddle</em>.</p>
+<p><img src="/images/2025-06/weightless.png" alt="surreal image of floating brain"></p>
+<p>Then there&#39;s AI. I think it would be fair to say that although it lacks a sense of responsibility, accountability in the usual sense, it can evaluate and judge and make decisions. It&#39;s entirely on us how we project those things into practice. <strong>We are the cybernauts</strong>, we have our hand on the tiller.</p>
+<p>I&#39;m rambling right now because on the other screen I have <a href="https://windsurf.com/editor">Windsurf</a> AI (their own custom VS Code build, plus a pretty good model that&#39;s free right now), ploughing away writing tests. I need to keep checking, easiest being <em>Source Control</em> tab, that it&#39;s not straying where I don&#39;t want it. I&#39;m typing during a <em>thoughtless wait</em>. Not to be confused with <em>thoughtless weight</em>, that was the boss I had in my first proper job (long) after leaving school. He was a self-important, <em>what passes for</em> fat cat <em>in Buxton</em>, arsehole.</p>
+<p><em>Aren&#39;t they good at making things up!!?</em></p>
+<p>There&#39;s gaslighting and AI gaslighting. The other day I had a big push forward with #:semem, rapid progress. <em>Too</em> rapid. I was well aware that most of the material that Claude or whoever was producing would mostly only serve as placeholders, I&#39;d have to go back over everything systematically. One chunk did get under my radar. A whole bunch of material I thought was getting persisted through SPARQL was in fact being looked after by the <a href="https://www.npmjs.com/package/graphology">graphology</a> JS lib. I had to look it up. But I&#39;ve been careful to keep most things <strong>loosely coupled</strong>, so rather than revert-backtracking I can refactor. But still.</p>
+<p>What prompted me to mention all this is I just realised that a feeling I get from working from these agents is much like that I&#39;ve had with some of the things I&#39;ve experienced in the past. A concrete scenario would be visiting a country with a culture that&#39;s far removed from what I&#39;m used to (which, for someone that grew up in rural Derbyshire, is <em>most</em>). But a closer parallel would be some of the things I&#39;ve tried studying. The things that take a suspension of disbelief. Ok, this test-building is taking too long, I&#39;ll have to intervene. So I&#39;ll dead-end the train of thought here by mentioning one of the more notable things I&#39;ve tried studying (several times) : <a href="https://en.wikipedia.org/wiki/Category_theory">Category Theory</a>. Yeah, that&#39;s what I mean by <em>Weightless Thought</em>. When things are seriously untethered. Mind-altering substances when you are not used to them; Category Theory; AI-assisted dev.  
+ </p>
+<h1>Journal 2025-06-05</h1>
+<p>You should be able to talk to all apps, surely..?</p>
+<p>For some interpretation of <em>talk</em>.</p>
+<h2>The Joy of REPL</h2>
+<p>import clients from &#39;hyperdata-clients&#39;;</p>
+<p>const client = clients.createAPIClient(provider, clientOptions)
+const response = await client.chat([
+            { role: &#39;user&#39;, content: message.content }
+        ])
+ </p>
+<h1>Journal 2025-06-04</h1>
 <p>So I <em>might</em> have fixed the path error I&#39;d made for myself. This is a test post to find out. I&#39;d better check image paths too. Here&#39;s Claudio having a walk -</p>
 <p><img src="/images/2025-06/claudio-walk.jpeg" alt="walking dog"></p>
 <p>Ok, a definite improvement. It has revealed another little issue. Escaping, that other bugbear. My pipelines need some escaping because representations of this content - markdown &amp; HTML - are going through SPARQL queries. Looks like I&#39;ve got a bit of it in the wrong place. While the image of Claudio resolves correctly in the <code>index.html</code> recent posts, that&#39;s not the case for the single-page renderings. The image link there looks like :</p>
@@ -121,59 +141,6 @@ Hey ho. Claudio tells me it&#39;s walk time again.
 When we get back I may just have play with some of the other stuff that&#39;s cluttering up the office right now.</p>
 <p><img src="/images/2025-06/office2.jpeg" alt="another view of my office featuring confusing things">
  </p>
-<h1>Journal 2025-06-01</h1>
-<pre><code class="language-sh">cd /etc/nginx/sites-available
-nano tensegrity.it.conf
-</code></pre>
-<pre><code class="language-sh">server {
-        server_name tensegrity.it;
-        listen 80;
-
-        # Hide nginx version
-        server_tokens off;
-
-        location / {
-                root /home/www/tensegrity.it;
-                index index.html index.htm index.ttl;
-                autoindex on;
-        }
-}
-</code></pre>
-<pre><code class="language-sh">ln -s /etc/nginx/sites-available/tensegrity.it.conf /etc/nginx/sites-enabled/tensegrity.it.conf
-nginx -t
-systemctl restart nginx
-certbot
-</code></pre>
-<pre><code class="language-sh">ln -s /home/hyperdata/semem/docs/postcraft/public /home/www/tensegrity.it/semem
-ln -s /home/hyperdata/hyperdata/docs/postcraft/public /home/www/tensegrity.it/hyperdata
-ln -s /home/hyperdata/transmissions/docs/postcraft/public /home/www/tensegrity.it/transmissions
-</code></pre>
-<p>/home/danny/hyperdata/hyperdata/workspaces/postcrafts/hyperdata-docs/content/raw/entries/2025-05-04_the-stack.md
- </p>
-<h1>Journal 2025-05-31</h1>
-<p>This morning I was woken by Federico&#39;s tractor about 15 mins before my alarm. But that was fine, last night I prepared a flask of coffee. I did about 2 hours worth of dev with Claude before getting out of bed. Then went shopping, I&#39;ve just fixed the Claude artifacts and I&#39;m very happy. A very productive morning!</p>
-<p><img src="/images/2025-05/jsdoc-rdf.png" alt="JSDoc RDF poster"></p>
-<h2>JSDoc RDF Plugin</h2>
-<p>It does what JSDoc does, with an output in RDF Turtle : <a href="https://github.com/danja/jsdoc-rdf">jsdoc-rdf</a> on GitHub. Something I&#39;ve wanted for years but never got around to. It became more pressing now I&#39;ve started integrating LLMs etc into my knowledgebase setup - in <a href="https://github.com/danja/semem">Semem</a> (which still needs a bit of tweaking for my artificial midsummer break deadline).</p>
-<h2>OpenTelemetry in Transmissions</h2>
-<p>This seems a must-have for my pipeliney thing. Ok, every node in a transmission (= pipeline) is an implementation of a <code>Processor</code>. That interface is descended from <code>ProcessorImpl</code> which does the work of running the processors. This latter now has hooks into <a href="https://github.com/open-telemetry">Open Telemetry</a>. There is space for hooks in the code responsibility for the construction of pipelines, as well as in the API bits. But being lower demand, they are lower priority.</p>
-<p>I haven&#39;t a clue yet how best to make use of this, I believe I&#39;ll need Prometheus and/or Grafana somewhere.</p>
-<h2>Filesystem watching for transmissions</h2>
-<p>Not unrelated to the telemetry thing. Right now, the #:Postcraft doc pipelines to render this blog process every single source markdown file. So I just added this fs watcher.</p>
-<p>The idea is that this will be a long-lived background process. When a file in a given dir tree changes, this thing wakes up and does a HTTP POST to a given endpoint. For the #:postcraft use case, the intention is that there will be a #:transmissions mini-service that will receive the POST and run the markdown-to-sparqlstore, sparqlstore-to-html pipelines.</p>
-<p>As yet untested, but the ability to trigger transmissions via HTTP is something I&#39;ve had in mind all along. There is something approximating implementation, but I&#39;m only now getting to the stage where I can start trying it out in practice.</p>
-<h2>Tip of the Day</h2>
-<p>I&#39;ve currently got Windsurf hammering away at Semem. It was having diversions where it lost its thread somewhat, then repeated earlier approaches that failed... attention deficit, <em>dude!</em>
-But this seems to have helped :</p>
-<blockquote>
-<p>I suggest you create a file WINDSURF.md and in it place note on strategies which work and those which don&#39;t areas of the codebase that likely need attention etc.</p>
-</blockquote>
-<p>It&#39;s also a good read for me (same deficit).
-Also :</p>
-<blockquote>
-<p>remember to update WINDSURF.md as you go along. Leave yourself a note in it to remind yourself about it.
- </p>
-</blockquote>
 
             </article>
         </div>
