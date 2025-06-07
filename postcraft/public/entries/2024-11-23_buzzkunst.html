@@ -7,19 +7,16 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Buzzkunst</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Buzzkunst</h1>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Buzzkunst</h1>
 <p><em>The first CD I have tried playing with office computer. Mad winds last night took one tree onto a power line and others on nearby roads, Mozzanella was well blocked. Power now back, still no interwebs. Italian radio music got tired after a while. Remembered I&#39;ve got loads of CDs.)</em></p>
 <p>I think I&#39;ve finally sorted out the module thing. Bloody paths. So with :</p>
-<pre><code class=\"language-sh\">./trans ../trans-apps/applications/test_module-load -m &#39;{&quot;first&quot;:&quot;one&quot;,&quot;second&quot;:&quot;two&quot;}&#39;
+<pre><code class="language-sh">./trans ../trans-apps/applications/test_module-load -m &#39;{&quot;first&quot;:&quot;one&quot;,&quot;second&quot;:&quot;two&quot;}&#39;
 </code></pre>
 <p>The <em>application</em> is loaded from over there. It uses modules from <code>/home/danny/github-danny/transmissions/src/processors</code> and one from <code>/home/danny/github-danny/trans-apps/applications/test_module-load/processors</code> that isn&#39;t mentioned in the &#39;local&#39; JS at all, is dynamically loaded from the place of the application.</p>
 <p>This bit is as much about decrufting the <code>transmissions</code> repo as anything. The next bit is where it&#39;ll star getting fun. Working in a similar fashion, the processor modules can be loaded from <em>anywhere</em>. They are identified with URIs in the transmission. The most popular form of URI is the URL. Do a HTTP GET, matey! <em>(microservices proximal)</em>.</p>
@@ -37,9 +34,11 @@
 <p>I remembered to run <code>backup.sh</code> so at least this stuff is backed up to a second local drive.
  </p>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2024-11-23_buzzkunst">Buzzkunst</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

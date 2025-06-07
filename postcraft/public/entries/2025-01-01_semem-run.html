@@ -7,16 +7,13 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Semem Run</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <pre><code>node src/SPARQLExample.js
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <pre><code>node src/SPARQLExample.js
 
 [INFO] Initialized FAISS index with dimension 1536
 [INFO] Loaded 1 short-term and 0 long-term memories from store http://localhost:4030/test/query graph &lt;http://example.org/mcp/memory&gt;
@@ -55,7 +52,7 @@ These integration strategies illustrate how the capabilities of both Semantic We
 [INFO] Saved memory to SPARQL store http://localhost:4030/test/update graph &lt;http://example.org/mcp/memory&gt;. Stats: 2 short-term, 0 long-term memories
 </code></pre>
 <p>This query gives one result, containing the prompt &amp; response from the above :</p>
-<pre><code class=\"language-sparql\">PREFIX mcp: &lt;http://purl.org/stuff/mcp/&gt;
+<pre><code class="language-sparql">PREFIX mcp: &lt;http://purl.org/stuff/mcp/&gt;
 SELECT ?graph ?id ?prompt ?output ?timestamp
 WHERE {
   GRAPH ?graph {
@@ -69,7 +66,7 @@ WHERE {
 }
 </code></pre>
 <p>This gives 2 results :</p>
-<pre><code class=\"language-sparql\">SELECT *
+<pre><code class="language-sparql">SELECT *
 WHERE {
   GRAPH ?graph {
   ?s ?p ?o
@@ -80,9 +77,11 @@ WHERE {
 <p>One is the triple with the prompt, the other the triple with the LLM output.
  </p>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2025-01-01_semem-run">Semem Run</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

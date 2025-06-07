@@ -7,27 +7,24 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Fuseki &amp; LDAP</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Fuseki &amp; LDAP</h1>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Fuseki &amp; LDAP</h1>
 <p>My ToDos were already pretty chaotic, going to the UK for a week didn&#39;t help. The #FOAFRetrospective project is my top priority, but I know there&#39;s a piece of <em>critical infrastructure</em> that I need for this (and pretty much all my other code projects) : a SPARQL Server.</p>
-<p>My go-to for this is <a href=\"https://jena.apache.org/documentation/fuseki2/\">Fuseki</a>. I&#39;m aware of, and have played with, many alternatives, some with notable benefits. But Fuseki has the core features I need, and I&#39;m familiar with it. It&#39;s part of <a href=\"https://jena.apache.org/\">Apache Jena</a>, which despite (because of?!) being unfashionably Java-based, is a very solid, mature, and well-supported platform. YMMV, but as far as I&#39;m concerned, to all intents and purposes it&#39;s <em>the</em> reference implementation of the semweb specs.</p>
+<p>My go-to for this is <a href="https://jena.apache.org/documentation/fuseki2/">Fuseki</a>. I&#39;m aware of, and have played with, many alternatives, some with notable benefits. But Fuseki has the core features I need, and I&#39;m familiar with it. It&#39;s part of <a href="https://jena.apache.org/">Apache Jena</a>, which despite (because of?!) being unfashionably Java-based, is a very solid, mature, and well-supported platform. YMMV, but as far as I&#39;m concerned, to all intents and purposes it&#39;s <em>the</em> reference implementation of the semweb specs.</p>
 <p>A Docker image is available, but at this point in time a regular install suits me better, and basic installation is dead straightforward and <em>Just Works</em> out of the box.</p>
-<p><em><a href=\"https://github.com/afs\">Andy Seaborne</a> was/is the lead on it, good bloke, not had contact for donkeys. One of many folks I must reconnect with. I see from his <a href=\"https://twitter.com/andyseaborne\">Twitter</a> he&#39;s still active in the field. Ah, @<a href=\"mailto:andyseaborne@mastodon.green\">andyseaborne@mastodon.green</a> ...I guess Mastodon is probably how I should reconnect with people, once I&#39;ve figured out how to use it...</em></p>
+<p><em><a href="https://github.com/afs">Andy Seaborne</a> was/is the lead on it, good bloke, not had contact for donkeys. One of many folks I must reconnect with. I see from his <a href="https://twitter.com/andyseaborne">Twitter</a> he&#39;s still active in the field. Ah, @<a href="mailto:andyseaborne@mastodon.green">andyseaborne@mastodon.green</a> ...I guess Mastodon is probably how I should reconnect with people, once I&#39;ve figured out how to use it...</em></p>
 <p>I&#39;ve already got Fuseki running on my server, but it&#39;s wide open. That hasn&#39;t caused any problems in the past, but after getting my fingers burnt for being lax with security on my last server setup, I want to take more care this time.</p>
-<p>Nearby in <em>my stuff</em> there are various places where supporting user accounts on the server are kinda must-have. Last time around I was looking at using the semwebby <a href=\"https://communitysolidserver.github.io/\">Community Solid Server</a> for ACL management, but this time I decided to try a more old-fashioned approach - <a href=\"https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol\">LDAP</a>. Coincidentally I saw a ref on <a href=\"https://simonwillison.net/\">Simon Willison’s Weblog</a> the other day to a strategy (with essay) <a href=\"https://boringtechnology.club/\">Choose Boring Technology</a>. Yeah, this.</p>
-<p>Years back I set up LDAP in a day job (network admin at a college), but it&#39;s so long ago I&#39;ve forgotten the lot. But it turned out to be straightforward to get it running on my Ubuntu server. After a bit of trial &amp; error I was able to get <a href=\"https://directory.apache.org/studio/\">Apache Directory Studio</a> on my desktop talking to the service.</p>
-<p>To make sure I was on the right track, in the past few days, with the help of ChatGPT, I&#39;ve hacked simple signup/login forms in with nodejs/express that talk to the LDAP server. While I should tidy the code at some point, it works well enough as a sanity check (<a href=\"https://github.com/danja/node-services/tree/main/ldap-auth-app\">code on GitHub</a>).</p>
+<p>Nearby in <em>my stuff</em> there are various places where supporting user accounts on the server are kinda must-have. Last time around I was looking at using the semwebby <a href="https://communitysolidserver.github.io/">Community Solid Server</a> for ACL management, but this time I decided to try a more old-fashioned approach - <a href="https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol">LDAP</a>. Coincidentally I saw a ref on <a href="https://simonwillison.net/">Simon Willison’s Weblog</a> the other day to a strategy (with essay) <a href="https://boringtechnology.club/">Choose Boring Technology</a>. Yeah, this.</p>
+<p>Years back I set up LDAP in a day job (network admin at a college), but it&#39;s so long ago I&#39;ve forgotten the lot. But it turned out to be straightforward to get it running on my Ubuntu server. After a bit of trial &amp; error I was able to get <a href="https://directory.apache.org/studio/">Apache Directory Studio</a> on my desktop talking to the service.</p>
+<p>To make sure I was on the right track, in the past few days, with the help of ChatGPT, I&#39;ve hacked simple signup/login forms in with nodejs/express that talk to the LDAP server. While I should tidy the code at some point, it works well enough as a sanity check (<a href="https://github.com/danja/node-services/tree/main/ldap-auth-app">code on GitHub</a>).</p>
 <p>So onto Fuseki.</p>
-<p>Out of the box it uses <a href=\"https://shiro.apache.org/\">Apache Shiro</a> for auth, with configuration in a text file. But that&#39;s been around long enough to consider it <em>Boring Technology</em>, so hopefully it&#39;ll be straightforward to hook it into LDAP.</p>
-<p>Docs : <a href=\"https://jena.apache.org/documentation/fuseki2/fuseki-security\">Security in Fuseki2</a></p>
+<p>Out of the box it uses <a href="https://shiro.apache.org/">Apache Shiro</a> for auth, with configuration in a text file. But that&#39;s been around long enough to consider it <em>Boring Technology</em>, so hopefully it&#39;ll be straightforward to hook it into LDAP.</p>
+<p>Docs : <a href="https://jena.apache.org/documentation/fuseki2/fuseki-security">Security in Fuseki2</a></p>
 <h3>Requirements</h3>
 <p>I anticipate needing other tiers, but right now the users/access control requirements seem pretty simple, something like:</p>
 <ul>
@@ -117,8 +114,8 @@ securityManager.realms = $ldapRealm
 [] ja:loadClass &quot;org.apache.jena.fuseki.authz.FusekiSecurityFilter&quot; .
 </code></pre>
 <p>Yeah, given there isn&#39;t a <code>fuseki-server.ttl</code> in the distro, I&#39;m guessing that&#39;s a bit off. Maybe I won&#39;t start there. Time for a quick Google.</p>
-<p>Ok, <code>org.apache.shiro.realm.ldap.JndiLdapRealm</code> is deprecated in favour of <a href=\"https://github.com/apache/shiro/blob/main/core/src/main/java/org/apache/shiro/realm/ldap/DefaultLdapRealm.java\">org.apache.shiro.realm.ldap.DefaultLdapRealm</a>. That contains <em>stuff</em>.</p>
-<p><a href=\"https://kb.sos-berlin.com/display/PKB/LDAP+Configuration\">These docs</a> are for some unrelated project that uses Shiro, but they describe LDAP bits that correspond to those above.</p>
+<p>Ok, <code>org.apache.shiro.realm.ldap.JndiLdapRealm</code> is deprecated in favour of <a href="https://github.com/apache/shiro/blob/main/core/src/main/java/org/apache/shiro/realm/ldap/DefaultLdapRealm.java">org.apache.shiro.realm.ldap.DefaultLdapRealm</a>. That contains <em>stuff</em>.</p>
+<p><a href="https://kb.sos-berlin.com/display/PKB/LDAP+Configuration">These docs</a> are for some unrelated project that uses Shiro, but they describe LDAP bits that correspond to those above.</p>
 <p>Ew, <code>ldapRealm.userDnTemplate</code> gets ugly fast. I&#39;d better start from the other end, users/groups in LDAP.</p>
 <p>Wait. While Apache Directory Studio has everything, it would be convenient to get a simplified view.</p>
 <p>Ok, locally :</p>
@@ -235,9 +232,11 @@ fuseki-foowiki = dataset:foowiki:write
 <p>and give each a password they can use to log in.
  </p>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//journal/2024-07-01">Fuseki &amp; LDAP</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

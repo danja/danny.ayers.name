@@ -7,24 +7,21 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Journal 2025-03-10</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Journal 2025-03-10</h1>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Journal 2025-03-10</h1>
 <p>#:transmissions pipeliney thing, near-future aim is to get it to render <strong>this</strong>. A small test site has its markdown at <code>~/sites/strandz.it/postcraft</code></p>
 <p>I run :</p>
-<pre><code class=\"language-sh\">./trans md-to-sparqlstore -v ~/sites/strandz.it/postcraft
+<pre><code class="language-sh">./trans md-to-sparqlstore -v ~/sites/strandz.it/postcraft
 ./trans sparqlstore-to-html -v ~/sites/strandz.it/postcraft
 </code></pre>
 <p>The second line, after rendering the posts to file, should also add a <code>schema:datePublished</code> statement.</p>
-<p>This is the test query I&#39;ve been using on <a href=\"http://localhost:4030/test-mem/query\">http://localhost:4030/test-mem/query</a> -</p>
-<pre><code class=\"language-sparql\">PREFIX schema: &lt;http://schema.org/&gt;
+<p>This is the test query I&#39;ve been using on <a href="http://localhost:4030/test-mem/query">http://localhost:4030/test-mem/query</a> -</p>
+<pre><code class="language-sparql">PREFIX schema: &lt;http://schema.org/&gt;
 PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 PREFIX : &lt;http://purl.org/stuff/transmissions/&gt;
 
@@ -49,7 +46,7 @@ OPTIONAL {
 ORDER BY DESC(?published)
 </code></pre>
 <p>Time to devolve to :</p>
-<pre><code class=\"language-sparql\">select distinct ?p where {
+<pre><code class="language-sparql">select distinct ?p where {
     ?article a schema:Article;
                ?p ?o
 }
@@ -77,7 +74,7 @@ schema:creator
 </code></pre>
 <p>Ok, where is <code>schema:datePublished</code>?</p>
 <p>Ew,I want extra debugging  in <code>src/processors/sparql/SPARQLUpdate.js</code> but want to get this thing working end-to-end before anything else. This is so ugly, search &amp; replace <code>logger.trace</code> in there with <code>logger.debug</code> so the <code>-v</code> will trigger the 101 <em>print</em> statements...</p>
-<pre><code class=\"language-sparql\">PREFIX schema: &lt;http://schema.org/&gt;
+<pre><code class="language-sparql">PREFIX schema: &lt;http://schema.org/&gt;
 PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 PREFIX : &lt;http://purl.org/stuff/transmissions/&gt;
 
@@ -89,9 +86,11 @@ INSERT { &lt;{{uri}}&gt; schema:datePublished &quot;{{published}}&quot; }
 WHERE  { &lt;{{uri}}&gt; schema:datePublished ?published }
 </code></pre>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2025-03-10_journal">Journal 2025-03-10</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

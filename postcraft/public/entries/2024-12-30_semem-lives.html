@@ -7,22 +7,19 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Semem Lives!</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Semem Lives!</h1>
-<p><em><a href=\"https://github.com/danja/semem\">Semem</a> <del>is</del> will be an LLM-compatible context-aware, open-ended graph knowledgebase system combining the advantages of vector embeddings and Linked Data technologies.</em></p>
-<p><a href=\"https://danny.ayers.name/entries/2024-12-29_semem-ollama.html\">Notes from yesterday</a>, <a href=\"https://danny.ayers.name/entries/2024-12-30_perplexed.html\">this morning</a></p>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Semem Lives!</h1>
+<p><em><a href="https://github.com/danja/semem">Semem</a> <del>is</del> will be an LLM-compatible context-aware, open-ended graph knowledgebase system combining the advantages of vector embeddings and Linked Data technologies.</em></p>
+<p><a href="https://danny.ayers.name/entries/2024-12-29_semem-ollama.html">Notes from yesterday</a>, <a href="https://danny.ayers.name/entries/2024-12-30_perplexed.html">this morning</a></p>
 <p><strong>Wow!</strong>, that went remarkably well. I&#39;m pretty familiar with the semweb bits, the embedding/chat interfacing side very inexperienced. So, hard part (for me) first.</p>
 <p>Claude did most of the heavy lifting, a long session about a month ago, a bunch this morning. I only actually <strong>ran it for the first time about an hour ago</strong>. Predictably Claude had left me with a load of manual <em>make-sane</em> refactoring to do. One stumble remaining is down to Faiss libs. The npm package <code>faiss</code> is an empty repo, Claude had hallucinated its API. What I needed was <code>faiss-node</code>. So that&#39;s where it stalls right now. I&#39;ve got the tooling in place to quicky sort this out. But I&#39;d used up my Claude Pro (!) token allowance by 11am, it&#39;s not due to reset for 20 mins and I have at least one tree to cut down before it gets dark...</p>
-<p>Still embryonic, but so pleasing, in <a href=\"https://github.com/danja/semem/blob/main/src/OllamaExample.js\">OllamaExample.js</a> there is :</p>
-<pre><code class=\"language-javascript\">chat: {
+<p>Still embryonic, but so pleasing, in <a href="https://github.com/danja/semem/blob/main/src/OllamaExample.js">OllamaExample.js</a> there is :</p>
+<pre><code class="language-javascript">chat: {
     provider: &#39;ollama&#39;,
     model: &#39;qwen2:1.5b&#39;
 },
@@ -34,7 +31,7 @@ embedding: {
     const prompt = &quot;What&#39;s the current state of AI technology?&quot;;
 </code></pre>
 <p><em>...and so...</em></p>
-<pre><code class=\"language-sh\">node src/OllamaExample.js
+<pre><code class="language-sh">node src/OllamaExample.js
 
 [INFO] Generating embedding...
 [INFO] No existing interaction history found in JSON. Starting fresh.
@@ -73,9 +70,11 @@ TypeError: Invalid the first argument type, must be an Array.
 <p><strong>Tree time.</strong>
  </p>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2024-12-30_semem-lives">Semem Lives!</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

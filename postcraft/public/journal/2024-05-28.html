@@ -7,24 +7,21 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Cough to Sneeze</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Cough to Sneeze</h1>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Cough to Sneeze</h1>
 <p>I seem to have got over the cough/cold I had. Head still a bit fuzzy, but after one good cough when I woke up, all seems fine. Now snuffling a bit with hay fever...</p>
 <h2>Plan</h2>
 <ul>
 <li>Decommission server</li>
 </ul>
-<p>The Cranberries&#39; <a href=\"https://genius.com/The-cranberries-zombie-lyrics\">Zombie</a></p>
+<p>The Cranberries&#39; <a href="https://genius.com/The-cranberries-zombie-lyrics">Zombie</a></p>
 <p>Ok, if I tweak find-big-files a little, I should be able to save some time:</p>
-<pre><code>find ./ -type f -printf &#39;%s %p\\n&#39; | sort -nr | head -30 | awk &#39;{print &quot;rm &quot; $2}&#39; &gt; bigfiles.sh
+<pre><code>find ./ -type f -printf &#39;%s %p\n&#39; | sort -nr | head -30 | awk &#39;{print &quot;rm &quot; $2}&#39; &gt; bigfiles.sh
 </code></pre>
 <p>I&#39;ll manually check the script before running it in case it&#39;s picking up anything I want to keep.</p>
 <p>Ok, sweet.</p>
@@ -53,9 +50,11 @@ tar -czvf server-decommission-2024-05_home.tar.gz /home
 <pre><code>time scp danny@178.79.136.35:/zips/server-decommission-2024-05_var.tar.gz ./
 </code></pre>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//journal/2024-05-28">Cough to Sneeze</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

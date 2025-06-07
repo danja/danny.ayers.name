@@ -7,16 +7,13 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>prompt-projects.md</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <p> Maybe you can give it the opportunity to &quot;look&quot; through the documents?<br>Including in its system prompt that it should use an <code>&lt;antThinking&gt;</code> tag  or a markdown comment like this <code>[Document Search]: # (Here goes my consideration if the relevant information can be found in one of the documents)</code> to consider if there&#39;s related information in one of the documents.</p>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <p> Maybe you can give it the opportunity to &quot;look&quot; through the documents?<br>Including in its system prompt that it should use an <code>&lt;antThinking&gt;</code> tag  or a markdown comment like this <code>[Document Search]: # (Here goes my consideration if the relevant information can be found in one of the documents)</code> to consider if there&#39;s related information in one of the documents.</p>
 <hr>
 <p>It&#39;s likely that the system doesn&#39;t check the documentation for every query to save tokens. Instead, it attempts to bootstrap the conversation by initially reviewing the uploaded information, then relies on Claude&#39;s training data to continue without constant reference to the documentation.</p>
 <p>One partially effective technique I&#39;ve found is instructing Claude to explicitly state when it can&#39;t find an answer in the documents. However, this approach can limit the Claude&#39;s ability to leverage its base knowledge, as it focuses solely on regurgitating information from the provided documents. When given more nuanced instructions that allow for generating answers from its training data, Claude often reverts to confidently providing bullshit without checking the documentation.</p>
@@ -30,9 +27,11 @@
 </li>
 </ol>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//articles/prompts/prompt-projects">prompt-projects.md</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

@@ -7,24 +7,21 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Semem SPARQ</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Semem SPARQ</h1>
-<p><em><a href=\"https://github.com/danja/semem\">Semem</a> doesn&#39;t quite SPARQL yet</em></p>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Semem SPARQ</h1>
+<p><em><a href="https://github.com/danja/semem">Semem</a> doesn&#39;t quite SPARQL yet</em></p>
 <p>I was able to sort out the Faiss API issues from earlier so dove right ahead in implementing storage for #:semem that uses a remote SPARQL endpoint. Well, not quite -</p>
-<pre><code class=\"language-sh\">Executed 45 of 45 specs (4 ERRORS) (33 FAILED) in 1 sec.
+<pre><code class="language-sh">Executed 45 of 45 specs (4 ERRORS) (33 FAILED) in 1 sec.
 </code></pre>
-<p><a href=\"https://github.com/danja/semem/blob/main/src/SPARQLExample.js\">SPARQLExample.js</a> also fails miserably, when it tries to <code>UPDATE</code>. This might well be a problem with the target SPARQL store (Fuseki in the #:tbox Docker), I only set that up yesterday (?), haven&#39;t tested it properly yet. I suspect <strong>auth</strong>.</p>
+<p><a href="https://github.com/danja/semem/blob/main/src/SPARQLExample.js">SPARQLExample.js</a> also fails miserably, when it tries to <code>UPDATE</code>. This might well be a problem with the target SPARQL store (Fuseki in the #:tbox Docker), I only set that up yesterday (?), haven&#39;t tested it properly yet. I suspect <strong>auth</strong>.</p>
 <p>As usual Claude did most of the donkey work for me.</p>
-<p><a href=\"https://github.com/danja/semem/blob/main/src/stores/SPARQLStore.js\">SPARQLStore.js</a> (and there&#39;s a <a href=\"https://github.com/danja/semem/blob/main/src/stores/CachedSPARQLStore.js\">CachedSPARQLStore.js</a>) just use simple templating to create the SPARQL. But that&#39;s all it needs right now.</p>
-<pre><code class=\"language-javascript\">_generateInsertStatements(memories, type) {
+<p><a href="https://github.com/danja/semem/blob/main/src/stores/SPARQLStore.js">SPARQLStore.js</a> (and there&#39;s a <a href="https://github.com/danja/semem/blob/main/src/stores/CachedSPARQLStore.js">CachedSPARQLStore.js</a>) just use simple templating to create the SPARQL. But that&#39;s all it needs right now.</p>
+<pre><code class="language-javascript">_generateInsertStatements(memories, type) {
     return memories.map((interaction, index) =&gt; `
         _:interaction${type}${index} a mcp:Interaction ;
             mcp:id &quot;${interaction.id}&quot; ;
@@ -36,15 +33,17 @@
             mcp:concepts &quot;&quot;&quot;${JSON.stringify(interaction.concepts)}&quot;&quot;&quot; ;
             mcp:decayFactor &quot;${interaction.decayFactor}&quot;^^xsd:decimal ;
             mcp:memoryType &quot;${type}&quot; .
-    `).join(&#39;\\n&#39;);
+    `).join(&#39;\n&#39;);
 }
 </code></pre>
-<p>Yeah, I finally found a use for the <a href=\"https://purl.org/stuff/mcp\">Model Context Protocol Ontology</a> Claude &amp; I put together almost a month ago.
+<p>Yeah, I finally found a use for the <a href="https://purl.org/stuff/mcp">Model Context Protocol Ontology</a> Claude &amp; I put together almost a month ago.
  </p>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2024-12-30_semem-sparq">Semem SPARQ</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

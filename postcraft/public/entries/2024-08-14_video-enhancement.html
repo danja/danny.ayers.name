@@ -7,16 +7,13 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title> Plan</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h2>Plan</h2>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h2>Plan</h2>
 <p><em>you can make a silk purse out of a sow&#39;s ear if you have a model that has spent it&#39;s whole life comparing them</em></p>
 <ol>
 <li>extract frames from original vid</li>
@@ -26,12 +23,12 @@
 <p>pip install -r requirements.txt</p>
 <h3>First Pass</h3>
 <h4>Upscale</h4>
-<p><a href=\"https://huggingface.co/ai-forever/Real-ESRGAN\">https://huggingface.co/ai-forever/Real-ESRGAN</a></p>
-<p><a href=\"https://arxiv.org/abs/2107.10833\">https://arxiv.org/abs/2107.10833</a></p>
+<p><a href="https://huggingface.co/ai-forever/Real-ESRGAN">https://huggingface.co/ai-forever/Real-ESRGAN</a></p>
+<p><a href="https://arxiv.org/abs/2107.10833">https://arxiv.org/abs/2107.10833</a></p>
 <h4>Interpolate</h4>
-<p><a href=\"https://github.com/nihui/rife-ncnn-vulkan\">https://github.com/nihui/rife-ncnn-vulkan</a></p>
-<p><a href=\"https://arxiv.org/abs/2011.06294\">https://arxiv.org/abs/2011.06294</a></p>
-<p><a href=\"https://github.com/nihui/rife-ncnn-vulkan/releases\">https://github.com/nihui/rife-ncnn-vulkan/releases</a></p>
+<p><a href="https://github.com/nihui/rife-ncnn-vulkan">https://github.com/nihui/rife-ncnn-vulkan</a></p>
+<p><a href="https://arxiv.org/abs/2011.06294">https://arxiv.org/abs/2011.06294</a></p>
+<p><a href="https://github.com/nihui/rife-ncnn-vulkan/releases">https://github.com/nihui/rife-ncnn-vulkan/releases</a></p>
 <hr>
 <p>I&#39;ve lost the link to the original vid... but do have a video-only download from YouTube using... I forget it&#39;s name, will be in the history on music room machine. It gives a bunch of alternate versions in various formats, presumably I chose the one that looked best...</p>
 <p><code>ffmpeg</code> is probably the tool for pulling out the frames.</p>
@@ -48,7 +45,7 @@
 <p>Ok, at the point where I should save this elsewhere. Done a <code>backup.sh</code> to copy onto 2nd drive on this machine, plus a GitHub repo. <code>.gitignore</code> includes the data dir, I don&#39;t want to risk hitting the file size limits or whatever.</p>
 <p>Soon I should add a <code>requirements.txt</code></p>
 <p>Ouch. It&#39;s taking about 20s per frame. Sums... about 107 hours for 19257 frames.</p>
-<p>Other models at <a href=\"https://drive.google.com/drive/folders/16PlVKhTNkSyWFx52RPb2hXPIQveNGbxS\">https://drive.google.com/drive/folders/16PlVKhTNkSyWFx52RPb2hXPIQveNGbxS</a> including a x2. Lets do this.</p>
+<p>Other models at <a href="https://drive.google.com/drive/folders/16PlVKhTNkSyWFx52RPb2hXPIQveNGbxS">https://drive.google.com/drive/folders/16PlVKhTNkSyWFx52RPb2hXPIQveNGbxS</a> including a x2. Lets do this.</p>
 <p>The example code has :</p>
 <pre><code>model.load_weights(&#39;weights/RealESRGAN_x4.pth&#39;, download=True)
 ``
@@ -215,7 +212,7 @@ source venv/bin/activate</p>
 <pre><code>  pip install -r requirements.txt
 </code></pre>
 <h1>.env</h1>
-<p>HUB_BASE_URL=<a href=\"https://api.notefile.net\">https://api.notefile.net</a>
+<p>HUB_BASE_URL=<a href="https://api.notefile.net">https://api.notefile.net</a>
 HUB_AUTH_TOKEN=your_auth_token
 HUB_PROJECT_UID=your_project_uid
 HUB_PRODUCT_UID=your_product_uid</p>
@@ -241,7 +238,7 @@ AI also suggested, I don&#39;t know if I&#39;ll need this, we&#39;ll see :
 Create a .env file in the root of your project:
 </code></pre>
 <h1>.env</h1>
-<p>HUB_BASE_URL=<a href=\"https://api.notefile.net\">https://api.notefile.net</a>
+<p>HUB_BASE_URL=<a href="https://api.notefile.net">https://api.notefile.net</a>
 HUB_AUTH_TOKEN=your_auth_token
 HUB_PROJECT_UID=your_project_uid
 HUB_PRODUCT_UID=your_product_uid</p>
@@ -270,7 +267,7 @@ print(f&quot;Product UID: {hub_product_uid}&quot;)</p>
 
 [PyTorch implementation of a Real-ESRGAN model](https://github.com/ai-forever/Real-ESRGAN) on GitHub.
 </code></pre>
-<p>pip install git+<a href=\"https://github.com/sberbank-ai/Real-ESRGAN.git\">https://github.com/sberbank-ai/Real-ESRGAN.git</a></p>
+<p>pip install git+<a href="https://github.com/sberbank-ai/Real-ESRGAN.git">https://github.com/sberbank-ai/Real-ESRGAN.git</a></p>
 <pre><code>
 took a very long time, I think it pulled loads of CUDA libs, even though I don&#39;t have a usable GPU in this machine.
 
@@ -297,9 +294,11 @@ cp /root/Videos/output-video.avi_640x480.mp4 /home/danny/flatpak-exports/output-
 exit
 </code></pre>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2024-08-14_video-enhancement"> Plan</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

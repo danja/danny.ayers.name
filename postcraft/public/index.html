@@ -33,122 +33,385 @@
         </div>
         <div class="main-grid-item articles">
             <article>
-                  <h1>Journal 2025-06-06</h1>
-<h2>Weightless Thought</h2>
-<p>Ok, Vibe Coding proper, that&#39;s mostly <strong>hands free</strong> on purpose. But recently I&#39;ve done a fair bit where I&#39;ve had a fairly solid plan (even if it isn&#39;t written down), just let the LLMs have at selected parts, in some vague approximation of systematic order. Not a dissimilar situation to working with other people. I&#39;ve only very occasionally had a management role IRL, but have collaborated on loads of projects of different sizes and shapes over the years. To move forward you have to have trust in your colleagues. Ok, you occasionally encounter arseholes with some kind of destructive contrariness, or folks with more pressing issues on their mind. Through no fault of their own, they aren&#39;t fitting the role you expect. Fair enough, you get used to those kinds of unreliability, work around as necessary. You make allowances, and from a personal standpoint do your best to mitigate disaster, avoid winding up the proverbial <em>río de mierda, senza paddle</em>.</p>
-<p><img src="/images/2025-06/weightless.png" alt="surreal image of floating brain"></p>
-<p>Then there&#39;s AI. I think it would be fair to say that although it lacks a sense of responsibility, accountability in the usual sense, it can evaluate and judge and make decisions. It&#39;s entirely on us how we project those things into practice. <strong>We are the cybernauts</strong>, we have our hand on the tiller.</p>
-<p>I&#39;m rambling right now because on the other screen I have <a href="https://windsurf.com/editor">Windsurf</a> AI (their own custom VS Code build, plus a pretty good model that&#39;s free right now), ploughing away writing tests. I need to keep checking, easiest being <em>Source Control</em> tab, that it&#39;s not straying where I don&#39;t want it. I&#39;m typing during a <em>thoughtless wait</em>. Not to be confused with <em>thoughtless weight</em>, that was the boss I had in my first proper job (long) after leaving school. He was a self-important, <em>what passes for</em> fat cat <em>in Buxton</em>, arsehole.</p>
-<p><em>Aren&#39;t they good at making things up!!?</em></p>
-<p>There&#39;s gaslighting and AI gaslighting. The other day I had a big push forward with #:semem, rapid progress. <em>Too</em> rapid. I was well aware that most of the material that Claude or whoever was producing would mostly only serve as placeholders, I&#39;d have to go back over everything systematically. One chunk did get under my radar. A whole bunch of material I thought was getting persisted through SPARQL was in fact being looked after by the <a href="https://www.npmjs.com/package/graphology">graphology</a> JS lib. I had to look it up. But I&#39;ve been careful to keep most things <strong>loosely coupled</strong>, so rather than revert-backtracking I can refactor. But still.</p>
-<p>What prompted me to mention all this is I just realised that a feeling I get from working from these agents is much like that I&#39;ve had with some of the things I&#39;ve experienced in the past. A concrete scenario would be visiting a country with a culture that&#39;s far removed from what I&#39;m used to (which, for someone that grew up in rural Derbyshire, is <em>most</em>). But a closer parallel would be some of the things I&#39;ve tried studying. The things that take a suspension of disbelief. Ok, this test-building is taking too long, I&#39;ll have to intervene. So I&#39;ll dead-end the train of thought here by mentioning one of the more notable things I&#39;ve tried studying (several times) : <a href="https://en.wikipedia.org/wiki/Category_theory">Category Theory</a>. Yeah, that&#39;s what I mean by <em>Weightless Thought</em>. When things are seriously untethered. Mind-altering substances when you are not used to them; Category Theory; AI-assisted dev.  
- </p>
-<h1>Journal 2025-06-05</h1>
-<p>You should be able to talk to all apps, surely..?</p>
-<p>For some interpretation of <em>talk</em>.</p>
-<h2>The Joy of REPL</h2>
-<p><em>Read-Eval-Print-Loop</em></p>
-<p>I do have a GUI in progress for #:transmissions, but that&#39;ll most just be an editor for now. Some of the things I&#39;ve been trying recently are a bit of a pain just using the command-line directly :</p>
-<p><img src="/images/2025-06/eye-run.png" alt="screenshot of a debug log of a reasoner"></p>
-<p>That a bit of fun I was having with the <a href="https://github.com/eyereasoner/eye">Eye reasoner</a>. It became clear I needed a bit more interactivity. Bring on the <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a>!</p>
-<p><img src="/images/2025-06/repl.png" alt="screenshot of an interactive chat"></p>
-<p>That was playing with bits like this :</p>
-<pre><code class="language-sh">import clients from &#39;hyperdata-clients&#39;;
+                <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://server/unset-base/"></a></em>
+</p> 
+<!-- END ARTICLE CONTENT --><!-- ARTICLE CONTENT -->
+<article class="post-content">
+     <!-- # Bridging Agent Intelligence with Semantic Web: Introducing A2A Ontology and Revised MCP Ontology -->
 
-const client = createClient(provider, clientOptions)
-const response = await client.chat([
-            { role: &#39;user&#39;, content: message.content }
-        ])
+<header class="hero"
+    style="background: url('images/2025-04/medieval-robot.png') center/cover no-repeat; height: 60vh; display: flex; align-items: flex-end;">
+    <div style="background: rgba(0,0,0,0.5); color: white; padding: 2rem; width: 100%;">
+        <h1>Bridging Agent Intelligence with Semantic Web</h1>
+        <p>Exploring the Agent2Agent and Model Context Ontologies Through Time and Imagination</p>
+    </div>
+</header>
+
+<h2>Preample</h2>
+<p><em>This block is me. The stuff below was prepared by my colleague Claude Sonnet (3.7).</em></p>
+<p>The lines on the protocols go like this :</p>
+<blockquote>
+<p>The <a href="https://github.com/modelcontextprotocol">Model Context Protocol</a> (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools.</p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/google/A2A">Agent2Agent</a> : An open protocol enabling communication and interoperability between opaque agentic applications.</p>
+</blockquote>
+<p>I think it&#39;s fair to say that seamlessness and opacity are relative terms in this <em>context</em>. Also that these specs are a step in the right direction. However, they&#39;re not with flaws.</p>
+<p>Recently I&#39;ve been juggling a lot of pies.</p>
+<h1>The Ontologies</h1>
+<p>We&#39;re excited to announce two major developments in the world of agent interoperability and semantic context exchange: the release of the Agent-to-Agent (A2A) Ontology and a significant revision to the Model Context Protocol (MCP) Ontology. These complementary ontologies provide a formal semantic foundation for agent communication and context management, enabling more sophisticated AI systems that can effectively share information and collaborate.</p>
+<p>The A2A Ontology focuses on structured communication between autonomous agents, defining a framework for tasks, messages, artifacts, and skills. Meanwhile, the revised MCP Ontology enhances the representation of resources, tools, and prompts that language models can leverage to access external context. Together, they create a comprehensive semantic ecosystem that bridges the gap between agent intelligence and the rich world of linked data.</p>
+<p>Both ontologies use standard RDF/OWL representations, making them immediately compatible with existing semantic web technologies and knowledge graphs. They&#39;re designed to address real-world challenges in building interconnected, context-aware AI systems that can leverage distributed information and capabilities.</p>
+<section style="margin-top: 4rem;">
+    <div style="background: url('images/2025-04/future-robot.png') center/cover no-repeat; height: 300px; position: relative;">
+        <div
+            style="position: absolute; bottom: 0; background: rgba(0,0,0,0.6); color: #fff; width: 100%; padding: 1rem;">
+            <h2 style="margin: 0;">For LLM Enthusiasts</h2>
+        </div>
+    </div>
+</section>
+
+<p>If you&#39;re working with language models, you&#39;ve likely encountered two fundamental challenges: providing relevant context to your models and enabling them to collaborate with other AI systems. The MCP and A2A ontologies directly address these pain points.</p>
+<p>The MCP Ontology creates a standardized way to represent external resources, tools, and prompts. This means your language models can access and understand a wide range of contextual information through a consistent interface. Instead of building custom integrations for every data source or tool, you can leverage the semantic structure of MCP to create a unified context layer. This is particularly valuable for RAG implementations, where the ontology provides a rich framework for resource discovery, relationship traversal, and metadata filtering that goes beyond simple vector similarity.</p>
+<p>The A2A Ontology complements MCP by enabling structured communication between agents. It provides a formal representation of tasks, messages, and artifacts that allows different agent systems to collaborate effectively. This means your language model-based agents can delegate subtasks, request information, or provide services to other agents in a standardized way. The ontology includes concepts for tracking task states, defining agent capabilities through skills, and exchanging multimodal content.</p>
+<p>These ontologies don&#39;t require you to rewrite your existing systems. They provide a semantic layer that enhances interoperability while allowing you to continue using your preferred LLM frameworks. By adopting these standards, your AI applications gain the ability to participate in broader agent ecosystems and leverage distributed capabilities.</p>
+<section style="margin-top: 4rem;">
+    <div style="background: url('images/2025-04/bright-robot.png') center/cover no-repeat; height: 300px; position: relative;">
+        <div
+            style="position: absolute; bottom: 0; background: rgba(0,0,0,0.6); color: #fff; width: 100%; padding: 1rem;">
+            <h2 style="margin: 0;">For Ontology Practitioners</h2>
+        </div>
+    </div>
+</section>
+
+<p>From a semantic web perspective, these ontologies represent a significant step toward integrating modern AI capabilities with established knowledge representation standards.</p>
+<p>The A2A Ontology defines core classes including <code>a2a:AgentCard</code>, <code>a2a:Task</code>, <code>a2a:Message</code>, <code>a2a:Artifact</code>, and <code>a2a:Skill</code>, along with properties that establish their relationships. It includes SHACL shapes for validation and follows best practices for ontology design. The design emphasizes task state management, capability representation, and multimodal content exchange, all while maintaining compatibility with existing agent frameworks.</p>
+<p>The MCP Ontology focuses on the connection between language models and external context. It defines classes like <code>mcp:Server</code>, <code>mcp:Resource</code>, <code>mcp:Tool</code>, and <code>mcp:Prompt</code>, providing a structured way to represent the resources and capabilities available to language models. The revision enhances the ontology with improved resource typing, tool parameter representation, and content modeling.</p>
+<p>Both ontologies are designed to integrate seamlessly with existing knowledge graphs and ontologies. They can be extended with domain-specific concepts while maintaining interoperability through their core vocabularies. The ontologies support standard SPARQL queries for discovery and can be used with existing RDF stores and reasoners.</p>
+<p>From an implementation perspective, the ontologies come with comprehensive documentation, example SPARQL queries, and SHACL validation rules. They&#39;re designed to be practical tools for knowledge engineers working on AI systems, bridging the gap between traditional semantic web applications and the emerging world of language model-based agents.</p>
+<p>We invite the semantic web community to explore these ontologies, provide feedback, and contribute to their evolution as we work to create a more interconnected, intelligent web of knowledge and capabilities.</p>
+<figure>
+    <img src="images/2025-04/dark-robot.png.jpg"
+        alt="Cyberpunk city where human and robotic agents exchange knowledge amidst neon-lit data networks." />
+    <figcaption>TIA Intelligence Agency: Where distributed cognition meets high-tech agency</figcaption>
+</figure>
+
+<p><em>Ready to get started with A2A and MCP? Check out the <a href="https://github.com/your-username/a2a-o">GitHub repositories</a> for documentation, examples, and implementation guides. We welcome your contributions and feedback as we continue to develop these standards for agent interoperability and context exchange.</em>
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2025-04-18_mcp-a2a"> Preample</a></em>
+</p> 
+<!-- END ARTICLE CONTENT --><!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>2024-05-30 Later...</h1>
+<p>Yeah, it&#39;s beyond me to figure this out tonight.</p>
+<p>The #Transmissions thing is kinda like a made-up language, that only I understand, and have difficulty explaining to me a day later.</p>
+<p>But this was the point of me doing the whole #Postcraft thing, so I could organise stuff like this.</p>
+<p>Something that worked perfectly, the output dirs were easy to shift around. But the <em>permalinks</em> are still totally broken. Can&#39;t remember where the hell that&#39;s done. Enough for today.</p>
+<p>I just remembered a Kaggle challenge was on my todo list. On finding an Israeli &#39;talk to the animals&#39; challenge in the Guardian.</p>
+<p>Ok, one last easy thing tonight - Fuseki on the server should be satisfying.</p>
+<p>The auth will take a load more work, but that&#39;s not actually needed right now.</p>
+<p>Their docs aren&#39;t great. I&#39;ve done this several times before, it was never difficult before...</p>
+<p>Ok, I got apache-jena-fuseki-5.0.0.tar.gz</p>
+<p>Oh yeah - it needs a Java runtime.</p>
+<p>NOTE TO JENA TEAM : ELI5</p>
+<p>an AI tells me:</p>
+<p>sudo apt install openjdk-lts</p>
+<p>E: Unable to locate package openjdk-lts</p>
+<p>dick AI.</p>
+<p>A quick google later, best instructions I can find seem to be at <a href="https://www.linode.com/docs/guides/how-to-install-openjdk-ubuntu-22-04/">https://www.linode.com/docs/guides/how-to-install-openjdk-ubuntu-22-04/</a></p>
+<p>the folks who are hosting this thing, ok!</p>
+<p>Not very helpful on which version to choose.</p>
+<p>apt-cache search openjdk</p>
+<p>Search the Jena site - no useful response.</p>
+<p>I guess go for one less than the highest number.</p>
+<p>I like the number 21. Has stable 3 and squewiff 7 in there.</p>
+<p>I don&#39;t <em>think</em> I&#39;ll need the full JDK. So:</p>
+<pre><code>apt-get install openjdk-21-jre
 </code></pre>
-<h1>Journal 2025-06-04</h1>
-<p>So I <em>might</em> have fixed the path error I&#39;d made for myself. This is a test post to find out. I&#39;d better check image paths too. Here&#39;s Claudio having a walk -</p>
-<p><img src="/images/2025-06/claudio-walk.jpeg" alt="walking dog"></p>
-<p>Ok, a definite improvement. It has revealed another little issue. Escaping, that other bugbear. My pipelines need some escaping because representations of this content - markdown &amp; HTML - are going through SPARQL queries. Looks like I&#39;ve got a bit of it in the wrong place. While the image of Claudio resolves correctly in the <code>index.html</code> recent posts, that&#39;s not the case for the single-page renderings. The image link there looks like :</p>
-<pre><code class="language-html">&lt;img src=\&quot;/images/2025-06/claudio-walk.jpeg\&quot; alt=\&quot;walking dog\&quot;&gt;
+<p>I know what&#39;s coming next. Environment variables. Bound to arrive.</p>
+<p>Hang on,</p>
+<pre><code>root@hyperdata:/home/services/fuseki/apache-jena-fuseki-5.0.0# ./fuseki start
 </code></pre>
-<p>Escaped quotes. Ops.</p>
-<h2>Eye Reasoner</h2>
-<p>That was pleasing. I&#39;ve been wanting to do something with a reasoner in #:transmissions for a while now but never really had practical justification. I just did it for fun. Took about 30 mins.</p>
-<p>The <a href="https://github.com/eyereasoner/eye-js">Eye Reasoner</a> is Euler Path-based, works with N3. The JS lib couldn&#39;t be easier in use. Here&#39;s the <code>Processor</code> (pipeline node) which contains it :</p>
-<p><img src="/images/2025-06/eye-processor.png" alt="processor source screenshot"> (<a href="https://github.com/danja/transmissions/blob/main/src/processors/reason/Eye.js">source</a>)</p>
-<p>Here&#39;s the transmission (pipeline) :</p>
-<p><img src="/images/2025-06/eye-transmission.png" alt="transmission source screenshot"> (<a href="https://github.com/danja/transmissions/blob/main/src/apps/eye/transmissions.ttl">source</a>)</p>
+<p>that looked rather promising.</p>
+<pre><code>lynx http://localhost:3030/
+
+   We&#39;re sorry but this app doesn&#39;t work properly without JavaScript enabled. Please enable it to continue.
+</code></pre>
+<p>Oh yeah.</p>
+<p>It appears to be running as a daemon - haven&#39;t a clue how.</p>
+<p>ok, proxy nginx to it.</p>
+<p>Grrr. Where are those config files. Under <code>/etc/nginx</code>. Ok.</p>
+<p>I have a fuseki.conf there, must have planned ahead.
+Has <a href="https://fuseki.hyperdata.it">https://fuseki.hyperdata.it</a> pointing to port 3331.</p>
+<p>Ok, I must have decided which ports to use earlier. Where&#39;s Fuseki&#39;s config?</p>
+<p>Ok. I&#39;ve no idea how that started as a daemon, but in the root dir of the Fuseki install there&#39;s a <code>fuseki.service</code>. I&#39;ll have you.</p>
+<pre><code>cp fuseki.service /etc/systemd/system/
+killall java
+nano /etc/systemd/system/fuseki.service
+</code></pre>
+<p>Ok, semi-understandable for me.</p>
+<ol>
+<li><p>Place this file under /etc/systemd/system/</p>
+</li>
+<li><p>Create a system user called &quot;fuseki&quot; and make sure it has permission to access the Fuseki configuration and databases</p>
+</li>
+<li><p>Adjust the paths and other settings below if necessary</p>
+</li>
+<li><p>Activate using: sudo systemctl enable fuseki.service</p>
+</li>
+<li><p>Hmm. Where are the config &amp; databases. This might be one for AI</p>
+</li>
+</ol>
+<pre><code>sudo useradd -m -s /bin/bash fuseki
+sudo passwd fuseki
+</code></pre>
+<p>Looks legit. (When did I ever use a shell other than bash? Ok, that once with the fish thing.)</p>
+<pre><code>root@hyperdata:/home/services/fuseki/apache-jena-fuseki-5.0.0# ls
+bin  fuseki  fuseki-backup  fuseki-server  fuseki-server.bat  fuseki-server.jar  fuseki.service  LICENSE  log4j2.properties  NOTICE  README  run  webapp
+root@hyperdata:/home/services/fuseki/apache-jena-fuseki-5.0.0# cd ..
+root@hyperdata:/home/services/fuseki# cd ..
+root@hyperdata:/home/services# mv fuseki fuseki_
+root@hyperdata:/home/services# mv fuseki_/apache-jena-fuseki-5.0.0 ./fuseki
+root@hyperdata:/home/services# rmdir fuseki:_
+rmdir: failed to remove &#39;fuseki:_&#39;: No such file or directory
+root@hyperdata:/home/services# rmdir fuseki_
+rmdir: failed to remove &#39;fuseki_&#39;: Directory not empty
+root@hyperdata:/home/services# cd fuseki_
+root@hyperdata:/home/services/fuseki_# ls
+apache-jena-fuseki-5.0.0.tar.gz
+root@hyperdata:/home/services/fuseki_# rm apache-jena-fuseki-5.0.0.tar.gz
+root@hyperdata:/home/services/fuseki_# cd ..
+root@hyperdata:/home/services# rm fuseki_
+rm: cannot remove &#39;fuseki_&#39;: Is a directory
+IT&#39;S GONE MIDNIGHT, BE QUIET
+root@hyperdata:/home/services# rmdir fuseki_
+</code></pre>
+<p>Ok, so these in fuseki.service:</p>
+<pre><code>Environment=FUSEKI_HOME=/home/services/fuseki
+Environment=FUSEKI_BASE=/home/services/fuseki
+# Edit the line below to adjust the amount of memory allocated to Fuseki
+Environment=JVM_ARGS=-Xmx1G  # I don&#39;t think this virtual server has 4 as was. Safe sidery, call it 1.
+ExecStart=/home/services/fuseki/fuseki-server
+</code></pre>
+<p>That might be right. But it will still be useless unless I change the port.</p>
+<p>Hmm. No idea where that&#39;s set. So I&#39;ll ask AI (which will probably suggest a --port option, because it&#39;ll know that&#39;s the way AndyS likes to do things).</p>
+<pre><code>By default, Fuseki listens on port 3030. To change the port number, you can modify the fuseki.properties file.
+
+Here are the steps to change the port number:
+
+Locate the fuseki.properties file:
+sudo find / -name fuseki.properties
+</code></pre>
+<p>Ok as far as 3030. The rest, in Aussie parlance, you&#39;re shittin me.
+It probably is that flag. I&#39;ll try it in the service file.</p>
+<pre><code>ExecStart=/home/services/fuseki/fuseki-server --port=3331
+</code></pre>
+<pre><code>root@hyperdata:/home/services/fuseki# systemctl enable fuseki
+Created symlink /etc/systemd/system/multi-user.target.wants/fuseki.service → /etc/systemd/system/fuseki.service.
+root@hyperdata:/home/services/fuseki# systemctl start fuseki
+root@hyperdata:/home/services/fuseki# systemctl status fuseki
+...
+May 30 22:21:46 hyperdata.it systemd[1]: /etc/systemd/system/fuseki.service:38: Invalid environment assignment, ignoring: #
+May 30 22:21:46 hyperdata.it systemd[1]: /etc/systemd/system/fuseki.service:38: Invalid environment assignment, ignoring: Hmm.
+</code></pre>
+<p>Hee hee.</p>
+<p>Oh, that I wasn&#39;t expecting:</p>
+<pre><code>HTTP ERROR 503 Service Unavailable
+URI:	http://fuseki.hyperdata.it/
+STATUS:	503
+MESSAGE:	Service Unavailable
+</code></pre>
+<p>hang on, it should be on https...</p>
+<p>Nope, it still says http, 503.
+I&#39;m not expecting much, but to see what&#39;s going on:</p>
+<pre><code>lynx http://localhost:3331/
+</code></pre>
+<p>Same 503. Who&#39;s giving me that message, Fuseki or Nginx?</p>
+<p>Ah wait, looking up I see :</p>
+<pre><code>May 30 22:21:15 hyperdata.it fuseki-server[551211]: 22:21:15 INFO  Server          :: Started 2024/05/30 22:21:15 UTC on port 3331
+</code></pre>
+<p>Oh bloody hell, it isn&#39;t nginx because that&#39;s bouncing off 3331.</p>
+<p>Logs?</p>
+<p>Nah, first, anything in fuseki.service? Get rid of those syntaxy warnings at least.</p>
+<p>I&#39;ve reverted this back to the original:</p>
+<pre><code>Environment=JVM_ARGS=-Xmx4G
+</code></pre>
+<p>I can&#39;t imagine I changed that last time I installed this thing. Swap should look after, no?</p>
+<p>Sod it, call it a day.</p>
+<p>Night Fuseki!
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//journal/2024-05-30_fuseki-time">2024-05-30 Later...</a></em>
+</p> 
+<!-- END ARTICLE CONTENT --><!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>2024-10-09</h1>
+<p>#:todo</p>
+<h2>needs internet</h2>
+<p>download - repo + docs</p>
 <ul>
-<li>and it in action :</li>
+<li>inkle</li>
+<li>eye</li>
+<li>ionic</li>
+<li>capacitor</li>
+<li>games engine</li>
 </ul>
-<p><img src="/images/2025-06/eye-run.png" alt="transmission run screenshot">
- </p>
-<h1>Journal 2025-06-03</h1>
-<h2>The Tensegrity Suite</h2>
-<p>It occurred to me that if anyone shows interest in the stuff I&#39;ve been playing with then there needs to be a good place to discuss things. The domain (AI) is pretty hot right now, but my particular corner is niche. Still, things need to be public, must be easy to maintain. It occurred to me sticking things in Git would be useful. Then I discovered GitHub supports <a href="https://docs.github.com/en/discussions">Discussions</a> on repos. That&#39;ll do. So I&#39;ve set up a repo called <a href="https://github.com/danja/tensegrity">tensegrity</a> and on it enabled Discussions. It&#39;s new to me, but I think it should work. If you are reading this then you should probably go say hello over there.</p>
-<p><img src="/images/2025-06/victorian.png" alt="Victorian engineer figuring out tensegrity"></p>
-<h2>Bloody Paths!</h2>
-<p>What I have going on with this stuff right now is that a #:Transmissions pipeline reads content from markdown files in a particular dir tree, posts this off (lightly annotated with metadata) to a SPARQL store. This initial use case I call #:Postcraft, pulls this back out again and renders it as a static Web site. Like what you are looking at.
-This is massively over-engineered for a static site builder, but it&#39;s what seemed like a good sanity check for getting such data in and out of the store.</p>
-<p>The thing is I&#39;ve also got #:Semem looking at the contents of that store. This is intended as an LLM-oriented knowledgebase. I&#39;d already got some bits in place, like generating embeddings from the content and use of them for <em>semantic search</em> in the vector store similarity sense.</p>
-<p>I had a big push on this in the past week or so, sorting out the #:Ragno ontology for describing knowledgebases and <em>maybe</em> implementing a bunch of knowledge augmentation and retrieval algorithms. I say <em>maybe</em> because a large part of the coding was done by AI assistants, and they&#39;re not exactly great at checking their own homework. But this report on <a href="https://github.com/danja/semem/blob/main/INTERACTIONS.md">interactions</a> gives me cautious optimism.</p>
-<p>One thing I know for sure, this stuff is currently very fragile. And confusing. I don&#39;t know why I bothered asking ChatGPT for an illustration of this post because I could simply have taken a pic of my office.</p>
-<p> <img src="/images/2025-06/office1.jpeg" alt="a view of my office featuring confusing things"></p>
-<p>So anyway, the <strong>bloody paths</strong> thing. To kick the tyres of #:Semem I needed a smaller set of docs than this blog stuff. I&#39;ve hardly put any content in the #:Postcraft part of #:Semem itself yet. It will eventually look after the docs, but as of now, sod all there.</p>
-<p>So I ran the #:Postcraft transmissions over it. Bugger! Totally berserk paths. The primary motivation behind #:Transmissions is to make complex processing easier to manage. However, the decomposition comes at a cost. Here are the current commands I have to run to render this site:</p>
-<pre><code class="language-sh">cd ~/hyperdata/transmissions # my local path
-./del-dan.sh # clear SPARQL graphs
-./trans postcraft-statics ~/sites/danny.ayers.name/postcraft #
-./trans md-to-sparqlstore ~/sites/danny.ayers.name/postcraft
-./trans sparqlstore-to-html ~/sites/danny.ayers.name/postcraft
-./trans sparqlstore-to-site-indexes ~/sites/danny.ayers.name/postcraft
-</code></pre>
-<p>Here&#39;s the <a href="https://github.com/danja/transmissions/blob/main/src/apps/sparqlstore-to-html/transmissions.ttl">transmissions.ttl</a> for <code>sparqlstore-to-html</code> :</p>
-<pre><code class="language-turtle">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix : &lt;http://purl.org/stuff/transmissions/&gt; .
 
-:sparqlstore-to-html a :Transmission ;
-   :pipe (:p10 :p20 :p30  :p40 :p50  :p55  :p60 :p70
-          :p80  :p90 :p100) .
-
-:p10 a :SPARQLSelect ;
-     :settings :selectArticles .
-
-:p20 a :ForEach ;
-    :settings :resultIterator .
-
-:p30 a :Restructure ;
-    :settings :prepArticle .
-
-:p40 a :MarkdownToHTML ;
-    :settings :mdHTML .
-
-:p50 a :Templater ;
-    :settings :articleContentTemplate .
-
-# store the HTML snippet
-:p55 a :SPARQLUpdate ;
-     :settings :updateArticleHTML .
-
-# make the page
-:p60 a :Templater ;
-    :settings :articlePageTemplate .
-
-:p70 a :PathOps ;
-  :settings :filenameConstructor .
-
-:p80 a :PathOps ;
-  :settings :filenameExtension .
-
-:p90 a :FileWriter ;
-  :settings :htmlField .
-
-:p100 a :SPARQLUpdate ;
-     :settings :recordRendering .
-</code></pre>
-<p>Each of the <code>:settings</code> objects is a little block of statements. Each of the processors in the pipeline is a JS module.
-But each part <em>is</em> constructed simply, and I do have tolerable debugging facilities in place. It&#39;s just a bloody drag to trace through the pipeline nodes to find where I&#39;ve done something stupid in path resolution.
-Hey ho. Claudio tells me it&#39;s walk time again.
-When we get back I may just have play with some of the other stuff that&#39;s cluttering up the office right now.</p>
-<p><img src="/images/2025-06/office2.jpeg" alt="another view of my office featuring confusing things">
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//todo/2024-10-09">2024-10-09</a></em>
+</p> 
+<!-- END ARTICLE CONTENT --><!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1></h1>
+<p>I had a very nice #:CoE (Chain of Earworm) just now :</p>
+<ol>
+<li>Klezmer -&gt;</li>
+<li>Miserloo-&gt;</li>
+<li><a href="https://www.youtube.com/watch?v=fQ5Ra-sln-s">Judy Teen</a></li>
+<li><a href="https://www.youtube.com/watch?v=GP0X0CRMZLU">Lola</a></li>
+<li><a href="https://www.youtube.com/watch?v=G56DaSAeZfM">In Every Dream Home a Heartache</a></li>
+</ol>
+<p>(testing Mari&#39;s DVD drive, nearest CD)</p>
+<p>  (she gave me a lift home, by the time we got to the car the Klezmer melody had changed in my head)</p>
+<p>Steve Harley &amp; Cockney Rebel (1974)</p>
+<p>The Kinks Lola Top of the Pops 1970</p>
+<p>Roxy Music - In Every Dream Home a Heartache [OGWT 1973]
  </p>
 
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2025-01-30_judy-teen">Judy Teen</a></em>
+</p> 
+<!-- END ARTICLE CONTENT --><!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>A Day in the Life</h1>
+<p>R4, light research, Twitter, a paper</p>
+<p>Saturday, ELFQuake Day
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//articles/a-day-in-the-life">A Day in the Life</a></em>
+</p> 
+<!-- END ARTICLE CONTENT --><!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>A Swarm of Ducks</h1>
+<ul>
+<li><p>under construction snippet</p>
+</li>
+<li><p>sidebars for danny.ayers.name</p>
+</li>
+<li><p>get pulsar running</p>
+</li>
+<li><p>all postcrafts</p>
+</li>
+<li><p>form-a-matic</p>
+</li>
+<li></li>
+</ul>
+<h2>Postcrafts</h2>
+<p>danny.ayers.name
+hyperdata.it
+elfquake.org
+strandz.it</p>
+<p>foaf-retro</p>
+<p>postcraft
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2024-09-13_ducks">A Swarm of Ducks</a></em>
+</p> 
+<!-- END ARTICLE CONTENT --><!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>ADHD</h1>
+<p><strong>THESE ARE ROUGH NOTES WAITING FOR ME TO DO A PROPER WRITEUP</strong></p>
+<p>Before continuing, there a few things <em>everyone</em> should know about ADHD :</p>
+<ul>
+<li>It is real (see below)</li>
+<li>It is not an illness or disability in itself</li>
+<li>What most people think they know about it, including a lot of medical professionals, is just plain <strong>wrong</strong> (in no small part due to the acronym being misleading)</li>
+<li>It affects different people in different ways</li>
+</ul>
+<h2>My Bits</h2>
+<p>A thing I have right now that is entertainingly neuro-atypical, a streak on Duolingo.</p>
+<p>I had two years of French &amp; German at secondary school (13-14 yrs old?) where I didn&#39;t learn anything. Out of the 4 times I was caned (hit hard with a stick on the backside) at that school, 2 were for not doing French homework. I didn&#39;t see the point at the time.
+Since, I&#39;ve found myself pretty hopeless at learning languages. I&#39;ve lived in Italy for about 25 years, my Italian is shite.</p>
+<p>But the other day I was set up for a blindish date with a Japanese woman (not remotely a match as it happened), thought I&#39;d at least learn enough to be polite. Duolingo.
+I found it really satisfying. So it immediately became my new thing.</p>
+<p>I&#39;m on my 9th day of doing a lesson a day of Japanese, Italian, French, German, Spanish &amp; Arabic. When I need a flop on the couch, alternative to doomscrolling. Only takes about 30 mins. According to Duolingo I&#39;m making good progress.</p>
+<p>I had my ~quarterly visit to my psychiatrist this morning. Told her about this. &quot;You couldn&#39;t do that, unless you were a genius&quot;. Well that&#39;s where you are wrong. I have <em>at best</em> average intelligence. But certain things in certain conditions , I can excel at<sup><a id="footnote-ref-ducks" href="#footnote-ducks" data-footnote-ref aria-describedby="footnote-label">1</a></sup>.
+For whatever reason I&#39;m engaged with Duolingo. It&#39;s given me a little surprise about my cognitives. I am slow-witted (ameliorated by compensation mechanisms), but I&#39;m ok at switching context. I&#39;ve literally only once been hit by the language changes, I nearly spelled &#39;aeroporto&#39; as &#39;aeropuerto&#39; (but even then I caught myself in time).</p>
+<p>I&#39;ve not figured it out yet, but the teaching approach done by the Duolingo app does appear to fit my brain wiring (fast dopamine?). I might actually learn something.</p>
+<p>But I&#39;d better do it quick, almost certainly I&#39;ll drift off from it in a week or two, like it never happened. Like my catapult (slingshot) or lock-picking fads. Except these things don&#39;t go away. Way more than a year after I last played with a catapult, but it crossed my mind again the other day, I&#39;ve bought some fresh rubber bands from the Chinese shop.</p>
+<p>I don&#39;t know how common this trait is amongst people that tick the neurodivergent boxes, but despite the flitty attention, I generally come back to things, it&#39;s a very serious persistence over very extended time periods. I&#39;m still working on many things I started when I was 10, 20, 30... Very gappy and shuffled. Booted about a bit by new things that attach. Parasitic memes maybe, facehuggers that spring out when you are busy doing something else. I&#39;m still building the same synth I started in the attic at Blackwell around 1975. Memory can be a pain though, steps do get retraced too often. I&#39;ll have to remind myself of how to tie constrictor knots again, to attach the rubber bands (and make that rope ladder useful). How to fall off a bicycle.</p>
+<p>Time Blindness</p>
+<p><em>I intend to do a proper write-up of this sometime soon FOOTNOTE. But due to my mother&#39;s ill health I&#39;m likely to have to spend some time in the UK in the near future, with interactions with people that don&#39;t know me that well, so I&#39;ll get key points down now to save wasting everyone&#39;s time on in-person explanations.</em></p>
+<p>I FN was recently formally diagnosed with adult ADHD. It explains <em>a lot</em>. My life has been strongly impacted by traits that were generally put down to personality (even by me). In the past I have been diagnosed with well-known mental health conditions : anxiety (major), depression (minor) and alcoholism (chronic). Several times I&#39;ve tried various standard treatments to alleviate these, without significant results. In recent years, more through luck than judgement, through a combination of environmental changes LINK and largely informal help, the negative effects have been reduced. It&#39;s become increasingly apparent that the primary root cause of these problems was the ADHD. The bad bits are common comorbidities.</p>
+<h2>Inside My Head (get to the point!)</h2>
+<h3>My Environment</h3>
+<h2>What is know about ADHD</h2>
+<section class="footnotes" data-footnotes>
+<h2 id="footnote-label" class="sr-only">Footnotes</h2>
+<ol>
+<li id="footnote-ducks">
+<p>I&#39;m a brilliant shot if the ducks are lined up. But I&#39;m lousy at getting the ducks lined up. <a href="#footnote-ref-ducks" data-footnote-backref aria-label="Back to reference ducks">↩</a></p>
+</li>
+</ol>
+</section>
+
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//articles/adhd">ADHD</a></em>
+</p> 
+<!-- END ARTICLE CONTENT --><!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>AI and the Dead</h1>
+<p>legacy</p>
+<p>people&#39;s online presence used to train AI
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//articles/ai-dead">AI and the Dead</a></em>
+</p> 
+<!-- END ARTICLE CONTENT --><!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Aaas</h1>
+<p><em>I signed up to the American Association for the Advancement of Science so as to look at a paper. I&#39;ve also introduced an annoying bug into my code, so I&#39;ll pronounce it &quot;arse&quot;.</em></p>
+<p>Yeah, bug in #:transmissions such that #:postcraft (which builds this site) doesn&#39;t run correctly. My own fault. I pushed forward on #:packer which needed the <code>DirWalker</code> process. I delegated a lot to Claude, made changes I assumed were ok because the <code>test_dirwalker</code> application still ran without error. Fool Danny, it&#39;s not got enough coverage.</p>
+<p>Two steps back needed.</p>
+<h2>Links</h2>
+<p>I was curious about this :</p>
+<ul>
+<li><a href="https://www.science.org/doi/10.1126/science.1195870">Spontaneous Cortical Activity Reveals Hallmarks of an Optimal Internal Model of the Environment</a></li>
+</ul>
+<p>The paper quickly drops into biological jargon, but this in the abstract furnished me with keywords I could follow up :</p>
+<blockquote>
+<p>Using a Bayesian model of sensory cortical processing, we related stimulus-evoked and spontaneous neural activities to inferences and prior expectations in an internal model and predicted that they should match if the model is statistically optimal. To test this prediction, we analyzed visual cortical activity of awake ferrets during development.</p>
+</blockquote>
+<p>&quot;Bayes&quot;, &quot;priors&quot;, <em>&quot;ferrets&quot;</em>...</p>
+<p>While around neuroscience I also stumbled on :</p>
+<ul>
+<li><a href="https://www.thetransmitter.org/">The Transmitter</a> - some interesting (not too biological) stuff</li>
+</ul>
+
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2025-01-07_aaas">Aaas</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
             </article>
         </div>
         <div class="main-grid-item about">

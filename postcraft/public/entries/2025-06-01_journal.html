@@ -7,20 +7,17 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Journal 2025-06-01</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Journal 2025-06-01</h1>
-<pre><code class=\"language-sh\">cd /etc/nginx/sites-available
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Journal 2025-06-01</h1>
+<pre><code class="language-sh">cd /etc/nginx/sites-available
 nano tensegrity.it.conf
 </code></pre>
-<pre><code class=\"language-sh\">server {
+<pre><code class="language-sh">server {
         server_name tensegrity.it;
         listen 80;
 
@@ -34,21 +31,23 @@ nano tensegrity.it.conf
         }
 }
 </code></pre>
-<pre><code class=\"language-sh\">ln -s /etc/nginx/sites-available/tensegrity.it.conf /etc/nginx/sites-enabled/tensegrity.it.conf
+<pre><code class="language-sh">ln -s /etc/nginx/sites-available/tensegrity.it.conf /etc/nginx/sites-enabled/tensegrity.it.conf
 nginx -t
 systemctl restart nginx
 certbot
 </code></pre>
-<pre><code class=\"language-sh\">ln -s /home/hyperdata/semem/docs/postcraft/public /home/www/tensegrity.it/semem
+<pre><code class="language-sh">ln -s /home/hyperdata/semem/docs/postcraft/public /home/www/tensegrity.it/semem
 ln -s /home/hyperdata/hyperdata/docs/postcraft/public /home/www/tensegrity.it/hyperdata
 ln -s /home/hyperdata/transmissions/docs/postcraft/public /home/www/tensegrity.it/transmissions
 </code></pre>
 <p>/home/danny/hyperdata/hyperdata/workspaces/postcrafts/hyperdata-docs/content/raw/entries/2025-05-04_the-stack.md
  </p>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2025-06-01_journal">Journal 2025-06-01</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

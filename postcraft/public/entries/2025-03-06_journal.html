@@ -7,21 +7,18 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Journal 2025-03-06</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Journal 2025-03-06</h1>
-<pre><code class=\"language-sh\">cd ~/hyperdata/transmissions # my local path
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Journal 2025-03-06</h1>
+<pre><code class="language-sh">cd ~/hyperdata/transmissions # my local path
 ./trans md-to-sparqlstore -v ~/sites/strandz.it/postcraft
 ./trans sparqlstore-to-html -v ~/sites/strandz.it/postcraft
 </code></pre>
-<pre><code class=\"language-sparql\">PREFIX schema: &lt;http://schema.org/&gt;
+<pre><code class="language-sparql">PREFIX schema: &lt;http://schema.org/&gt;
 PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 PREFIX : &lt;http://purl.org/stuff/transmissions/&gt;
 
@@ -46,7 +43,7 @@ OPTIONAL {
 }
 ORDER BY DESC(?published)
 </code></pre>
-<pre><code class=\"language-sparql\">PREFIX schema: &lt;http://schema.org/&gt;
+<pre><code class="language-sparql">PREFIX schema: &lt;http://schema.org/&gt;
 PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 PREFIX : &lt;http://purl.org/stuff/transmissions/&gt;
 
@@ -59,9 +56,11 @@ SELECT DISTINCT * WHERE {
 ORDER BY DESC(?published)
 </code></pre>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2025-03-06_journal">Journal 2025-03-06</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

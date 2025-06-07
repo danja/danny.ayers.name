@@ -7,34 +7,31 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Journal 2025-03-04</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Journal 2025-03-04</h1>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Journal 2025-03-04</h1>
 <p>Continuing the rendering of SPARQL store content to HTML files for my docs (including this blog).</p>
 <p>I want the content that originated at :</p>
-<pre><code class=\"language-sh\">/home/danny/hyperdata/transmissions/src/applications/md-to-sparqlstore/data/input/input2.md
+<pre><code class="language-sh">/home/danny/hyperdata/transmissions/src/applications/md-to-sparqlstore/data/input/input2.md
 </code></pre>
 <p>to be rendered at :</p>
-<pre><code class=\"language-sh\">/home/danny/sites/strandz.it/postcraft/public/data/input/2025-02-11/input2.html
+<pre><code class="language-sh">/home/danny/sites/strandz.it/postcraft/public/data/input/2025-02-11/input2.html
 </code></pre>
 <p>The <code>FileWriter</code> processor uses <code>getProperty(ns.trn.destinationFile)</code></p>
 <p>The <code>StringOps</code> processor should now be able to do the necessary.</p>
 <p>Invoked in the #:transmission with :</p>
-<pre><code class=\"language-turtle\">...
+<pre><code class="language-turtle">...
 :p80 a :StringOps ;
   :settings :filenameConstructor .
 
 :p90 a :FileWriter .
 </code></pre>
 <p>Settings from :</p>
-<pre><code class=\"language-turtle\">:filenameConstructor a :ConfigSet ;
+<pre><code class="language-turtle">:filenameConstructor a :ConfigSet ;
   :asPath true ;
   :targetField &quot;destinationFile&quot; ;
   :values (:a :b :c :d) .
@@ -44,16 +41,16 @@
   :d :string &quot;.html&quot; .
 </code></pre>
 <p>Oh, silly me, I get paths like:</p>
-<pre><code class=\"language-json\">&quot;destinationFile&quot;: &quot;/home/danny/sites/strandz.it/postcraft/data/input/2025-02-11/input2/.html&quot;
+<pre><code class="language-json">&quot;destinationFile&quot;: &quot;/home/danny/sites/strandz.it/postcraft/data/input/2025-02-11/input2/.html&quot;
 </code></pre>
 <p>I&#39;ll have to think about how to do this better, but given that I already put string concat support in <code>StringOps</code>, easy addition should do it:</p>
-<pre><code class=\"language-turtle\">:p80 a :StringOps ;
+<pre><code class="language-turtle">:p80 a :StringOps ;
   :settings :filenameConstructor .
 
   :p90 a :StringOps ;
     :settings :filenameExtension .
 </code></pre>
-<pre><code class=\"language-turtle\">:filenameConstructor a :ConfigSet ;
+<pre><code class="language-turtle">:filenameConstructor a :ConfigSet ;
   :asPath true ;
   :targetField &quot;temp&quot; ;
   :values (:a1 :b1 :c1) .
@@ -69,14 +66,16 @@
     :b2 :string &quot;.html&quot; .
 </code></pre>
 <p>Yay!</p>
-<pre><code class=\"language-json\">&quot;destinationFile&quot;: &quot;/home/danny/sites/strandz.it/postcraft/data/input/2025-02-11/input2.html&quot;
+<pre><code class="language-json">&quot;destinationFile&quot;: &quot;/home/danny/sites/strandz.it/postcraft/data/input/2025-02-11/input2.html&quot;
 </code></pre>
 <p>Ok, so when I&#39;m runn
  </p>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2025-03-04_journal">Journal 2025-03-04</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

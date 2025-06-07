@@ -7,26 +7,23 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Postcraft Images</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Postcraft Images</h1>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Postcraft Images</h1>
 <p>This should be a little thing...</p>
 <p>Markdown format is :</p>
 <pre><code>![alt text](https://hyperdata.it/images/raw-data_320x480.png)
 </code></pre>
 <p>The markdown lib I&#39;m using should understand that :</p>
-<p><img src=\"https://hyperdata.it/images/raw-data_320x480.png\" alt=\"alt text\"></p>
+<p><img src="https://hyperdata.it/images/raw-data_320x480.png" alt="alt text"></p>
 <p>I&#39;d better check relative URLs :</p>
 <pre><code>![alt text](../images/not-an-image.png)
 </code></pre>
-<p><img src=\"../images/not-an-image.png\" alt=\"alt text\"></p>
+<p><img src="../images/not-an-image.png" alt="alt text"></p>
 <p>Looking good. That gets rendered as :</p>
 <pre><code>&lt;img src=&quot;../images/not-an-image.png&quot; alt=&quot;alt text&quot;&gt;
 </code></pre>
@@ -116,7 +113,7 @@
 <pre><code>![Claudio Grouse Hunting](media/images/2024-08/claudio-grouse-hunting.jpeg)
 </code></pre>
 <p>and maybe...
-<img src=\"media/images/2024-08/claudio-grouse-hunting.jpeg\" alt=\"Claudio Grouse Hunting\"></p>
+<img src="media/images/2024-08/claudio-grouse-hunting.jpeg" alt="Claudio Grouse Hunting"></p>
 <p>Yay!</p>
 <p>But the image is cropped. Can you specify scale in markdown? No wait, would be better to do in CSS, make it responsive.</p>
 <p>So in <code>danny.ayers.name/layouts/mediocre/css/style.css</code>:</p>
@@ -131,9 +128,11 @@
 <p>Job done.
  </p>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2024-08-28_postcraft-images">Postcraft Images</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

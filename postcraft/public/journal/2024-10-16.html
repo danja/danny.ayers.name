@@ -7,16 +7,13 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Journal 2024-10-16</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Journal 2024-10-16</h1>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Journal 2024-10-16</h1>
 <p>Main tasks today:</p>
 <ol>
 <li>#:todo make #:fam usable with #:pivot vocab</li>
@@ -29,17 +26,17 @@
 <hr>
 <h2>1. FAM</h2>
 <h3>Getting a server/browser into the build workflow</h3>
-<pre><code class=\"language-sh\">npm install --save-dev webpack-dev-server --loglevel verbose
+<pre><code class="language-sh">npm install --save-dev webpack-dev-server --loglevel verbose
 </code></pre>
 <p>It appeared to stall, turns out :</p>
-<pre><code class=\"language-sh\">...
+<pre><code class="language-sh">...
 npm verbose reify failed optional dependency /home/danny/github-danny/hyperdata/packages/farelo/form-a-matic/node_modules/fsevents
 npm http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 549ms
 npm http fetch GET 200 https://registry.npmjs.org/compressible/-/compressible-2.0.18.tgz 430ms (cache miss)
 ...
 </code></pre>
 <p>But finally -</p>
-<pre><code class=\"language-sh\">added 169 packages, and audited 716 packages in 4m
+<pre><code class="language-sh">added 169 packages, and audited 716 packages in 4m
 
 104 packages are looking for funding
   run `npm fund` for details
@@ -54,11 +51,11 @@ npm info ok
 </code></pre>
 <p>Set up <code>package.json</code> &amp; <code>webpack.config.js</code></p>
 <p><code>html-webpack-plugin</code> also needed, non-verbose version did the stally thing again, need to check...</p>
-<pre><code class=\"language-sh\">npm install --save-dev html-webpack-plugin --loglevel verbose
+<pre><code class="language-sh">npm install --save-dev html-webpack-plugin --loglevel verbose
 </code></pre>
 <p>Good breakpoint for dogwalk.</p>
 <p>Hang on, it&#39;s installed, got this again :</p>
-<pre><code class=\"language-sh\">npm verbose reify failed optional dependency /home/danny/github-danny/hyperdata/packages/farelo/form-a-matic/node_modules/fsevents
+<pre><code class="language-sh">npm verbose reify failed optional dependency /home/danny/github-danny/hyperdata/packages/farelo/form-a-matic/node_modules/fsevents
 </code></pre>
 <p>#:todo ignore optionals</p>
 <p>#:todo check <code>webpack --mode production</code>
@@ -87,15 +84,17 @@ npm info ok
 <p>I have a #:t:processor for HTTP GET - did I use <code>axios</code> for client?</p>
 <p>#:todo make a #:transmission to take repo summary raw, send to AI API, create a new <code>about.md</code></p>
 <p>#:todo make #:l{Make link markup resolver}</p>
-<p>#:l{JSP Semtags} <a href=\"https://www-sop.inria.fr/acacia/soft/sewese/api/semtags/tld-summary.html\">https://www-sop.inria.fr/acacia/soft/sewese/api/semtags/tld-summary.html</a>  &quot;SemTags is a semantic web tags library that allows JSP developers to use (and work with) RDF/S and OWL ontologies and annotations in their JSP pages.&quot;</p>
-<p>#:todo check <a href=\"https://www-sop.inria.fr/acacia/soft/sewese/api/semtags/tld-summary.html\">JSP Semtags</a> - there are bits that might be useful in #:t</p>
+<p>#:l{JSP Semtags} <a href="https://www-sop.inria.fr/acacia/soft/sewese/api/semtags/tld-summary.html">https://www-sop.inria.fr/acacia/soft/sewese/api/semtags/tld-summary.html</a>  &quot;SemTags is a semantic web tags library that allows JSP developers to use (and work with) RDF/S and OWL ontologies and annotations in their JSP pages.&quot;</p>
+<p>#:todo check <a href="https://www-sop.inria.fr/acacia/soft/sewese/api/semtags/tld-summary.html">JSP Semtags</a> - there are bits that might be useful in #:t</p>
 <p>#:todo add support for <strong>includes</strong> in #:transmissions&#39;s <code>manifest.ttl</code></p>
-<p>#:todo:ui <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details\">HTML details blocks</a> markdown #:t:processor
+<p>#:todo:ui <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details">HTML details blocks</a> markdown #:t:processor
  </p>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//journal/2024-10-16">Journal 2024-10-16</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

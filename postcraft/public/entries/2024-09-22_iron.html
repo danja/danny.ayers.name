@@ -7,16 +7,13 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Iron</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <h1>Iron</h1>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <h1>Iron</h1>
 <p>This morning I was woken first around 9:00 by Claudio wanting to get under my blanket. He&#39;s been doing it all week, seems to like to start the day with a snuggle. I&#39;d just about dozed off again when the alarm on my phone went off, 9:57 (timed so I can have a pee &amp; glass of water before BBC Radio 4 news). Dozing off again, Oriana phoned, asking if I had an iron &amp; ironing board. I have iron which I never use, so I got up and took it across.</p>
 <p>I remember last century, all the musicians in South London would use ironing boards as keyboard stands. I&#39;m pretty sure I&#39;ll have one somewhere, probably under piles of junk in the cantina, take forever to find. But I do have a couple of spare keyboard stands...</p>
 <h2>Today</h2>
@@ -27,7 +24,7 @@
 <pre><code>prj:Requirement a rdf:Class
 </code></pre>
 <p>something like <code>resolution</code> to point between tasks/goals and requirements.</p>
-<p>wait, <a href=\"https://www.pqforce.com/en/blog/goals-vs-requirements-what-is-the-difference\">this</a> suggests my subgoals are pretty much the same. Maybe sameClassAs??</p>
+<p>wait, <a href="https://www.pqforce.com/en/blog/goals-vs-requirements-what-is-the-difference">this</a> suggests my subgoals are pretty much the same. Maybe sameClassAs??</p>
 <h3>Transmissions</h3>
 <p>Refactoring first, renaming <code>services</code> to <code>transformers</code>.</p>
 <p>I also want to do the simplified runners, scripts that directly call <code>transformers</code>. It&#39;ll offer a quick &amp; dirty way of setting up (and explaining) transmissions, more importantly make sub-codebases small enough for AI&#39;s context windows to deal with.</p>
@@ -40,21 +37,23 @@
 <p>TODO add a postcraft for <code>danny.ayers.name/irl</code> for more real projects.</p>
 <h3>hyperdata-desktop</h3>
 <p>Annoying I&#39;ve somehow managed to break <code>hyperdata-desktop</code> (==<code>pulsar-edit</code>) while reorganising things. I&#39;m now trying to rebuild, at some point I may have forgotten to do :</p>
-<pre><code class=\"language-sh\">nvm use
+<pre><code class="language-sh">nvm use
 </code></pre>
 <p>and got lib versions muddled.</p>
 <p>13:03 earlier-than-usual dogwalk, I need a bit of fresh air.</p>
 <p><code>npm install</code> mentions :</p>
-<pre><code class=\"language-sh\">--cache=/home/danny/.npm
+<pre><code class="language-sh">--cache=/home/danny/.npm
 </code></pre>
 <p>So just in case :</p>
-<pre><code class=\"language-sh\">cd ~/.npm
+<pre><code class="language-sh">cd ~/.npm
 sudo rm -r *
 </code></pre>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2024-09-22_iron">Iron</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>

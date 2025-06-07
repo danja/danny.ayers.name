@@ -7,20 +7,17 @@
         <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
         <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-        <title>Google Takedown</title>
+        <title></title>
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                
-            </h1>
-        </header>
-        <p> Download to my server first? But how, given whatever auth Google is using..? Wireshark to read actual messages?</p>
+        <!-- ARTICLE CONTENT -->
+<article class="post-content">
+    <p> Download to my server first? But how, given whatever auth Google is using..? Wireshark to read actual messages?</p>
 <p>Claude suggested download to Google Drive first, then other more interesting suggestions, including using Selenium or Puppeteer. I think I played with Selenium a while back, the mock-browser setup would be useful elsewhere for me. To consider.</p>
 <hr>
 <p>Distraction:</p>
-<p><a href=\"https://console.cloud.google.com/welcome?pli=1&project=mozzanella-01\">https://console.cloud.google.com/welcome?pli=1&amp;project=mozzanella-01</a></p>
+<p><a href="https://console.cloud.google.com/welcome?pli=1&project=mozzanella-01">https://console.cloud.google.com/welcome?pli=1&amp;project=mozzanella-01</a></p>
 <p>Start your free trial with $300 in credit. Don&#39;t worry – you won&#39;t be charged if you run out of credit. Learn more</p>
 <hr>
 <p>Asked Grok:</p>
@@ -30,18 +27,18 @@ I understand your concern. Downloading a large email archive from Gmail can be c
 <p>Method 1: Using wget with Gmail&#39;s API</p>
 <p>Gmail provides an API that allows you to download your email archives programmatically. You&#39;ll need to:</p>
 <p>Enable the Gmail API for your account:
-Go to the Google Cloud Console (<a href=\"https://console.cloud.google.com/\">https://console.cloud.google.com/</a>) and create a new project.
+Go to the Google Cloud Console (<a href="https://console.cloud.google.com/">https://console.cloud.google.com/</a>) and create a new project.
 Navigate to APIs &amp; Services &gt; Library and search for &quot;Gmail API&quot;.
 Click on the result, then click on the &quot;Enable&quot; button.
 Create credentials for your project (OAuth client ID).
 Install the curl and jq command-line tools:
 curl is used to send HTTP requests, and jq is used to parse JSON responses.
 Use the following command to download your email archives:
-curl -X GET <br> <a href=\"https://www.googleapis.com/gmail/v1/users/me/messages?labelIds=INBOX&maxResults=1000\">https://www.googleapis.com/gmail/v1/users/me/messages?labelIds=INBOX&amp;maxResults=1000</a> <br> -H &#39;Authorization: Bearer YOUR_ACCESS_TOKEN&#39; <br> -H &#39;Content-Type: application/json&#39; <br> -o messages.json
+curl -X GET <br> <a href="https://www.googleapis.com/gmail/v1/users/me/messages?labelIds=INBOX&maxResults=1000">https://www.googleapis.com/gmail/v1/users/me/messages?labelIds=INBOX&amp;maxResults=1000</a> <br> -H &#39;Authorization: Bearer YOUR_ACCESS_TOKEN&#39; <br> -H &#39;Content-Type: application/json&#39; <br> -o messages.json
 Replace YOUR_ACCESS_TOKEN with the access token obtained from the Google Cloud Console.</p>
 <p>This command downloads the first 1000 messages in your inbox. You can adjust the maxResults parameter to change the batch size.</p>
 <p>To resume the download, you can use the --continue option with curl:</p>
-<p>curl -X GET <br> <a href=\"https://www.googleapis.com/gmail/v1/users/me/messages?labelIds=INBOX&maxResults=1000&startMessageId=MESSAGE_ID\">https://www.googleapis.com/gmail/v1/users/me/messages?labelIds=INBOX&amp;maxResults=1000&amp;startMessageId=MESSAGE_ID</a> <br> -H &#39;Authorization: Bearer YOUR_ACCESS_TOKEN&#39; <br> -H &#39;Content-Type: application/json&#39; <br> -o messages.json <br> --continue
+<p>curl -X GET <br> <a href="https://www.googleapis.com/gmail/v1/users/me/messages?labelIds=INBOX&maxResults=1000&startMessageId=MESSAGE_ID">https://www.googleapis.com/gmail/v1/users/me/messages?labelIds=INBOX&amp;maxResults=1000&amp;startMessageId=MESSAGE_ID</a> <br> -H &#39;Authorization: Bearer YOUR_ACCESS_TOKEN&#39; <br> -H &#39;Content-Type: application/json&#39; <br> -o messages.json <br> --continue
 Replace MESSAGE_ID with the ID of the last message downloaded.</p>
 <p>Method 2: Using wget with Gmail&#39;s IMAP</p>
 <p>Gmail provides an IMAP (Internet Message Access Protocol) interface that allows you to access your email archives. You&#39;ll need to:</p>
@@ -69,9 +66,11 @@ Ready to start building? Get your free API key at GroqCloud™ Developer Console
 Danny Ayers
  </p>
 
-        <div class="entry-footer">
-            <h2>About</h2>
-            
-        </div>
+</article>
+<p class="post-title h-cinzel">
+    <em><a href="http://danny.ayers.name//entries/2024-09-12_google-takedown">Google Takedown</a></em>
+</p> 
+<!-- END ARTICLE CONTENT -->
     </body>
+      <!-- END POST PAGE TEMPLATE -->
 </html>
