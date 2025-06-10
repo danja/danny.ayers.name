@@ -1,4 +1,4 @@
-# Where are the Tangibles?
+# Where are the Tangibles in Schema.org?
 
 **tl;dr** : [Schema.org](https://schema.org/) has terms for [Thing](https://schema.org/Thing), [Intangible](https://schema.org/Intangible) and [Product](https://schema.org/Product), but no obvious way of describing a tangible thing that isn't necessarily a product.
 I suggest the obvious : **https://schema.org/Tangible**, which could be inserted quietly without breaking anything *(details at the bottom here)*.
@@ -18,7 +18,7 @@ Right now I really need the app *yesterday*, to manage [my tensegrity structure 
 * Shift everything back into the room
 * Make a lot of noise
 
-It is a nice use case for a project management app as there are parts that are strictly sequential : I won't want to hang mattresses before redecorating. But some bits can happen in parallel : I have shifted pretty much everything out into the office (it's no longer in the initial **state**), where I've wired a bunch of things temporarily, so I can make a lot of noise while everything else progresses. 
+It is a nice use case for a project management app as there are parts that are strictly sequential : I won't want to hang mattresses before redecorating. But some bits can happen in parallel : I have shifted pretty much everything out into the office (it's no longer in the initial **state**), where I've wired a bunch of things temporarily, so I can make a lot of noise while everything else progresses.
 
 ## Stuff, a Set of Things
 
