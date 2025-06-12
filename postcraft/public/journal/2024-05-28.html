@@ -11,17 +11,25 @@
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
+    <strong></strong><em></em>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
         <!-- ARTICLE CONTENT -->
-<article class=\"post-content\">
+
+<article class="post-content">
+        <a href="http://danny.ayers.name//journal/2024-05-28.html">#</a>
     <h1>Cough to Sneeze</h1>
 <p>I seem to have got over the cough/cold I had. Head still a bit fuzzy, but after one good cough when I woke up, all seems fine. Now snuffling a bit with hay fever...</p>
 <h2>Plan</h2>
 <ul>
 <li>Decommission server</li>
 </ul>
-<p>The Cranberries&#39; <a href=\"https://genius.com/The-cranberries-zombie-lyrics\">Zombie</a></p>
+<p>The Cranberries&#39; <a href="https://genius.com/The-cranberries-zombie-lyrics">Zombie</a></p>
 <p>Ok, if I tweak find-big-files a little, I should be able to save some time:</p>
-<pre><code>find ./ -type f -printf &#39;%s %p\\n&#39; | sort -nr | head -30 | awk &#39;{print &quot;rm &quot; $2}&#39; &gt; bigfiles.sh
+<pre><code>find ./ -type f -printf &#39;%s %p\n&#39; | sort -nr | head -30 | awk &#39;{print &quot;rm &quot; $2}&#39; &gt; bigfiles.sh
 </code></pre>
 <p>I&#39;ll manually check the script before running it in case it&#39;s picking up anything I want to keep.</p>
 <p>Ok, sweet.</p>
@@ -51,10 +59,10 @@ tar -czvf server-decommission-2024-05_home.tar.gz /home
 </code></pre>
 
 </article>
-<p class=\"post-title h-cinzel\">
-    <em><a href=\"http://danny.ayers.name//journal/2024-05-28\">Cough to Sneeze</a></em>
-</p> 
-<!-- END ARTICLE CONTENT -->
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name//journal/2024-05-28.html">
+        Cough to Sneeze
+    </a>
+</p> <em></em>
     </body>
-      <!-- END POST PAGE TEMPLATE -->
 </html>

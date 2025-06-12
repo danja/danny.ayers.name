@@ -11,15 +11,23 @@
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
+    <strong></strong><em></em>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
         <!-- ARTICLE CONTENT -->
-<article class=\"post-content\">
+
+<article class="post-content">
+        <a href="http://danny.ayers.name//entries/2024-11-18_fool-danny.html">#</a>
     <h1>Fool Danny</h1>
 <p><em><strong>&quot;Doctor doctor! It hurts when I do this...</strong></em></p>
 <p>I&#39;ve had a recurring problem with <code>npm</code> installs etc, because in the bunch of submodules I have below <code>hyperdata/packages</code> I have <code>hyperdata-static</code> which currently needs to be pinned to node v16. Anything nearby chokes on <code>node-gyp rebuild</code>.
 In an idiot-party with Claude, ended up destroying <code>hyperdata-static</code> without fixing the gyp issue.</p>
 <p><em><strong>Stop doing that.</strong></em></p>
 <p>Continuing from <code>/home/danny/github-danny/hyperdata/docs/postcraft/content-raw/journal/2024-11-18.md</code></p>
-<pre><code class=\"language-sh\"># packages/hyperdata-desktop copied elsewhere first, just in case
+<pre><code class="language-sh"># packages/hyperdata-desktop copied elsewhere first, just in case
 cd ~/github-danny/hyperdata/
 git submodule deinit -f packages/hyperdata-desktop
 git rm -f packages/hyperdata-desktop
@@ -27,20 +35,20 @@ git commit -m &quot;Removed submodule&quot;
 rm -rf .git/modules/packages/hyperdata-desktop
 </code></pre>
 <p>Hmm -</p>
-<pre><code class=\"language-sh\">...
+<pre><code class="language-sh">...
 fatal: could not migrate git directory from &#39;/home/danny/github-danny/hyperdata/packages/hyperdata-desktop/.git&#39; to &#39;/home/danny/github-danny/hyperdata/.git/modules/packages/hyperdata-desktop&#39;: Directory not empty
 ...
 </code></pre>
 <p>Dunno, try :</p>
-<pre><code class=\"language-sh\">cd ~/github-danny/hyperdata/packages/semem
+<pre><code class="language-sh">cd ~/github-danny/hyperdata/packages/semem
 npm cache clean --force
 rm -rf node_modules
 npm install jasmine --save-dev
 </code></pre>
-<pre><code class=\"language-sh\">npm WARN ignoring workspace config at /home/danny/github-danny/hyperdata/packages/semem/.npmrc
+<pre><code class="language-sh">npm WARN ignoring workspace config at /home/danny/github-danny/hyperdata/packages/semem/.npmrc
 </code></pre>
 <p>ffs.</p>
-<pre><code class=\"language-sh\">npm cache clean --force
+<pre><code class="language-sh">npm cache clean --force
 rm -rf node_modules
 nvm use default
 npm install -g node-gyp
@@ -51,10 +59,10 @@ npm install -g node-gyp
  </p>
 
 </article>
-<p class=\"post-title h-cinzel\">
-    <em><a href=\"http://danny.ayers.name//entries/2024-11-18_fool-danny\">Fool Danny</a></em>
-</p> 
-<!-- END ARTICLE CONTENT -->
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name//entries/2024-11-18_fool-danny.html">
+        Fool Danny
+    </a>
+</p> <em></em>
     </body>
-      <!-- END POST PAGE TEMPLATE -->
 </html>

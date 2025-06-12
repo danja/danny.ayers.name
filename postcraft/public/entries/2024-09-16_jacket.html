@@ -11,8 +11,16 @@
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
+    <strong></strong><em></em>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
         <!-- ARTICLE CONTENT -->
-<article class=\"post-content\">
+
+<article class="post-content">
+        <a href="http://danny.ayers.name//entries/2024-09-16_jacket.html">#</a>
     <h1>Hiding Jacket</h1>
 <p>13:00</p>
 <p>It&#39;s gone cool. I have a fleece jacket that&#39;s warm, but I knew it needed washing. So I just searched high &amp; low, only to find it in the washing machine. A wash I did a couple of days ago and completely forgot.</p>
@@ -27,14 +35,14 @@
 <li>fix chairs</li>
 <li>metal detector</li>
 <li>music room</li>
-<li>PS. read @iand&#39;s notes around <a href=\"https://blog.iandavis.com/2017/10/microfunctions/\">Serverless: why microfunctions &gt; microservices</a></li>
+<li>PS. read @iand&#39;s notes around <a href="https://blog.iandavis.com/2017/10/microfunctions/">Serverless: why microfunctions &gt; microservices</a></li>
 <li>foaf-retro todos</li>
 </ul>
 <p>But I&#39;ve still got a bit of task paralysis. #ADHD Strategy : either do something that will help productivity or something that will benefit someone else or take Claudio out.</p>
 <p>The #Pulsar thing is productivity and should be a quicky.</p>
 <p>Just thinking about Transmissions dev.</p>
 <h2>Pulsar Install</h2>
-<p><a href=\"https://pulsar-edit.dev/docs/launch-manual/sections/core-hacking/#building-pulsar\">https://pulsar-edit.dev/docs/launch-manual/sections/core-hacking/#building-pulsar</a></p>
+<p><a href="https://pulsar-edit.dev/docs/launch-manual/sections/core-hacking/#building-pulsar">https://pulsar-edit.dev/docs/launch-manual/sections/core-hacking/#building-pulsar</a></p>
 <pre><code>danny@danny-desktop:~/github-danny/pulsar$ node -v
 v20.11.0
 danny@danny-desktop:~/github-danny/pulsar$ nvm use
@@ -43,9 +51,9 @@ Now using node v16.20.2 (npm v8.19.4)
 danny@danny-desktop:~/github-danny/pulsar$ node -v
 v16.20.2
 </code></pre>
-<p>New to me, <a href=\"https://nodejs.org/api/corepack.html\">corepack</a> :</p>
+<p>New to me, <a href="https://nodejs.org/api/corepack.html">corepack</a> :</p>
 <p>Trying :</p>
-<pre><code class=\"language-bash\">corepack enable
+<pre><code class="language-bash">corepack enable
 git submodule init &amp;&amp; git submodule update
 yarn install
 yarn build
@@ -59,7 +67,7 @@ yarn start
 <p>TODO have a look at making an AppImage of <code>hkms-desktop</code></p>
 <p>What I want this for, in the first instance, is as a text editor for my #Postcraft instances, to free up this VSCode for, errm, code (I have been coding in Cursor, which is based on VSCode, but having this one separate to try other AI assistants will be useful).</p>
 <p>I want the edity bits of each Postcraft instance in a common place. Named symlinks first :</p>
-<pre><code class=\"language-bash\">mkdir ~/workspaces_hkms-desktop
+<pre><code class="language-bash">mkdir ~/workspaces_hkms-desktop
 cd ~/workspaces_hkms-desktop
 mkdir postcrafts-raw
 cd postcrafts-raw
@@ -70,9 +78,9 @@ ln -s ~/github-danny/foaf-retro/docs/postcraft/content-raw ./foaf-retro
 </code></pre>
 <p>Hmm. Most of the others need their folder structure updating. I&#39;ll sort those out as I need them.</p>
 <p>Ok, this will need tweaks, but that&#39;s basically done :</p>
-<p><img src=\"media/images/2024-09/pulsar.png\" alt=\"Screenshot of Pulsar for editing\"></p>
+<p><img src="media/images/2024-09/pulsar.png" alt="Screenshot of Pulsar for editing"></p>
 <p>Font size changed 16-&gt;14.</p>
-<pre><code class=\"language-bash\">cd ../transmissions/
+<pre><code class="language-bash">cd ../transmissions/
 ./trans postcraft ../postcraft/danny.ayers.name
 </code></pre>
 <p>TODO bash script to run transmissions on postcrafts</p>
@@ -88,7 +96,7 @@ Reload your .bashrc: source ~/.bashrc
 Place your scripts in ~/bin</p>
 </blockquote>
 <p>I need a <code>hyperdata-static-2024</code> repo.</p>
-<pre><code class=\"language-bash\">cd ~/github-danny/pulsar
+<pre><code class="language-bash">cd ~/github-danny/pulsar
 
 repopack --verbose -c /home/danny/github-danny/transmissions/repopack.config.json
 </code></pre>
@@ -96,7 +104,7 @@ repopack --verbose -c /home/danny/github-danny/transmissions/repopack.config.jso
 <p>Hmm. <code>npm update repopack</code> stuck too. Network glitching? Yup, connection had dropped.</p>
 <p>TODO minimalist hardcoded runner script for Transmissions to help testing &amp; AI assistant generation</p>
 <p>Something like :</p>
-<pre><code class=\"language-javascript\">const servicesConfigA = {...}
+<pre><code class="language-javascript">const servicesConfigA = {...}
 const servicesConfigB = {...}
 
 var message = {...}
@@ -111,16 +119,16 @@ message = B.execute(message)
 console.log(JSON.stringify(message))
 </code></pre>
 <p>I&#39;ve made another repopack config, so :</p>
-<pre><code class=\"language-bash\">cd ~/github-danny/pulsar
+<pre><code class="language-bash">cd ~/github-danny/pulsar
 repopack --verbose -c ./repopack.config.json
 </code></pre>
 <p>Hmm. 9x too big for Claude.</p>
 <p>Time to organise my scripts. Might as well put them on GitHub and on hyperdata.it</p>
 <p>Added to <code>.bashrc</code> :</p>
-<pre><code class=\"language-bash\">export PATH=&quot;$HOME/github-danny/hyperdata.it/scripts:$PATH&quot;
+<pre><code class="language-bash">export PATH=&quot;$HOME/github-danny/hyperdata.it/scripts:$PATH&quot;
 </code></pre>
 <p>then :</p>
-<pre><code class=\"language-bash\">source ~/.bashrc
+<pre><code class="language-bash">source ~/.bashrc
 </code></pre>
 <p>I did a repopack of the <code>src</code> and <code>docs</code> dirs of Pulsar. Docs was 58% of Claude project space, so I&#39;ll leave that there for now.</p>
 <p>The Transmissions bug was an easy fix.</p>
@@ -128,10 +136,10 @@ repopack --verbose -c ./repopack.config.json
  </p>
 
 </article>
-<p class=\"post-title h-cinzel\">
-    <em><a href=\"http://danny.ayers.name//entries/2024-09-16_jacket\">Hiding Jacket</a></em>
-</p> 
-<!-- END ARTICLE CONTENT -->
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name//entries/2024-09-16_jacket.html">
+        Hiding Jacket
+    </a>
+</p> <em></em>
     </body>
-      <!-- END POST PAGE TEMPLATE -->
 </html>

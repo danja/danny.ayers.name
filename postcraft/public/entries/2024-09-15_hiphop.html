@@ -11,17 +11,25 @@
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
+    <strong></strong><em></em>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
         <!-- ARTICLE CONTENT -->
-<article class=\"post-content\">
+
+<article class="post-content">
+        <a href="http://danny.ayers.name//entries/2024-09-15_hiphop.html">#</a>
     <h1>HipHop</h1>
-<p>Listening to <a href=\"https://www.youtube.com/watch?v=MYv_HaIrgdg\">oldskool hiphop</a>, trying to restrain my head from hopping around.</p>
+<p>Listening to <a href="https://www.youtube.com/watch?v=MYv_HaIrgdg">oldskool hiphop</a>, trying to restrain my head from hopping around.</p>
 <p>Nearly forgot, I was wondering about dynamically loading #Transmission services from locations unkown before runtime. Claude gave me some suggestions.</p>
 <p>TODO copy into Transmissions notes</p>
 <p>13:33 and I still not really awake yet. Body a bit tired, I walked 14,163 steps yesterday! But I&#39;ve 1 bottle of Peroni, 3 cans of Radler 2% shandy and some very poor ginger beer to lubricate.</p>
 <p>Ok, quick stab at the markmap bits.</p>
 <p>It&#39;s not obvious from the docs how to use the libs. See if Claude can help.</p>
 <p>In <code>~/github-other$ </code> :</p>
-<pre><code class=\"language-bash\">git clone https://github.com/markmap/markmap.git
+<pre><code class="language-bash">git clone https://github.com/markmap/markmap.git
 
 cd markmap
 
@@ -29,16 +37,16 @@ repopack --verbose -c /home/danny/github-danny/transmissions/repopack.config.jso
 </code></pre>
 <p>Project created on Claude. System prompt &amp; repopack added.</p>
 <p>In <code>~github-danny/transmissions</code></p>
-<pre><code class=\"language-bash\">npm install markmap-lib
+<pre><code class="language-bash">npm install markmap-lib
 npm install markmap-render
 npm install markmap-view
 npm install markmap-toolbar
 </code></pre>
 <p>Claudes first pass in :</p>
-<pre><code class=\"language-bash\">~/github-danny/transmissions/raw-src/markmap/01.js
+<pre><code class="language-bash">~/github-danny/transmissions/raw-src/markmap/01.js
 </code></pre>
 <p>Wow, Claude got it right first time!</p>
-<pre><code class=\"language-javascript\">import { Transformer } from &quot;markmap-lib&quot;;
+<pre><code class="language-javascript">import { Transformer } from &quot;markmap-lib&quot;;
 import { fillTemplate } from &quot;markmap-render&quot;;
 
 const input = `# A markdown string
@@ -64,8 +72,8 @@ const C = fillTemplate(A.root, B);
 console.log(C);
 </code></pre>
 <p>The JSON structure I wanted to look at, <code>A</code> is :</p>
-<pre><code class=\"language-json\">{
-  content: &#39;# A markdown string\\n## another\\n\\n* bullet1\\n* bullet2&#39;,
+<pre><code class="language-json">{
+  content: &#39;# A markdown string\n## another\n\n* bullet1\n* bullet2&#39;,
   features: {},
   contentLineOffset: 0,
   root: {
@@ -77,7 +85,7 @@ console.log(C);
 </code></pre>
 <p>Hmm. Not quite the intermediate representation I was hoping for, but presumably there&#39;s stuff in the <code>[Object]</code>.</p>
 <p><code>B</code> is :</p>
-<pre><code class=\"language-json\">{
+<pre><code class="language-json">{
   styles: [
     { type: &#39;stylesheet&#39;, data: [Object] },
     { type: &#39;stylesheet&#39;, data: [Object] }
@@ -90,12 +98,12 @@ console.log(C);
 </code></pre>
 <p><code>C</code> is HTML with embedded SVG.</p>
 <p>Claude also gave me code for getting just the SVG: In node it needs :</p>
-<pre><code class=\"language-bash\">npm install jsdom
+<pre><code class="language-bash">npm install jsdom
 </code></pre>
 <p>Code is in <code>raw-src/markmap/02.js</code></p>
 <p>Claude messed up trying to use lots of DOM. I&#39;ll leave SVG-alone alone for now.</p>
 <p>I asked Claude about looking at the <code>children</code> object. He gave me :</p>
-<pre><code class=\"language-javascript\">function expandNode(node, depth = 0) {
+<pre><code class="language-javascript">function expandNode(node, depth = 0) {
   const indent = &quot;  &quot;.repeat(depth);
   console.log(`${indent}content: ${JSON.stringify(node.content)}`);
   if (node.payload) {
@@ -125,15 +133,15 @@ children:
     content: &quot;bullet2&quot;
     payload: {&quot;lines&quot;:&quot;4,5&quot;}
 </code></pre>
-<p>TODO incorporate <a href=\"https://markmap.js.org/docs/packages--markmap-toolbar\">markmap-toolbar</a></p>
+<p>TODO incorporate <a href="https://markmap.js.org/docs/packages--markmap-toolbar">markmap-toolbar</a></p>
 <p>Dogwalk time.
  </p>
 
 </article>
-<p class=\"post-title h-cinzel\">
-    <em><a href=\"http://danny.ayers.name//entries/2024-09-15_hiphop\">HipHop</a></em>
-</p> 
-<!-- END ARTICLE CONTENT -->
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name//entries/2024-09-15_hiphop.html">
+        HipHop
+    </a>
+</p> <em></em>
     </body>
-      <!-- END POST PAGE TEMPLATE -->
 </html>

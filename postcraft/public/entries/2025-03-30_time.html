@@ -11,12 +11,20 @@
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
+    <strong></strong><em></em>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
         <!-- ARTICLE CONTENT -->
-<article class=\"post-content\">
+
+<article class="post-content">
+        <a href="http://danny.ayers.name//entries/2025-03-30_time.html">#</a>
     <h1>Time</h1>
 <p><em>Clocks have changed, lost an hour. I&#39;ve lost a few more myself without their help.</em></p>
 <p>Yesterday I wasted ages trying to fix a Dockerized Fuseki in my play container. Querying worked, but there was no admin page. I looked back at the Fuseki docs - the image doesn&#39;t include the admin page.</p>
-<p>But I needed a query front end. I wanted one inside my #:squirt client eventually anyway, ok, today it is. This thing looked easy enough to set up. From the <a href=\"https://docs.triply.cc/yasgui-api/\">yasguidocs </a> :</p>
+<p>But I needed a query front end. I wanted one inside my #:squirt client eventually anyway, ok, today it is. This thing looked easy enough to set up. From the <a href="https://docs.triply.cc/yasgui-api/">yasguidocs </a> :</p>
 <pre><code>&lt;head&gt;
   &lt;link href=&quot;https://unpkg.com/@triply/yasgui/build/yasgui.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
   &lt;script src=&quot;https://unpkg.com/@triply/yasgui/build/yasgui.min.js&quot;&gt;&lt;/script&gt;
@@ -29,7 +37,7 @@
 &lt;/body&gt;
 </code></pre>
 <p>After about 3 hours using Claude Projects to integrate this into #:squirt, it finally worked. I looked at how Claude had figured it out. Essentially :</p>
-<pre><code class=\"language-javascript\">  const container = document.getElementById(&#39;yasgui-container&#39;);
+<pre><code class="language-javascript">  const container = document.getElementById(&#39;yasgui-container&#39;);
   if (container) {
     container.innerHTML = `
       &lt;div class=&quot;yasgui-init&quot;&gt;
@@ -44,10 +52,10 @@
  </p>
 
 </article>
-<p class=\"post-title h-cinzel\">
-    <em><a href=\"http://danny.ayers.name//entries/2025-03-30_time\">Time</a></em>
-</p> 
-<!-- END ARTICLE CONTENT -->
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name//entries/2025-03-30_time.html">
+        Time
+    </a>
+</p> <em></em>
     </body>
-      <!-- END POST PAGE TEMPLATE -->
 </html>

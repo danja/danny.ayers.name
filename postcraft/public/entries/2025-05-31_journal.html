@@ -11,15 +11,23 @@
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
+    <strong></strong><em></em>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
         <!-- ARTICLE CONTENT -->
-<article class=\"post-content\">
+
+<article class="post-content">
+        <a href="http://danny.ayers.name//entries/2025-05-31_journal.html">#</a>
     <h1>Journal 2025-05-31</h1>
 <p>This morning I was woken by Federico&#39;s tractor about 15 mins before my alarm. But that was fine, last night I prepared a flask of coffee. I did about 2 hours worth of dev with Claude before getting out of bed. Then went shopping, I&#39;ve just fixed the Claude artifacts and I&#39;m very happy. A very productive morning!</p>
-<p><img src=\"/images/2025-05/jsdoc-rdf.png\" alt=\"JSDoc RDF poster\"></p>
+<p><img src="/images/2025-05/jsdoc-rdf.png" alt="JSDoc RDF poster"></p>
 <h2>JSDoc RDF Plugin</h2>
-<p>It does what JSDoc does, with an output in RDF Turtle : <a href=\"https://github.com/danja/jsdoc-rdf\">jsdoc-rdf</a> on GitHub. Something I&#39;ve wanted for years but never got around to. It became more pressing now I&#39;ve started integrating LLMs etc into my knowledgebase setup - in <a href=\"https://github.com/danja/semem\">Semem</a> (which still needs a bit of tweaking for my artificial midsummer break deadline).</p>
+<p>It does what JSDoc does, with an output in RDF Turtle : <a href="https://github.com/danja/jsdoc-rdf">jsdoc-rdf</a> on GitHub. Something I&#39;ve wanted for years but never got around to. It became more pressing now I&#39;ve started integrating LLMs etc into my knowledgebase setup - in <a href="https://github.com/danja/semem">Semem</a> (which still needs a bit of tweaking for my artificial midsummer break deadline).</p>
 <h2>OpenTelemetry in Transmissions</h2>
-<p>This seems a must-have for my pipeliney thing. Ok, every node in a transmission (= pipeline) is an implementation of a <code>Processor</code>. That interface is descended from <code>ProcessorImpl</code> which does the work of running the processors. This latter now has hooks into <a href=\"https://github.com/open-telemetry\">Open Telemetry</a>. There is space for hooks in the code responsibility for the construction of pipelines, as well as in the API bits. But being lower demand, they are lower priority.</p>
+<p>This seems a must-have for my pipeliney thing. Ok, every node in a transmission (= pipeline) is an implementation of a <code>Processor</code>. That interface is descended from <code>ProcessorImpl</code> which does the work of running the processors. This latter now has hooks into <a href="https://github.com/open-telemetry">Open Telemetry</a>. There is space for hooks in the code responsibility for the construction of pipelines, as well as in the API bits. But being lower demand, they are lower priority.</p>
 <p>I haven&#39;t a clue yet how best to make use of this, I believe I&#39;ll need Prometheus and/or Grafana somewhere.</p>
 <h2>Filesystem watching for transmissions</h2>
 <p>Not unrelated to the telemetry thing. Right now, the #:Postcraft doc pipelines to render this blog process every single source markdown file. So I just added this fs watcher.</p>
@@ -39,10 +47,10 @@ Also :</p>
 </blockquote>
 
 </article>
-<p class=\"post-title h-cinzel\">
-    <em><a href=\"http://danny.ayers.name//entries/2025-05-31_journal\">Journal 2025-05-31</a></em>
-</p> 
-<!-- END ARTICLE CONTENT -->
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name//entries/2025-05-31_journal.html">
+        Journal 2025-05-31
+    </a>
+</p> <em></em>
     </body>
-      <!-- END POST PAGE TEMPLATE -->
 </html>

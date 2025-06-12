@@ -11,8 +11,16 @@
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
+    <strong></strong><em></em>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
         <!-- ARTICLE CONTENT -->
-<article class=\"post-content\">
+
+<article class="post-content">
+        <a href="http://danny.ayers.name//entries/2024-10-21_tinge.html">#</a>
     <h1>Tinge</h1>
 <p>&#39;Tinge&#39; was the solution to the clue &#39;Hint&#39; in today&#39;s Guardian Quick Crossword, the one I got a little stuck on - shoddy clue, imho.</p>
 <p>I completed it in 8 minutes - a personal best, I believe. I think I got it down to 10 when I was doing it pretty much every day in Buxton, in the pub after work. Now I only try every few week.</p>
@@ -27,13 +35,13 @@
 <p>I reckon I need a root <code>manifest.ttl</code> (in <code>server/deploy</code>) that has a list of includes to pick up and run the individual instances.</p>
 <p>Where&#39;s that ns?</p>
 <p>Oh dear. I was thinking separation of concerns but this is something like the bastard child of premature disoptimisation and NAGNI.</p>
-<pre><code class=\"language-turtle\">@prefix trm: &lt;http://purl.org/stuff/transmission/&gt; .
+<pre><code class="language-turtle">@prefix trm: &lt;http://purl.org/stuff/transmission/&gt; .
 @prefix fs: &lt;http://purl.org/stuff/filesystem/&gt; .
 @prefix pc: &lt;http://purl.org/stuff/postcraft/&gt; .
 @prefix t: &lt;http://hyperdata.it/transmissions/&gt; . # for custom terms &amp; instances
 </code></pre>
 <p>From now on, stick everything under :</p>
-<pre><code class=\"language-turtle\">@prefix tns: &lt;http://purl.org/stuff/transmissions/&gt; .
+<pre><code class="language-turtle">@prefix tns: &lt;http://purl.org/stuff/transmissions/&gt; .
 </code></pre>
 <p>Flip that lot ^ later.</p>
 <p>What does this root manifest need to say?</p>
@@ -43,7 +51,7 @@
 <p>#:todo I should get #:vb VocBench running soon.</p>
 <p>#:todo Grr. Need to modify all the Turtle.</p>
 <p>Ok, I&#39;ve got things like :</p>
-<pre><code class=\"language-turtle\">@prefix trm: &lt;http://purl.org/stuff/transmission/&gt; .
+<pre><code class="language-turtle">@prefix trm: &lt;http://purl.org/stuff/transmission/&gt; .
 
 :clean a trm:Pipeline ;
     rdfs:label &quot;clean&quot; ;
@@ -56,7 +64,7 @@
 <p>JSON guff.</p>
 <p>Hmm. I want those files to be treated as named graphs, but also try and avoid flipping to nquads just yet if I can help it.</p>
 <p>REview -</p>
-<pre><code class=\"language-sh\">cd ~/github-danny/transmissions
+<pre><code class="language-sh">cd ~/github-danny/transmissions
  ./trans postcraft ../server/docs/postcraft
 </code></pre>
 <p> So I guess the child manifests should have an association with the application that uses them.</p>
@@ -64,7 +72,7 @@
 <p> The manifests as they stand are instancy, many share the same <strong>application</strong>, just different details.</p>
 <p> How have I been doing fs paths in them so far!?</p>
 <p>Crudely.</p>
-<pre><code class=\"language-turtle\">t:CSS a pc:StaticGroup ;
+<pre><code class="language-turtle">t:CSS a pc:StaticGroup ;
     pc:site &lt;https://danny.ayers.name/&gt; ;
     fs:sourceDirectory &quot;layouts/mediocre/css&quot; ;
     fs:targetDirectory &quot;public/home/css&quot; .
@@ -73,7 +81,7 @@
 <p>Naming. Saigon, shit.</p>
 <p><code>realm</code> would probably be more accurate, but that&#39;s so overloaded. Go with <code>space</code></p>
 <p>Prefix <code>tran</code> looks ok.</p>
-<pre><code class=\"language-turtle\"># server/deploy/manifest.ttl
+<pre><code class="language-turtle"># server/deploy/manifest.ttl
 
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
@@ -87,7 +95,7 @@
       :targetPath &quot;../server/2024/danny-ayers.name&quot; .
 </code></pre>
 <p>Ok, that might be enough of a starter. But better try it first with the new spaces-</p>
-<pre><code class=\"language-turtle\"># server/deploy/manifest.ttl
+<pre><code class="language-turtle"># server/deploy/manifest.ttl
 
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
@@ -108,11 +116,11 @@
 </code></pre>
 <p>Heh, I&#39;d got a note-to-self in there mentioning SIOC. I bet that has some of these things.</p>
 <p>So the runner will be something like :</p>
-<pre><code class=\"language-sh\">cd ~/github-danny/transmissions
+<pre><code class="language-sh">cd ~/github-danny/transmissions
 ./trans ../server/deploy
 </code></pre>
 <p>Ok,that works. But how do I get at the Dataset?</p>
-<pre><code class=\"language-sh\">| Running :  (SM) p10 a DatasetReader
+<pre><code class="language-sh">| Running :  (SM) p10 a DatasetReader
 DatasetReader, datasetName = dataset
 DatasetReader, message[datasetName] =
 </code></pre>
@@ -122,10 +130,10 @@ DatasetReader, message[datasetName] =
  </p>
 
 </article>
-<p class=\"post-title h-cinzel\">
-    <em><a href=\"http://danny.ayers.name//entries/2024-10-21_tinge\">Tinge</a></em>
-</p> 
-<!-- END ARTICLE CONTENT -->
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name//entries/2024-10-21_tinge.html">
+        Tinge
+    </a>
+</p> <em></em>
     </body>
-      <!-- END POST PAGE TEMPLATE -->
 </html>

@@ -25,6 +25,7 @@
 # for md-to-sparqlstore
 
 :dirWalker a :ConfigSet ;
+  #  :limit "3" ; # for debugging
    :sourceDir "content/raw" .
 
 :readerSet a :ConfigSet ;
@@ -33,8 +34,9 @@
 :entryExtras a :ConfigSet ;
  #  :loglevel "debug" ;
     :rawDir "content/raw" ;
-    :renderPath "" ;
+    :renderPath "" ; # should probably come at render time
     :baseURI <http://danny.ayers.name/> ;
+    :graph <http://danny.ayers.name> ;
     :creatorName "Danny" ;
     :creatorURI <http://danny.ayers.name/me> .
 
@@ -50,25 +52,25 @@
 ### for sparqlstore-to-html
 
 :resultIterator a :ConfigSet ;
+  #  :limit "2"; # for debugging
     :forEach "queryResults.results.bindings" ;
     :remove "queryResults" ;
     :graph <http://danny.ayers.name> .
 
 :prepArticle a :ConfigSet  ;
     :remove "queryResults" ;
-    :rename (:c1 :c3 :u1)  .
-        # for content
-        :c1   :pre    "currentItem.title.value" ;
-              :post "contentBlocks.title"  .
-        :c2   :pre    "currentItem.htmlContent.value" ;
-              :post  "contentBlocks.htmlContent"  .
-        #:c2   :pre    "currentItem.content.value" ;
-         #     :post  "contentBlocks.content"  .
-        :c3   :pre    "appRunStart" ;
-              :post  "contentBlocks.published"  .
-        # for SPARQL update
-        :u1     :pre    "currentItem.article.value" ;
+    :rename (:prepA1 :prepA2 :prepA3 :prepA4)  .
+       # :prepA0 :pre    "currentItem.graph.value" ;
+        #        :post   "contentBlocks.graph"  .
+        :prepA1 :pre    "currentItem.uri.value" ;
                 :post   "contentBlocks.uri"  .
+        :prepA2 :pre    "currentItem.title.value" ;
+                :post   "contentBlocks.title"  .
+        :prepA3 :pre    "currentItem.created.value" ;
+                :post  "contentBlocks.created"  .
+        :prepA4 :pre    "appRunStart" ;
+                :post  "contentBlocks.published"  .
+
 
 :markdown a :ConfigSet ;
    # :loglevel "debug" ;
@@ -80,11 +82,21 @@
     :endpointSettings "system/endpoints.json" ;
         :graph <http://danny.ayers.name> .
 
+:shiftHTML a :ConfigSet  ;
+    :rename (:sh1 :sh2 :sh3)  .
+        # for content
+        :sh1    :pre    "content" ;
+                :post "contentBlocks.content"  .
+        :sh2    :pre    "graph" ;
+                :post "contentBlocks.graph"  .
+        :sh3    :pre    "currentItem.uri.value" ;
+                :post "contentBlocks.uri"  .
+
 :updateArticleHTML a :ConfigSet ;
 #:loglevel "debug" ;
     :delay "100" ;
     :dataBlock "contentBlocks" ;
-    :escape true ;
+   # :escape true ;
     :templateFilename "system/sparql-templates/save-html-chunk.njk" ;
     :endpointSettings "system/endpoints.json" ;
          :graph <http://danny.ayers.name> .
@@ -94,11 +106,7 @@
     :templateFilename "layout/base/templates/article-content.njk" .
    # :loglevel "debug" .
 
-:shiftHTML a :ConfigSet  ;
-    :rename (:sh1)  .
-        # for content
-        :sh1   :pre    "content" ;
-              :post "contentBlocks.content"  .
+
 
 :articlePageTemplate a :ConfigSet ;
     :templateFilename "layout/base/templates/article-page.njk" .
@@ -107,7 +115,7 @@
   :asPath true ;
   :targetField "temp" ;
   :values (:fn1 :fn2 :fn3 :fn4) .
-  :fn1 :field "targetPath" .
+  :fn1 :field "targetDir" .
   :fn2 :string "public" .
   :fn3 :field "currentItem.relative.value" .
   :fn4 :field "currentItem.slug.value" .
@@ -151,7 +159,7 @@
         :pc3   :pre    "currentItem.created.value" ;
               :post  "contentBlocks.created"  .
 
-        :pu1     :pre    "currentItem.article.value" ;
+        :pu1     :pre    "currentItem.uri.value" ;
                 :post   "contentBlocks.uri"  .
 
 :accumulator a :ConfigSet ;

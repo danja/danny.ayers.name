@@ -11,18 +11,26 @@
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
+    <strong></strong><em></em>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
         <!-- ARTICLE CONTENT -->
-<article class=\"post-content\">
+
+<article class="post-content">
+        <a href="http://danny.ayers.name//entries/2025-05-28_journal.html">#</a>
     <h1>Journal 2025-05-28</h1>
 <h2>VNC</h2>
 <ul>
 <li>Client : <code>vinagre</code></li>
 <li>Server : <code>x11vnc</code></li>
 </ul>
-<pre><code class=\"language-sh\">sudo nano /lib/systemd/system/x11vnc.service
+<pre><code class="language-sh">sudo nano /lib/systemd/system/x11vnc.service
 </code></pre>
 <p>Edit <code>USERNAME</code> as appropriate:</p>
-<pre><code class=\"language-sh\">[Unit]
+<pre><code class="language-sh">[Unit]
 Description=Start x11vnc at startup.
 After=multi-user.target
 
@@ -33,17 +41,17 @@ ExecStart=/usr/bin/x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth
 [Install]
 WantedBy=multi-user.target
 </code></pre>
-<pre><code class=\"language-sh\">sudo systemctl daemon-reload
+<pre><code class="language-sh">sudo systemctl daemon-reload
 sudo systemctl enable x11vnc.service
 sudo systemctl start x11vnc
 sudo systemctl status x11vnc
 </code></pre>
 
 </article>
-<p class=\"post-title h-cinzel\">
-    <em><a href=\"http://danny.ayers.name//entries/2025-05-28_journal\">Journal 2025-05-28</a></em>
-</p> 
-<!-- END ARTICLE CONTENT -->
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name//entries/2025-05-28_journal.html">
+        Journal 2025-05-28
+    </a>
+</p> <em></em>
     </body>
-      <!-- END POST PAGE TEMPLATE -->
 </html>
