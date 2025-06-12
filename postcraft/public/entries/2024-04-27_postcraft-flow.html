@@ -12,14 +12,14 @@
     <!-- POST PAGE TEMPLATE -->
     <body>
         <!-- ARTICLE CONTENT -->
-<article class="post-content">
+<article class=\"post-content\">
     <h1>Postcraft Flow : 2024-04-27</h1>
 <p><em>TODO - when more static place alongside <code>transmission.ttl</code> as <code>about.md</code></em></p>
 <p>This is a work in progress, a sketch of the flow for the Postcraft pipeline. It&#39;s basically a Static Site Builder. It appears complex here, but that&#39;s a <strong>feature!</strong> Well, not exactly. The individual operations, which would typically appear as hardwired functions in a dedicated site builder are here implemented as independent services, connected at runtime via a definition that&#39;s expressed declaratively.</p>
 <p><em>Major refactoring required...later. But wherever possible here, instead of <code>execute(data, context)</code> favour <code>execute(false, context)</code>, with <code>context.default</code> instead of <code>data</code>.</em></p>
 <p>A Turtle file <code>transmission.ttl</code> defines the general topology. Configuration details for the individual services are in <code>services.ttl</code>. The configuration specific to the site being built (dirs,templates etc) is supplied in <code>manifest.ttl</code>.</p>
 <p>Right now the pipeline is a simple sequence of steps. The steps are executed in order, with the output of each step being the input to the next. There are forks in the pipeline at <code>PostcraftDispatcher</code> and <code>DirWalker</code>, but as the subsequent services are still just sequences of steps, it can still be thought of as a sequence.</p>
-<p>In <code>transmission.ttl</code> the topology is defined as an <code>rdf:List</code> (confusingly aka an RDF Collection, see <a href="https://ontola.io/blog/ordered-data-in-rdf">Ordered data in RDF</a>) using the concise Turtle syntax:</p>
+<p>In <code>transmission.ttl</code> the topology is defined as an <code>rdf:List</code> (confusingly aka an RDF Collection, see <a href=\"https://ontola.io/blog/ordered-data-in-rdf\">Ordered data in RDF</a>) using the concise Turtle syntax:</p>
 <pre><code>:postcraft a trm:Pipeline ;
 trm:pipe (:s1 :s2 :s3 :s4 :s5 :s6 :s7 :s8 :s9 :s10 :s11) .
 </code></pre>
@@ -91,7 +91,7 @@ context[context.loadContext] = content
 out: context.content is HTML</p>
 <h4>:s10 a :Templater .</h4>
 <p>for now just using replace()</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals</a></p>
+<p><a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals\">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals</a></p>
 <h4>:s11 a :FileWriter .</h4>
 <h3>Utility Services</h3>
 <h4>:NOP .</h4>
@@ -101,8 +101,8 @@ out: context.content is HTML</p>
 <h5>:s3 a :ShowMessage .</h5>
 
 </article>
-<p class="post-title h-cinzel">
-    <em><a href="http://danny.ayers.name//entries/2024-04-27_postcraft-flow">Postcraft Flow : 2024-04-27</a></em>
+<p class=\"post-title h-cinzel\">
+    <em><a href=\"http://danny.ayers.name//entries/2024-04-27_postcraft-flow\">Postcraft Flow : 2024-04-27</a></em>
 </p> 
 <!-- END ARTICLE CONTENT -->
     </body>

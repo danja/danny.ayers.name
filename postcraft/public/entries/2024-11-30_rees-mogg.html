@@ -12,7 +12,7 @@
     <!-- POST PAGE TEMPLATE -->
     <body>
         <!-- ARTICLE CONTENT -->
-<article class="post-content">
+<article class=\"post-content\">
     <h1>Rees-Mogg</h1>
 <p>Glorious description of Jacob Rees-Mogg from Matthew Parris on BBC Radio 4 just now :</p>
 <pre><code>He was pantomime in the House of Commons.
@@ -25,14 +25,14 @@ Basically, he&#39;s the stupid person&#39;s idea of an intelligent person.
 Ran out of Claude tokens for now. Dogwalk time.</p>
 <p>Where the pre() &amp; post() thing?</p>
 <p>This needs flagging up better :</p>
-<pre><code class="language-sh">| Running &gt;&gt;&gt; :  (SD.p10) BLK a Blanker
+<pre><code class=\"language-sh\">| Running &gt;&gt;&gt; :  (SD.p10) BLK a Blanker
 * Warn : Processor.getPropertyFromMyConfig(), property not defined : http://purl.org/stuff/transmission/preserve
 </code></pre>
 <p>Ops, a breakage slipped in :</p>
-<pre><code class="language-sh"> ./trans claude-json-converter.nop
+<pre><code class=\"language-sh\"> ./trans claude-json-converter.nop
 </code></pre>
 <p>runs all the transmissions.</p>
-<pre><code class="language-turtle">:ccc40 a :JSONWalker ;
+<pre><code class=\"language-turtle\">:ccc40 a :JSONWalker ;
      trm:configKey :messagesConfig .
 
 #####
@@ -42,7 +42,7 @@ Ran out of Claude tokens for now. Dogwalk time.</p>
          trm:pointer &quot;content&quot; .
 </code></pre>
 <p> should be :</p>
-<pre><code class="language-turtle">:ccc40 a :JSONWalker ;
+<pre><code class=\"language-turtle\">:ccc40 a :JSONWalker ;
      trm:config :messagesConfig .
 
 #####
@@ -54,7 +54,7 @@ Ran out of Claude tokens for now. Dogwalk time.</p>
 <li><code>TransmissionsBuilder</code> bits?</li>
 <li>#:xyz rename  <code>trm:ServiceConfig</code> -&gt;  <code>trm:ProcessorConfig</code></li>
 </ol>
-<pre><code class="language-turtle">:xyz a rpp:Refactoring, rpp:Task ;
+<pre><code class=\"language-turtle\">:xyz a rpp:Refactoring, rpp:Task ;
      rpp:target :pivotN .
 
 :pivotN a um:Pivot ;
@@ -62,8 +62,8 @@ Ran out of Claude tokens for now. Dogwalk time.</p>
 </code></pre>
 
 </article>
-<p class="post-title h-cinzel">
-    <em><a href="http://danny.ayers.name//entries/2024-11-30_rees-mogg">Rees-Mogg</a></em>
+<p class=\"post-title h-cinzel\">
+    <em><a href=\"http://danny.ayers.name//entries/2024-11-30_rees-mogg\">Rees-Mogg</a></em>
 </p> 
 <!-- END ARTICLE CONTENT -->
     </body>

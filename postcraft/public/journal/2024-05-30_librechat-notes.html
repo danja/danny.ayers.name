@@ -12,15 +12,15 @@
     <!-- POST PAGE TEMPLATE -->
     <body>
         <!-- ARTICLE CONTENT -->
-<article class="post-content">
+<article class=\"post-content\">
     <h1>LibreChat Notes 2024-05-30</h1>
-<p><a href="https://www.librechat.ai/">LibreChat</a> is a front end for conversational AI services. It&#39;s design is not dissimilar to OpenAI&#39;s ChatGPT Web interface, but supports a wide range of services. It&#39;s open source, and can be run locally or wherever. They recommend using Docker, which is what I did. I&#39;m on Ubuntu here, they support all the usual desktop platforms.</p>
+<p><a href=\"https://www.librechat.ai/\">LibreChat</a> is a front end for conversational AI services. It&#39;s design is not dissimilar to OpenAI&#39;s ChatGPT Web interface, but supports a wide range of services. It&#39;s open source, and can be run locally or wherever. They recommend using Docker, which is what I did. I&#39;m on Ubuntu here, they support all the usual desktop platforms.</p>
 <p><strong>LibreChat is in active development, flux likely, so note the date above.</strong></p>
-<p>For starters I wanted to use models from <a href="https://openai.com/index/openai-api/">OpenAI</a> and <a href="https://groq.com/">Groq</a>. API keys are needed - OpenAI&#39;s is pay-as-you-go, Groq is free but capped usage (and very fast).</p>
-<p>Following the <a href="https://www.librechat.ai/docs/local/docker">Local Installation of LibreChat with Docker</a> will get the thing up and basically running with no fuss. But out of the box there are a few things that might not be immediately obvious.</p>
+<p>For starters I wanted to use models from <a href=\"https://openai.com/index/openai-api/\">OpenAI</a> and <a href=\"https://groq.com/\">Groq</a>. API keys are needed - OpenAI&#39;s is pay-as-you-go, Groq is free but capped usage (and very fast).</p>
+<p>Following the <a href=\"https://www.librechat.ai/docs/local/docker\">Local Installation of LibreChat with Docker</a> will get the thing up and basically running with no fuss. But out of the box there are a few things that might not be immediately obvious.</p>
 <p>For the OpenAI API key, first copy yours to clipboard then click the dropdown labeled <strong>OpenAI</strong> top-left of screen and click the gear icon to the right of OpenAI on the list. That&#39;s it <strong>done</strong>.</p>
 <p>For <strong>Groq</strong> it&#39;s a little more involved.</p>
-<p>I was going around in circles for quite a while until I saw that the instructions for <a href="https://www.librechat.ai/docs/configuration/librechat_yaml/setup">YAML Setup</a> appear <em>after</em> those for <a href="https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints">Custom AI Endpoints</a>. The former tells you a <code>docker-compose.override.yml</code> is needed (a new one from the code on that page worked for me). That points Docker to a <code>librechat.yaml</code> file.
+<p>I was going around in circles for quite a while until I saw that the instructions for <a href=\"https://www.librechat.ai/docs/configuration/librechat_yaml/setup\">YAML Setup</a> appear <em>after</em> those for <a href=\"https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints\">Custom AI Endpoints</a>. The former tells you a <code>docker-compose.override.yml</code> is needed (a new one from the code on that page worked for me). That points Docker to a <code>librechat.yaml</code> file.
 Conveniently (for me) their <code>librechat.example.yaml</code> file has an entry for Groq, so I just copied &amp; renamed the whole file to <code>librechat.yaml</code>. It contains:</p>
 <pre><code>  custom:
     # Groq Example
@@ -61,8 +61,8 @@ sudo systemctl start librechat
  </p>
 
 </article>
-<p class="post-title h-cinzel">
-    <em><a href="http://danny.ayers.name//journal/2024-05-30_librechat-notes">LibreChat Notes 2024-05-30</a></em>
+<p class=\"post-title h-cinzel\">
+    <em><a href=\"http://danny.ayers.name//journal/2024-05-30_librechat-notes\">LibreChat Notes 2024-05-30</a></em>
 </p> 
 <!-- END ARTICLE CONTENT -->
     </body>

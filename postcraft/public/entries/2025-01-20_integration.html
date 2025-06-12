@@ -12,14 +12,14 @@
     <!-- POST PAGE TEMPLATE -->
     <body>
         <!-- ARTICLE CONTENT -->
-<article class="post-content">
+<article class=\"post-content\">
     <h1>Integration</h1>
 <p>/home/danny/github-danny/hyperdata/workspaces/semem/articles/description_2025-01-13</p>
 <blockquote>
 <p>The semem project has a lot of rough code and tests. You will find the source and descriptions in project knowledge. The task today is to run the tests and get everything working accordingly. I will run things, your job is to implement anything missing and fix any errors.</p>
 </blockquote>
 <p>I need to get Ollama running first...</p>
-<pre><code class="language-sh">ollama serve
+<pre><code class=\"language-sh\">ollama serve
   413  ollama list
   414  ollama ps
   415  ollama run qwen2:1.5b  
@@ -28,7 +28,7 @@
   482  chmod 755 ollama-embedding-test.sh
 </code></pre>
 <p>...and I also need a SPARQL store. Might as well go with the #:tbox Docker container.</p>
-<pre><code class="language-yaml">healthcheck:
+<pre><code class=\"language-yaml\">healthcheck:
   test: [&quot;CMD-SHELL&quot;, &quot;wget -q --spider http://localhost:3030/$/ping&quot;]
   interval: 30s
   timeout: 10s
@@ -39,7 +39,7 @@ ERROR: Invalid interpolation format for &quot;healthcheck&quot; option in servic
 </code></pre>
 <p>I ended up pulling Fuseki&#39;s healthcheck out, come back to it later.</p>
 <p>#:todo add profiling, healthcheck with OpenTelemetry</p>
-<p>Fuseki config&#39;s not quite as I want. RTFM time. Not sure I&#39;d noticed this in the <a href="https://jena.apache.org/documentation/fuseki2/fuseki-quick-start.html#publish-an-rdf-file-as-a-sparql-endpoint">Quick Start</a> before :</p>
+<p>Fuseki config&#39;s not quite as I want. RTFM time. Not sure I&#39;d noticed this in the <a href=\"https://jena.apache.org/documentation/fuseki2/fuseki-quick-start.html#publish-an-rdf-file-as-a-sparql-endpoint\">Quick Start</a> before :</p>
 <blockquote>
 <strong>Publish an RDF file as a SPARQL endpoint.</strong>
 <p>
@@ -63,9 +63,9 @@ Unpack the distribution. Run </p>
 <h3>Gonna Need a Bigger AI...</h3>
 <p>I got distracted. Spent a while playing with #:sheltopusik. Now it has a load more functionality, that doesn&#39;t work, and yet again I ran out of Claude tokens.</p>
 <p><em>back to tbox</em></p>
-<p><a href="https://github.com/apache/jena/tree/main/jena-fuseki2/examples">https://github.com/apache/jena/tree/main/jena-fuseki2/examples</a></p>
+<p><a href=\"https://github.com/apache/jena/tree/main/jena-fuseki2/examples\">https://github.com/apache/jena/tree/main/jena-fuseki2/examples</a></p>
 <p>note inference &amp; shacl supported</p>
-<pre><code class="language-yaml">      - ./config/fuseki/databases/ds.ttl:/fuseki/configuration/fuseki/databases/ds.ttl
+<pre><code class=\"language-yaml\">      - ./config/fuseki/databases/ds.ttl:/fuseki/configuration/fuseki/databases/ds.ttl
 
 ...
 command:
@@ -103,7 +103,7 @@ command:
 </li>
 <li><p>#:todo link to #:adhd #:bracelets vid</p>
 </li>
-<li><p>#:todo have <a href="http://purl.org/stuff/%5Bnick%5D">http://purl.org/stuff/[nick]</a> resolve to profiles</p>
+<li><p>#:todo have <a href=\"http://purl.org/stuff/%5Bnick%5D\">http://purl.org/stuff/[nick]</a> resolve to profiles</p>
 </li>
 </ul>
 <h2>hardinfo</h2>
@@ -111,8 +111,8 @@ command:
  </p>
 
 </article>
-<p class="post-title h-cinzel">
-    <em><a href="http://danny.ayers.name//entries/2025-01-20_integration">Integration</a></em>
+<p class=\"post-title h-cinzel\">
+    <em><a href=\"http://danny.ayers.name//entries/2025-01-20_integration\">Integration</a></em>
 </p> 
 <!-- END ARTICLE CONTENT -->
     </body>

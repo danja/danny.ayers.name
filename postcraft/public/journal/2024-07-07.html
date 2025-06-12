@@ -12,36 +12,36 @@
     <!-- POST PAGE TEMPLATE -->
     <body>
         <!-- ARTICLE CONTENT -->
-<article class="post-content">
+<article class=\"post-content\">
     <h1>Mostly Transmissions Today</h1>
 <p>Main things:</p>
-<ol start="0">
+<ol start=\"0\">
 <li>AI support</li>
 <li>Refactor #Transmissions</li>
 <li>Tidy up #Postcraft</li>
 <li>FOAF video recovery</li>
 </ol>
 <h2>AI Support</h2>
-<p>The other day I had a play with <a href="https://www.librechat.ai/">LibreChat</a>, which is a chatbot frontend that can be connected to a range of AI services. I got it running on my local machine, have done a <code>git pull</code> and have been adding services.</p>
-<p><a href="">notes from the other day</a></p>
-<p>From <a href="https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints">Known Endpoints</a> in <code>librechat.example.yaml</code> :</p>
+<p>The other day I had a play with <a href=\"https://www.librechat.ai/\">LibreChat</a>, which is a chatbot frontend that can be connected to a range of AI services. I got it running on my local machine, have done a <code>git pull</code> and have been adding services.</p>
+<p><a href=\"\">notes from the other day</a></p>
+<p>From <a href=\"https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints\">Known Endpoints</a> in <code>librechat.example.yaml</code> :</p>
 <ul>
-<li><a href="https://anyscale.com/">AnyScale</a></li>
-<li><a href="https://apipie.ai/">API Pie</a></li>
-<li><a href="https://fireworks.ai/">Fireworks</a></li>
-<li><a href="https://groq.ai/">GROQ</a></li>
-<li><a href="https://huggingface.co/">HuggingFace</a></li>
-<li><a href="https://mistral.ai/">Mistral AI</a></li>
-<li><a href="https://openrouter.ai/">OpenRouter</a></li>
-<li><a href="https://perplexity.ai/">Perplexity</a> - requires payment first</li>
-<li><a href="https://shuttleai.app/">Shuttle AI</a></li>
-<li><a href="https://api.together.ai/">Together AI</a></li>
+<li><a href=\"https://anyscale.com/\">AnyScale</a></li>
+<li><a href=\"https://apipie.ai/\">API Pie</a></li>
+<li><a href=\"https://fireworks.ai/\">Fireworks</a></li>
+<li><a href=\"https://groq.ai/\">GROQ</a></li>
+<li><a href=\"https://huggingface.co/\">HuggingFace</a></li>
+<li><a href=\"https://mistral.ai/\">Mistral AI</a></li>
+<li><a href=\"https://openrouter.ai/\">OpenRouter</a></li>
+<li><a href=\"https://perplexity.ai/\">Perplexity</a> - requires payment first</li>
+<li><a href=\"https://shuttleai.app/\">Shuttle AI</a></li>
+<li><a href=\"https://api.together.ai/\">Together AI</a></li>
 </ul>
 <p>I&#39;ve added API keys for those to my <code>.env</code>. (Don&#39;t forget to include it in the <code>.gitignore</code> before committing!)</p>
-<p>Listed in the <a href="https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints">endpoints</a> but weren&#39;t in the sample <code>.env</code>, I&#39;ve also added:</p>
+<p>Listed in the <a href=\"https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints\">endpoints</a> but weren&#39;t in the sample <code>.env</code>, I&#39;ve also added:</p>
 <ul>
-<li><a href="https://cohere.com">Cohere</a></li>
-<li><a href="https://databricks.com">DataBricks</a> - wasn&#39;t obvious where to get the API key, left for now</li>
+<li><a href=\"https://cohere.com\">Cohere</a></li>
+<li><a href=\"https://databricks.com\">DataBricks</a> - wasn&#39;t obvious where to get the API key, left for now</li>
 </ul>
 <p><em>to be continued...</em></p>
 <p>It also supports RAG, and somewhere it mentions using HuggingFace for embeddings. So also in my <code>.env</code>:</p>
@@ -54,13 +54,13 @@ danny@danny-desktop:~/AI/LibreChat$ docker compose up -d
 </code></pre>
 <p>Hmm. It doesn&#39;t appear to be picking up the new <code>.env</code> settings, even after <code>docker compose </code>. Try again later.</p>
 <h2>Tidy up Postcraft</h2>
-<p>The <a href="https://github.com/danja/transmissions">Transmissions</a> refactoring might take a while, and will no doubt break the setup for <a href="https://github.com/danja/postcraft">Postcraft</a> in the interim. So I&#39;ll do a quick tidy up there first, publish the current material.</p>
+<p>The <a href=\"https://github.com/danja/transmissions\">Transmissions</a> refactoring might take a while, and will no doubt break the setup for <a href=\"https://github.com/danja/postcraft\">Postcraft</a> in the interim. So I&#39;ll do a quick tidy up there first, publish the current material.</p>
 <p>ok, <code>2024-04-27_postcraft-flow.md</code> says:</p>
 <pre><code>./run postcraft /home/danny/HKMS/postcraft/danny.ayers.name
 </code></pre>
 <p>I guess that&#39;ll be from <code>danny@danny-desktop:~/HKMS/transmissions$</code> - the terminal I have in #Cursor.</p>
 <p>Ok, that appears to have run ok. Stuff locally at <code>http://localhost/danny.ayers.name/public/blog/</code>
-I&#39;ll push those changes, then do a quick check of <a href="https://danny.ayers.name/">https://danny.ayers.name/</a></p>
+I&#39;ll push those changes, then do a quick check of <a href=\"https://danny.ayers.name/\">https://danny.ayers.name/</a></p>
 <p>It&#39;s there, but without the CSS.</p>
 <pre><code>  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/fonts.css&quot; type=&quot;text/css&quot; /&gt;
 </code></pre>
@@ -91,7 +91,7 @@ about.md  css  fonts  layout-sample.html  templates
 <p>I forget what <strong>Transmissions services</strong> (in <code>transmissions/src/services/</code>) I&#39;ve got set up around <strong>copy</strong>, one might need to be tweaked/added.
 It&#39;ll be easiest to run at the start of the pipeline, before things start forking.
 That will take its config from <code>transmissions/src/applications/postcraft/services.ttl</code>. Which in turn (I think) should take its details from the <code>manifest.ttl</code> in the site directory.</p>
-<p>I&#39;ll need to check what is in place already. While I&#39;m at it, I want to tweak the content folders a bit. New version in <a href="https://github.com/danja/postcraft/blob/main/docs/site-template.md">docs/site-template.md</a>.</p>
+<p>I&#39;ll need to check what is in place already. While I&#39;m at it, I want to tweak the content folders a bit. New version in <a href=\"https://github.com/danja/postcraft/blob/main/docs/site-template.md\">docs/site-template.md</a>.</p>
 <p>Ok, so in <code>danny.ayers.name/manifest.ttl</code> I&#39;ve flipped <code>blog</code> to <code>home</code> and added :</p>
 <pre><code># STYLES ETC
 t:CSS a pc:StaticGroup ;
@@ -122,8 +122,8 @@ Enough for today.
  </p>
 
 </article>
-<p class="post-title h-cinzel">
-    <em><a href="http://danny.ayers.name//journal/2024-07-07">Mostly Transmissions Today</a></em>
+<p class=\"post-title h-cinzel\">
+    <em><a href=\"http://danny.ayers.name//journal/2024-07-07\">Mostly Transmissions Today</a></em>
 </p> 
 <!-- END ARTICLE CONTENT -->
     </body>

@@ -39,12 +39,12 @@
     :creatorURI <http://danny.ayers.name/me> .
 
 :storeArticle a :ConfigSet ;
-#:loglevel "debug" ;
+# :loglevel "debug" ;
     :delay "100" ;
     :dataBlock "contentBlocks" ;
     :templateFilename "system/sparql-templates/store-article.njk" ;
     :endpointSettings "system/endpoints.json" ;
-    :graph "http://danny.ayers.name" .
+    :graph <http://danny.ayers.name> .
 
 ###########################
 ### for sparqlstore-to-html
@@ -84,7 +84,7 @@
 #:loglevel "debug" ;
     :delay "100" ;
     :dataBlock "contentBlocks" ;
-    # :escape true ; ESCAPE HERE
+    :escape true ;
     :templateFilename "system/sparql-templates/save-html-chunk.njk" ;
     :endpointSettings "system/endpoints.json" ;
          :graph <http://danny.ayers.name> .
@@ -163,6 +163,7 @@
 ### create HTML index
 
 :prepHTML a :ConfigSet  ;
+    :loglevel "debug" ;
     :rename (:ph1 :ph2)  .
         # for content
         :ph1   :pre    "accumulator" ;
@@ -177,7 +178,7 @@
   :asPath true ;
   :targetField "destinationFile" ;
   :values (:hp1 :hp2 :hp3) .
-  :hp1 :field "targetPath" .
+  :hp1 :field "targetDir" . ####
   :hp2 :string "public" .
   :hp3 :string "index.html" .
 

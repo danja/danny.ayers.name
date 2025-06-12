@@ -15,7 +15,7 @@ SELECT DISTINCT * WHERE {
     schema:name ?creatorName .
 
 }
- # FILTER(STR(?created) != "")
+ # FILTER(STR(?creator) = "http://server/unset-base/")
 }
 ORDER BY DESC(?created)
-LIMIT 10
+LIMIT 8
