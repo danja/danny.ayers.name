@@ -31,18 +31,24 @@ Almost. It certainly *was* a product, before I bought it. I'm very unlikely to o
 
 Also in the *stuff* is my primary guitar, [The Vinocaster](https://hyperdata.it/stuff/vinocaster/). A custom job, made by me to be exactly what I wanted. Which, for all practical purposes, it is. It is a **product** in the sense that I produced it (*over many, many hours*). But that's not how `schema:Product` is defined.
 
-## Rock
+## Pebble Dashed
 
 Going a step further, how do I describe the subject of this image :
 
+![a pebble](/images/2025-06/pebble.jpeg)
 
+```turtle
+[
+    a schema:Thing ;
+    rdfs:label "pebble" ;
+    :weight "200"
+]
+```
 
 Ok, so the Schema.org vocab is maintained largely by corporate entities, in the view of which **the Web is a marketing tool**. Chances are my local browser has encountered Schema.org terms in **HTML <meta> tags** a few dozen times already today. Thing *[sic]* is, **the Web is more than just a marketing tool**.
 
-
-
-
-Tangible is a subclass of Thing disjoint from Intangible. It has the description of "a thing which is apprehensible as physically real or existent by the senses". Product is a subclass of the union of Tangible and Intangible.
+So how about  :
+> Tangible is a subclass of Thing disjoint from Intangible. It has the description of "a thing which is apprehensible as physically real or existent by the senses". (Product is a subclass of the union of Tangible and Intangible).
 
 ### A Modest Proposal
 
@@ -65,4 +71,7 @@ schema:Product a owl:Class ;
         a owl:Class ;
         owl:unionOf ( schema:Tangible schema:Intangible )
     ] .
+
+    :MyLittlePebble a schema:Tangible ;
+    :weight "300" .
 ```
