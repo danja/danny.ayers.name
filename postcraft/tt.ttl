@@ -83,12 +83,12 @@
         :graph <http://danny.ayers.name> .
 
 :shiftHTML a :ConfigSet  ;
-    :rename (:sh1 :sh2 :sh3)  .
+    :rename ( :sh1 :sh3)  .
         # for content
         :sh1    :pre    "content" ;
                 :post "contentBlocks.content"  .
-        :sh2    :pre    "graph" ;
-                :post "contentBlocks.graph"  .
+        #:sh2    :pre    "graph" ;
+         #       :post "contentBlocks.graph"  .
         :sh3    :pre    "currentItem.uri.value" ;
                 :post "contentBlocks.uri"  .
 
