@@ -1,6 +1,12 @@
 # Wave Function Collapse for Sounds
 
+An LV2 plugin.
+
 Repo : [https://github.com/danja/collapse-lv2](https://github.com/danja/collapse-lv2)
+
+Demo : [YouTube](https://www.youtube.com/watch?v=aXFnkI-dZOA) (hope that works, I got a copyright warning)
+
+It generates signal based on what it's seen, is a kind of machine learning lite. It's very noisy. Which is what I was hoping for. Aside from the obvious noise use, it *may* be useful as waveform shaper.
 
 I stumbled on [WaveFunctionCollapse](https://github.com/mxgmn/WaveFunctionCollapse), "This program generates bitmaps that are locally similar to the input bitmap.". It occurred to me that the same algorithm might be usable on audio streams. I wrote a long prompt for [DeepSeek](https://www.deepseek.com/en) which had a good long discussion with itself before producing the material below. This I passed to [Claude chat](https://claude.ai/new) together with the instructions for it to make an [LV2 plugin](https://en.wikipedia.org/wiki/LV2) for me. I want to use it in [Reaper](https://www.reaper.fm/), my DAW of choice.
 (I've already had a go at **vibe coding** with [amen-chaos](https://github.com/danja/amen-chaos) and [midi-chaos-amen](https://github.com/danja/midi-chaos-amen) with considerable success, as far as I took them). Claude gave me some patchy files which I stuck up at [GitHub](https://github.com/danja/collapse-lv2) before setting [Claude Code](https://www.anthropic.com/claude-code) on them.
