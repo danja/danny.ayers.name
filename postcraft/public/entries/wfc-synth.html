@@ -21,7 +21,10 @@
 
 <article class="post-content">
     <h1>Wave Function Collapse for Sounds</h1>
+<p>An LV2 plugin.</p>
 <p>Repo : <a href="https://github.com/danja/collapse-lv2">https://github.com/danja/collapse-lv2</a></p>
+<p>Demo : <a href="https://www.youtube.com/watch?v=aXFnkI-dZOA">YouTube</a> (hope that works, I got a copyright warning)</p>
+<p>It generates signal based on what it&#39;s seen, is a kind of machine learning lite. It&#39;s very noisy. Which is what I was hoping for. Aside from the obvious noise use, it <em>may</em> be useful as waveform shaper.</p>
 <p>I stumbled on <a href="https://github.com/mxgmn/WaveFunctionCollapse">WaveFunctionCollapse</a>, &quot;This program generates bitmaps that are locally similar to the input bitmap.&quot;. It occurred to me that the same algorithm might be usable on audio streams. I wrote a long prompt for <a href="https://www.deepseek.com/en">DeepSeek</a> which had a good long discussion with itself before producing the material below. This I passed to <a href="https://claude.ai/new">Claude chat</a> together with the instructions for it to make an <a href="https://en.wikipedia.org/wiki/LV2">LV2 plugin</a> for me. I want to use it in <a href="https://www.reaper.fm/">Reaper</a>, my DAW of choice.
 (I&#39;ve already had a go at <strong>vibe coding</strong> with <a href="https://github.com/danja/amen-chaos">amen-chaos</a> and <a href="https://github.com/danja/midi-chaos-amen">midi-chaos-amen</a> with considerable success, as far as I took them). Claude gave me some patchy files which I stuck up at <a href="https://github.com/danja/collapse-lv2">GitHub</a> before setting <a href="https://www.anthropic.com/claude-code">Claude Code</a> on them.</p>
 <p><del>So far I&#39;ve not got anything usable, I ran out of Claude tokens. Apparently <a href="https://codeassist.google/">Google Gemini</a> for coding is now free, so I may give that a shot later.</del> Gemini was slow. Went back to Claude and now <strong>it works!</strong></p>
