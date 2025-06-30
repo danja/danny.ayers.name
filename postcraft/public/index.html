@@ -36,6 +36,45 @@
                 <!-- ARTICLE CONTENT -->
 
 <article class="post-content">
+    <h1>Daft RAG</h1>
+<p>After 8 months of concerted effort, I have invented a new paradigm for open-domain question answering systems.</p>
+<p>Here is the question:</p>
+<p><strong>Which University, The University of Saskatchewan or The University of Detroit Mercy was founded first?</strong></p>
+<p>If I ask <a href="https://chat.mistral.ai/">Mistral Chat</a> it responds :</p>
+<blockquote>
+<p>The University of Detroit Mercy was founded first. It was established in 1877. The University of Saskatchewan was founded later, in 1907.</p>
+</blockquote>
+<p><a href="https://github.com/danja/semem">Semem</a>, my oh-so-sophisticated <em>Semantic Web Memory for Intelligent Agents</em> (which along with a lot of other things uses Wikipedia calls and <code>mistral-small-latest</code> under the hood) says :</p>
+<blockquote>
+<p>The University of Detroit Mercy was founded first, in 1990. The University of Saskatchewan was founded later, in 1907.</p>
+</blockquote>
+<p>According to Wikipedia :</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/University_of_Detroit_Mercy">The University of Detroit Mercy</a> was founded in 1877</li>
+<li><a href="https://en.wikipedia.org/wiki/University_of_Saskatchewan">The University of Saskatchewan</a> was founded in 1907</li>
+</ul>
+<p>It&#39;s ok, this result was actually very pleasing. I have only just started kicking the tyres of what&#39;s been implemented. The graph (in a SPARQL store) is getting very nicely populated/augmented using a bunch of different algorithms and the retrieval steps are basically working. It looks like the issue here is simply that the generated <em>corpuscles</em> (what I&#39;m calling little bits of a corpus) are not being <code>SELECT</code>ed properly to go into the final results.</p>
+<p>PS. Yes, it was a mismatch between the shape of the query and the shape of the graph. After fixing that, for this question Semem now gives :</p>
+<blockquote>
+<p>The provided context does not contain information about the founding dates of the University of Saskatchewan or the University of Detroit Mercy. Therefore, I cannot answer this question based on the given context.</p>
+</blockquote>
+<p>Which is <em>a</em> correct answer.</p>
+<p>Even more pleasing is the result of one of the other test questions :</p>
+<p><strong>Are Sorghastrum and Artabotrys found in the same areas?</strong></p>
+<blockquote>
+<p>Based on the provided context, there is no information suggesting that Sorghastrum and Artabotrys are found in the same areas. The context only provides specific details about Sorghastrum in Paraguay and some species of Artabotrys, but it does not indicate any overlap in their habitats or geographical distribution. Therefore, I cannot confirm whether they are found in the same areas.</p>
+</blockquote>
+<p>Ok, Mistral chat gave a much more detailed answer in 1s after having done a Web search. But I&#39;m still calling this a win.
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name/entries/2025-06-30_daft-rag.html">
+        Daft RAG
+    </a>
+</p> <em></em><!-- ARTICLE CONTENT -->
+
+<article class="post-content">
     <h1>Voltage Controlled Motor Module</h1>
 <p>Demo vid : <a href="https://www.youtube.com/watch?v=KZEP5wFOWAk">VCMM</a></p>
 <p>Schematic :</p>
@@ -272,29 +311,6 @@ source.start();
 <p class="post-title h-cinzel">
     <a href="http://danny.ayers.name/entries/2025-06-23_journal.html">
         Journal 2025-06-23
-    </a>
-</p> <em></em><!-- ARTICLE CONTENT -->
-
-<article class="post-content">
-    <h1>Simple Distortion Circuit</h1>
-<p><a href="https://www.youtube.com/watch?v=mMDBcwWSbNc">rough demo video</a></p>
-<p>I was a bit frustrated not having a convenient distortion module on my setup so I designed one. After a handful of sketches and a little bit of breadboarding, this is what I came up with :</p>
-<p><img src="/images/2025-06/distortion.png" alt="Schematic"></p>
-<p>Its operation is a lot more straightforward than it looks.</p>
-<p>The left-hand op amp is just operating as a textbook inverting amp, gain of x1 to about x10. The right-hand hand op amp is having more fun. The core idea is that of a <a href="https://en.wikipedia.org/wiki/Log_amplifier">log amplifier</a>, the &quot;transdiode&quot; configuration. It&#39;s using the exponential characteristic of a bipolar transistor in the feedback of the op amp to achieve a logarithmic transfer function. In other words, <strong>soft clipping</strong>. Tube overdrive style, if you&#39;re an American guitar head. The magic part of this configuration is that the combination of NPN and PNP transistors, simply one on top of the other, actually works to make the function work on negative-going signals in mirror image. <em>No way that would work!</em> But it does.</p>
-<p>I&#39;ve flipped the op amp inputs so this is non-inverting - I&#39;d forgotten, I was going to make the input amp non-inverting too... Reason being, ideally I wanted it DC-coupled so it could be an interesting function on control voltages too. But when wired up to modules this messed up its use on signals - the <em>your guess is as good as mine</em> Eurorack standard voltage levels. So I AC coupled it, hence the cap on input &amp; output. (The 100p cap in the feedback is my cargo cult attempt at ensuring HF stability. It makes no audible difference).</p>
-<p>The variable resistance in the feedback effectively adjusts when the transistors start getting curvy. When it&#39;s down to the 10k I couldn&#39;t see or hear any difference from the input signal, is effectively unity gain. Wide open, the curve starts early, it sounds like hard clipping.</p>
-<p>The pair of diodes was the result of messing about. I initially tried them from the signal path between the first op amp and the second, to ground. I expected a buzzier hard clipping at a lower level, until the log-ish follower was wound up for gain. But it wasn&#39;t very interesting. What was interesting is the current config. I&#39;ll leave it to someone better at sums than me to figure out properly, but intuitively I would have expected this to have extended the linearish low level region up by the voltage drop until transistor bias starts kicking in, with the effect of raising the curvy roof. Nah. The result in practice is that it gives an audible boost overall. When the bases are direct to ground, the transfer curve seems rather kinky, not as smooth as it should be. With the diodes in circuit, it have a much more elegant curve. My technical explanation is something something op amp compensating something bias something.</p>
-<p>Here&#39;s it on the breadboard :</p>
-<p><img src="/images/2025-06/breadboard.png" alt="Breadboard"></p>
-<p>I&#39;ve got all the music room gear in the office while I redecorate, and the desktop machine I usually run a &#39;scope (Bitscope) on was busy entertaining Claude. So it gave me a chance to use my breadboard. It is literally built on a plastic breadboard, hat tip to the originators. As well as the horrid little Chinese scope and signal generator there&#39;s a home-hack audio amp, underneath a +/- 12v, +5 PSU in a tin I got from Penny Market. Got 3.5 mm sockets, various pots, a few switches. The idea is I can take prototypes to the modular in a Mohammed-mountain kind of deal. Only after I&#39;d made it did I hear about the Erica Synths (they who do collabs with the wonderful DIYer <a href="https://www.youtube.com/@MoritzKlein0">Moritz Klein</a>) do a ready-made, neat version : the <a href="https://www.ericasynths.lv/shop/diy-kits-1/edu-diy-labor/">EDU DIY Labor</a>. Hey ho. Saved meself a few quid.</p>
-<p>Oh yeah, back to the circuit. Nothing&#39;s critical. For op amps I used a TL072, transistors a BC109 &amp; BC179, generic highish gain silicon small signal I happened to have. To keep it balanced up &amp; down you probably want a complementary pair like that. I plan to slap the circuit on a scrap of stripboard, cut &amp; drill a bit of aluminium sheet for front panel, couple of hours work max, my itch scratched.
- </p>
-
-</article>
-<p class="post-title h-cinzel">
-    <a href="http://danny.ayers.name/entries/simple-distortion-circuit.html">
-        Simple Distortion Circuit
     </a>
 </p> <em></em>
             </article>
