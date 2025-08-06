@@ -199,12 +199,13 @@
 ### create Atom index
 
 :prepAtom a :ConfigSet  ;
-    :rename :pa1  .
+    :rename (:pa1 )  .
         # for content
         :pa1   :pre    "accumulator" ;
               :post "contentBlocks.content"  .
 
 :atomIndex a :ConfigSet ;
+:loglevel "debug" ;
     :templateFilename "layout/base/templates/index-atom.njk" .
 
 :atomFilepath a :ConfigSet ;
