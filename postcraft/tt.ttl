@@ -82,6 +82,18 @@
     :endpointSettings "system/endpoints.json" ;
         :graph <http://danny.ayers.name> .
 
+### for watch ####################
+:prepFilename a :ConfigSet  ;
+    :rename (:pf1)  .
+        :pf1    :pre    "sourcePath" ;
+                :post   "sourceFile"  .
+
+:selectLatest a :ConfigSet ;
+    :templateFilename "system/sparql-templates/select-latest.njk" ;
+    :endpointSettings "system/endpoints.json" ;
+        :graph <http://danny.ayers.name> .
+
+#################################
 :shiftHTML a :ConfigSet  ;
     :rename ( :sh1 :sh3)  .
         # for content

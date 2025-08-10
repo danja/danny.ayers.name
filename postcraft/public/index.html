@@ -36,6 +36,103 @@
                 <!-- ARTICLE CONTENT -->
 
 <article class="post-content">
+    <h1>Watch</h1>
+<p>Postcraft, my massively overengineered static site builder just got a bit more complicated (but a lot more efficient). It&#39;s actually a series of apps (<em>&quot;transmissions&quot;</em>) using <a href="https://github.com/danja/transmissions">Transmissions</a>, my pipeliney thing. This is what they used to do :</p>
+<ul>
+<li><strong>md-to-sparqlstore</strong> - walked a given dir on my local fs, reading all the markdown files, posting these off to a SPARQL store</li>
+<li><strong>sparqlstore-to-html</strong> - queries the SPARQL store and renders the individual results as HTML pages</li>
+<li><strong>sparqlstore-to-site-indexes</strong> - ditto, to make an <code>index.html</code> of recent posts</li>
+</ul>
+<p>For every new blog post I made, every single one of the hundreds of existing posts also got re-processed. Not very efficient.</p>
+<p>So I&#39;ve added a filesystem <strong>Watch</strong> service. When a file changes, then it goes through the processing.
+When I say <em>I</em>, Claude Code did most of the work. I have looked at node&#39;s <code>watch</code> before and it is relatively straightforward to use. But there was a fair bit of textbook-like code that needed implementing. Now I have a <code>watch-config.json</code> that looks like this:</p>
+<pre><code class="language-json">[
+    {
+        &quot;name&quot;: &quot;postcraft-render&quot;,
+        &quot;dirs&quot;: [
+            &quot;~/sites/danny.ayers.name/postcraft/content/raw&quot;
+        ],
+        &quot;apps&quot;: [
+            &quot;md-to-store ~/sites/danny.ayers.name/postcraft&quot;,
+            &quot;store-to-html  ~/sites/danny.ayers.name/postcraft&quot;,
+            &quot;sparqlstore-to-site-indexes  ~/sites/danny.ayers.name/postcraft&quot;
+        ],
+        &quot;watchEvents&quot;: [
+            &quot;change&quot;
+        ]
+    }
+]
+</code></pre>
+<p>It watches <code>dirs</code> and on changed files triggers a call to the <code>apps</code> in sequence. The path given with each app is the location of a <code>tt.ttl</code> file which contains the settings for the app. Here&#39;s the core of the <code>transmissions.ttl</code> for <code>md-to-store</code> :</p>
+<pre><code class="language-turtle">:md-to-store a :Transmission ;
+   :pipe (:p10 :p20 :p30 :p40 :p50) .
+
+:p10 a :Restructure ;
+     :settings :prepFilename .
+
+:p20 a :FileReader ;
+     :settings :readerSet .
+
+:p30 a :Escaper .
+
+:p40 a :MakeEntry ;
+     :settings :entryExtras .
+
+:p50 a :SPARQLUpdate ;
+     :settings :storeArticle .
+</code></pre>
+<p>Here are the statements for the settings for <code>Restructure</code> process :</p>
+<pre><code class="language-turtle">:prepFilename a :ConfigSet  ;
+    :rename (:pf1)  .
+        :pf1    :pre    &quot;sourcePath&quot; ;
+                :post   &quot;sourceFile&quot;  .
+</code></pre>
+<p><code>Restructure</code> modifies the shape of the data, a message passed along the <del>pipeline</del> transmission in the form of a JSON object. It&#39;s needed here because the <strong>watch</strong> system does a call using <code>sourcePath</code> as the name of the changed file, but the <code>Filereader</code> process expects a <code>sourceFile</code>. </p>
+<p>Like I said, this is all seriously over-engineered for a static site builder. But the component processors like <code>Restructure</code> and <code>Filereader</code> have no direct coupling and are totally reusable. A major reason for applying this to the static site builder is that the posts going into the SPARQL store are now part of my <em>Personal Knowledgebase</em>. Using that is over in the realm of <a href="https://github.com/danja/semem">Semem</a>.</p>
+<p>Having said all that, what I don&#39;t have yet is an easy way of tidying up. I created lots of blog entries in setting this up, the only reliable way I have for cleaning now is to empty the graph in the SPARQL store and run the process-everything transmissions. Hey ho.
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name/entries/2025-08-09_watch.html">
+        Watch
+    </a>
+</p> <em></em><!-- ARTICLE CONTENT -->
+
+<article class="post-content">
+    <h1>Watching</h1>
+<p>This may now be working </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name/entries/2025-08-09_watching.html">
+        Watching
+    </a>
+</p> <em></em><!-- ARTICLE CONTENT -->
+
+<article class="post-content">
+    <h1>Predicting Earthquakes with AI</h1>
+<p>This is a problem I&#39;ve been intermittently looking at for a few years now. I&#39;m strongly convinced it is feasible to get useful notification ahead of dangerous seismic events...with some major caveats.</p>
+<p>There is a lot of reliable, historic and real-time seismic data available. It&#39;s typically expressed as motion over time of points on the surface of the planet. It&#39;s possible to correlate between data from different monitoring locations to pinpoint with reasonable accuracy the source of particular sets of measurements, after the fact.  </p>
+<p>AI tools have, in recent years, got very good at making predictions about the behaviour of physical systems over time. Synthetic videos can be generated that convincingly show apparent real-world events.</p>
+<p>But <strong>the system in which earthquakes occur is massive, extremely complex and chaotic</strong>.</p>
+<h2>Radio Precursors</h2>
+<p>of the behaviour of multidimensional time series data</p>
+<p> But t</p>
+<blockquote>
+<p>to be in condition to receive radio seismic precursors it takes very strong earthquakes and we must be very close to them</p>
+</blockquote>
+<p><a href="http://www.vlf.it/opera_2015/opera_2015.html">http://www.vlf.it/opera_2015/opera_2015.html</a>
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name/entries/2025-07-30_quake.html">
+        Predicting Earthquakes with AI
+    </a>
+</p> <em></em><!-- ARTICLE CONTENT -->
+
+<article class="post-content">
     <h1>Journal 2025-07-27</h1>
 <blockquote>
 <p><strong>tl;dr</strong> Problem-solving is the navigation of scale-free conceptual spaces to achieve intentional state changes, where agents with finite working memory dynamically adjust their viewport through decomposition and abstraction operations until unknown system patterns align with known behavioral templates.</p>
@@ -86,86 +183,6 @@ Laughing is medicine for aching wrists. I&#39;ll get my coat.
 <p class="post-title h-cinzel">
     <a href="http://danny.ayers.name/entries/2025-07-14_cancer.html">
         What I&#92;&#39;ll do when I get cancer
-    </a>
-</p> <em></em><!-- ARTICLE CONTENT -->
-
-<article class="post-content">
-    <h1>Daft RAG</h1>
-<p>After 8 months of concerted effort, I have invented a new paradigm for open-domain question answering systems.</p>
-<p>Here is the question:</p>
-<p><strong>Which University, The University of Saskatchewan or The University of Detroit Mercy was founded first?</strong></p>
-<p>If I ask <a href="https://chat.mistral.ai/">Mistral Chat</a> it responds :</p>
-<blockquote>
-<p>The University of Detroit Mercy was founded first. It was established in 1877. The University of Saskatchewan was founded later, in 1907.</p>
-</blockquote>
-<p><a href="https://github.com/danja/semem">Semem</a>, my oh-so-sophisticated <em>Semantic Web Memory for Intelligent Agents</em> (which along with a lot of other things uses Wikipedia calls and <code>mistral-small-latest</code> under the hood) says :</p>
-<blockquote>
-<p>The University of Detroit Mercy was founded first, in 1990. The University of Saskatchewan was founded later, in 1907.</p>
-</blockquote>
-<p>According to Wikipedia :</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/University_of_Detroit_Mercy">The University of Detroit Mercy</a> was founded in 1877</li>
-<li><a href="https://en.wikipedia.org/wiki/University_of_Saskatchewan">The University of Saskatchewan</a> was founded in 1907</li>
-</ul>
-<p>It&#39;s ok, this result was actually very pleasing. I have only just started kicking the tyres of what&#39;s been implemented. The graph (in a SPARQL store) is getting very nicely populated/augmented using a bunch of different algorithms and the retrieval steps are basically working. It looks like the issue here is simply that the generated <em>corpuscles</em> (what I&#39;m calling little bits of a corpus) are not being <code>SELECT</code>ed properly to go into the final results.</p>
-<p>PS. Yes, it was a mismatch between the shape of the query and the shape of the graph. After fixing that, for this question Semem now gives :</p>
-<blockquote>
-<p>The provided context does not contain information about the founding dates of the University of Saskatchewan or the University of Detroit Mercy. Therefore, I cannot answer this question based on the given context.</p>
-</blockquote>
-<p>Which is <em>a</em> correct answer.</p>
-<p>Even more pleasing is the result of one of the other test questions :</p>
-<p><strong>Are Sorghastrum and Artabotrys found in the same areas?</strong></p>
-<blockquote>
-<p>Based on the provided context, there is no information suggesting that Sorghastrum and Artabotrys are found in the same areas. The context only provides specific details about Sorghastrum in Paraguay and some species of Artabotrys, but it does not indicate any overlap in their habitats or geographical distribution. Therefore, I cannot confirm whether they are found in the same areas.</p>
-</blockquote>
-<p>Ok, Mistral chat gave a much more detailed answer in 1s after having done a Web search. But I&#39;m still calling this a win.</p>
-<p>Here is <a href="https://danja.github.io/semem/manual/beerqa-2.html">BeerQA Enhanced Workflow (v2)</a>
- </p>
-
-</article>
-<p class="post-title h-cinzel">
-    <a href="http://danny.ayers.name/entries/2025-06-30_daft-rag.html">
-        Daft RAG
-    </a>
-</p> <em></em><!-- ARTICLE CONTENT -->
-
-<article class="post-content">
-    <h1>Voltage Controlled Motor Module</h1>
-<p>Demo vid : <a href="https://www.youtube.com/watch?v=KZEP5wFOWAk">VCMM</a></p>
-<p>Schematic :</p>
-<p><img src="/images/2025-06/motor-module-schematic.jpeg" alt="schematic"></p>
-<p>This worked on the 3rd attempt. First try, nothing happened but one transistor got hot. Then I discovered I&#39;d got the collector wires the wrong way around. I thought I must have fried the transistors, but maybe not, after I&#39;d replaced them I experimented a bit more. My estimate for a resistor to go in series with the motor had been way out (120R), it needed something <em>really</em> low. But it occurred to me that an inductance should work there, and I had a old PCB (from a satellite tuner PSU) on the desk next to me with the perfect candidate. I&#39;d got the old board there for the 1000uF 16v caps. I didn&#39;t bother breadboarding, went straight to stripboard. It would either work or not. The components that were candidates for tweaking were easy access.</p>
-<p><img src="/images/2025-06/motor-module.jpeg" alt="pcb"></p>
-<p>This time it actually worked. After trying it for a few seconds I felt to see if the transistors were getting warm. Burnt my fingers. Motors really aren&#39;t my thing. So I made a couple of little heatsinks and hooked it up to the modular for the vid.</p>
-<p>I think what I&#39;ll do is try it with a PSU of its own next. With a dummy load first, to see if the circuit is behaving as I&#39;d expected. I really don&#39;t get why it should be drawing so much current with such a farty little motor, unless the transistors are biased on when they shouldn&#39;t be. Dunno. The motor is the main unknown for me.
- </p>
-
-</article>
-<p class="post-title h-cinzel">
-    <a href="http://danny.ayers.name/entries/2025-06-25_motor-module.html">
-        Voltage Controlled Motor Module
-    </a>
-</p> <em></em><!-- ARTICLE CONTENT -->
-
-<article class="post-content">
-    <h1>Distortion Module</h1>
-<p>I think I already posted this schematic :</p>
-<p><img src="/images/2025-06/distortion.png" alt="distortion schematic"></p>
-<p>Since then I soldered it up and made a front panel. It worked on the second attempt!</p>
-<p>First time I&#39;d labeled the power connector back-to-front. Which was annoying since I knew the red wire on Eurorack cables was perversely the negative. I must have doubled on it. Anyway, it fried the op-amp. Horrible to desolder.</p>
-<p> <img src="/images/2025-06/fried.jpeg" alt="fried op amp"></p>
-<p> The front panel went well :</p>
-<p> <img src="/images/2025-06/fp.jpeg" alt="fp"></p>
-<p> <strong>One Simple Trick!</strong> - print onto glossy paper, laminate.</p>
-<p> End result was reasonably smart -</p>
-<p> <img src="/images/2025-06/distortion-fp.png" alt="distortion module"></p>
-<p> I couldn&#39;t be bothered tweaking the layout further.</p>
-<p> The font is <a href="https://www.cdnfonts.com/thrums-serif.font">Thrums Serif</a>, btw. I designed it a few years back because I wanted to see how it was done, and wanted one that worked for me on web pages. I didn&#39;t really get it to look good on web pages, but serendipity - exactly what I want for front panels.</p>
-
-</article>
-<p class="post-title h-cinzel">
-    <a href="http://danny.ayers.name/entries/2025-06-25_distortion-module.html">
-        Distortion Module
     </a>
 </p> <em></em>
             </article>
