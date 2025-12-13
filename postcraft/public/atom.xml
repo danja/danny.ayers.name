@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2025-11-02T11:05:38.762Z</updated>
+  <updated>2025-12-13T10:20:06.817Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -10,6 +10,98 @@
     <name>Danny Ayers</name>
     <email>danny.ayers@gmail.com</email>
   </author>
+  <entry>
+    <title>Flues Synth</title>
+    <id>http://danny.ayers.name/entries/2025-12-12_synth-serendipity</id>
+    <updated>2025-12-12T09:53:33.286Z</updated>
+    <link href="http://danny.ayers.name/entries/2025-12-12_synth-serendipity" />
+    <published>2025-12-12T09:53:33.286Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Flues Synth</h1>
+        <p><strong>tl;dr</strong> I built a sound synthesizer that runs on a Raspberry Pi</p>
+        <p>The GitHub repo <a href="https://github.com/danja/flues/">flues</a> contains most of my recent synth experiments (various platforms, including <a href="https://danja.github.io/flues/">live Web</a>), the Raspi material is under <a href="https://github.com/danja/flues/tree/main/flues-synth">flues-synth</a>.</p>
+        <p>There are binaries of the Raspi synth and builds from Ubuntu of the lv2 plugins in the repo, but these versions are untested (used Claude-authored scripts)- building from source definitely works.</p>
+        <h2>What is Flues?</h2>
+        <p><strong>Flues</strong> (<code>flues-synth</code>) is an experimental polyphonic synth for the <a href="https://www.raspberrypi.com/">Raspberry Pi</a>. It is designed to run headless, without a UI. Input comes from a USB MIDI adapter. Output comes from either the Pi&#39;s headphone jack or a USB audio interface (other sound outputs such as HDMI and I2C HATs should work, but these are untested). It runs comfortably on a Raspi 4 1GB, I haven&#39;t tested on anything else.</p>
+        <p>Internally the synth engine is composed of the following modules :</p>
+        <ul>
+        <li>Disyn oscillators - a collection of novel synthesis algorithms (related to FM)</li>
+        <li>Stove physical modelling subsystem</li>
+        <li>Chatterbox formant filter subsystem</li>
+        <li>Simple AR envelope</li>
+        </ul>
+        <p>The <code>flues-synth</code> <a href="https://github.com/danja/flues/tree/main/flues-synth">README.md</a> has more details. There are <a href="https://danja.github.io/flues/">live Web versions</a> of the different subsystems that give an idea of the kind of sounds available.</p>
+        <p>A set of MIDI Programs provide various configurations of the modules, essentially presets. The parameters of these may be controlled using MIDI CC messages. Each Program exposes 9 core channels which may, for convenience, be mapped to external controllers using the <a href="https://github.com/danja/flues/tree/main/lv2/flues-control">flues-control</a> lv2 plugin in a DAW.</p>
+        <p>(There are 9 channels because that&#39;s how many worked on my old MK-449 keyboard. I have since started using the sliders of an Akai Midimix for the purpose, via <code>flues-control</code>).</p>
+        <p>There is also a <a href="https://github.com/danja/flues/blob/main/flues-synth/web-ui/README.md">browser-based UI</a> set up to supply control messages but this hasn&#39;t been maintained beyond its use in initial experiments.  </p>
+        <p> Parameters are controlled by MIDI CC messages.</p>
+        <h2>What Didn&#39;t Work</h2>
+        <p>What I actually wanted initially, what led me here, was a Eurorack module that could do <a href="https://en.wikipedia.org/wiki/Physical_modelling_synthesis">physical modelling synthesis</a>. It&#39;s a paradigm that really appeals to me, not only because it can make realistic instrument sounds, but because it can make sounds that no physical object could have created. I couldn&#39;t find a module that was affordable, so decided to make one. Long story short, so far I&#39;ve made a total pig&#39;s ear of the hardware side. Mistakes in ordering components, mistakes in fabrication decisions, etc etc.   <em>To be continued...</em>
+         </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2025-12-12_synth-serendipity.html">
+                Flues Synth
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
+  <entry>
+    <title>Runny floozy-poly on Raspberry Pi</title>
+    <id>http://danny.ayers.name/entries/2025-12-04_raspberry-pi</id>
+    <updated>2025-12-04T10:40:31.007Z</updated>
+    <link href="http://danny.ayers.name/entries/2025-12-04_raspberry-pi" />
+    <published>2025-12-04T10:40:31.007Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Runny floozy-poly on Raspberry Pi</h1>
+        <p>Home dir <code>/home/danny/</code></p>
+        <p> aplay -Dhw:2 /usr/share/sounds/alsa/Front_Center.wav</p>
+        <p>sudo apt install pkg-config cmake build-essential lv2-dev libx11-dev libcairo2-dev lilv-utils jackd2 jalv</p>
+        <p>mkdir github
+        cd github</p>
+        <p>git clone <a href="https://github.com/danja/flues.git">https://github.com/danja/flues.git</a></p>
+        <p>cd flues</p>
+        <p>cmake -S lv2/floozy-poly -B lv2/floozy-poly/build
+        cmake --build lv2/floozy-poly/build
+        cmake --install lv2/floozy-poly/build --prefix ~/.lv2   # optional</p>
+        <p>sudo dpkg-reconfigure -p high jackd2</p>
+        <p>lv2ls | grep -i floozy
+        <a href="https://danja.github.io/flues/plugins/floozy-poly">https://danja.github.io/flues/plugins/floozy-poly</a></p>
+        <p>  sudo usermod -aG audio $USER</p>
+        <h1>log out/in</h1>
+        <p> JACK_NO_AUDIO_RESERVATION=1 jackd -S -P40 -dalsa -dhw:2 -r48000 -p512 -n3 -P &amp;</p>
+        <h1>verify it’s up:</h1>
+        <p>jack_lsp</p>
+        <h1>launch the plugin:</h1>
+        <p>JACK_NO_START_SERVER=1 JACK_NO_AUDIO_RESERVATION=1 jalv -n floozy-poly <a href="https://danja.github.io/flues/plugins/floozy-poly">https://danja.github.io/flues/plugins/floozy-poly</a></p>
+        <h2>Bluetooth MIDI</h2>
+        <p>sudo apt install libudev-dev libical-dev libreadline-dev libdbus-1-dev libasound2-dev</p>
+        <p><a href="https://www.bluez.org/download/">https://www.bluez.org/download/</a>
+         </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2025-12-04_raspberry-pi.html">
+                Runny floozy-poly on Raspberry Pi
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
   <entry>
     <title>What have I been doing recently?</title>
     <id>http://danny.ayers.name/entries/2025-10-30_what</id>
@@ -138,70 +230,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/entries/2025-10-15_flues.html">
                 Flues
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Semem Progress Report</title>
-    <id>http://danny.ayers.name/entries/2025-09-05_semem-progress</id>
-    <updated>2025-09-05T08:42:55.022Z</updated>
-    <link href="http://danny.ayers.name/entries/2025-09-05_semem-progress" />
-    <published>2025-09-05T08:42:55.022Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Semem Progress Report</h1>
-        <p>tl;dr - my Semantic Web Memory for Intelligent Agents is now kinda deployable</p>
-        <p>I&#39;ve just passed a little milestone with this project so time to take stock. The milestone is getting the thing to run on a machine other than my office desktop - I&#39;ve got it on my server at <a href="https://semem.tensegrity.it/">semem.tensegrity.it</a> It&#39;s running in a Docker container which proved a little challenging because it uses Facebook&#39;s <a href="https://github.com/facebookresearch/faiss">faiss</a> for similarity measures, and though I&#39;m using Node.js throughout, that depends on native libs which have to be built first time around. But <strong>it worked!</strong></p>
-        <p><em>To some relative measure of worked.</em>
-        Thing is, although I&#39;ve been very principled about architecture <em>in my head</em> (this is an Ontology-Driven Design, <strong>ODD</strong>, for heaven&#39;s sake), I&#39;ve been delegating an awful lot of the donkey work to Claude Code, with all that entails. But this is very much an experiment, a research project. A big part of this is about figuring out the methodologies for using AI assistants in dev.</p>
-        <p>I&#39;ve been working on Semem for about 10? months now, but it is really just the latest phase in something I&#39;ve been working on for 25? years : <strong>a knowledge management system that works for me!</strong> I have lots of projects on the go all the time but am terribly undisciplined about things and have a terrible memory.
-         </p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2025-09-05_semem-progress.html">
-                Semem Progress Report
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>2024-10-09</title>
-    <id>http://danny.ayers.name/todo/2024-10-09</id>
-    <updated>2025-09-05T07:54:26.420Z</updated>
-    <link href="http://danny.ayers.name/todo/2024-10-09" />
-    <published>2025-09-05T07:54:26.420Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>2024-10-09</h1>
-        <p>#:todo</p>
-        <h2>needs internet</h2>
-        <p>download - repo + docs</p>
-        <ul>
-        <li>inkle</li>
-        <li>eye</li>
-        <li>ionic</li>
-        <li>capacitor</li>
-        <li>games engine</li>
-        </ul>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/todo/2024-10-09.html">
-                2024-10-09
             </a>
         </p> <em></em>
       </div>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+        <title>Flues Synth</title>
+    </head>
+    <!-- POST PAGE TEMPLATE -->
+    <body>
+    <a href="https://danny.ayers.name">Home</a>
+    <strong></strong><em></em>
+        <header id="entry-header">
+            <h1 class="post-title h-cinzel">
+                
+            </h1>
+        </header>
+        <!-- ARTICLE CONTENT -->
+
+<article class="post-content">
+    <h1>Flues Synth</h1>
+<p><strong>tl;dr</strong> I built a sound synthesizer that runs on a Raspberry Pi</p>
+<p>The GitHub repo <a href="https://github.com/danja/flues/">flues</a> contains most of my recent synth experiments (various platforms, including <a href="https://danja.github.io/flues/">live Web</a>), the Raspi material is under <a href="https://github.com/danja/flues/tree/main/flues-synth">flues-synth</a>.</p>
+<p>There are binaries of the Raspi synth and builds from Ubuntu of the lv2 plugins in the repo, but these versions are untested (used Claude-authored scripts)- building from source definitely works.</p>
+<h2>What is Flues?</h2>
+<p><strong>Flues</strong> (<code>flues-synth</code>) is an experimental polyphonic synth for the <a href="https://www.raspberrypi.com/">Raspberry Pi</a>. It is designed to run headless, without a UI. Input comes from a USB MIDI adapter. Output comes from either the Pi&#39;s headphone jack or a USB audio interface (other sound outputs such as HDMI and I2C HATs should work, but these are untested). It runs comfortably on a Raspi 4 1GB, I haven&#39;t tested on anything else.</p>
+<p>Internally the synth engine is composed of the following modules :</p>
+<ul>
+<li>Disyn oscillators - a collection of novel synthesis algorithms (related to FM)</li>
+<li>Stove physical modelling subsystem</li>
+<li>Chatterbox formant filter subsystem</li>
+<li>Simple AR envelope</li>
+</ul>
+<p>The <code>flues-synth</code> <a href="https://github.com/danja/flues/tree/main/flues-synth">README.md</a> has more details. There are <a href="https://danja.github.io/flues/">live Web versions</a> of the different subsystems that give an idea of the kind of sounds available.</p>
+<p>A set of MIDI Programs provide various configurations of the modules, essentially presets. The parameters of these may be controlled using MIDI CC messages. Each Program exposes 9 core channels which may, for convenience, be mapped to external controllers using the <a href="https://github.com/danja/flues/tree/main/lv2/flues-control">flues-control</a> lv2 plugin in a DAW.</p>
+<p>(There are 9 channels because that&#39;s how many worked on my old MK-449 keyboard. I have since started using the sliders of an Akai Midimix for the purpose, via <code>flues-control</code>).</p>
+<p>There is also a <a href="https://github.com/danja/flues/blob/main/flues-synth/web-ui/README.md">browser-based UI</a> set up to supply control messages but this hasn&#39;t been maintained beyond its use in initial experiments.  </p>
+<p> Parameters are controlled by MIDI CC messages.</p>
+<h2>What Didn&#39;t Work</h2>
+<p>What I actually wanted initially, what led me here, was a Eurorack module that could do <a href="https://en.wikipedia.org/wiki/Physical_modelling_synthesis">physical modelling synthesis</a>. It&#39;s a paradigm that really appeals to me, not only because it can make realistic instrument sounds, but because it can make sounds that no physical object could have created. I couldn&#39;t find a module that was affordable, so decided to make one. Long story short, so far I&#39;ve made a total pig&#39;s ear of the hardware side. Mistakes in ordering components, mistakes in fabrication decisions, etc etc.   <em>To be continued...</em>
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name/entries/2025-12-12_synth-serendipity.html">
+        Flues Synth
+    </a>
+</p> <em></em>
+    </body>
+</html>
