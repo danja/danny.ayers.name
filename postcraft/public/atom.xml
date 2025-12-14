@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2025-12-13T10:20:06.817Z</updated>
+  <updated>2025-12-14T09:35:22.117Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -10,6 +10,39 @@
     <name>Danny Ayers</name>
     <email>danny.ayers@gmail.com</email>
   </author>
+  <entry>
+    <title>Dogalog</title>
+    <id>http://danny.ayers.name/entries/2025-12-14_dogalog</id>
+    <updated>2025-12-14T08:40:47.374Z</updated>
+    <link href="http://danny.ayers.name/entries/2025-12-14_dogalog" />
+    <published>2025-12-14T08:40:47.374Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Dogalog</h1>
+        <p>An educational toy - learn <a href="https://en.wikipedia.org/wiki/Prolog">Prolog</a> while making beats! <a href="https://danja.github.io/dogalog/">Live on the Web</a>! (<a href="https://github.com/danja/dogalog">source</a>)</p>
+        <p>I stumbled on <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">Euclidean Rhythms</a> a little while ago, an arithmetic pattern for spacing beats in a bar, found across all kinds of music. It&#39;s kinda like a constraint problem.</p>
+        <p>More recently I had another look at <a href="https://en.wikipedia.org/wiki/Live_coding">livecoding</a> music. I seem to have something of a mental block on it, I still haven&#39;t really had a go. Although intrigued I did write a <a href="https://github.com/danja/sp-mc">MCP server</a> for <a href="https://sonic-pi.net/">Sonic Pi</a>.</p>
+        <p>Anyway, the other night I couldn&#39;t sleep. Those ideas clunked together in my head, making me think about livecoding in Prolog. I spent most of the night roughing something out with Codex. I still haven&#39;t looked if there&#39;s already a Prolog livecoding engine - I&#39;m probably reinventing the wheel. Well, this will be training wheels.</p>
+        <p>Because the following day I realised I couldn&#39;t remember how Prolog works. So the challenge became to make something that would get me livecoding <em>and</em> teach me Prolog.
+        <a href="https://danja.github.io/dogalog/">Dogalog</a> is the result of a good few hours with Claude on it. It&#39;s reasonably well structured, should be ok to extend/maintain. Probably a mistake implementing the Prolog engine from scratch. But without the fancier constructs and optimisations, it isn&#39;t that complicated: term definitions, parser, unifier. The in-place editing went a lot more smoothly than I could have imagined.</p>
+        <p>It would benefit from a few more eyeballs. I wonder if anyone still teaches Prolog?
+        I guess I&#39;ll post to Reddit, <a href="https://www.reddit.com/r/livecoding/">r/livecoding</a> and <a href="https://www.reddit.com/r/prolog/">r/prolog</a>.   
+         </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2025-12-14_dogalog.html">
+                Dogalog
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
   <entry>
     <title>Flues Synth</title>
     <id>http://danny.ayers.name/entries/2025-12-12_synth-serendipity</id>
@@ -204,32 +237,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/articles/instruments.html">
                  Modular
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Flues</title>
-    <id>http://danny.ayers.name/entries/2025-10-15_flues</id>
-    <updated>2025-10-15T14:37:51.713Z</updated>
-    <link href="http://danny.ayers.name/entries/2025-10-15_flues" />
-    <published>2025-10-15T14:37:51.713Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Flues</h1>
-        <p>I&#39;ve put a couple of physical modelling synths online, have a play. The first was an attempt to emulate a clarinet. Second version &quot;Stove&quot; is more general. Both monophonic. You will have to experiment with the knobs to find anything remotely realistic. Stove supports MIDI in. Docs &amp; code are nearby : <a href="https://danja.github.io/flues/">https://danja.github.io/flues/</a>
-         </p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2025-10-15_flues.html">
-                Flues
             </a>
         </p> <em></em>
       </div>
