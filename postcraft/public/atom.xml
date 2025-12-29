@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2025-12-29T12:44:15.896Z</updated>
+  <updated>2025-12-29T15:47:22.974Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -28,6 +28,8 @@
         <p>An idea I had in the context of my <a href="https://github.com/danja/flues/">Flues synth experiments</a>. I&#39;d already got a bunch of fairly novel algorithms I&#39;ve called <strong>Disyn</strong> that I found in some academic material. These I&#39;ve implemented in a few forms : <a href="https://danja.github.io/flues/">live on the Web</a>, <a href="https://github.com/danja/flues/?tab=readme-ov-file#3-distortion-synthesis--disyn">lv2 plugin</a> and headless for the <a href="https://github.com/danja/flues/tree/main/flues-synth">Raspberry Pi</a>.</p>
         <p>This morning I thought of another to try. I&#39;ve implemented it in the Web &amp; raspi versions (links above), it is quite good. I can&#39;t really claim it as my own because it&#39;s a certainty that the Taylor series has been used for approximation of a sine wave in a synth before. My only innovation, if you can call it that, is intentionally using the <em>bad approximations</em>, just the first few terms.</p>
         <p>If you want some maths homework, figure out what the Fourier transform of the equations will be. The first term is <code>x</code> and there&#39;s wrap around so the crunchiest wave will be a simple sawtooth (maybe clipped in implementation). But next..?</p>
+        <p><strong>PS. Less interesting than it could be.</strong></p>
+        <p>I must have been deceived by the other elements in the setup when I was trying the implementations. The series converges really quickly, from about 4 terms it might as well just be a sine wave. I had Claude generate curves for me - it goes from ramp-like through wavefolding-like to sine-like really quickly. I also got Claude to try some variations - &quot;spectral tilt&quot;, emphasizing the later terms in the series. Slightly more interesting, but I reckon more could be acheived by simply wavefolding.</p>
         <p><strong>Principle:</strong> Generates waveforms using truncated Taylor series expansion of sine functions. By controlling the number of terms, the algorithm produces everything from rough aliased approximations (few terms) to smooth sinusoids (many terms). Blends fundamental and second harmonic for timbral variation.</p>
         <p><strong>Mathematical Basis:</strong>
         The Taylor series for sine around x=0:</p>
