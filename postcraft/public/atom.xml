@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2025-12-21T13:07:16.237Z</updated>
+  <updated>2025-12-29T12:44:15.896Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -10,6 +10,117 @@
     <name>Danny Ayers</name>
     <email>danny.ayers@gmail.com</email>
   </author>
+  <entry>
+    <title>Taylor Oscillator Algorithm</title>
+    <id>http://danny.ayers.name/entries/2025-12-29_taylor</id>
+    <updated>2025-12-29T09:55:21.634Z</updated>
+    <link href="http://danny.ayers.name/entries/2025-12-29_taylor" />
+    <published>2025-12-29T09:55:21.634Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Taylor Oscillator Algorithm</h1>
+        <p>An idea I had in the context of my <a href="https://github.com/danja/flues/">Flues synth experiments</a>. I&#39;d already got a bunch of fairly novel algorithms I&#39;ve called <strong>Disyn</strong> that I found in some academic material. These I&#39;ve implemented in a few forms : <a href="https://danja.github.io/flues/">live on the Web</a>, <a href="https://github.com/danja/flues/?tab=readme-ov-file#3-distortion-synthesis--disyn">lv2 plugin</a> and headless for the <a href="https://github.com/danja/flues/tree/main/flues-synth">Raspberry Pi</a>.</p>
+        <p>This morning I thought of another to try. I&#39;ve implemented it in the Web &amp; raspi versions (links above), it is quite good. I can&#39;t really claim it as my own because it&#39;s a certainty that the Taylor series has been used for approximation of a sine wave in a synth before. My only innovation, if you can call it that, is intentionally using the <em>bad approximations</em>, just the first few terms.</p>
+        <p>If you want some maths homework, figure out what the Fourier transform of the equations will be. The first term is <code>x</code> and there&#39;s wrap around so the crunchiest wave will be a simple sawtooth (maybe clipped in implementation). But next..?</p>
+        <p><strong>Principle:</strong> Generates waveforms using truncated Taylor series expansion of sine functions. By controlling the number of terms, the algorithm produces everything from rough aliased approximations (few terms) to smooth sinusoids (many terms). Blends fundamental and second harmonic for timbral variation.</p>
+        <p><strong>Mathematical Basis:</strong>
+        The Taylor series for sine around x=0:</p>
+        <pre><code>sin(x) = x - x³/3! + x⁵/5! - x⁷/7! + x⁹/9! - ...
+               = Σ(n=0 to ∞) [(-1)ⁿ × x^(2n+1) / (2n+1)!]
+        </code></pre>
+        <p><strong>Algorithm:</strong></p>
+        <pre><code>// Wrap angles to [-π, π] for convergence
+        θ₁ = wrap(2π × phase)
+        θ₂ = wrap(2 × θ₁)
+        // Compute truncated Taylor series (iterative)
+        fundamental = taylor_sine(θ₁, firstTerms)
+        second_harmonic = taylor_sine(θ₂, secondTerms)
+        // Blend outputs
+        s(t) = fundamental × (1-blend) + second_harmonic × blend
+        </code></pre>
+        <p><strong>Iterative Computation:</strong></p>
+        <pre><code class="language-c">float taylor_sine(float x, int num_terms) {
+            float wrapped = wrap_angle(x);  // [-π, π]
+            float result = 0.0f;
+            float term = wrapped;
+            float x_squared = wrapped * wrapped;
+            for (int n = 0; n &lt; num_terms; n++) {
+                result += term;
+                // Next term: multiply by -x²/((2n+2)(2n+3))
+                float denom = (2*n + 2) * (2*n + 3);
+                term *= -x_squared / denom;
+            }
+            // Clamp to prevent runaway values
+            return fmaxf(-1.5f, fminf(1.5f, result));
+        }
+        </code></pre>
+        <p><strong>Parameters:</strong></p>
+        <ul>
+        <li><strong>param1 (First Terms):</strong> Number of terms for fundamental (1-10)<ul>
+        <li>Mapped: <code>N = 1 + round(param1 × 9)</code></li>
+        <li>1 term: just x (sawtooth-like, severe aliasing)</li>
+        <li>5 terms: reasonable approximation</li>
+        <li>10 terms: nearly perfect sine wave</li>
+        </ul>
+        </li>
+        <li><strong>param2 (Second Terms):</strong> Number of terms for 2nd harmonic (1-10)<ul>
+        <li>Mapped: <code>M = 1 + round(param2 × 9)</code></li>
+        <li>Controls brightness/overtone character</li>
+        </ul>
+        </li>
+        <li><strong>param3 (Blend):</strong> Mix between fundamental and 2nd harmonic (0-1)<ul>
+        <li>0.0 = pure fundamental</li>
+        <li>0.5 = 50/50 mix</li>
+        <li>1.0 = pure second harmonic (octave up)</li>
+        </ul>
+        </li>
+        </ul>
+        <p><strong>Implementation Notes:</strong></p>
+        <ul>
+        <li><strong>Angle wrapping critical:</strong> Taylor series diverges rapidly for |x| &gt; π</li>
+        <li><strong>Intermediate clamping:</strong> Each taylor_sine clamped to ±1.5</li>
+        <li><strong>Final output clamp:</strong> Result clamped to ±1.0 for audio safety</li>
+        <li>Iterative computation avoids factorial/power explosion</li>
+        <li>Peak RMS: ~0.7</li>
+        <li>Lower term counts produce aliasing (intentional aesthetic)</li>
+        </ul>
+        <p><strong>Convergence Behavior:</strong></p>
+        <ul>
+        <li><strong>1 term:</strong> <code>sin(x) ≈ x</code> (linear ramp, harsh)</li>
+        <li><strong>2 terms:</strong> <code>sin(x) ≈ x - x³/6</code> (softened, cubic bend)</li>
+        <li><strong>5 terms:</strong> Good approximation within [-π, π]</li>
+        <li><strong>10 terms:</strong> Machine-precision sine within [-π, π]</li>
+        </ul>
+        <p><strong>Spectral Characteristics:</strong></p>
+        <ul>
+        <li>Low term counts: Rich aliased harmonics (digital artifact)</li>
+        <li>High term counts: Pure fundamental/harmonic (clean sine)</li>
+        <li>Second harmonic adds octave content</li>
+        <li>Blend parameter morphs between timbres</li>
+        </ul>
+        <p><strong>Use Cases:</strong></p>
+        <ul>
+        <li>Educational: Visualize Taylor series convergence</li>
+        <li>Lo-fi synthesis: Aliased/digital character (1-3 terms)</li>
+        <li>Morphing oscillator: Smooth/harsh transitions</li>
+        <li>Harmonic exploration: Fundamental + octave blending</li>
+        <li>Spectral sculpting: Term count automation creates evolving aliasing</li>
+        </ul>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2025-12-29_taylor.html">
+                Taylor Oscillator Algorithm
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
   <entry>
     <title>TIA Intelligence Agency: A Small XMPP Lab That Talks Back</title>
     <id>http://danny.ayers.name/entries/2025-12-21_tia-blog</id>
@@ -167,44 +278,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/entries/2025-12-04_raspberry-pi.html">
                 Runny floozy-poly on Raspberry Pi
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>What have I been doing recently?</title>
-    <id>http://danny.ayers.name/entries/2025-10-30_what</id>
-    <updated>2025-10-30T09:11:25.448Z</updated>
-    <link href="http://danny.ayers.name/entries/2025-10-30_what" />
-    <published>2025-10-30T09:11:25.448Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>What have I been doing recently?</h1>
-        <ul>
-        <li><p>Building Feed Aggregator with Transmissions : <a href="https://github.com/danja/transmissions/tree/main/src/apps/newsmonitor">NewsMonitor</a></p>
-        </li>
-        <li><p>Synth Experiments : <a href="https://danja.github.io/flues/">Flues</a></p>
-        </li>
-        <li><p>Music visualization experiments : <a href="https://danja.github.io/hillside/">Hillside</a></p>
-        </li>
-        <li><p>BPM Finder app : <a href="https://github.com/danja/bpm">bpm</a></p>
-        </li>
-        <li><p>Music room fun : eg. <a href="https://youtu.be/gelhekbv1nw">Some What</a></p>
-        </li>
-        </ul>
-        <p>What I&#39;ve not been doing is clearing the jungle outside or tidying the pigsty inside.
-         </p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2025-10-30_what.html">
-                What have I been doing recently?
             </a>
         </p> <em></em>
       </div>
