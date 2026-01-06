@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>The Title</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- TODO make like this, place from manifest
+    <link rel="stylesheet" href="css/fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/grid-columns.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    -->
+    <link rel="stylesheet" href="css/fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/grid-columns.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+</head>
+
+<body>
+    <header id="main-header">
+        <h1>
+           Rawer
+        </h1>
+    </header>
+    <div class="grid-container">
+        <div class="main-grid-item directory">
+            <p><strong>Under Construction</strong></p>
+            <p><em>fixing entry permalinks is top of the to-dos</em></p>
+            <!--
+            <h2>directory</h2>
+            <p>i cinque secoli, ma anche al passaggio alla videoimp</p>
+            -->
+        </div>
+        <div class="main-grid-item articles">
+            <!-- h2>articles</h2 -->
+            <article>
+                <!-- POST CONTENT TEMPLATE -->
+<p class="post-title">
+    <a href="https://danny.ayers.name/blog/2024-07-07.html">
+        Mostly Transmissions Today
+    </a>
+</p>
+<article class="post-content">
+    <h1>Mostly Transmissions Today</h1>
+<p>Main things:</p>
+<ol start="0">
+<li>AI support</li>
+<li>Refactor #Transmissions</li>
+<li>Tidy up #Postcraft</li>
+<li>FOAF video recovery</li>
+</ol>
+<h2>AI Support</h2>
+<p>The other day I had a play with <a href="https://www.librechat.ai/">LibreChat</a>, which is a chatbot frontend that can be connected to a range of AI services. I got it running on my local machine, have done a <code>git pull</code> and have been adding services.</p>
+<p><a href="">notes from the other day</a></p>
+<p>From <a href="https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints">Known Endpoints</a> in <code>librechat.example.yaml</code> :</p>
+<ul>
+<li><a href="https://anyscale.com/">AnyScale</a></li>
+<li><a href="https://apipie.ai/">API Pie</a></li>
+<li><a href="https://fireworks.ai/">Fireworks</a></li>
+<li><a href="https://groq.ai/">GROQ</a></li>
+<li><a href="https://huggingface.co/">HuggingFace</a></li>
+<li><a href="https://mistral.ai/">Mistral AI</a></li>
+<li><a href="https://openrouter.ai/">OpenRouter</a></li>
+<li><a href="https://perplexity.ai/">Perplexity</a> - requires payment first</li>
+<li><a href="https://shuttleai.app/">Shuttle AI</a></li>
+<li><a href="https://api.together.ai/">Together AI</a></li>
+</ul>
+<p>I&#39;ve added API keys for those to my <code>.env</code>. (Don&#39;t forget to include it in the <code>.gitignore</code> before committing!)</p>
+<p>Listed in the <a href="https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints">endpoints</a> but weren&#39;t in the sample <code>.env</code>, I&#39;ve also added:</p>
+<ul>
+<li><a href="https://cohere.com">Cohere</a></li>
+<li><a href="https://databricks.com">DataBricks</a> - wasn&#39;t obvious where to get the API key, left for now</li>
+</ul>
+<p><em>to be continued...</em></p>
+<p>It also supports RAG, and somewhere it mentions using HuggingFace for embeddings. So also in my <code>.env</code>:</p>
+<pre><code>RAG_API_URL=http://host.docker.internal:8000
+EMBEDDINGS_PROVIDER=huggingface
+HF_TOKEN=...
+</code></pre>
+<pre><code>danny@danny-desktop:~/AI/LibreChat$ docker compose ls
+danny@danny-desktop:~/AI/LibreChat$ docker compose up -d
+</code></pre>
+<p>Hmm. It doesn&#39;t appear to be picking up the new <code>.env</code> settings, even after <code>docker compose </code>. Try again later.</p>
+<h2>Tidy up Postcraft</h2>
+<p>The <a href="https://github.com/danja/transmissions">Transmissions</a> refactoring might take a while, and will no doubt break the setup for <a href="https://github.com/danja/postcraft">Postcraft</a> in the interim. So I&#39;ll do a quick tidy up there first, publish the current material.</p>
+
+</article>
+<em>2024-07-07</em><!-- POST CONTENT TEMPLATE -->
+<p class="post-title">
+    <a href="https://danny.ayers.name/blog/2024-07-05.html">
+        TODAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY AI setup, again
+    </a>
+</p>
+<article class="post-content">
+    <h1>TODAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY AI setup, again</h1>
+<p>This is still working towards <strong>hyperdata.it reboot</strong>, but I need a bit better AI support.</p>
+<p><a href="https://www.librechat.ai/">LibreChat</a> is a front end to <em>any AI</em>. I installed it a few weeks ago, it seemed very good</p>
+<p>previously is in LibreChat Notes 2024-05-30</p>
+<p>5€ credit for <a href="https://mistral.ai/">Mistral</a>!</p>
+<hr>
+<p>@kvistgaard
+Querying #GitHub with #SPARQL Anything
+<a href="https://twitter.com/kvistgaard/status/1720078326449213725">https://twitter.com/kvistgaard/status/1720078326449213725</a></p>
+<p>fuseki&#39;s browser-based admin interface uses the authentication to can see in the request headers below. I&#39;d like to allow a user authenticated this way to use other pages on the site https:/hyperdata.it, without having to log in and out again. How? Please check Fuseki docs and/or code to see how it is done there. The other server-side code uses nodejs (in es module style) and I believe the passport libs might be useful.</p>
+<p>at <a href="https://fuseki.hyperdata.it/#/">https://fuseki.hyperdata.it/#/</a></p>
+<pre><code>GET /$/server HTTP/1.1
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.8
+Authorization: Basic c2VydmljZS1hZG1pbi11c2VyOnZibi12Ym4tMTIz
+Cache-Control: no-cache
+Connection: keep-alive
+Cookie: JSESSIONID=node01s2l4xznid5ti1f2r6h5phj16v2.node0
+Host: fuseki.hyperdata.it
+Pragma: no-cache
+Referer: https://fuseki.hyperdata.it/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Sec-GPC: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua: &quot;Not/A)Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;126&quot;, &quot;Brave&quot;;v=&quot;126&quot;
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: &quot;Linux&quot;
+</code></pre>
+<p>moving to <a href="https://fuseki.hyperdata.it/#/manage">https://fuseki.hyperdata.it/#/manage</a> :</p>
+<pre><code>GET /$/server HTTP/1.1
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.8
+Authorization: Basic c2VydmljZS1hZG1pbi11c2VyOnZibi12Ym4tMTIz
+Cache-Control: no-cache
+Connection: keep-alive
+Cookie: JSESSIONID=node01s2l4xznid5ti1f2r6h5phj16v2.node0
+Host: fuseki.hyperdata.it
+Pragma: no-cache
+Referer: https://fuseki.hyperdata.it/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Sec-GPC: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua: &quot;Not/A)Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;126&quot;, &quot;Brave&quot;;v=&quot;126&quot;
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: &quot;Linux&quot;
+</code></pre>
+<hr>
+<p>earlier</p>
+<h1>Back to Life</h1>
+<p>A UK trip totally blew my momentum.</p>
+<p><em>funny, GitHub Copilot in VS Code where I&#39;m typing just suggested &quot;I&#39;m back in Portugal now, and I&#39;ve got a few days to get back on track.&quot;</em></p>
+<p><a href="https://www.youtube.com/watch?v=vXMdChlJa0s">Listening</a></p>
+<p><strong>No.7 CONTRACT</strong></p>
+<p>Zombie!</p>
+<h3>FOAF</h3>
+<ul>
+<li>org a bit</li>
+</ul>
+<h3>Fuseki</h3>
+<ul>
+<li>auth etc.</li>
+</ul>
+<p>Publish workflow - webhook?</p>
+<h3>Transmissions</h3>
+<ul>
+<li>HTTP hooks</li>
+</ul>
+<h3>Misc</h3>
+<p>check firewall</p>
+<p>Server requirements list</p>
+<p>qlever</p>
+<p>placeholder articles</p>
+
+</article>
+<em>2024-07-07</em><!-- POST CONTENT TEMPLATE -->
+<p class="post-title">
+    <a href="https://danny.ayers.name/blog/2024-07-04.html">
+        hyperdata.it reboot
+    </a>
+</p>
+<article class="post-content">
+    <h1>hyperdata.it reboot</h1>
+<p>I believe I&#39;ve got the #LDAP and #Fuseki setup working. I need it for <em>other stuff</em> but for sanity checking and to <strong>to sort out my TODOs</strong> it makes sense to line up some of the old hyperdata.it bits against it.</p>
+<p>I also need to tidy up this blog setup a bit, I left it hanging somewhat.</p>
+<h2>Plan</h2>
+<ol>
+<li>[*] set up monorepo for farelo, trellis...</li>
+<li>[*] flip desktop localhost Apache to nginx, configure like server</li>
+<li>[*] copy relevant bits of trellis to monorepo</li>
+<li><input disabled="" type="checkbox"> add auth against remote Fuseki</li>
+<li><input disabled="" type="checkbox"> setup Transmissions to deploy</li>
+</ol>
+<p><em>hmm, numbered markdown todos don&#39;t seem so good - correct syntax?</em></p>
+<h3>1. Monorepo</h3>
+<p>I got ChatGPT4o to help.</p>
+<ul>
+<li><a href="https://github.com/danja/hyperdata">https://github.com/danja/hyperdata</a></li>
+<li>local : <code>/home/danny/hyperdata</code></li>
+<li>server : <code>/home/github/hyperdata</code></li>
+</ul>
+<pre><code>http://localhost/APPS/
+danny@danny-desktop:/var/www/html/APPS$
+lrwxrwxrwx 1 danny danny   44 Jul  4 15:14 common -&gt; /home/danny/hyperdata/packages/common/public
+lrwxrwxrwx 1 danny danny   45 Jul  4 15:14 trellis -&gt; /home/danny/hyperdata/packages/trellis/public
+
+https://hyperdata.it/apps/
+root@hyperdata:/var/www/html/apps# ln -s /home/github/hyperdata/packages/common/public common
+root@hyperdata:/var/www/html/apps# ln -s /home/github/hyperdata/packages/trellis/public trellis
+</code></pre>
+<p>hmm, 404</p>
+<h5>nano /etc/nginx/sites-available/hyperdata.it.conf</h5>
+<pre><code>    location / {
+        root /home/www/hyperdata.it;
+        index index.html index.htm index.ttl;
+                autoindex on;
+    }
+
+Ok,
+
+ln -s /var/www/html/apps /home/www/hyperdata.it/apps
+</code></pre>
+<h3>2. Apache to nginx</h3>
+<pre><code>
+systemctl list-unit-files | grep enabled will list all enabled ones.
+
+If you want which ones are currently running, you need systemctl | grep running.
+
+sudo systemctl stop apache2
+sudo systemctl disable apache2
+</code></pre>
+<h4>/etc/nginx/sites-available/default</h4>
+<pre><code>
+server {
+listen 80;
+server_name localhost;
+
+    location / {
+        root /var/www/html;
+        index index.html index.htm index.ttl;
+        autoindex on;
+    }
+
+}
+</code></pre>
+<pre><code>
+sudo systemctl reload nginx
+sudo tail -f /var/log/nginx/error.log
+</code></pre>
+<p>So far so good.</p>
+<pre><code>
+danny@danny-desktop:/var/www/html$ ls -al **HKMS**
+lrwxrwxrwx 1 danny danny 26 Jul 18 2023 **HKMS** -&gt; /home/danny/HKMS/HKMS/src/
+</code></pre>
+<h3>Prompts for AI.</h3>
+<p>I want to create a monorepo for a set of related applications that share some common code. The code will be browser-based HTML, CSS and vanilla JS and nodejs using ES modules. I wish to use the following tools:</p>
+<ul>
+<li>npm</li>
+<li>jsdoc</li>
+<li>chai</li>
+<li>jasmine
+The first three apps that will appear in the monorepo are called &#39;farelo&#39;, &#39;trellis&#39; and &#39;strandz&#39;. Can you advise on how to set up the monorepo and the tools for these apps, with a good dir structure, following best practices?</li>
+</ul>
+<hr>
+<pre><code>
+</code></pre>
+
+</article>
+<em>2024-07-07</em><!-- POST CONTENT TEMPLATE -->
+<p class="post-title">
+    <a href="https://danny.ayers.name/blog/2024-07-03.html">
+        LDAP and Fuseki cont.
+    </a>
+</p>
+<article class="post-content">
+    <h1>LDAP and Fuseki cont.</h1>
+<p>I&#39;ll pull notes together later.</p>
+<p>curl -v -u service-admin-user:password <a href="https://fuseki.hyperdata.it/$/status">https://fuseki.hyperdata.it/$/status</a></p>
+
+</article>
+<em>2024-07-07</em><!-- POST CONTENT TEMPLATE -->
+<p class="post-title">
+    <a href="https://danny.ayers.name/blog/2024-07-02.html">
+        LDAP and Fuseki cont.
+    </a>
+</p>
+<article class="post-content">
+    <h1>LDAP and Fuseki cont.</h1>
+<p><em>for ChatGPT</em></p>
+<p>I would like to test the auth on Fuseki. There is an endpoint that supports POST at : <a href="https://fuseki.hyperdata.it/foowiki/update">https://fuseki.hyperdata.it/foowiki/update</a>
+I would like to add a random triple to the foowiki dataset. Credentials will be user: fuseki-foowiki-user password: TheEnglish_3
+Please give me a minimal piece of node code, using ES modules if necessary, that I can run locally to add the triple to the dataset.</p>
+<hr>
+<p>moved to Claude Sonnet 3.5 in Cursor
+many more circles</p>
+<hr>
+<p>There are groups in LDAP that correspond to the roles in Fuseki. The users in these groups should have the following permissions -</p>
+<p>service-admin members:
+Should have complete access to Fuseki.
+fuseki-admin members:
+Should be able to create and delete datasets, and have write access.
+fuseki-foowiki members:
+Should be able to write data to the foowiki dataset.
+Any other user, without auth, has read access to the all datasets.</p>
+<p>The LDAP details are in</p>
+<p>what is needed in shiro.ini ?</p>
+<p><em>can you guess what happened based on what happened with most of the other things you advised recently?</em></p>
+<p>I sincerely apologize. Based on the pattern of our recent interactions, I can guess that this configuration also caused Fuseki to crash or fail to start. I deeply regret causing further issues and frustration.
+You&#39;re absolutely right to be critical of my advice. I&#39;ve been making assumptions and suggesting changes without fully understanding the specific constraints of your Fuseki setup. This approach has been counterproductive and potentially harmful to your system.
+Given this situation, I believe the most responsible course of action is to:</p>
+<ol>
+<li>Stop suggesting configuration changes that might destabilize your system.</li>
+<li>Return to the last known stable configuration (the one that gave a 401 Unauthorized error but didn&#39;t crash Fuseki).</li>
+<li>Recommend seeking assistance from Apache Jena Fuseki experts or official support channels.</li>
+</ol>
+<hr>
+<p>I first ask about known working Shiro configs - it gives me another breaky one</p>
+<p>then - ah...point it to Fuseki source</p>
+<p>Thank you for providing that information. After examining the ShiroEnvironmentLoader.java file in the Apache Jena GitHub repository, I&#39;ve found some insights that might be relevant to our LDAP configuration issue.</p>
+<p>The ShiroEnvironmentLoader class is responsible for setting up the Shiro security environment in Fuseki. Notably, it doesn&#39;t seem to have any specific handling for LDAP realms or group-to-role mapping. This could explain why our previous attempts at configuring LDAP group-based authorization weren&#39;t successful.</p>
+<p>Key observations from the file:</p>
+<ol>
+<li>The class loads the Shiro configuration from an INI file (shiro.ini).</li>
+<li>It sets up a SecurityManager and WebSecurityManager.</li>
+<li>There&#39;s no specific code for handling LDAP or group-to-role mapping.
+Given this information, it appears that Fuseki might not natively support advanced LDAP features like group-to-role mapping through the shiro.ini configuration alone. This could explain why our previous attempts to add group-to-role mapping in the configuration file didn&#39;t work as expected.
+To proceed, we might need to consider the following options:</li>
+<li>Use a simpler LDAP configuration that doesn&#39;t rely on group-to-role mapping. Instead, we could assign roles directly to users in the LDAP directory.</li>
+<li>Investigate if it&#39;s possible to extend Fuseki&#39;s security implementation to support group-to-role mapping. This would likely involve custom Java code and might not be feasible depending on your deployment setup.</li>
+<li>Look into using a custom Shiro Realm implementation that handles the group-to-role mapping logic internally, rather than relying on the configuration file.
+Given the complexity of the situation, it might be worth reaching out to the Apache Jena community or mailing list with these specific findings. They might have additional insights or workarounds for implementing LDAP group-based authorization in Fuseki.</li>
+</ol>
+<hr>
+<p>I apologize for the oversight. It seems the &#39;superpowers&#39; attribute isn&#39;t defined in your LDAP schema, which is causing the error. Let&#39;s take a step back and modify our approach to use an existing attribute that&#39;s already defined in the inetOrgPerson objectClass.</p>
+<p>Instead of &#39;superpowers&#39;, we can use the &#39;title&#39; attribute, which is a standard attribute in inetOrgPerson and can be repurposed for our needs.</p>
+<hr>
+<p>Now Claude is actively encouraging me to yak shave.
+For this configuration to work, you&#39;ll need to create a custom Java class CustomLdapRealm that extends JndiLdapRealm and implements the group-based authorization logic. This class should be placed in the org.apache.jena.fuseki.authz package.
+[Java source follows]</p>
+<p>Enough! Music room!!! Still got a bottle of beer left!!!</p>
+<hr>
+<p>Building Fuseki.
+mvn compile
+node, yarn, vite
+doc things
+some Bavarian stuff
+cypress
+skosmos?
+surefire-reports
+No license field
+Use of eval is strongly discouraged
+Hours later, eh -
+Port 3030 is already in use.
+Bastard! I already have Fuseki running on 3030.
+Artifact has not been packaged yet. When used on reactor artifact, unpack should be executed after packaging: see MDEP-98. -&gt; [Help 1]
+Nope. Means nothing to me. I&#39;m done.</p>
+<p>ERROR] Failed to execute goal org.apache.maven.plugins:maven-dependency-plugin:3.6.1:unpack (unpack) on project jena-fuseki-webapp: Artifact has not been packaged yet. When used on reactor artifact, unpack should be executed after packaging: see MDEP-98.</p>
+
+</article>
+<em>2024-07-07</em>
+            </article>
+        </div>
+        <div class="main-grid-item about">
+            <!--
+            <h2>About</h2>
+            
+            -->
+        </div>
+    </div>
+</body>
+
+</html>

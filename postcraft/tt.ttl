@@ -16,6 +16,11 @@
     :source "content/media" ;
     :destination "public" .
 
+:copyPublic a :ConfigSet ;
+    :workingDirectory "public" ;
+    :source "content/static/public" ;
+    :destination "public" .
+
 :copyLayout a :ConfigSet ;
     :workingDirectory "public" ;
     :source "layout/base" ;

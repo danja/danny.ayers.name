@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rawer</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- #:todo remove when stable -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <link rel="stylesheet" href="css/fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/grid-columns.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/menu.css" type="text/css" />
+
+</head>
+
+<body>
+    <header id="main-header">
+        <h1 class="h-title">
+           Raw<em>er</em>
+        </h1>
+    </header>
+    <div class="grid-container">
+        <div class="main-grid-item directory">
+            <p><strong>Under Construction</strong></p>
+            <p><em>there are many to-dos</em></p>
+        </div>
+        <div class="main-grid-item articles">
+            <article>
+                <!-- POST CONTENT TEMPLATE -->
+
+<article class="post-content">
+        <a href="">#</a>
+    <h1>Hoard</h1>
+<p><em>hyperdata-whiteboard</em></p>
+<p>I got distracted yesterday while sorting out the #:packer #:transmission (for concat&#39;ing repos for LLMs), then in the evening, when I got back to desk I was too tired to do anything, gave up. Returning to it now, I need a small repo to run it against. As it happens, this morning in bed, a passing thought led me to start another<sup><a id="footnote-ref-1" href="#footnote-1" data-footnote-ref aria-describedby="footnote-label">1</a></sup> little whiteboard project (with Claude). I&#39;ll make that a new repo.</p>
+<p>Online, I&#39;ve created <a href="https://github.com/danja/hoard">https://github.com/danja/hoard</a></p>
+<p>Locally:</p>
+<pre><code class="language-sh">cd ~/github-danny/hyperdata/packages
+git submodule add https://github.com/danja/hoard.git hoard
+cd hoard
+npm init -y
+</code></pre>
+<p>Ok, so now I can try :</p>
+<pre><code class="language-sh">cd ~/github-danny/transmissions
+./trans packer ../hyperdata/packages/hoard
+</code></pre>
+<p>Ok, it fails as expected...</p>
+<p>My head&#39;s a little fuzzy and Claudio&#39;s pestering. Dogwalk time.</p>
+<section class="footnotes" data-footnotes>
+<h2 id="footnote-label" class="sr-only">Footnotes</h2>
+<ol>
+<li id="footnote-1">
+<p>I&#39;ve been around whiteboards a few times before, first time of note being a <a href="https://www.xml.com/pub/a/2003/11/19/svgwiki.html">SVG Wiki Whiteboard</a> in 2003. <a href="#footnote-ref-1" data-footnote-backref aria-label="Back to reference 1">↩</a></p>
+</li>
+</ol>
+</section>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="">
+        
+    </a>
+</p> <em></em><!-- POST CONTENT TEMPLATE -->
+
+<article class="post-content">
+        <a href="">#</a>
+    <h1>Light</h1>
+<p><em>Because it is.</em></p>
+<p><img src="media/images/2025-01/bear-of-little-brain.png" alt="Bear of Very Little Brain"></p>
+<p>Chatted with ClaudioB earlier. He&#39;s planning to set up a machine at home to serve online. I started having a go a few weeks back but got distracted. Setting up #:semem in #:tbox and making it live is my main target today, but as that&#39;ll involve poking around on my remote server I might as well have another look then.</p>
+<h2>Packer</h2>
+<p>Before any of that, I need to finish a little #:transmission I started last session. repomix has broken on me. As best I can determine, it&#39;s down to nodejs version, looks like repomix uses some experimental JSON bits that have been pulled. If that is the case, I could use <em>that thing (?)</em> to choose a version that does work. <strong>Faff.</strong> I&#39;ve been meaning to make my own on #:transmissions for a while, this tipped me over. Claude gave me some starter code, I just need to <strong>plumb it in and tweak it to sanity, as per Claude code</strong>.</p>
+<pre><code class="language-sh">transmissions$ ./trans packer ./
+...
+[Error: ENOENT: no such file or directory, open &#39;/home/danny/github-danny/transmissions/manifest.ttl&#39;]
+</code></pre>
+<p><strong>Bum!</strong> I didn&#39;t get around to sorting out the command-line options.</p>
+<p><strong>Good-o!</strong> I did start sorting out the command-line options.</p>
+<p>Yeah, it looks reasonably well separated. The CLI entry point <code>./trans</code> calls <code>src/api/cli/run.js</code> which uses <a href="https://yargs.js.org/">yargs</a> - <em>tee hee</em>, they say it best :</p>
+<blockquote>
+<p>Yargs be a node.js library fer hearties tryin&#39; ter parse optstrings.</p>
+</blockquote>
+<p><code>src/api/cli/run.js</code> then calls <code>src/api/common/CommandUtils.js</code>. That does a little bit of path-splitting and simple logic, calling on <code>src/core/ApplicationManager.js</code> to get things going.</p>
+<p>I remember now - I left a bit of refactoring around <code>src/core/ApplicationManager.js</code> in-progress. That&#39;s still not a high priority, I&#39;ll get to it when I next need to do things around there.</p>
+<p>Hmm. The options do look very broken. But shouldn&#39;t take much fixing.</p>
+<p>Well, you learn something every day. I wanted to check what was considered best practice for <strong>privates</strong> in JS. I asked Claude, confirmed with <a href="https://www.perplexity.ai/">Perplexity</a> :</p>
+<h3>Private Fields in JavaScript</h3>
+<p>Private fields, denoted by the # prefix, were introduced as part of the ECMAScript 2022 (ES13) specification. This feature provides true privacy encapsulation within classes, preventing access to these fields from outside the class</p>
+<pre><code class="language-javascript">class Person {
+  #secret;
+  constructor(secret) {
+    this.#secret = secret;
+  }
+  getSecret() {
+    return this.#secret;
+  }
+}
+
+const person = new Person(&quot;my secret&quot;);
+console.log(person.getSecret()); // &quot;my secret&quot;
+console.log(person.#secret); // SyntaxError: Private field &#39;#secret&#39; must be declared in an enclosing class
+</code></pre>
+<p><strong>Supported in:</strong></p>
+<ul>
+<li>Node.js 12.0.0+</li>
+<li>Chrome 74+</li>
+<li>Firefox 90+</li>
+<li>Safari 14.1+</li>
+<li>Edge 79+</li>
+</ul>
+<h3>Closures for Encapsulation</h3>
+<p>Closures have been a traditional way to achieve encapsulation in JavaScript before the introduction of private class fields</p>
+<pre><code class="language-javascript">function createCounter() {
+  let count = 0;
+  return {
+    increment: function() {
+      count++;
+      console.log(count);
+    }
+  };
+}
+
+const counter = createCounter();
+counter.increment(); // 1
+console.log(counter.count); // undefined
+</code></pre>
+<p>Heh, not sure I&#39;ve ever used that kind of closure in JS. I can easily imagine my confusion over that syntax. I wouldn&#39;t call the private field <strong>#</strong> syntax pretty, but it&#39;s a lot more suitable for this <strong>bear of very little brain</strong>.</p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="">
+        
+    </a>
+</p> <em></em><!-- POST CONTENT TEMPLATE -->
+
+<article class="post-content">
+        <a href="">#</a>
+    <h1>Semem Fix &amp; Deploy</h1>
+<p>I made a todo list here yesterday without any explanation. Didn&#39;t publish. Invisible todo list is absolutely not what I want on my blog front page! My top priority this week is doc organisation, so I&#39;ll let myself off this time. I&#39;ve changed the date on the file, this is it I&#39;ll now fill it out...</p>
+<p>A little job for this morning is a little explore of <a href="https://github.com/danja/semem">Semem</a>.</p>
+<p>It appears to (mostly) work, here&#39;s the <a href="https://danny.ayers.name/entries/2025-01-01_semem-run.html">console log of a run</a>.</p>
+<p>But, <strong>what is it doing?</strong></p>
+<p>What I want right now, as a bit of scaffolding for what I want to explore, is a nodejs version of <a href="https://github.com/caspianmoon/memoripy">memoripy</a> that uses a (remote) SPARQL store as (part of) its knowledgebase.</p>
+<p>I only tried running it after many hours implementing it in a Claude project. Then had a couple of hours manually tweaking to get it to (mostly) run. It&#39;s definitely interacting with Ollama for embeddings &amp; chat, a SPARQL endpoint for persistence. I don&#39;t see the extracted concepts in the SPARQL store.</p>
+<p>Last night I had a short session with Claude, aiming to document what we had so far. I&#39;ve put the artifacts over here : <a href="https://github.com/danja/semem/tree/main/docs/description_2025-01-01.md">https://github.com/danja/semem/tree/main/docs/description_2025-01-01.md</a> It sounds marvellous, but how much is true?</p>
+<h2>Banebane</h2>
+<p>I had a chat with ClaudioB yesterday morning, pointed him to my notes so far on #:semem. He asked me if I had a <strong>live instance</strong> he could play with. A very good question! Not for the first time I&#39;ll quote -</p>
+<h3>Connolly&#39;s Bane</h3>
+<blockquote>
+<p><strong>&quot;The bane of my existence is doing things that I know the
+computer could do for me&quot;</strong>
+\– Dan Connolly</p>
+</blockquote>
+<p><em>Which reminded me I&#39;ve not been in touch with <a href="https://www.ninebynine.org/">Graham Klyne</a> for many years. A blog post of his drew my attention to that quote. Good-o, he&#39;s on Mastodon : <a href="https://indieweb.social/@gklyne">@gklyne@indieweb.social</a>, I&#39;ll ping him there.</em></p>
+<p>ClaudioB&#39;s question is the kind of message I want my #:hyperdata systems to be able to deal with automatically.</p>
+<p>Here&#39;s how this human agent is handling it :</p>
+<hr>
+<p><strong>[prompt]</strong></p>
+<blockquote>
+<p>Is there a live instance of Semem?</p>
+</blockquote>
+<p><strong>[me]</strong></p>
+<ul>
+<li>immediate response, &quot;not yet&quot;</li>
+<li>reformulate question in terms of concrete requirements
+-&gt;</li>
+</ul>
+<ol>
+<li>(functioning, good-enough) Semem</li>
+<li>hosting</li>
+<li>deployment infrastructure</li>
+</ol>
+<p>For 1 : all I really need to do right away is minor bugfixing and whatever&#39;s needed to use existing online LLMs
+For 2 : I&#39;ve got a live Ubuntu server (which you are looking at now) and a domain name registered for a related plan, some nginx proxying already in place.<br>For 3 : I&#39;ve got a Docker container in-progress for this stuff, <a href="https://github.com/danja/tbox">tbox</a></p>
+<ul>
+<li>meta-reasoning - evaluate this against existing dev paths, consider priorities, time needed etc</li>
+</ul>
+<p>On this point there&#39;s a green flag to go ahead, it&#39;s near-enough in line with what I was planning to do already, slight rearrangement of immediate priorities.</p>
+<hr>
+<p>I acted in several roles there. Humans are good at this. I want a community of independent autonomous intelligent agents (on #:kia).</p>
+<p>Ops. Azzurra just reminded me that I&#39;ve an appointment with her up at the comune at 15:00. Now 13:12. Clever Azzurra has me sussed. I&#39;d completely forgotten. But she&#39;s given me just the right amount of time to pop this online, take Claudio out for a short walk, find some clean clothes &amp; have a wash.  </p>
+<h2>Soon...</h2>
+<p>Somewhere around my vocabs I need terms for this particular kind of input. I may already have something like <strong>Feature Request</strong> around the project management oriented bits, but it totally ties in with agent-oriented messaging.</p>
+<ul>
+<li>#:todo fix #:semem failing on UPDATE</li>
+<li>#:todo tease next steps from <code>semem/docs/description_2024-12-30/</code></li>
+</ul>
+<p>I sorted out the UPDATE.</p>
+<ul>
+<li><p>#:todo deploy to #:tbox</p>
+</li>
+<li><p>#:todo #:spike for function/action calling a la ReAct</p>
+</li>
+<li><p>#:todo some FOAF</p>
+</li>
+</ul>
+<p>Installed &#39;Markdown Preview Mermaid Support&#39; into VSCode</p>
+<p>semem - query execution times, store metrics, total embeddings size</p>
+<p>support Groq, Mistral, Claude, OpenAI</p>
+<p>refactor</p>
+<p>comments</p>
+<p>install the willison-mentioned UI tool - has useful bits for APIs?</p>
+<p>ditto LibreChat</p>
+<p>LOGGER - see Perplexity</p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="">
+        
+    </a>
+</p> <em></em><!-- POST CONTENT TEMPLATE -->
+
+<article class="post-content">
+        <a href="">#</a>
+    <pre><code>node src/SPARQLExample.js
+
+[INFO] Initialized FAISS index with dimension 1536
+[INFO] Loaded 1 short-term and 0 long-term memories from store http://localhost:4030/test/query graph &lt;http://example.org/mcp/memory&gt;
+[INFO] Adding interaction: &#39;What&#39;s the current state of the Semantic Web?&#39;
+[INFO] Memory initialized with 1 short-term and 0 long-term memories
+[INFO] Extracting concepts...
+[INFO] Extracted concepts: [ &#39;Semantic Web technologies&#39;, &#39;AI&#39; ]
+[INFO] Retrieving relevant interactions...
+Response: Semantic Web technologies and Artificial Intelligence (AI) complement each other well, as they are both powerful tools for representing complex data in structured form, facilitating knowledge discovery and enhancing human-computer interaction. Here are some ways in which semantic Web technologies can be integrated with AI:
+
+1. **Knowledge Extraction from Semantically-Structured Data**: Semantic Web technologies provide a standardized way of defining and storing the structured information necessary to build semantic web applications. The use of these tools allows for the extraction of knowledge about large amounts of data, making it easier for AI systems to process this information.
+
+2. **Artificial Intelligence as a Knowledge Broker**: AI can be used to curate and organize vast amounts of data in semantic Web formats. This includes tasks such as categorizing documents, recognizing patterns and relationships within structured data sets, and integrating heterogeneous data sources into a single knowledge base.
+
+3. **Interactive Experience Enhancement through AI-Driven Semantic Web Applications**: AI-driven applications can provide a more personalized user experience by using techniques like recommendation systems to suggest content based on the user&#39;s interests or previous behavior. These systems also use semantic Web technologies to ensure that the information presented is accurate and relevant to the user, enhancing their overall satisfaction with the application.
+
+4. **Machine Learning for Enhanced AI Capabilities**: AI can be trained with data from large volumes of structured web documents, which can then be used to improve AI models’ understanding of context, language, and relationships within web content. This integration allows machines to learn complex patterns in unstructured or semi-structured data, further enhancing their ability to perform tasks that require human-like reasoning.
+
+5. **Integration with Natural Language Processing (NLP) Systems**: Semantic Web technologies can be used with AI NLP systems to extract meaning from unstructured text and improve the understanding of natural language queries by machines. This integration allows for a more effective interaction between humans and computers, as the data is presented in a format that is easier for AI systems to interpret.
+
+6. **Knowledge Management for Autonomous Agents**: Semantic Web technologies can be utilized with artificial intelligence-driven agents to store large volumes of structured information. These agents are capable of processing complex queries, making decisions, and performing tasks based on this knowledge. By integrating semantic web technologies into AI systems, we can create more intelligent autonomous agents that are better equipped to handle complex scenarios.
+
+These integration strategies illustrate how the capabilities of both Semantic Web technologies and Artificial Intelligence can be combined to enhance our ability to process large volumes of information and solve complex problems efficiently.
+[INFO] Extracting concepts...
+[INFO] Extracted concepts: [
+  &#39;Semantic Web technologies&#39;,
+  &#39;Artificial Intelligence (AI)&#39;,
+  &#39;Knowledge Extraction from Semantically-Structured Data&#39;,
+  &#39;Artificial Intelligence as a Knowledge Broker&#39;,
+  &#39;Interactive Experience Enhancement through AI-Driven Semantic Web Applications&#39;,
+  &#39;Machine Learning for Enhanced AI Capabilities&#39;,
+  &#39;Integration with Natural Language Processing (NLP) Systems&#39;,
+  &#39;Knowledge Management for Autonomous Agents&#39;
+]
+[INFO] Adding interaction: &#39;How can Semantic Web technologies be used with AI?&#39;
+[INFO] Saved memory to SPARQL store http://localhost:4030/test/update graph &lt;http://example.org/mcp/memory&gt;. Stats: 2 short-term, 0 long-term memories
+</code></pre>
+<p>This query gives one result, containing the prompt &amp; response from the above :</p>
+<pre><code class="language-sparql">PREFIX mcp: &lt;http://purl.org/stuff/mcp/&gt;
+SELECT ?graph ?id ?prompt ?output ?timestamp
+WHERE {
+  GRAPH ?graph {
+  ?s a mcp:Interaction ;
+     mcp:id ?id ;
+     mcp:prompt ?prompt ;
+     mcp:output ?output ;
+     mcp:timestamp ?timestamp .
+    FILTER regex(str(?prompt), &quot;Semantic&quot;)
+}
+}
+</code></pre>
+<p>This gives 2 results :</p>
+<pre><code class="language-sparql">SELECT *
+WHERE {
+  GRAPH ?graph {
+  ?s ?p ?o
+    FILTER regex(str(?o), &quot;Semantic&quot;)
+}
+}
+</code></pre>
+<p>One is the triple with the prompt, the other the triple with the LLM output.</p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="">
+        
+    </a>
+</p> <em></em><!-- POST CONTENT TEMPLATE -->
+
+<article class="post-content">
+        <a href="">#</a>
+    <h1>Repo Boo</h1>
+<p>Very annoying. I&#39;ve been using Claude projects <strong>heavily</strong> for recent dev. Made possible by <a href="https://github.com/yamadashy/repomix">repomix</a> which essentially does an annotated concat of a repo&#39;s files. Tonight my thing decided to say:</p>
+<pre><code class="language-sh">danny@danny-desktop:~/github-danny/transmissions$ npm run rp
+
+&gt; transmissions@1.0.0 rp
+&gt; repomix -c repomix.config-small.json . &amp;&amp; repomix -c repomix.config-large.json .
+
+(node:61405) ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+📦 Repomix v0.2.12
+
+Error: Config file not found at repomix.config-small.json
+For more help, please visit: https://github.com/yamadashy/repomix/issues
+(node:61421) ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+</code></pre>
+<p>I&#39;ve no idea what I&#39;ve done that would impact there. Can&#39;t remember if this is running a global or local install. Ok, first thing, clear caches and try again. &quot;Hey Claude, how do I..?&quot;</p>
+<pre><code class="language-sh">rm -rf node_modules
+rm package-lock.json
+npm cache clean --force
+npm install
+</code></pre>
+<p>While that&#39;s running, there is something else I want to do nearby. Squat the npm registry with a couple of things. #:transmissions &amp; #:semem at least, there might be a couple of others. None will be out-of-the-box usable as they should be (as I would interpret proper etiquette), but I think I&#39;m at a point where I can legitimately grab those names. I&#39;ve put loads of work in, am committed to making them useful for other parties.</p>
+<p>It might even encourage me to get the GitHub CI/CD bits in place (for the badges, innit).</p>
+<p>Golly :</p>
+<pre><code class="language-sh">npm warn using --force Recommended protections disabled.
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+
+added 1141 packages in 9m
+
+237 packages are looking for funding
+  run `npm fund` for details
+</code></pre>
+<p>Aw, <code>npm install squirt</code> works (whatever that is), I&#39;d have squatted that too. Ok, no biggy.</p>
+<pre><code class="language-sh">npm install squirty
+npm error code E404
+npm error 404 Not Found - GET https://registry.yarnpkg.com/squirty - Not found
+</code></pre>
+<p>For that I only need to do some minor renaming. #:transmissions would have been a proper pain. I did it once already - had the project working label &quot;treadmill&quot; initially, but decided something more accurately descriptive would be better. Horrible search &amp; replace - not too bad with code, but docs got messy.</p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="">
+        
+    </a>
+</p> <em></em>
+            </article>
+        </div>
+        <div class="main-grid-item about">
+            <!--
+            <h2>About</h2>
+            
+            -->
+        </div>
+    </div>
+    <script src="js/menu.js"></script>
+</body>
+
+</html>
