@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+        <title>Trajectory: A Geometric Approach to Audio Synthesis</title>
+    </head>
+    <!-- POST PAGE TEMPLATE -->
+    <body>
+        <div class="article-container">
+            <nav class="article-nav">
+                <a href="https://danny.ayers.name">← Home</a>
+            </nav>
+            
+            <header id="entry-header">
+                <h1 class="post-title h-cinzel">
+                    
+                </h1>
+            </header>
+            <div class="post-content">
+                <!-- ARTICLE CONTENT -->
+
+<article class="post-content">
+    <h1>Trajectory: A Geometric Approach to Audio Synthesis</h1>
+<p>This turned out to be an interesting algorithm! Description below by Claude.</p>
+<p>In <a href="https://github.com/danja/flues/">Flues</a> we&#39;ve implemented it as a monosynth in an <a href="https://danja.github.io/flues/trajectory/">online Web version</a>, as an lv2 plugin (a voice in <a href="https://github.com/danja/flues/tree/main/lv2/disyn">Disyn</a>). We&#39;ve also added a polyphonic version to the Raspberry Pi <a href="https://github.com/danja/flues/tree/main/flues-synth">Flues Synth</a>.
+What I actually want is it in hardware, as a Eurorack module. That&#39;s work in progress.</p>
+<p>Most audio oscillators generate waveforms by evaluating mathematical functions—sine waves, sawtooth ramps, or band-limited pulse trains. The Trajectory oscillator takes a different approach: it simulates a point bouncing inside a polygon and converts its motion into sound.</p>
+<h2>The Core Idea</h2>
+<p>Imagine a billiard ball moving inside a regular polygon—a triangle, square, hexagon, or any shape with 3 to 12 sides. The ball travels in a straight line until it hits an edge, then reflects perfectly and continues. The Trajectory oscillator tracks this motion in real-time, using the x and y coordinates of the moving point as the audio signal.</p>
+<p>The algorithm runs at audio rate (48,000 times per second), updating the point&#39;s position on each sample:</p>
+<pre><code>speed = (frequency × 4) / sampleRate
+position[n+1] = position[n] + velocity
+if outside polygon: reflect velocity and nudge point back inside
+output = (x × mixX + y × mixY) × 1.0
+</code></pre>
+<p>The speed of movement scales with the note frequency—higher notes produce faster traversal, creating higher-frequency waveforms. This coupling between pitch and motion makes the oscillator musically playable.</p>
+<h2>Reflection Mechanics</h2>
+<p>The reflection algorithm determines which edge the point has penetrated, calculates the perpendicular normal to that edge, and mirrors the velocity vector. A small inward nudge prevents the point from getting stuck on edges during subsequent collisions. The polygon is normalized to unit radius and centered at the origin, simplifying the geometry.</p>
+<h2>Musical Parameters</h2>
+<p>The oscillator exposes five control parameters:</p>
+<ul>
+<li><strong>Sides</strong>: The polygon&#39;s edge count (3-12). A triangle produces angular, chaotic paths. A dodecagon (12 sides) approaches circular motion.</li>
+<li><strong>Start Position</strong>: The launch angle from center (0-360°), determining where the point begins.</li>
+<li><strong>Start Angle</strong>: The initial direction of travel (0-360°).</li>
+<li><strong>Mix X</strong>: How much the x-coordinate contributes to the output (0-1).</li>
+<li><strong>Mix Y</strong>: How much the y-coordinate contributes to the output (0-1).</li>
+</ul>
+<p>The mix controls are particularly useful. Setting <code>mixX = 1.0, mixY = 0</code> produces a waveform based solely on horizontal motion. Blending both coordinates creates more complex trajectories.</p>
+<h2>Spectral Character</h2>
+<p>Unlike traditional oscillators with fixed harmonic structures, the Trajectory oscillator&#39;s spectrum depends on the geometric path. Low-sided polygons (triangles, squares) produce more abrupt reflections, generating brighter spectra with stronger high-frequency content. Higher-sided polygons create smoother motion and gentler harmonic profiles.</p>
+<p>The start position and angle parameters determine the trajectory&#39;s periodicity. Some combinations produce perfectly periodic paths that loop cleanly, while others create quasi-periodic or chaotic motion. This variability makes the oscillator suitable for both tonal and textural synthesis.</p>
+<h2>Implementation in Flues-Synth</h2>
+<p>The Trajectory oscillator appears as <strong>Program 2</strong> in the flues-synth headless Raspberry Pi synthesizer. It replaces the Disyn distortion synthesis module, operating as the primary excitation source. The output feeds into the formant filters and physical modeling pipeline, where it can be shaped by resonance, feedback, and modulation.</p>
+<p>The algorithm was developed in the <code>experiments/trajectory/</code> directory as a JavaScript prototype before being ported to C for the embedded synthesizer. The full derivation and implementation notes are documented in that project&#39;s README.</p>
+<h2>Practical Use</h2>
+<p>In practice, the Trajectory oscillator excels at creating animated, evolving timbres. Automating the polygon side count during a note creates smooth morphing between geometric behaviors. Modulating the mix controls shifts the spectral balance in real-time. Paired with feedback and filtering, it becomes a source for self-oscillating patches that drift between stability and chaos.</p>
+<p>The geometric foundation makes it visually intuitive—you can imagine the bouncing point and anticipate how parameter changes will affect the sound. This directness contrasts with abstract waveshaping or spectral formulas, offering a different design workflow.</p>
+<h2>References</h2>
+<p>The complete algorithm specification, including coefficient calculations and stability requirements, is documented in <code>flues-synth/docs/algorithms.md</code> under &quot;Trajectory Oscillator (Polygon Bounce).&quot; The implementation resides in <code>flues-synth/src/audio/modules/</code> as part of the modular DSP engine.</p>
+<p>The Trajectory oscillator demonstrates that synthesis algorithms don&#39;t need complex mathematics to produce interesting results. Sometimes a simple physical model—a point, a polygon, and a rule—is enough.
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name/entries/2026-01-10_trajectory.html">
+        Trajectory: A Geometric Approach to Audio Synthesis
+    </a>
+</p> <em></em>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+        <title>NewsMonitor: A Semantic Feed Aggregator</title>
+    </head>
+    <!-- POST PAGE TEMPLATE -->
+    <body>
+        <div class="article-container">
+            <nav class="article-nav">
+                <a href="https://danny.ayers.name">← Home</a>
+            </nav>
+            
+            <header id="entry-header">
+                <h1 class="post-title h-cinzel">
+                    
+                </h1>
+            </header>
+            <div class="post-content">
+                <!-- ARTICLE CONTENT -->
+
+<article class="post-content">
+    <h1>NewsMonitor: A Semantic Feed Aggregator</h1>
+<p>Below is Claude&#39;s summary of this sub-project. It&#39;s live at <a href="https://strandz.it">strandz.it</a>.</p>
+<p>I wanted the thing for direct reading by me and providing data for <a href="https://github.com/danja/semem">Semem</a>. This is for the general idea of using Semem as a Personal Knowledgebase.</p>
+<p>What was kinda marvellous was how easy it was to put together. I think I last made an aggregator <a href="https://github.com/danja/newsmonitor">NewsMonitor</a> about a decade ago (recycled the name here). That had similar functionality (running as a Java service) and took maybe 3 months. This one, with the help of Claude has taken a couple of days. Most of that time I&#39;ve spent on the admin side, the coding was like magic.</p>
+<p>NewsMonitor 2026 is built on my <a href="https://github.com/danja/transmissions">Transmissions</a> pipeline framework. I&#39;d previously got Claude to create a <strong>Skill</strong> to write pipelines. They are defined in Turtle-format RDF files. Claude made 7 different ones, which mostly worked first time. This is really impressive given that Claude won&#39;t have seen anything about Transmissions in its training data, as of today only I know how to use it. It is designed to be no harder than it has to be, is down towards the <em>lo code</em> kind of system. But there are the actual pipelines to compose, each of which will need corresponding configuration (another bunch of Turtle) and in many cases new Processors (the nodes in the pipeline) have to be written, and those are straight Javascript on a piece of boilerplate. So overall it&#39;s not trivial. Claude aced it!</p>
+<hr>
+<p><strong>Date:</strong> January 10, 2026
+<strong>Application:</strong> NewsMonitor
+<strong>Framework:</strong> Transmissions</p>
+<h2>Overview</h2>
+<p>NewsMonitor is a feed aggregator application built on the Transmissions message processing framework. It subscribes to RSS, Atom, and RDF feeds, stores their content in a SPARQL triple store, and provides a web interface for browsing aggregated posts.</p>
+<h2>Core Functionality</h2>
+<p>The application performs three primary functions:</p>
+<ol>
+<li><strong>Feed Subscription</strong>: Accepts feed URLs and stores feed metadata in RDF format</li>
+<li><strong>Content Retrieval</strong>: Fetches feed entries on a scheduled basis and stores them as RDF triples</li>
+<li><strong>Content Presentation</strong>: Provides a web interface for browsing and searching aggregated content</li>
+</ol>
+<h2>Architecture</h2>
+<p>NewsMonitor consists of several components:</p>
+<ul>
+<li><strong>Backend</strong>: Node.js application using the Transmissions framework for message processing</li>
+<li><strong>Storage</strong>: Apache Jena Fuseki SPARQL server for RDF data persistence</li>
+<li><strong>Frontend</strong>: Static HTML/CSS/JavaScript interface served via HTTP</li>
+<li><strong>Scheduler</strong>: Automated feed update process running at configurable intervals</li>
+</ul>
+<p>Data is stored in two named graphs:</p>
+<ul>
+<li><code>http://hyperdata.it/feeds</code> - Feed metadata (titles, URLs, format information)</li>
+<li><code>http://hyperdata.it/content</code> - Individual post entries with titles, links, dates, and content summaries</li>
+</ul>
+<h2>Feed Processing Pipeline</h2>
+<p>When subscribing to a feed, NewsMonitor executes a pipeline of processors:</p>
+<ol>
+<li>HTTP client fetches the feed XML</li>
+<li>Feed parser extracts individual entries</li>
+<li>Deduplicator checks for existing entries using GUIDs and content hashes</li>
+<li>RDF builder converts entries to RDF triples using Nunjucks templates</li>
+<li>SPARQL updater inserts new entries into the triple store</li>
+</ol>
+<p>The <code>update-all</code> pipeline iterates through all subscribed feeds, fetching new entries and storing them. Updates run automatically every hour by default, with the interval configurable via environment variables.</p>
+<h2>Web Interface</h2>
+<p>The application provides two web interfaces:</p>
+<p><strong>Main Feed View</strong> (<code>/</code>)</p>
+<ul>
+<li>Displays recent posts across all subscribed feeds</li>
+<li>Shows post titles, dates, feed sources, and content summaries</li>
+<li>Includes search and filtering capabilities</li>
+<li>Pagination for browsing large result sets</li>
+<li>Mobile-responsive layout</li>
+</ul>
+<p><strong>Admin Interface</strong> (<code>/admin.html</code>)</p>
+<ul>
+<li>Subscribe to new feeds (bulk entry supported)</li>
+<li>View all subscribed feeds with post counts</li>
+<li>Unsubscribe from feeds</li>
+<li>Manually trigger feed updates</li>
+<li>Filter and sort feed lists</li>
+</ul>
+<h2>API Endpoints</h2>
+<p>NewsMonitor exposes several HTTP endpoints:</p>
+<ul>
+<li><code>GET /api/posts</code> - Retrieve recent posts with pagination</li>
+<li><code>GET /api/feeds</code> - List all subscribed feeds</li>
+<li><code>GET /api/count</code> - Get total post count</li>
+<li><code>POST /api/subscribe</code> - Subscribe to new feeds</li>
+<li><code>POST /api/unsubscribe</code> - Remove feed subscriptions</li>
+<li><code>POST /api/update-feeds</code> - Trigger manual feed update</li>
+<li><code>GET /api/health</code> - Service health check</li>
+<li><code>GET /api/diagnostics</code> - SPARQL connectivity diagnostics</li>
+</ul>
+<h2>Deployment</h2>
+<p>The application runs as a Docker container with the following configuration:</p>
+<ul>
+<li><strong>Port</strong>: 6010 (configurable)</li>
+<li><strong>Update Interval</strong>: 3600000ms (1 hour, configurable)</li>
+<li><strong>Render Interval</strong>: 300000ms (5 minutes, configurable)</li>
+<li><strong>Dependencies</strong>: Requires access to a Fuseki SPARQL endpoint</li>
+</ul>
+<p>Environment variables control Fuseki connectivity, authentication, and update schedules. The container can be deployed behind nginx for SSL termination and load balancing.</p>
+<h2>Data Model</h2>
+<p>NewsMonitor uses the SIOC (Semantically-Interlinked Online Communities) vocabulary for representing feeds and posts:</p>
+<ul>
+<li>Feeds are typed as <code>sioc:Forum</code></li>
+<li>Posts are typed as <code>sioc:Post</code></li>
+<li>Dublin Core terms (<code>dc:title</code>, <code>dc:date</code>, <code>dc:creator</code>) provide metadata</li>
+<li>Posts link to their source feeds via <code>sioc:has_container</code></li>
+</ul>
+<p>This RDF-based storage enables SPARQL queries for flexible content retrieval and integration with other semantic web applications.</p>
+<h2>Current Status</h2>
+<p>As of January 2026, NewsMonitor successfully aggregates content from multiple feed formats. The application handles feed parsing, deduplication, and storage of posts with their associated metadata including titles, links, publication dates, authors, and content summaries.</p>
+<p>The system has been tested with feeds containing hundreds of entries and handles updates without blocking the web interface. Feed subscriptions persist across container restarts, and the SPARQL store maintains a queryable archive of all retrieved content.</p>
+<h2>Technical Notes</h2>
+<ul>
+<li>Built using ES modules and modern JavaScript features</li>
+<li>SPARQL queries use named graphs to separate feeds from content</li>
+<li>Deduplication prevents duplicate entries using multiple matching strategies</li>
+<li>Templates use Nunjucks for RDF generation from feed data</li>
+<li>Mobile interface uses responsive CSS with touch-friendly controls</li>
+<li>Feed updates run in separate processes to avoid blocking the API</li>
+</ul>
+<h2>Files</h2>
+<p>Key application files:</p>
+<ul>
+<li><code>src/apps/newsmonitor/subscribe/</code> - Feed subscription pipeline</li>
+<li><code>src/apps/newsmonitor/update-all/</code> - Batch feed update pipeline</li>
+<li><code>src/apps/newsmonitor/render-to-html/</code> - Legacy HTML rendering</li>
+<li><code>docker/newsmonitor-scheduler.js</code> - Scheduling and HTTP server</li>
+<li><code>docker/api-handler.js</code> - REST API implementation</li>
+<li><code>docker/public/</code> - Frontend HTML, CSS, and JavaScript</li>
+</ul>
+<p>Configuration uses RDF/Turtle files (<code>transmissions.ttl</code>, <code>config.ttl</code>) to define processor pipelines and settings, following Transmissions framework conventions.
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name/entries/2026-01-10_newsmonitor.html">
+        NewsMonitor: A Semantic Feed Aggregator
+    </a>
+</p> <em></em>
+            </div>
+        </div>
+    </body>
+</html>
