@@ -1,0 +1,266 @@
+body {
+  font-family: 'lora', serif;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: #033;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+#main-header {
+  text-align: center;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.articles {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: visible;
+}
+
+.post-content {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.67em 0;
+  line-height: 1.2;
+}
+
+h1 {
+  font-family: 'cinzel', sans-serif;
+  font-size: 1.5em;
+}
+
+.h-title {
+  font-family: monospace;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+/* Content areas */
+.directory,
+.about {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+}
+
+/* Code blocks and pre */
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+/* Article list styling */
+.article-list-item {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.article-list-item:last-child {
+  border-bottom: none;
+}
+
+.article-list-item h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.article-meta {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.feed-subscribe {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.feed-subscribe a {
+  color: #ff6600;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.feed-subscribe a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .article-list-item {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .article-list-item h2 {
+    font-size: 1.25rem;
+  }
+
+  .feed-subscribe {
+    padding: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Ensure links have enough tap target size */
+  .directory a,
+  .feed-subscribe a {
+    display: inline-block;
+    min-height: 44px;
+    line-height: 1.5;
+  }
+
+  /* Better spacing for list items on mobile */
+  .directory ul {
+    padding-left: 1.25rem;
+  }
+
+  .directory li {
+    margin-bottom: 0.75rem;
+  }
+
+  #main-header {
+    padding: 0.75rem 0;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-list-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .article-list-item h2 {
+    font-size: 1.125rem;
+  }
+
+  .article-meta {
+    font-size: 0.85rem;
+  }
+
+  .feed-subscribe {
+    padding: 0.75rem;
+  }
+
+  /* Prevent text overflow */
+  .article-content {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Ensure header scales appropriately */
+  .h-title {
+    font-size: 1.5rem;
+  }
+
+  #main-header {
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Article page styles */
+.article-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.article-nav {
+  margin-bottom: 1.5rem;
+}
+
+.article-nav a {
+  color: #ff6600;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.article-nav a:hover {
+  text-decoration: underline;
+}
+
+.article-dates {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+#entry-header {
+  margin-bottom: 2rem;
+}
+
+.post-title {
+  margin: 0;
+  line-height: 1.3;
+}
+
+.h-cinzel {
+  font-family: 'cinzel', sans-serif;
+}
+
+/* Mobile styles for article page */
+@media (max-width: 768px) {
+  .article-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .article-nav {
+    margin-bottom: 1rem;
+  }
+
+  #entry-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .post-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-container {
+    padding: 1rem 0.75rem;
+  }
+
+  .article-dates {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  #entry-header {
+    margin-bottom: 1rem;
+  }
+
+  .post-title {
+    font-size: 1.25rem;
+  }
+}
