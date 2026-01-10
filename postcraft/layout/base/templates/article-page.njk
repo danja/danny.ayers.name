@@ -11,13 +11,23 @@
     </head>
     <!-- POST PAGE TEMPLATE -->
     <body>
-    <a href="https://danny.ayers.name">Home</a>
-    <strong>{{dates}}</strong><em>{{dates.created}}</em>
-        <header id="entry-header">
-            <h1 class="post-title h-cinzel">
-                {{header}}
-            </h1>
-        </header>
-        {{content |safe}}
+        <div class="article-container">
+            <nav class="article-nav">
+                <a href="https://danny.ayers.name">← Home</a>
+            </nav>
+            {% if dates.created %}
+            <div class="article-dates">
+                <strong>{{dates.created}}</strong>
+            </div>
+            {% endif %}
+            <header id="entry-header">
+                <h1 class="post-title h-cinzel">
+                    {{header}}
+                </h1>
+            </header>
+            <div class="post-content">
+                {{content | safe}}
+            </div>
+        </div>
     </body>
 </html>
