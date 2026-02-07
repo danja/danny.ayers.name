@@ -33,6 +33,10 @@
   #  :limit "3" ; # for debugging
    :sourceDir "content/raw" .
 
+:changeFilter a :ConfigSet ;
+    :cacheFile ".md-to-sparqlstore-cache.json" ;
+    :pathField "fullPath" .
+
 :readerSet a :ConfigSet ;
     :metaField "meta" .
 
@@ -75,6 +79,11 @@
                 :post  "contentBlocks.created"  .
         :prepA4 :pre    "appRunStart" ;
                 :post  "contentBlocks.published"  .
+
+:changeFilter a :ConfigSet ;
+    :cacheFile ".sparqlstore-to-html-cache.json" ;
+    :keyField "contentBlocks.uri" ;
+    :valueField "contentBlocks.created" .
 
 
 :markdown a :ConfigSet ;
