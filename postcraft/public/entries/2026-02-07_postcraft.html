@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+        <title>Postcraft Update</title>
+    </head>
+    <!-- POST PAGE TEMPLATE -->
+    <body>
+        <div class="article-container">
+            <nav class="article-nav">
+                <a href="https://danny.ayers.name">← Home</a>
+            </nav>
+            
+            <header id="entry-header">
+                <h1 class="post-title h-cinzel">
+                    
+                </h1>
+            </header>
+            <div class="post-content">
+                <!-- ARTICLE CONTENT -->
+
+<article class="post-content">
+    <h1>Postcraft Update</h1>
+<p>This is a test.</p>
+<p>Rather wonderfully both Codex and Claude have a decent grip on how <a href="https://github.com/danja/transmissions">Transmissions</a>, my pipeliney thing, works.
+I&#39;m not entirely sure what&#39;s being used under the hood, but I did get <strong>Claude</strong> to create a <strong>Skill</strong> for creating <em>Transmissions</em> (what I call my pipelines).
+Claude was then able to build me a feed aggregator using Transmissions as the engine.</p>
+<p>I&#39;ve been using Transmissions-based apps for publishing my blog content for a while now. The source content I write as markdown files in my local filesystem. One app pushes this content off to a remote SPARQL store (Fuseki on my server), another app renders the content as HTML, yet another creates the index pages.</p>
+<p>This works ok but an outstanding issue was that each time I ran these apps, every single blog post was processed again. So I just got Codex to modify the pipelines to keep a note of changes. It chose to use a local JSON file for keeping the cache info, which is fine by me. Everything looks like it still functions ok. My tests are a bit haphazard, the best test is to run the thing. For which I need a new blog post. So,</p>
+<p>This is a test.
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name/entries/2026-02-07_postcraft.html">
+        Postcraft Update
+    </a>
+</p> <em></em>
+            </div>
+        </div>
+    </body>
+</html>
