@@ -215,6 +215,17 @@
 :htmlField a :ConfigSet ;
    :contentField "content" .
 
+:archiveIndex a :ConfigSet ;
+    :templateFilename "layout/base/templates/archive-html.njk" .
+
+:archiveFilepath a :ConfigSet ;
+  :asPath true ;
+  :targetField "destinationFile" ;
+  :values (:ahp1 :ahp2 :ahp3) .
+  :ahp1 :field "targetDir" .
+  :ahp2 :string "public" .
+  :ahp3 :string "archive.html" .
+
 :contentLocation  a :ConfigSet ;
    :contentField "accumulator" .
 
@@ -225,6 +236,7 @@
 :atomBuilder a :ConfigSet ;
     :inputField "contentBlocks.entries" ;
     :outputField "content" ;
+    :maxEntries "20" ;
     :feedTitle "Danny Ayers - Recent Articles" ;
     :feedSubtitle "Latest articles from danny.ayers.name" ;
     :feedAuthorName "Danny Ayers" ;
@@ -236,7 +248,7 @@
   :asPath true ;
   :targetField "destinationFile" ;
   :values (:ap1 :ap2 :ap3) .
-  :ap1 :field "targetPath" .
+  :ap1 :field "targetDir" .
   :ap2 :string "public" .
   :ap3 :string "atom.xml" .
 

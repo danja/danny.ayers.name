@@ -1,0 +1,2968 @@
+<!-- /home/danny/sites/danny.ayers.name/postcraft/layout/base/templates/archive-html.njk -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Danny Ayers - Archive</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Article archive from danny.ayers.name">
+
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml" />
+    <link rel="stylesheet" href="/css/fonts.css" type="text/css" />
+    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+    <style>
+        :root {
+            --archive-bg: #f7f7f4;
+            --archive-panel: #fff;
+            --archive-text: #042f2f;
+            --archive-muted: #66736f;
+            --archive-line: #d9ddd7;
+            --archive-accent: #b94f24;
+        }
+
+        body {
+            background: var(--archive-bg);
+            color: var(--archive-text);
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        .site-header,
+        .site-menu,
+        .archive-shell,
+        .archive-list a {
+            box-sizing: border-box;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            max-width: 58rem;
+            margin: 0 auto;
+            padding: 1rem clamp(1rem, 4vw, 2rem);
+            background: rgba(247, 247, 244, 0.94);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--archive-line);
+        }
+
+        .h-title {
+            margin: 0;
+            font-size: clamp(1.35rem, 5vw, 1.9rem);
+        }
+
+        .site-menu-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            flex: 0 0 auto;
+            border: 1px solid var(--archive-line);
+            border-radius: 8px;
+            background: var(--archive-panel);
+            color: var(--archive-text);
+            cursor: pointer;
+        }
+
+        .menu-bars {
+            position: relative;
+            width: 1.35rem;
+            height: 1rem;
+        }
+
+        .menu-bars span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: currentColor;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .menu-bars span:nth-child(1) {
+            top: 0;
+        }
+
+        .menu-bars span:nth-child(2) {
+            top: 0.45rem;
+        }
+
+        .menu-bars span:nth-child(3) {
+            bottom: 0;
+        }
+
+        .site-menu-toggle[aria-expanded="true"] .menu-bars span:nth-child(1) {
+            transform: translateY(0.45rem) rotate(45deg);
+        }
+
+        .site-menu-toggle[aria-expanded="true"] .menu-bars span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .site-menu-toggle[aria-expanded="true"] .menu-bars span:nth-child(3) {
+            transform: translateY(-0.45rem) rotate(-45deg);
+        }
+
+        .site-menu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 30;
+            background: rgba(4, 47, 47, 0.32);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+
+        .site-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 40;
+            width: min(22rem, calc(100vw - 1.5rem));
+            padding: 5rem 1rem 1.5rem;
+            overflow-y: auto;
+            background: var(--archive-panel);
+            box-shadow: -12px 0 32px rgba(4, 47, 47, 0.14);
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: transform 0.22s ease, visibility 0.22s ease;
+        }
+
+        .site-menu.is-open {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .site-menu-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .site-menu a {
+            display: block;
+            min-height: 2.75rem;
+            padding: 0.7rem 0.25rem;
+            color: var(--archive-text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--archive-line);
+        }
+
+        .site-menu-title {
+            margin: 0 0 0.8rem;
+            font-family: 'cinzel', sans-serif;
+            font-size: 1rem;
+        }
+
+        .site-menu-subtitle {
+            margin-top: 1.2rem;
+            color: var(--archive-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .archive-shell {
+            width: min(100%, 58rem);
+            margin: 0 auto;
+            padding: 1.25rem clamp(1rem, 4vw, 2rem) 3rem;
+        }
+
+        .archive-heading {
+            margin: 0 0 0.35rem;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+        }
+
+        .archive-intro {
+            margin: 0 0 1.25rem;
+            color: var(--archive-muted);
+        }
+
+        .archive-list {
+            display: grid;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .archive-list a {
+            display: grid;
+            grid-template-columns: minmax(8.5rem, 12rem) 1fr;
+            gap: 1rem;
+            min-width: 0;
+            min-height: 3rem;
+            align-items: baseline;
+            padding: 0.8rem 1rem;
+            background: var(--archive-panel);
+            border: 1px solid var(--archive-line);
+            border-radius: 8px;
+            color: var(--archive-text);
+            text-decoration: none;
+        }
+
+        .archive-list a:hover,
+        .archive-list a:focus-visible {
+            border-color: var(--archive-accent);
+        }
+
+        .archive-date {
+            min-width: 0;
+            color: var(--archive-muted);
+            font-size: 0.92rem;
+            font-variant-numeric: tabular-nums;
+            overflow-wrap: anywhere;
+        }
+
+        .archive-title {
+            min-width: 0;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .empty-archive {
+            padding: 1.5rem;
+            background: var(--archive-panel);
+            border: 1px solid var(--archive-line);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 640px) {
+            .site-header {
+                padding: 0.75rem 0.9rem;
+            }
+
+            .archive-shell {
+                padding: 1rem 0.75rem 2rem;
+            }
+
+            .site-menu {
+                width: min(100vw, 24rem);
+            }
+
+            .archive-list a {
+                grid-template-columns: 1fr;
+                gap: 0.15rem;
+                padding: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <header id="main-header" class="site-header">
+        <h1 class="h-title">Raw<em>er</em></h1>
+        <button class="site-menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="site-menu" aria-expanded="false">
+            <span class="menu-bars" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </button>
+    </header>
+
+    <div class="site-menu-overlay" data-menu-close></div>
+    <nav id="site-menu" class="site-menu" aria-label="Site links">
+        <p class="site-menu-title">Links</p>
+        <a href="/">Recent articles</a>
+        <a href="/archive.html">Archive</a>
+        <a href="/atom.xml">Atom feed</a>
+        <p class="site-menu-title site-menu-subtitle">Nearby</p>
+        <a href="https://www.youtube.com/djayers">YouTube material</a>
+        <a href="https://github.com/danja/attone">Attone - new album</a>
+        <a href="https://github.com/danja/tensegrity">Tensegrity - current code projects</a>
+        <a href="https://github.com/danja/tia">TIA Intelligence Agency</a>
+        <a href="https://semem.tensegrity.it">Semem Demo</a>
+        <a href="https://github.com/danja/flues/">Flues - synth experiments</a>
+        <a href="https://danja.github.io/downspout/">Downspout - generative VST plugins</a>
+        <a href="https://danja.github.io/hillside/">Hillside - tunes with visuals</a>
+        <a href="https://github.com/danja/dogalog">Dogalog - livecoding in Prolog</a>
+        <a href="https://hyperdata.it">hyperdata.it - earlier projects</a>
+    </nav>
+
+    <main class="archive-shell">
+        <h2 class="archive-heading">Archive</h2>
+        <p class="archive-intro">376 articles, newest first.</p>
+        
+        <ol class="archive-list">
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2026-05-26_vsts.html">
+                    <span class="archive-date">2026-05-29T07:58:41.47Z</span>
+                    <span class="archive-title">Novel VST Plugins</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2026-05-21_attone.html">
+                    <span class="archive-date">2026-05-21T09:15:06.185Z</span>
+                    <span class="archive-title">Attone</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2026-02-07_postcraft.html">
+                    <span class="archive-date">2026-02-07T10:33:03.538Z</span>
+                    <span class="archive-title">Postcraft Update</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2026-02-02_p-mix.html">
+                    <span class="archive-date">2026-02-02T15:04:45.947Z</span>
+                    <span class="archive-title">P-Mix</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-12-06_synths.html">
+                    <span class="archive-date">2025-12-06T08:07:07.851Z</span>
+                    <span class="archive-title">Synth Experiments</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2026-01-16_vibe.html">
+                    <span class="archive-date">2026-01-16T09:44:40.762Z</span>
+                    <span class="archive-title">Vibe Coding Synths</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2026-01-12_module.html">
+                    <span class="archive-date">2026-01-12T08:53:47.959Z</span>
+                    <span class="archive-title">Birthday Module</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2026-01-10_trajectory.html">
+                    <span class="archive-date">2026-01-10T08:32:40.228Z</span>
+                    <span class="archive-title">Trajectory: A Geometric Approach to Audio Synthesis</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2026-01-10_newsmonitor.html">
+                    <span class="archive-date">2026-01-10T08:09:35.818Z</span>
+                    <span class="archive-title">NewsMonitor: A Semantic Feed Aggregator</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-12-29_taylor.html">
+                    <span class="archive-date">2025-12-29T09:55:21.634Z</span>
+                    <span class="archive-title">Taylor Oscillator Algorithm</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-12-21_tia-blog.html">
+                    <span class="archive-date">2025-12-21T12:57:28.222Z</span>
+                    <span class="archive-title">TIA Intelligence Agency: A Small XMPP Lab That Talks Back</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-12-14_dogalog.html">
+                    <span class="archive-date">2025-12-14T08:40:47.374Z</span>
+                    <span class="archive-title">Dogalog</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-12-12_synth-serendipity.html">
+                    <span class="archive-date">2025-12-12T09:53:33.286Z</span>
+                    <span class="archive-title">Flues Synth</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-12-04_raspberry-pi.html">
+                    <span class="archive-date">2025-12-04T10:40:31.007Z</span>
+                    <span class="archive-title">Runny floozy-poly on Raspberry Pi</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-10-30_what.html">
+                    <span class="archive-date">2025-10-30T09:11:25.448Z</span>
+                    <span class="archive-title">What have I been doing recently?</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/instruments.html">
+                    <span class="archive-date">2025-10-21T14:53:36.102Z</span>
+                    <span class="archive-title"> Modular</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-10-15_flues.html">
+                    <span class="archive-date">2025-10-15T14:37:51.713Z</span>
+                    <span class="archive-title">Flues</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-09-05_semem-progress.html">
+                    <span class="archive-date">2025-09-05T08:42:55.022Z</span>
+                    <span class="archive-title">Semem Progress Report</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/2024-10-09.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">2024-10-09</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/index.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">Danny&#92;&#39;s Top Level To Do List</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/postcraft-next-steps.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">Postcraft Next Steps</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/projects/outside/outside-front.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">Project : Outside-Front</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/projects/outside/about.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">Project Outside</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/projects/postcraft/about.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">Project Postcraft</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/projects/transmissions/about.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">Project Transmissions</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/projects/ns/about.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">Project ns</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/2024-05.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">TODO 2024-05</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/2024-07.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">TODO 2024-07</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/2024-08.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">TODO 2024-08</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/2024-09.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">TODO 2024-09</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/2024-10-10.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">TODO 2024-10-10</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/2024-12.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">TODO 2024-12</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/2024-11.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">TODO : 2024-11</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/2025-millionaire.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">TODO in 2025, become a millionaire</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/to-automate.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">To Automate</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/_2024-10-08_bills.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">To Pay</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/spooky-pivot.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">ToDo : Spooky Pivot (for 2024-10-31)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/2024-10.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">Top Level TODO 2024-10</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/next-steps.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">danny.ayers.name : Next Steps</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/to-blog.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title"> Linux on Android</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/icing.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">icing.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/todo/to-contact.html">
+                    <span class="archive-date">2025-09-05T07:54:26.42Z</span>
+                    <span class="archive-title">to-contact.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-13.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Scorchio</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-27.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Babysitting</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-08-03.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Back to the Future</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-30.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Blackjack, Hookers and SPARQL</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-08-06.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Coolbag</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-28.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Dozy</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-23.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Hot, Transmisions</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-08-02.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">HotHotHot</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-25.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Hotter</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-22.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Humid</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-10-16.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Journal 2024-10-16</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-10-10.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Journal : 2024-10-10</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-10-18.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Journal : 2024-10-18</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-08-28.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">MAA&#92;&#39;s birthday</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-08-08.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Modulation</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-08-01.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Morewood</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-08-05.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Oven Zombie</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-08-04.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Poor Head</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-29.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Power Off</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/projects/elfquake/about.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Project ELFQuake</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/projects/d.a.n/about.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Project d.a.n</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/projects/hyperdata/about.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Project hyperdata</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-08-07.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Rain of Plums</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-14.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Really</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-31.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">Woody</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/projects/THIS/list.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title"> ~/github-danny/</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-08-26.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">2024-08-26.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-10-17.html">
+                    <span class="archive-date">2025-09-05T07:54:26.419Z</span>
+                    <span class="archive-title">:todo THIS https://huggingface.co/docs/hub/en/ollama</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-16.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-05-16</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-30_fuseki-time.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">2024-05-30 Later...</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-11.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Another Groundhog Day</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-06-23.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Back to Life</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-29.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Calm</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-28.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Cough to Sneeze</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-21.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Do Stuff</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-01.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Fuseki &amp; LDAP</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-06-01.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Giugno</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-30.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Good Things Come in Threes</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-18.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Hello (again) World!</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-31.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">I Got Sunshine</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-22.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Know Your Place</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-02.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">LDAP and Fuseki cont.</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-03.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">LDAP and Fuseki cont.</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-06-23_ldap.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">LDAP bits</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-30_librechat-notes.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">LibreChat Notes 2024-05-30</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-07.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Mostly Transmissions Today</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-06-27_project-alignment.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Project Alignment</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-26.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Slow Sunday</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-05.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">TODAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY AI setup, again</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-20-02.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">This is not an Ecumenical Matter</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-06-03.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Today</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-08.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">WTFs</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-23.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">Whelmed</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-07-04.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">hyperdata.it reboot</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-06-05.html">
+                    <span class="archive-date">2025-09-05T07:54:26.418Z</span>
+                    <span class="archive-title">urghh</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-07-27_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">Journal 2025-07-27</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-08-18_adhd-and-me.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">ADHD and Me</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-08-26_hillside.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Hillside Media Visualizer</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-04-30.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-04-24</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-01.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-05-01</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-03.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-05-03</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-05.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-05-05</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-09.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-05-09</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-10.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-05-10</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-11.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-05-11</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-12.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-05-12</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-13.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-05-13</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-14.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-05-14</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/journal/2024-05-15.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Journal : 2024-05-15</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-08-18_lyrics.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Lyrics</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-07-30_quake.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Predicting Earthquakes with AI</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/simple-distortion-circuit.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Simple Distortion Circuit</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-08-09_watch.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Watch</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-08-09_watching.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Watching</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/wfc-synth.html">
+                    <span class="archive-date">2025-09-05T07:54:26.417Z</span>
+                    <span class="archive-title">Wave Function Collapse for Sounds</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-30_daft-rag.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">Daft RAG</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-25_distortion-module.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">Distortion Module</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-05_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">Journal 2025-06-05</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-06_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">Journal 2025-06-06</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-09_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">Journal 2025-06-09</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-14_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">Journal 2025-06-14</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-16_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">Journal 2025-06-16</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-23_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">Journal 2025-06-23</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-25_motor-module.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">Voltage Controlled Motor Module</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-07-14_cancer.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">What I&#92;&#39;ll do when I get cancer</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-10_tangibles.html">
+                    <span class="archive-date">2025-09-05T07:54:26.416Z</span>
+                    <span class="archive-title">Where are the Tangibles in Schema.org?</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-23_axioms.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Axioms</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-24_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-04-24</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-30_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-04-30</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-01_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-01</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-03_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-03</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-07_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-07</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-10_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-10</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-16_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-16</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-17_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-17</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-18_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-18</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-19_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-19</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-20_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-20</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-26_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-26</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-28_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-28</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-05-31_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-05-31</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-01_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-06-01</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-06-03_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Journal 2025-06-03</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-26_ragno.html">
+                    <span class="archive-date">2025-09-05T07:54:26.415Z</span>
+                    <span class="archive-title">Ragno</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-26_code-insiders.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Code Insiders</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-18_mcp-a2a.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title"> Preample</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-26_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-03-26</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-27_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-03-27</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-28_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-03-28</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-30_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-03-30</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-01_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-04-01</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-02_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-04-02</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-03_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-04-03</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-09_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-04-09</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-10_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-04-10</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-11_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-04-11</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-12_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-04-12</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-15_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-04-15</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-16_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal 2025-04-16</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-04-21_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Journal : 2025-04-21</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-30_time.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Time</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-30_upgrade-node.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">Upgrade Node</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-27_what-query.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">What Query..?</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-27_tbox-time.html">
+                    <span class="archive-date">2025-09-05T07:54:26.414Z</span>
+                    <span class="archive-title">tbox Time</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-28_dock-marts.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Dock Marts</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-30_judy-teen.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Judy Teen</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-30_chain-of-earworm.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Chain of Earworm</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-02-01_groundhogs-again.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Groundhogs Again</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-12_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-01-12</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-02-27_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-02-27</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-03_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-03-03</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-04_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-03-04</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-05_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-03-05</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-06_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-03-06</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-08_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-03-08</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-10_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-03-10</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-14_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-03-14</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-19_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-03-19</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-21_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-03-21</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-25_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal 2025-03-25</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-02-24_journal.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Journal</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-02-12_mindset.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Mindset</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-07_mr-brown.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Mr. Brown</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-02-02_office-fridge.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Office Fridge</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-02-09_reorg.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Reorg</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-02-06_rotas.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Rotas</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-03-09_slowit.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Slow Wit? Slow It.</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-02-08_sorting.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Sorting</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-31_today-again.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Today Again</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-29_today.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Today</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-02-07_gsoc.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">Towards a Neurodiverse Community of Agents with Autonomy and Knowledge which can Cooperate to Solve Real-World Problems</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-02-04_xkill.html">
+                    <span class="archive-date">2025-09-05T07:54:26.413Z</span>
+                    <span class="archive-title">xkill</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-07_aaas.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Aaas</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-17_bootstrapping.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Bootstrapping</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-12_bracelets.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Bracelets</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-18_danbert.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Danbert</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-01_hny.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Happy New Year!</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-23_hi-energy.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Hi Energy</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-04_hoard.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Hoard</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-21_home.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-16_ice-paws.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Ice Paws</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-20_integration.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Integration</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-03_light.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Light</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-19_manix.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Manix</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-06_meloncholia.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Meloncholia</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-26_part-two.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Part Two</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-30_perplexed.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Perplexed</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-22_props-not.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Props Not</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-01_repo-boo.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Repo Boo</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-11_engagement.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Rules of Engagement</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-27_scientist.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Scientist</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-30_semem-lives.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Semem Lives!</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-31_semem-poc.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Semem POC</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-30_semem-sparq.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Semem SPARQ</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-22_somervilles.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Somervilles</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-30_todos.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Todos</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-15_whelms.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Whelms</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-25_woof.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Woof</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-24_zappa.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Zappa</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2025-01-01_semem-run.html">
+                    <span class="archive-date">2025-09-05T07:54:26.412Z</span>
+                    <span class="archive-title">Semem Run</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-19_any-port.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Any Port</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-23_chilly.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Chilly</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-21_claude-system-prompt.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Claude System Prompt</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-28_db.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">DB</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-21_dark.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Dark</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-23_eat-me.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Eat Me</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-26_indigestion.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Indigestion</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-21_layout.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Layout</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-16_matches.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Matches</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-22_misty.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Misty</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-29_pivots.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Pivots</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-20_postcraft.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Postcraft</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-29_prill.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Prill</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-27_projects.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Projects</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-29_semem-ollama.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Semem Ollama</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-19_sigmod.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">SigMod</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-23_sites.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Sites</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-21_solstice.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Solstice</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-19_stream.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Stream</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-29_sunny-day.html">
+                    <span class="archive-date">2025-09-05T07:54:26.411Z</span>
+                    <span class="archive-title">Sunny Day</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-30_halloweeneen.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Halloweeneen</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-15_aider-compose.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Aider Composer</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-03_banana.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Banana</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-11_bills.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Bills.</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-24_brr.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Brr</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-15_brrr.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Brrr</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-20_brrrm.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Brrrm</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-23_buzzkunst.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Buzzkunst</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-29_carrot.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Carrot</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-25_desk.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Desk</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-18_fool-danny.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Fool Danny</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-27_groundhog.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Groundhog</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-17_incline.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">In Cline</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-01_lark.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Lark</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-28_mozzpoly.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">MozzPoly</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-09_new-desk.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">New Desk</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-27_features-tests.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">New features can be their own tests</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-02_not-dead.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Not Dead</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-01_nov.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Nov</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-23_offline.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Offline</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-26_overwhelmed.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Overwhelmed</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-16_pingy.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Pingy-ping</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-21_radar.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Radar</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-30_rees-mogg.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Rees-Mogg</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-29_scaffold.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Scaffold</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-18_semem.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Semem</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-31_spooky.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Spooky</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-15_sun-freeze.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Sun Freeze</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-27_trust-graphs.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Trust Graphs!</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-12-03_wol.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">Wake On Lan</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-11-26_trans-dev.html">
+                    <span class="archive-date">2025-09-05T07:54:26.41Z</span>
+                    <span class="archive-title">trans-dev</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-29_unsday.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Unsday</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-12_bhs.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">BHS</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-29_benn.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Benn</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-07_brrr.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Brrr!</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-17_builders-caffe.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Builder&#92;&#39;s Caffè</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-24_coherence.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Coherence</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-20_dogmo.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Dog Mood</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-19_fuzzy.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Fuzzy</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-22_hat.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Hat</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-06_heart.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Heart</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-07_homepage-first.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Homepage[^1] First</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-09_inpomnet.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Inpomnet</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-05_marconi.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Marconi</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-30_mournday.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Moonday</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-27_nopill.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">No Pill</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-08_doc-structure.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Postcraft Docs</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-29_rabbit.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Rabbit</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-02_rain.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Rainsday</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-25_rare.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Rare</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-21_tinge.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Tinge</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-03_wordy.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Wordy</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-08_xmlns0.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">XMLNS</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-08_xmlns.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">XMLNS</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-10-13_sheltopusik.html">
+                    <span class="archive-date">2025-09-05T07:54:26.409Z</span>
+                    <span class="archive-title">Sheltopusik</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-06_configmap.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Refactoring ConfigMap</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-13_ducks.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">A Swarm of Ducks</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-19_bad-cleaner.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Bad Cleaner</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-20_bad-sectors.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Bad Sectors</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-17_fan-migration.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Fan Migration</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-10_goon.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Goon</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-16_jacket.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Hiding Jacket</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-15_hiphop.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">HipHop</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-22_iron.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Iron</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-27_lively-distractions.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Lively Distractions</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-24_mail.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Mail</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-21_pension.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Pension</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-11_ratty.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Ratty</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-07_xmpp-2.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Setting up XMPP pt.2</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-08_xmpp-3.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Setting up XMPP pt.3</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-06_xmpp.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Setting up XMPP</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-08_stormy.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Stormy Weather</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-09_holst.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">The Planets</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-18_tibicos.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Tibicos</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-14_walking-hat.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Walking Hat</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-28_wall-y.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Wall-Y</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-12_google-takedown.html">
+                    <span class="archive-date">2025-09-05T07:54:26.408Z</span>
+                    <span class="archive-title">Google Takedown</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-04_foaf-retro-push.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">FOAF Retro Push</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-08-28_form-a-matic.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Form-a-matic</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-04-19_hello-postcraft.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Hello Postcraft</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2023-10-27_hello.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Hello World! (again)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-02-27_hello-transmissions.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">I hate frameworks, so I&#92;&#39;ve been building one</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-08-25_blog-improving.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Improving this Blog</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-08-15_linux-speedup.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Linux Performance Tips</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-02_piano-piano.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Piano Piano Task Force and Namespaced Hashtags</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-08-29_cleaner.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Postcraft Cleaner</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-04-27_postcraft-flow.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Postcraft Flow : 2024-04-27</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-08-28_postcraft-images.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Postcraft Images</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-09-05_sidebars.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Postcraft Sidebars</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-05-15_rdf-in-javascript.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">RDF in Javascript</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-08-28_project-vocab.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Revisiting the Project Vocabulary</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-07-07_sausage-paper.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Sausage Force Fields</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-05-01_shake-the-spaghetti-tree.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Shake the Spaghetti Tree</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-01-20_chicken-dogfood.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">The Chicken and Dogfood Problem</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-05-08_transmissions-for-semwebbers.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Transmissions for SemWebbers</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-08-14_video-enhancement.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title"> Plan</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2000-01-01_blackview-return.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Blackview Return</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/entries/2024-07-27_xordle.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">Xordle</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/tibicos/system-prompt_01.html">
+                    <span class="archive-date">2025-09-05T07:54:26.407Z</span>
+                    <span class="archive-title">01</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/tibicos/references/wikipedia-tibicos-raw-text.html">
+                    <span class="archive-date">2025-09-05T07:54:26.405Z</span>
+                    <span class="archive-title">wikipedia-tibicos-raw-text.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/tibicos/references/sachii-wiki.html">
+                    <span class="archive-date">2025-09-05T07:54:26.405Z</span>
+                    <span class="archive-title">sachii-wiki.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/reconnecting.html">
+                    <span class="archive-date">2025-09-05T07:54:26.391Z</span>
+                    <span class="archive-title">Reconnecting</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/semweb-plusplus/semantic-web-plus-plus.html">
+                    <span class="archive-date">2025-09-05T07:54:26.391Z</span>
+                    <span class="archive-title">Semantic Web++: The Convergence of Large Language Models and the Semantic Web Vision</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/semweb-plusplus/infrastructure-evolution.html">
+                    <span class="archive-date">2025-09-05T07:54:26.391Z</span>
+                    <span class="archive-title">The Evolution of Digital Infrastructure: From Web to Mobile-First Computing</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/music/advice-for-newbies.html">
+                    <span class="archive-date">2025-09-05T07:54:26.391Z</span>
+                    <span class="archive-title"> [Len Bullard on Facebook](https://www.facebook.com/len.bullard/posts/10235399330307226) :</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/my-schedule.html">
+                    <span class="archive-date">2025-09-05T07:54:26.391Z</span>
+                    <span class="archive-title"> Monday</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/pr/references/seo-writing-tips.html">
+                    <span class="archive-date">2025-09-05T07:54:26.391Z</span>
+                    <span class="archive-title">seo-writing-tips.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/spike-and-wave/lyrics/identity.html">
+                    <span class="archive-date">2025-09-05T07:54:26.391Z</span>
+                    <span class="archive-title">identity.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/prompts/handover-prompt.html">
+                    <span class="archive-date">2025-09-05T07:54:26.391Z</span>
+                    <span class="archive-title">handover-prompt.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/prompts/prompt-projects.html">
+                    <span class="archive-date">2025-09-05T07:54:26.391Z</span>
+                    <span class="archive-title">prompt-projects.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/spike-and-wave/matchering.html">
+                    <span class="archive-date">2025-09-05T07:54:26.391Z</span>
+                    <span class="archive-title">matchering.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/semweb-plusplus/knowledge/notes.html">
+                    <span class="archive-date">2025-09-05T07:54:26.391Z</span>
+                    <span class="archive-title">notes.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/a-day-in-the-life.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">A Day in the Life</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/adhd.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">ADHD</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/ai-dead.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">AI and the Dead</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/about/about-sites.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">About the Sites</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/animal-intelligence.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">Animal Intelligence</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/about/cv-net.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">CV bits for Leonardo</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/gutter.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">Gutter</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/lingue-franche.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">Lingue Franche</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/about/up-to_2024-11-08.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">What am I up to..?</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/about/up-to_current.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">What am I up to?</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/about/up-to_2024-10-16.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">What have I been up to?</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/about/repos.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">repos.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/A-danny-ref/server/locations.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">locations.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/_bergi-pic.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">Bergi Pic</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/A-danny-ref/personal/_bills.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title"> Paid</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/about/my-links.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">my-links.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/A-danny-ref/personal/_income.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">Income</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/about/up-to-relocate.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">up-to-relocate.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/.about.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">.about.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/ARTICLES/spooky-pivot.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">Releases for Halloween</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/amazon-job.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">amazon-job.md</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="http://danny.ayers.name/articles/about/up-to_2024-10-30.html">
+                    <span class="archive-date">2025-09-05T07:54:26.39Z</span>
+                    <span class="archive-title">2024 10 30</span>
+                </a>
+            </li>
+            
+        </ol>
+        
+    </main>
+
+    <script>
+        const menuButton = document.querySelector('.site-menu-toggle');
+        const menu = document.querySelector('#site-menu');
+        const overlay = document.querySelector('[data-menu-close]');
+        const links = menu.querySelectorAll('a');
+
+        const setMenu = (isOpen) => {
+            document.body.classList.toggle('menu-open', isOpen);
+            menu.classList.toggle('is-open', isOpen);
+            overlay.classList.toggle('is-open', isOpen);
+            menuButton.setAttribute('aria-expanded', String(isOpen));
+            menuButton.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        };
+
+        menuButton.addEventListener('click', () => {
+            setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+        });
+
+        overlay.addEventListener('click', () => setMenu(false));
+
+        links.forEach((link) => {
+            link.addEventListener('click', () => setMenu(false));
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                setMenu(false);
+            }
+        });
+    </script>
+</body>
+
+</html>
