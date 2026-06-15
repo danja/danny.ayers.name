@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2026-05-27T17:17:07.334Z</updated>
+  <updated>2026-06-15T08:32:20.518Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -10,6 +10,32 @@
     <name>Danny Ayers</name>
     <email>danny.ayers@gmail.com</email>
   </author>
+  <entry>
+    <title>Novel VST Plugins</title>
+    <id>http://danny.ayers.name/entries/2026-05-26_vsts</id>
+    <updated>2026-05-29T07:58:41.470Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-05-26_vsts" />
+    <published>2026-05-29T07:58:41.470Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Novel VST Plugins</h1>
+        <p>I&#39;ve had a lot of fun over the past year or so doing music experiments with the help of AI assistants. I&#39;ve had a variety of targets including native apps, browser-based runtimes, a Daisy Seed Eurorack module and lv2 plugins. Most of the material is around <a href="https://github.com/danja/flues/">Flues</a> on GitHub. All open source, natch.</p>
+        <p>I have been using the results quite a lot in the music room, in fact the lv2s played a significant role in the making of my new album, <a href="https://github.com/danja/attone">Attone</a>. </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-05-26_vsts.html">
+                Novel VST Plugins
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
   <entry>
     <title>Attone</title>
     <id>http://danny.ayers.name/entries/2026-05-21_attone</id>
@@ -25,7 +51,13 @@
         <!-- ARTICLE CONTENT -->
         <article class="post-content">
             <h1>Attone</h1>
-        <p><em>notes to follow</em> </p>
+        <p>I have released a new album, using CD Baby as a distributor so it&#39;s now available on all major streaming music outlets.</p>
+        <ul>
+        <li><a href="https://dannyayers.bandcamp.com/album/attone">Bandcamp</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PLcI4DK1XcRAHjA180H0dYr7Dvaju027RV">YouTube</a></li>
+        <li><a href="https://open.spotify.com/album/4RRP11wg5aI3zDugMt3gcr">Spotify</a></li>
+        </ul>
+        <p>If you remember what a CD-R is, you can burn your own copy using the source files of <a href="https://github.com/danja/attone">Attone on GitHub</a>. </p>
         </article>
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/entries/2026-05-21_attone.html">
@@ -122,42 +154,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/entries/2025-12-06_synths.html">
                 Synth Experiments
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Vibe Coding Synths</title>
-    <id>http://danny.ayers.name/entries/2026-01-16_vibe</id>
-    <updated>2026-01-16T09:44:40.762Z</updated>
-    <link href="http://danny.ayers.name/entries/2026-01-16_vibe" />
-    <published>2026-01-16T09:44:40.762Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Vibe Coding Synths</h1>
-        <p>Andrej Karpathy came up with the term <a href="https://en.wikipedia.org/wiki/Vibe_coding">Vibe Coding</a> to describe writing software by giving AI assistants control of the detail of the code, the programmer only works at the level of text description.</p>
-        <p>As a <strong>mediocre programmer</strong>, I find this appealing. (I do have decades of experience to offset the mediocrity).</p>
-        <p>I&#39;ve spent a lot of time over the past couple of years using AI assistants to help me with <a href="https://en.wikipedia.org/wiki/Semantic_Web">Semantic Web</a>/AI <a href="https://github.com/danja/tensegrity">projects</a>. This has been quite the learning experience... I haven&#39;t been fully vibe coding - I have gone hands-on with the code quite a lot. But I&#39;ve been using Node.js, which I&#39;m reasonably familiar with, and I&#39;m reasonably comfortable with the domain. Overall I&#39;ve found the approach very productive.</p>
-        <p>So I decided to see how far I could get with synth building, using a similar approach. I&#39;m fairly lousy with the necessary languages, but by adopting a mostly-vibe approach, I&#39;ve got  <strong>all the way</strong>. I&#39;ve made sound generators/processors in the following formats:</p>
-        <ol>
-        <li>In-browser Javascript</li>
-        <li>lv2 plugins (the Linux user&#39;s VSTs)</li>
-        <li>Native Linux - including Raspberry Pi</li>
-        <li>Embedded - targeting Daisy Seed (with an ESP32 design in-progress)</li>
-        </ol>
-        <p>That&#39;s an ordered list for a reason. While the earlier items are (kinda) complete standalone projects, they&#39;ve also acted as prototypes for the designs later in the list.</p>
-        <h2>Browser-based Synths</h2>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2026-01-16_vibe.html">
-                Vibe Coding Synths
             </a>
         </p> <em></em>
       </div>
