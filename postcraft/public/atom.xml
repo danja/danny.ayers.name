@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2026-06-15T08:56:42.010Z</updated>
+  <updated>2026-06-17T14:12:34.346Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -10,6 +10,47 @@
     <name>Danny Ayers</name>
     <email>danny.ayers@gmail.com</email>
   </author>
+  <entry>
+    <title>A Tune Created for AI</title>
+    <id>http://danny.ayers.name/entries/2026-06-17_tidepool</id>
+    <updated>2026-06-17T12:26:49.842Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-06-17_tidepool" />
+    <published>2026-06-17T12:26:49.842Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>A Tune Created for AI</h1>
+        <p>A few days ago, after a morning in the music room I had a track I thought was ok, wanted to upload to YouTube, but couldn&#39;t help thinking it really needed some visuals to go with it. Last year, with the help of Claude, I made <a href="https://github.com/danja/hillside">Hillside</a>, a set of generative visualizations for a set of tracks I&#39;d recorded (live <a href="https://danja.github.io/hillside/">here</a>). It runs in a browser, canvas-based JS. So I dug that out and spent <em>many</em> hours with Codex trying to get it to render to mp4. It really was a gruelling session. Codex went down many blind alleys to get <em>anything</em> properly rendering. In the process managed to mess up the original generative algorithm. But it finally managed to get it to render one of the visuals as a reasonable vid (result <a href="https://www.youtube.com/watch?v=QOtwQIBOddU">here</a>).</p>
+        <p>I couldn&#39;t help anthropomorphising Codex a bit. It&#39;d put so much effort in. So then I asked it to <strong>make the kind of generative video setup you&#39;d like to see, tell me what you want and I&#39;ll make the sounds</strong>. Twenty minutes later Codex had built something, and gave me a brief.</p>
+        <h2>Tides</h2>
+        <p>Tides is intended for quiet, spacious, late-night ambient techno.</p>
+        <h3>Music Brief</h3>
+        <ul>
+        <li>Around 95-115 BPM, with a slow pulse but not sleepy.</li>
+        <li>Deep rounded kick, soft sub-bass, and lots of negative space.</li>
+        <li>Small delayed percussion clicks, filtered noise, and occasional metallic ticks.</li>
+        <li>Warm pads or drones that slowly change harmony.</li>
+        <li>No huge drops; more like pressure, drift, and small details emerging from darkness.</li>
+        </ul>
+        <p><em>There was also a description of the visualization etc, here : <a href="https://github.com/danja/hillside/blob/render/docs/tides.md">tides.md</a></em></p>
+        <p>This morning I created something vaguely along the lines of the brief. I&#39;ve been having a lot of fun recently creating VST plugins with Codex, so this was a good opportunity to try them out. The sounds are about 50/50 the <a href="https://github.com/danja/downspout">Downspout Plugins</a> and the modular rack (including <a href="https://github.com/danja/daisy-maybe">neurotic</a> firmware on a module to give the bass a bit of grit).</p>
+        <p>Then tried Codex&#39;s new visualization renderer. Took about an hour and the result was a bit disappointing. Some expanding circles and some very faint wavy lines.</p>
+        <p>But I saw the potential... Ok, I asked for the circles to be wavy, the faint lines to be more visible, and <strong>please add some procedurally generated sea creatures</strong>.</p>
+        <p>Another hour later, this was the result <a href="https://www.youtube.com/watch?v=W5DUwjN95RA">Tidepool</a>. It looks like it might feature in a 20th century kids TV animation. But I&#39;m happy with it.</p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-06-17_tidepool.html">
+                A Tune Created for AI
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
   <entry>
     <title>Novel VST Plugins</title>
     <id>http://danny.ayers.name/entries/2026-05-26_vsts</id>
@@ -895,70 +936,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/todo/2024-10-09.html">
                 2024-10-09
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Danny&amp;#92;&amp;#39;s Top Level To Do List</title>
-    <id>http://danny.ayers.name/todo/index</id>
-    <updated>2025-09-05T07:54:26.420Z</updated>
-    <link href="http://danny.ayers.name/todo/index" />
-    <published>2025-09-05T07:54:26.420Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Danny&#39;s Top Level To Do List</h1>
-        <ul>
-        <li><input disabled="" type="checkbox"> visualization : like <a href="http://localhost/farelo/src/TurtleEditor/">http://localhost/farelo/src/TurtleEditor/</a></li>
-        </ul>
-        <p>Priorities :</p>
-        <ul>
-        <li><p>Basic Postcraft</p>
-        </li>
-        <li><p>FOAF-Archive</p>
-        </li>
-        <li><p>Retire old server</p>
-        </li>
-        <li><p>Backups</p>
-        </li>
-        </ul>
-        <p>copy server-setup elsewhere +</p>
-        <p>after FOAF-Archive is at v1, then :</p>
-        <ul>
-        <li>transmissions major refactor</li>
-        <li>LlamaIndex/memary/SPARQL connector</li>
-        </ul>
-        <h3>Server</h3>
-        <p>add nginx entries</p>
-        <p>certbot</p>
-        <p>grab stuff off old server</p>
-        <p>/etc
-        /home
-        /var/www</p>
-        <p>???</p>
-        <h3>Bits</h3>
-        <p>my first rdf-dev post?</p>
-        <p>add transmissions.hyperdata.it</p>
-        <p>DNS, added :</p>
-        <ul>
-        <li><input disabled="" type="checkbox"> foaf.hyperdata.it</li>
-        <li><input disabled="" type="checkbox"> treadmill.hyperdata.it</li>
-        <li><input disabled="" type="checkbox"> postcraft.hyperdata.it</li>
-        <li>kia.hyperdata.it</li>
-        <li><input disabled="" type="checkbox"> strandz.hyperdata.it</li>
-        <li><input disabled="" type="checkbox"> farelo.hyperdata.it</li>
-        </ul>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/todo/index.html">
-                Danny&#92;&#39;s Top Level To Do List
             </a>
         </p> <em></em>
       </div>
