@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2026-06-17T14:12:34.346Z</updated>
+  <updated>2026-06-27T18:08:46.923Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -10,6 +10,36 @@
     <name>Danny Ayers</name>
     <email>danny.ayers@gmail.com</email>
   </author>
+  <entry>
+    <title>Generative VST Plugins</title>
+    <id>http://danny.ayers.name/entries/2026-06-27_generative-plugins</id>
+    <updated>2026-06-27T17:52:37.964Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-06-27_generative-plugins" />
+    <published>2026-06-27T17:52:37.964Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Generative VST Plugins</h1>
+        <p><img src="media/images/2026-06/score.jpeg" alt="score"></p>
+        <p>With considerable help from Codex, I&#39;ve built a bunch of these. They are over here on GitHub : <a href="https://github.com/danja/downspout">code</a>, <a href="https://danja.github.io/downspout/">docs</a>.</p>
+        <p>This <a href="https://www.youtube.com/watch?v=Rd-ACU0JUdo">demo on YouTube</a> features a bunch of them wired via sends in Reaper. Some of the sounds were made in the box, some created in modular. But all the midi notes have been generated algorithmically.</p>
+        <p>The bass line, as in the unintelligible score above was created by <a href="https://danja.github.io/downspout/plugins/ground/">Ground</a> :</p>
+        <p><img src="media/images/2026-06/ground.jpeg" alt="screenshot"></p>
+        <p>Here is a description of the <a href="https://github.com/danja/downspout/blob/main/docs/algorithms.md">algorithms</a>.</p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-06-27_generative-plugins.html">
+                Generative VST Plugins
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
   <entry>
     <title>A Tune Created for AI</title>
     <id>http://danny.ayers.name/entries/2026-06-17_tidepool</id>
@@ -902,40 +932,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/entries/2025-09-05_semem-progress.html">
                 Semem Progress Report
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>2024-10-09</title>
-    <id>http://danny.ayers.name/todo/2024-10-09</id>
-    <updated>2025-09-05T07:54:26.420Z</updated>
-    <link href="http://danny.ayers.name/todo/2024-10-09" />
-    <published>2025-09-05T07:54:26.420Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>2024-10-09</h1>
-        <p>#:todo</p>
-        <h2>needs internet</h2>
-        <p>download - repo + docs</p>
-        <ul>
-        <li>inkle</li>
-        <li>eye</li>
-        <li>ionic</li>
-        <li>capacitor</li>
-        <li>games engine</li>
-        </ul>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/todo/2024-10-09.html">
-                2024-10-09
             </a>
         </p> <em></em>
       </div>
