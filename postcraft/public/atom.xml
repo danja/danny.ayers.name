@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2026-06-27T18:08:46.923Z</updated>
+  <updated>2026-06-27T18:22:45.398Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -25,11 +25,11 @@
         <!-- ARTICLE CONTENT -->
         <article class="post-content">
             <h1>Generative VST Plugins</h1>
-        <p><img src="media/images/2026-06/score.jpeg" alt="score"></p>
+        <p><img src="/media/images/2026-06/score.jpeg" alt="score"></p>
         <p>With considerable help from Codex, I&#39;ve built a bunch of these. They are over here on GitHub : <a href="https://github.com/danja/downspout">code</a>, <a href="https://danja.github.io/downspout/">docs</a>.</p>
         <p>This <a href="https://www.youtube.com/watch?v=Rd-ACU0JUdo">demo on YouTube</a> features a bunch of them wired via sends in Reaper. Some of the sounds were made in the box, some created in modular. But all the midi notes have been generated algorithmically.</p>
         <p>The bass line, as in the unintelligible score above was created by <a href="https://danja.github.io/downspout/plugins/ground/">Ground</a> :</p>
-        <p><img src="media/images/2026-06/ground.jpeg" alt="screenshot"></p>
+        <p><img src="/media/images/2026-06/ground.jpeg" alt="screenshot"></p>
         <p>Here is a description of the <a href="https://github.com/danja/downspout/blob/main/docs/algorithms.md">algorithms</a>.</p>
         </article>
         <p class="post-title h-cinzel">

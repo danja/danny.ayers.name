@@ -1,6 +1,6 @@
 # Generative VST Plugins
 
-![score](media/images/2026-06/score.jpeg)
+![score](/media/images/2026-06/score.jpeg)
 
 With considerable help from Codex, I've built a bunch of these. They are over here on GitHub : [code](https://github.com/danja/downspout), [docs](https://danja.github.io/downspout/).
 
@@ -8,7 +8,7 @@ This [demo on YouTube](https://www.youtube.com/watch?v=Rd-ACU0JUdo) features a b
 
 The bass line, as in the unintelligible score above was created by [Ground](https://danja.github.io/downspout/plugins/ground/) :
 
-![screenshot](media/images/2026-06/ground.jpeg)
+![screenshot](/media/images/2026-06/ground.jpeg)
 
 Here is a description of the [algorithms](https://github.com/danja/downspout/blob/main/docs/algorithms.md).
 
