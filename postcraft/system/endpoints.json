@@ -2,7 +2,7 @@
     {
         "name": "danny.ayers.name query",
         "type": "query",
-        "url": "https://fuseki.hyperdata.it/danny.ayers.name/query",
+        "url": "http://localhost:3030/danny.ayers.name/query",
         "credentials": {
             "user": "admin",
             "password": "admin123"
@@ -11,7 +11,7 @@
     {
         "name": "danny.ayers.name update",
         "type": "update",
-        "url": "https://fuseki.hyperdata.it/danny.ayers.name/update",
+        "url": "http://localhost:3030/danny.ayers.name/update",
         "credentials": {
             "user": "admin",
             "password": "admin123"
