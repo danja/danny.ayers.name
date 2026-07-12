@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2026-06-28T07:54:11.105Z</updated>
+  <updated>2026-07-12T08:18:48.957Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -10,6 +10,146 @@
     <name>Danny Ayers</name>
     <email>danny.ayers@gmail.com</email>
   </author>
+  <entry>
+    <title>A Different Approach to AI Music</title>
+    <id>http://danny.ayers.name/entries/2026-07-12_approach</id>
+    <updated>2026-07-12T06:18:19.113Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-07-12_approach" />
+    <published>2026-07-12T06:18:19.113Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>A Different Approach to AI Music</h1>
+        <p>All music is derivative, largely based on known patterns. Rare is any major shift - techno drew on punk which drew on rock&#39;n&#39;roll which drew on blues which drew on traditional African music, much of which has a strong trance element, and thus it goes full circle. So I don&#39;t believe there&#39;s any reason to object to AI-generated music made with systems like <a href="https://suno.com/">Suno</a> that by their very nature are derivative. Except... the fun part of it is taken out of the hands of the composer. Compare and contrast asking an AI model to create a techno anthem with asking an individual who is savvy with their pile of metal boxes. The latter is bound to have more energy.</p>
+        <p>Over the past few months I (with significant help from AI assistants) have been developing Digital Audio Workstation (<a href="https://en.wikipedia.org/wiki/Digital_audio_workstation">DAW</a>) plugins. Some sound synthesis things, but most of the emphasis has been on automating various aspects of composition. Generative, based on rules and pattern templates. I now have  <a href="https://danja.github.io/downspout/">loads of VST plugins</a> with mixed levels of success for the ideation that preceded them.</p>
+        <p><a href="https://danja.github.io/downspout/plugins/sidecar/">One thing</a> I tried was having a DAW plugin call a little Web proxy, which in turn would call a remote AI service. The hope was to get it to generate solos in real time - the latency of the whole service-calling business put paid to that. So this one went on the shelf.</p>
+        <p>But a couple of days ago <a href="https://twitter.com/danbri">danbri</a> drew my attention to <a href="https://github.com/bonfire-systems/reaper-mcp">reaper-mcp</a>, which is kinda obvious once you realise the Reaper DAW can run Python scripts. It took me a couple of hours to get running (numpy didn&#39;t like my ancient Athlon II processor on that machine), and it needed a couple of bug fixes to run against the current Reaper - <a href="https://github.com/danja/reaper-mcp">my fork</a>. I now have it attached to Codex.</p>
+        <p>So I asked it to create a <a href="https://www.youtube.com/watch?v=1V0ZkQ_GWa4">techno anthem</a> (YouTube) using my plugins. It obliged. I expected it to glue together some of the generative plugins, but not, it wrote the midi itself.
+        It&#39;s pretty dull, but as a demonstration of ability pretty amazing.</p>
+        <p>Last night I went for beers with Jacopo, told him about this, asked what he thought for a next step : Jazz in the style of John Coltrane! <em>(This is why you need other people)</em>. So just now, <strong>ask so yer might receive</strong>, <a href="https://www.youtube.com/shorts/am6xsyczXYU">Coltrained</a> (YouTube) it is.</p>
+        <p>I wasn&#39;t entirely sure of the process Codex had used in the generation, so I asked for blog-style descriptions.</p>
+        <p><strong>Over to AI...</strong></p>
+        <h1>Building a Techno Anthem from Scratch with Downspout and REAPER</h1>
+        <p>I recently set myself a fairly specific challenge: start with an empty REAPER project, use the instruments and processors in the Downspout collection as the musical core, and turn them into a complete techno dance anthem rather than a short generative experiment.</p>
+        <p>The finished project runs at 132 BPM in 4/4, lasts 128 bars—just under four minutes—and uses eight tracks. The result combines a familiar club arrangement with Downspout&#39;s more algorithmic personality: a direct four-on-the-floor foundation, acid bass, anthem chords, a generated arpeggio, a melodic payoff, and increasingly strange textures around the transitions.</p>
+        <h2>Choosing the palette</h2>
+        <p>Before touching REAPER, I examined the Downspout repository and summarized the capabilities of all 24 plugins. That changed the way I approached the track. Instead of treating each plugin as an isolated novelty, I grouped them into musical roles:</p>
+        <ul>
+        <li>generators and MIDI processors create structure;</li>
+        <li>instruments turn that structure into sound;</li>
+        <li>rhythmic effects add movement;</li>
+        <li>ambient and glitch processors handle transitions and contrast.</li>
+        </ul>
+        <p>For this track, I settled on a deliberately compact palette:</p>
+        <ul>
+        <li><strong>DrumKit</strong> for the kick, hats, claps, and percussion;</li>
+        <li><strong>Basilico</strong> for the monophonic acid bass;</li>
+        <li><strong>Canticle</strong> for chord stabs, the lead, and breakdown harmony;</li>
+        <li><strong>ArpGen</strong> feeding <strong>Floozy</strong> for the moving arpeggio;</li>
+        <li><strong>Gremlin</strong> for unpredictable transition accents;</li>
+        <li><strong>E-Mix</strong> and <strong>P-Mix</strong> for rhythmic gating;</li>
+        <li><strong>Rift</strong> for glitch treatment;</li>
+        <li><strong>Orchid</strong> and <strong>Ambo</strong> for held, spacious, atmospheric material.</li>
+        </ul>
+        <p>That was enough variety to make the arrangement evolve without turning the project into a plugin catalogue.</p>
+        <h2>Establishing the frame</h2>
+        <p>I created a new REAPER project at 132 BPM. That tempo sits in a useful techno range: fast enough to feel urgent, but slow enough for the bass and large chord gestures to retain weight.</p>
+        <p>The song is organized as eight broad 16-bar regions:</p>
+        <ol>
+        <li>atmospheric intro;</li>
+        <li>initial groove;</li>
+        <li>build;</li>
+        <li>first drop;</li>
+        <li>breakdown;</li>
+        <li>second build;</li>
+        <li>anthem drop;</li>
+        <li>outro.</li>
+        </ol>
+        <p>Not every transition lands exactly on the same density curve. Some parts enter eight bars into a section, and several effects anticipate the next boundary. The grid is structural scaffolding, not a commandment.</p>
+        <h2>Building the rhythm section</h2>
+        <p>The kick is intentionally simple. DrumKit plays a four-on-the-floor pattern—one kick on every quarter note—with a delayed entrance during the intro, silence in the central breakdown, and a shortened outro. A techno kick earns its power through consistency and context; adding constant variations would have weakened the anchor.</p>
+        <p>The second DrumKit instance handles hats, claps, and open-hat variations. Its patterns become progressively busier:</p>
+        <ul>
+        <li>the early groove uses restrained closed hats and backbeat claps;</li>
+        <li>the first drop introduces open hats;</li>
+        <li>the second build increases high-frequency activity;</li>
+        <li>the anthem drop uses the densest pattern.</li>
+        </ul>
+        <p>E-Mix follows this DrumKit instance. Its role is not to replace the written rhythm, but to give the upper percussion an additional transport-aware pulse and stereo character.</p>
+        <p>I kept kick and bass centered. The upper drums received a slight pan offset, enough to open the middle without making the groove lean visibly to one side.</p>
+        <h2>Writing the acid bass</h2>
+        <p>Basilico supplies the bass voice. I wrote three related one-bar cells around C minor, using C, E-flat, G, and B-flat register relationships with occasional octave jumps. Each cell has four events, but the notes do not always fall squarely on quarter-note boundaries. Offbeat entries at three-quarter- and one-and-a-half-beat positions produce the push-pull movement that makes a simple monophonic line feel alive.</p>
+        <p>The three cells rotate between sections rather than repeating one pattern for the entire track. Velocity changes emphasize downbeats and selected syncopations, giving Basilico material it can use for accent-sensitive behavior. Notes remain short, leaving space for the instrument&#39;s envelope, glide, filter, and drive character.</p>
+        <p>The bass disappears during the main breakdown and returns in the build toward the anthem drop. That absence matters as much as any synthesis parameter: when the low end comes back, the arrangement feels larger without requiring an extreme level increase.</p>
+        <h2>Creating the anthem harmony</h2>
+        <p>The harmonic center is a classic minor-key dance progression:</p>
+        <p><strong>C minor – A-flat major – E-flat major – B-flat major</strong></p>
+        <p>Canticle plays these as compact chord stabs. The progression is intentionally legible and emotionally direct. Techno can thrive on ambiguity, but an anthem benefits from one element the listener can grasp immediately.</p>
+        <p>P-Mix follows the chord instrument, introducing probabilistic rhythmic gaps and stereo variation. This lets a sustained harmonic pattern breathe differently from one passage to the next while the underlying progression remains stable.</p>
+        <p>The chord part appears in the groove and both drops, but its volume envelope changes by section. It begins cautiously, grows through the first drop, retreats during the breakdown, and reaches its strongest point in the anthem section before fading toward the outro.</p>
+        <h2>Generating motion with ArpGen and Floozy</h2>
+        <p>The arpeggio track demonstrates the generator-to-instrument workflow at the heart of Downspout. ArpGen receives held seventh chords—C minor 7, A-flat major 7, E-flat major 7, and B-flat 7—and converts them into transport-synchronized motion. Floozy then turns that MIDI output into a more animated synthetic voice.</p>
+        <p>This track stays silent during the opening. It enters during the build, becomes audible in the first drop, disappears for the breakdown, and returns more strongly for the second build and anthem drop.</p>
+        <p>A conventional ReaDelay follows Floozy. The delay is there to extend the rhythmic pattern into the spaces between generated notes, while the track&#39;s conservative level prevents the repeats from masking the lead or chord stabs.</p>
+        <h2>Saving the lead for the payoff</h2>
+        <p>The lead does not appear until the final major drop. Canticle plays a four-bar melody in C minor built from a small set of recognizable gestures: a high C opening, a fall toward G and A-flat, an E-flat peak, and a response that resolves through the minor scale.</p>
+        <p>The motif repeats across 16 bars with enough space between notes for the processing chain to speak. Orchid adds voiced freeze and held-loop character, while Ambo supplies the wider time, shimmer, tape, and ambient field.</p>
+        <p>Keeping the lead out of the first half of the song makes it feel like an event when it finally arrives. The first drop proves the groove; the second drop delivers the theme.</p>
+        <h2>Designing the breakdown</h2>
+        <p>The breakdown uses a separate Canticle instance feeding Ambo. It plays four long minor and suspended-feeling chord voicings across 16 bars. Velocities are lower than the main stabs, and the notes overlap the space rather than behaving like rhythmic punctuation.</p>
+        <p>This track fades in at the start of the breakdown, grows toward its midpoint, and retreats just before the drums and bass return. The contrast is mostly architectural: remove the kick, reduce the bass, lengthen the notes, and let the ambient processor occupy the newly available depth.</p>
+        <h2>Adding controlled instability</h2>
+        <p>Gremlin provides sparse accents at section boundaries. Instead of running continuously at the front of the mix, it receives occasional low and mid-register trigger notes near bars 31, 47, 71, 87, 103, and 119. Rift follows it, turning those events into more disruptive transition material.</p>
+        <p>The Gremlin track is kept quiet most of the time. Its automation rises briefly near major boundaries and falls back immediately afterward. This makes the glitches feel like arrangement punctuation rather than a permanent layer of noise.</p>
+        <h2>Mixing with envelopes</h2>
+        <p>The mix uses broad automation rather than dozens of tiny corrective moves. Volume-envelope points sit mainly at structural boundaries:</p>
+        <ul>
+        <li>the chord stabs rise between groove and drops;</li>
+        <li>the arpeggio fades into builds and out of breakdowns;</li>
+        <li>the lead remains effectively silent until its entrance;</li>
+        <li>Gremlin receives short transition-focused lifts;</li>
+        <li>the ambient breakdown track forms one large rise and fall.</li>
+        </ul>
+        <p>These are arrangement envelopes as much as mix envelopes. They control attention: which layer owns the foreground, when density should increase, and how much room remains for the next arrival.</p>
+        <p>Static track levels establish the initial hierarchy. Kick and bass are strongest, drums sit below them, chord and lead parts occupy the middle, and atmospheric/glitch layers remain quieter. Moderate pan offsets separate complementary parts while the low-frequency foundation stays centered.</p>
+        <h2>Working through the technical edges</h2>
+        <p>Building the song through the REAPER MCP server exposed several compatibility differences between the server and the installed <code>reapy</code> 0.10 API. Track volume and pan properties needed to use REAPER&#39;s native information calls. Project saving required the correct native save function. MIDI construction became much more reliable after adding a batched clip operation instead of sending every note as a separate high-level request.</p>
+        <p>Envelope handling had two subtleties. A missing REAPER envelope is represented as a nonempty null-pointer string, so a simple truth test is insufficient. Volume-envelope values also need conversion through REAPER&#39;s envelope scaling mode; otherwise apparently successful points can be written with the wrong values.</p>
+        <p>I verified the automation by inspecting the saved <code>.RPP</code> data, not merely by trusting successful API responses. I also opened the final project from its requested path and ran an eight-second playback smoke test across the transition into the first drop.</p>
+        <h2>The completed project</h2>
+        <p>The final session contains eight tracks, 22 MIDI items, 18 plugin instances, and a 128-bar arrangement lasting approximately 3:53.</p>
+        <p>Its most important design decision is restraint. Downspout contains enough generative and destructive tools to make every track move constantly. The anthem works because those tools have assigned roles: stable rhythm at the center, generative movement around it, recognizable harmony above it, and controlled instability only when the arrangement needs a transition.</p>
+        <p>The result is not merely a demonstration of 24 plugins. It is a song built from a smaller, complementary subset—one that uses algorithmic tools to reinforce a familiar dance-floor arc rather than obscure it.</p>
+        <h1>Following the Techno Anthem with an Original Modal Jazz Quartet</h1>
+        <p>After building a full techno anthem through REAPER MCP, I tried a very different challenge: create a short original jazz piece that draws on the broad musical qualities associated with John Coltrane—modal harmony, motivic development, rhythmic urgency, and an increasingly intense melodic arc—without copying any particular tune or recording.</p>
+        <p>I began by reading Downspout&#39;s plugin summary and reducing the collection to a small acoustic-style quartet. Canticle supplied both a reed-like lead and a keyboard voice, Basilico used its upright model for bass, and DrumKit handled percussion. A shared ReaVerb bus gave the ensemble a common room rather than placing a different ambience on every track.</p>
+        <p>The piece is a 32-bar form in 6/8 at 168 BPM. It opens sparsely, states an original eight-bar head, expands that material into a developmental solo, and returns to the head in a higher and more forceful register. The harmony stays mostly minor and modal, with chromatic shifts and a dominant pedal providing contrast. Instead of generating unrelated solo notes, I built the improvisation from short cells taken from the head, then changed their register, rhythmic placement, density, and velocity across the middle section.</p>
+        <p>The rhythm section was written to support that arc. Basilico plays a six-note walking pattern in each bar, mixing chord tones with approach notes. Canticle&#39;s piano part uses restrained offbeat voicings rather than continuous block chords. DrumKit maintains the compound-meter pulse with ride cymbal, hi-hat, kick, and occasional snare comping. The parts remain on separate tracks so that every musical role is editable inside REAPER.</p>
+        <p>I sent the MIDI to REAPER in four batched clips: 124 lead notes, 240 piano notes, 192 bass notes, and 336 drum notes. Batching was important because sending individual notes through MCP would have made the session much slower and more fragile. I also saved the construction logic as <code>scripts/reaper-modal-jazz-arrangement.py</code>. The script accepts tempo and bar-count arguments and emits the same relative-time MIDI dictionaries used by REAPER MCP, making the arrangement technique reusable without relying on temporary files.</p>
+        <p>The mix was intentionally conservative. The lead sits slightly left, piano and drums slightly right, and bass remains centered. Lead, piano, and drums feed the shared room at low send levels, while the master stays at -1.5 dB for headroom. REAPER&#39;s master-FX helper exposed a bridge-side type error, so I did not claim that a limiter had been installed. The project saved successfully as an editable <code>.RPP</code>; the offline WAV render later exceeded the MCP timeout and produced no audio file.</p>
+        <p>This smaller experiment reinforced the main lesson from the techno project: generative tools become musical when they serve a clear form. The important work was not asking the system for hundreds of notes. It was defining an ensemble, giving each part a role, developing one recognizable idea, and preserving enough space for the arrangement to breathe.</p>
+        <h1>Following the Techno Anthem with an Original Modal Jazz Quartet</h1>
+        <p>After building a full techno anthem through REAPER MCP, I tried a very different challenge: create a short original jazz piece that draws on the broad musical qualities associated with John Coltrane—modal harmony, motivic development, rhythmic urgency, and an increasingly intense melodic arc—without copying any particular tune or recording.</p>
+        <p>I began by reading Downspout&#39;s plugin summary and reducing the collection to a small acoustic-style quartet. Canticle supplied both a reed-like lead and a keyboard voice, Basilico used its upright model for bass, and DrumKit handled percussion. A shared ReaVerb bus gave the ensemble a common room rather than placing a different ambience on every track.</p>
+        <p>The piece is a 32-bar form in 6/8 at 168 BPM. It opens sparsely, states an original eight-bar head, expands that material into a developmental solo, and returns to the head in a higher and more forceful register. The harmony stays mostly minor and modal, with chromatic shifts and a dominant pedal providing contrast. Instead of generating unrelated solo notes, I built the improvisation from short cells taken from the head, then changed their register, rhythmic placement, density, and velocity across the middle section.</p>
+        <p>The rhythm section was written to support that arc. Basilico plays a six-note walking pattern in each bar, mixing chord tones with approach notes. Canticle&#39;s piano part uses restrained offbeat voicings rather than continuous block chords. DrumKit maintains the compound-meter pulse with ride cymbal, hi-hat, kick, and occasional snare comping. The parts remain on separate tracks so that every musical role is editable inside REAPER.</p>
+        <p>I sent the MIDI to REAPER in four batched clips: 124 lead notes, 240 piano notes, 192 bass notes, and 336 drum notes. Batching was important because sending individual notes through MCP would have made the session much slower and more fragile. I also saved the construction logic as <code>scripts/reaper-modal-jazz-arrangement.py</code>. The script accepts tempo and bar-count arguments and emits the same relative-time MIDI dictionaries used by REAPER MCP, making the arrangement technique reusable without relying on temporary files.</p>
+        <p>The mix was intentionally conservative. The lead sits slightly left, piano and drums slightly right, and bass remains centered. Lead, piano, and drums feed the shared room at low send levels, while the master stays at -1.5 dB for headroom. REAPER&#39;s master-FX helper exposed a bridge-side type error, so I did not claim that a limiter had been installed. The project saved successfully as an editable <code>.RPP</code>; the offline WAV render later exceeded the MCP timeout and produced no audio file.</p>
+        <p>This smaller experiment reinforced the main lesson from the techno project: generative tools become musical when they serve a clear form. The important work was not asking the system for hundreds of notes. It was defining an ensemble, giving each part a role, developing one recognizable idea, and preserving enough space for the arrangement to breathe.</p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-07-12_approach.html">
+                A Different Approach to AI Music
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
   <entry>
     <title>Generative VST Plugins</title>
     <id>http://danny.ayers.name/entries/2026-06-27_generative-plugins</id>
@@ -902,36 +1042,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/entries/2025-10-15_flues.html">
                 Flues
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Semem Progress Report</title>
-    <id>http://danny.ayers.name/entries/2025-09-05_semem-progress</id>
-    <updated>2025-09-05T08:42:55.022Z</updated>
-    <link href="http://danny.ayers.name/entries/2025-09-05_semem-progress" />
-    <published>2025-09-05T08:42:55.022Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Semem Progress Report</h1>
-        <p>tl;dr - my Semantic Web Memory for Intelligent Agents is now kinda deployable</p>
-        <p>I&#39;ve just passed a little milestone with this project so time to take stock. The milestone is getting the thing to run on a machine other than my office desktop - I&#39;ve got it on my server at <a href="https://semem.tensegrity.it/">semem.tensegrity.it</a> It&#39;s running in a Docker container which proved a little challenging because it uses Facebook&#39;s <a href="https://github.com/facebookresearch/faiss">faiss</a> for similarity measures, and though I&#39;m using Node.js throughout, that depends on native libs which have to be built first time around. But <strong>it worked!</strong></p>
-        <p><em>To some relative measure of worked.</em>
-        Thing is, although I&#39;ve been very principled about architecture <em>in my head</em> (this is an Ontology-Driven Design, <strong>ODD</strong>, for heaven&#39;s sake), I&#39;ve been delegating an awful lot of the donkey work to Claude Code, with all that entails. But this is very much an experiment, a research project. A big part of this is about figuring out the methodologies for using AI assistants in dev.</p>
-        <p>I&#39;ve been working on Semem for about 10? months now, but it is really just the latest phase in something I&#39;ve been working on for 25? years : <strong>a knowledge management system that works for me!</strong> I have lots of projects on the go all the time but am terribly undisciplined about things and have a terrible memory.
-         </p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2025-09-05_semem-progress.html">
-                Semem Progress Report
             </a>
         </p> <em></em>
       </div>
