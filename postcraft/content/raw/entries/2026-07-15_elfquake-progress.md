@@ -6,7 +6,7 @@
 
 **tl;dr**
 
-[latest prediction map (not good)](/images/2026-07/map_2026-07-15.png)
+![latest prediction map (not good)](/images/2026-07/map_2026-07-15.png)
 
 ELFQuake is a research project asking a difficult question: can earthquake records be combined with very-low-frequency radio observations and astronomical data to improve forecasts of earthquakes in Italy?
 

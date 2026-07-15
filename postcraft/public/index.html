@@ -416,6 +416,77 @@
 
 <article class="post-content">
     <h1>ELFQuake: A Working Experiment, Not Yet a Predictor</h1>
+<p><a href="https://github.com/danja/elfquake/">Project Code/Docs</a> (GitHub)</p>
+<p><em>15 July 2026</em></p>
+<p><strong>tl;dr</strong></p>
+<p><img src="/images/2026-07/map_2026-07-15.png" alt="latest prediction map (not good)"></p>
+<p>ELFQuake is a research project asking a difficult question: can earthquake records be combined with very-low-frequency radio observations and astronomical data to improve forecasts of earthquakes in Italy?</p>
+<p>The important word is &quot;improve&quot;. A model that appears accurate but does no better than a simple historical estimate is not useful. The project therefore treats every result as an experiment against clear baselines, with the future held out from training.</p>
+<h2>The System Is Now End to End</h2>
+<p>The project can now collect and organize the main data sources, train CPU-based models, and produce a seven-day map of actual and predicted earthquake locations.</p>
+<p>The real earthquake catalogue comes from INGV, Italy’s national earthquake data service. The current historical file contains 4,836 events from January 2024 to July 2026. Cumiana VLF observations are being collected as spectrogram images. A spectrogram is simply a picture showing how radio energy changes over time and across frequencies. Astronomy and space-weather connectors are also in place.</p>
+<p>The VLF record is not yet long enough to support a fair supervised test. The available earthquake-aligned VLF rows still contain only one class of outcome in the current windows. In plain terms, the system has examples of one kind of week, but not enough examples of both &quot;an event followed&quot; and &quot;no event followed&quot;. The model therefore cannot honestly learn or test a real VLF earthquake signal yet.</p>
+<h2>Why Use a Sandpile Simulation?</h2>
+<p>Real strong earthquakes are rare, and the suspected radio effects are even harder to label. ELFQuake uses a sandpile-style avalanche simulation as a controlled source of synthetic data.</p>
+<p>The simulation represents stress building up at localized points, followed by sudden avalanches. It produces two separate signal families:</p>
+<ul>
+<li>a direct avalanche signal, intended as a rough analogue of seismic activity;</li>
+<li>a piezo-like signal, intended as a rough analogue of a radio response caused by stress in quartz-bearing rock.</li>
+</ul>
+<p>These signals are not claimed to be physically equivalent to earthquakes or VLF radio. Their purpose is to provide test data for the software and model interfaces while the real record grows. The simulation is also useful for checking whether an apparently promising model works across different runs, rather than only on one convenient example.</p>
+<p>A new 20,000-step CPU simulation run was completed at seed 4300. Together with three earlier long runs, the dense synthetic corpus now contains 79,976 records. Independent simulations share a demonstration start date, so the training pipeline offsets their synthetic times when stacking them. This changes no real timestamp; it only prevents separate experiments from being mistaken for simultaneous observations.</p>
+<h2>The First Synthetic-to-Real Test</h2>
+<p>An all-Italy weekly target is too easy to define badly: at a threshold around magnitude 2.5, Italy has an event in most weeks. To create a meaningful comparison, the country was divided into fixed geographic cells. The task became:</p>
+<blockquote>
+<p>Will a particular cell contain at least one magnitude 2.5 or greater earthquake during the next seven days?</p>
+</blockquote>
+<p>The model was trained on the first 80% of the real timeline and evaluated on the final 20%. This is a chronological holdout: the model only sees the past, then is tested on a later period.</p>
+<p>Three approaches were compared:</p>
+<ul>
+<li>a historical spatial-rate baseline, which predicts using how often each cell has produced events in the past;</li>
+<li>a small neural network trained only on real seismic features;</li>
+<li>the same type of network first trained on synthetic data, then fine-tuned (adapted) using real seismic data.</li>
+</ul>
+<p>The historical baseline achieved a balanced accuracy of <code>0.686</code> and precision of <code>0.344</code>. Balanced accuracy gives equal weight to finding event cells and correctly rejecting quiet cells. Precision measures how many predicted cells really contained an event.</p>
+<p>The real-only model reached <code>0.666</code> balanced accuracy and <code>0.269</code> precision. Synthetic pretraining improved this to <code>0.681</code> and <code>0.307</code>, but it still did not beat the historical baseline. Four rolling tests, using several different training cutoffs, produced an average balanced accuracy of <code>0.668</code>, with the weakest fold at <code>0.656</code>.</p>
+<p>These results are useful because they show the complete process working, but they do not show useful earthquake prediction. The model is not yet adding reliable information beyond the known geographical distribution of Italian seismicity.</p>
+<h2>A Map for Inspection</h2>
+<p>The system also renders a randomly selected held-out week on an offline map of Italy. Blue circles show actual INGV events; red crosses show the centres of cells predicted by the model. Marker size represents the magnitude proxy.</p>
+<p>The map is deliberately a diagnostic picture, not a forecast product. Predicted crosses are independently generated cell locations, not actual events relabelled after the fact.</p>
+<h2>What Comes Next</h2>
+<p>The immediate work is to grow the synthetic corpus with more independent long runs and repeat the transfer experiment. The aim is to establish whether synthetic pretraining consistently helps across time periods, not merely in one split.</p>
+<p>The real model will also be tested at several cell sizes and magnitude thresholds, with the choice made using training data only. More rolling holdouts will show whether performance survives changes in time period.</p>
+<p>Most importantly, VLF data will remain a separate ablation (a controlled test with one input removed). Once the live record contains both positive and negative outcomes, seismic-only, seismic-plus-VLF, and astronomy-augmented models can be compared fairly.</p>
+<p>At this point ELFQuake has a reproducible research pipeline and a clear baseline. It does not have demonstrated earthquake prediction capability. That is a useful result: the next improvements can now be judged against a real held-out standard rather than against a demonstration that merely looks convincing.
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name/entries/2026-07-15_elfquake-progress.html">
+        ELFQuake: A Working Experiment, Not Yet a Predictor
+    </a>
+</p> <em></em>
+                    </div>
+                </article>
+                
+                
+                
+                <article class="article-list-item">
+                    <h2>
+                        
+                        <a href="http://danny.ayers.name/entries/2026-07-15_elfquake-progress.html">ELFQuake: A Working Experiment, Not Yet a Predictor</a>
+                        
+                    </h2>
+                    
+                    <div class="article-meta">
+                        Published: 2026-07-15T14:53:55.165Z
+                    </div>
+                    
+                    <div class="article-content">
+                        <!-- ARTICLE CONTENT -->
+
+<article class="post-content">
+    <h1>ELFQuake: A Working Experiment, Not Yet a Predictor</h1>
 <p><em>15 July 2026</em></p>
 <p><strong>tl;dr</strong></p>
 <p><a href="/images/2026-07/map_2026-07-15.png">latest prediction map (not good)</a></p>
@@ -557,9 +628,10 @@
 
 <article class="post-content">
     <h1>ELFQuake: A Working Experiment, Not Yet a Predictor</h1>
+<p><a href="https://github.com/danja/elfquake/">Project Code/Docs</a> (GitHub)</p>
 <p><em>15 July 2026</em></p>
 <p><strong>tl;dr</strong></p>
-<p><a href="/images/2026-07/map_2026-07-15.png">latest prediction map (not good)</a></p>
+<p><img src="/images/2026-07/map_2026-07-15.png" alt="latest prediction map (not good)"></p>
 <p>ELFQuake is a research project asking a difficult question: can earthquake records be combined with very-low-frequency radio observations and astronomical data to improve forecasts of earthquakes in Italy?</p>
 <p>The important word is &quot;improve&quot;. A model that appears accurate but does no better than a simple historical estimate is not useful. The project therefore treats every result as an experiment against clear baselines, with the future held out from training.</p>
 <h2>The System Is Now End to End</h2>
@@ -611,139 +683,13 @@
                 
                 
                 
-                <article class="article-list-item">
-                    <h2>
-                        
-                        <a href="http://danny.ayers.name/entries/2026-07-12_approach.html">A Different Approach to AI Music</a>
-                        
-                    </h2>
-                    
-                    <div class="article-meta">
-                        Published: 2026-07-12T06:18:19.113Z
-                    </div>
-                    
-                    <div class="article-content">
-                        <!-- ARTICLE CONTENT -->
-
-<article class="post-content">
-    <h1>A Different Approach to AI Music</h1>
-<p>All music is derivative, largely based on known patterns. Rare is any major shift - techno drew on punk which drew on rock&#39;n&#39;roll which drew on blues which drew on traditional African music, much of which has a strong trance element, and thus it goes full circle. So I don&#39;t believe there&#39;s any reason to object to AI-generated music made with systems like <a href="https://suno.com/">Suno</a> that by their very nature are derivative. Except... the fun part of it is taken out of the hands of the composer. Compare and contrast asking an AI model to create a techno anthem with asking an individual who is savvy with their pile of metal boxes. The latter is bound to have more energy.</p>
-<p>Over the past few months I (with significant help from AI assistants) have been developing Digital Audio Workstation (<a href="https://en.wikipedia.org/wiki/Digital_audio_workstation">DAW</a>) plugins. Some sound synthesis things, but most of the emphasis has been on automating various aspects of composition. Generative, based on rules and pattern templates. I now have  <a href="https://danja.github.io/downspout/">loads of VST plugins</a> with mixed levels of success for the ideation that preceded them.</p>
-<p><a href="https://danja.github.io/downspout/plugins/sidecar/">One thing</a> I tried was having a DAW plugin call a little Web proxy, which in turn would call a remote AI service. The hope was to get it to generate solos in real time - the latency of the whole service-calling business put paid to that. So this one went on the shelf.</p>
-<p>But a couple of days ago <a href="https://twitter.com/danbri">danbri</a> drew my attention to <a href="https://github.com/bonfire-systems/reaper-mcp">reaper-mcp</a>, which is kinda obvious once you realise the Reaper DAW can run Python scripts. It took me a couple of hours to get running (numpy didn&#39;t like my ancient Athlon II processor on that machine), and it needed a couple of bug fixes to run against the current Reaper - <a href="https://github.com/danja/reaper-mcp">my fork</a>. I now have it attached to Codex.</p>
-<p>So I asked it to create a <a href="https://www.youtube.com/watch?v=1V0ZkQ_GWa4">techno anthem</a> (YouTube) using my plugins. It obliged. I expected it to glue together some of the generative plugins, but not, it wrote the midi itself.
-It&#39;s pretty dull, but as a demonstration of ability pretty amazing.</p>
-<p>Last night I went for beers with Jacopo, told him about this, asked what he thought for a next step : Jazz in the style of John Coltrane! <em>(This is why you need other people)</em>. So just now, <strong>ask so yer might receive</strong>, <a href="https://www.youtube.com/shorts/am6xsyczXYU">Coltrained</a> (YouTube) it is. <strong>PS: <a href="https://youtube.com/shorts/WoWTk10qHCo">Coltrained (rearranged)</a> with more conventional (General Midi) instruments.</strong></p>
-<p>I wasn&#39;t entirely sure of the process Codex had used in the generation, so I asked for blog-style descriptions.</p>
-<p><strong>Over to AI...</strong></p>
-<h1>Building a Techno Anthem from Scratch with Downspout and REAPER</h1>
-<p>I recently set myself a fairly specific challenge: start with an empty REAPER project, use the instruments and processors in the Downspout collection as the musical core, and turn them into a complete techno dance anthem rather than a short generative experiment.</p>
-<p>The finished project runs at 132 BPM in 4/4, lasts 128 bars—just under four minutes—and uses eight tracks. The result combines a familiar club arrangement with Downspout&#39;s more algorithmic personality: a direct four-on-the-floor foundation, acid bass, anthem chords, a generated arpeggio, a melodic payoff, and increasingly strange textures around the transitions.</p>
-<h2>Choosing the palette</h2>
-<p>Before touching REAPER, I examined the Downspout repository and summarized the capabilities of all 24 plugins. That changed the way I approached the track. Instead of treating each plugin as an isolated novelty, I grouped them into musical roles:</p>
-<ul>
-<li>generators and MIDI processors create structure;</li>
-<li>instruments turn that structure into sound;</li>
-<li>rhythmic effects add movement;</li>
-<li>ambient and glitch processors handle transitions and contrast.</li>
-</ul>
-<p>For this track, I settled on a deliberately compact palette:</p>
-<ul>
-<li><strong>DrumKit</strong> for the kick, hats, claps, and percussion;</li>
-<li><strong>Basilico</strong> for the monophonic acid bass;</li>
-<li><strong>Canticle</strong> for chord stabs, the lead, and breakdown harmony;</li>
-<li><strong>ArpGen</strong> feeding <strong>Floozy</strong> for the moving arpeggio;</li>
-<li><strong>Gremlin</strong> for unpredictable transition accents;</li>
-<li><strong>E-Mix</strong> and <strong>P-Mix</strong> for rhythmic gating;</li>
-<li><strong>Rift</strong> for glitch treatment;</li>
-<li><strong>Orchid</strong> and <strong>Ambo</strong> for held, spacious, atmospheric material.</li>
-</ul>
-<p>That was enough variety to make the arrangement evolve without turning the project into a plugin catalogue.</p>
-<h2>Establishing the frame</h2>
-<p>I created a new REAPER project at 132 BPM. That tempo sits in a useful techno range: fast enough to feel urgent, but slow enough for the bass and large chord gestures to retain weight.</p>
-<p>The song is organized as eight broad 16-bar regions:</p>
-<ol>
-<li>atmospheric intro;</li>
-<li>initial groove;</li>
-<li>build;</li>
-<li>first drop;</li>
-<li>breakdown;</li>
-<li>second build;</li>
-<li>anthem drop;</li>
-<li>outro.</li>
-</ol>
-<p>Not every transition lands exactly on the same density curve. Some parts enter eight bars into a section, and several effects anticipate the next boundary. The grid is structural scaffolding, not a commandment.</p>
-<h2>Building the rhythm section</h2>
-<p>The kick is intentionally simple. DrumKit plays a four-on-the-floor pattern—one kick on every quarter note—with a delayed entrance during the intro, silence in the central breakdown, and a shortened outro. A techno kick earns its power through consistency and context; adding constant variations would have weakened the anchor.</p>
-<p>The second DrumKit instance handles hats, claps, and open-hat variations. Its patterns become progressively busier:</p>
-<ul>
-<li>the early groove uses restrained closed hats and backbeat claps;</li>
-<li>the first drop introduces open hats;</li>
-<li>the second build increases high-frequency activity;</li>
-<li>the anthem drop uses the densest pattern.</li>
-</ul>
-<p>E-Mix follows this DrumKit instance. Its role is not to replace the written rhythm, but to give the upper percussion an additional transport-aware pulse and stereo character.</p>
-<p>I kept kick and bass centered. The upper drums received a slight pan offset, enough to open the middle without making the groove lean visibly to one side.</p>
-<h2>Writing the acid bass</h2>
-<p>Basilico supplies the bass voice. I wrote three related one-bar cells around C minor, using C, E-flat, G, and B-flat register relationships with occasional octave jumps. Each cell has four events, but the notes do not always fall squarely on quarter-note boundaries. Offbeat entries at three-quarter- and one-and-a-half-beat positions produce the push-pull movement that makes a simple monophonic line feel alive.</p>
-<p>The three cells rotate between sections rather than repeating one pattern for the entire track. Velocity changes emphasize downbeats and selected syncopations, giving Basilico material it can use for accent-sensitive behavior. Notes remain short, leaving space for the instrument&#39;s envelope, glide, filter, and drive character.</p>
-<p>The bass disappears during the main breakdown and returns in the build toward the anthem drop. That absence matters as much as any synthesis parameter: when the low end comes back, the arrangement feels larger without requiring an extreme level increase.</p>
-<h2>Creating the anthem harmony</h2>
-<p>The harmonic center is a classic minor-key dance progression:</p>
-<p><strong>C minor – A-flat major – E-flat major – B-flat major</strong></p>
-<p>Canticle plays these as compact chord stabs. The progression is intentionally legible and emotionally direct. Techno can thrive on ambiguity, but an anthem benefits from one element the listener can grasp immediately.</p>
-<p>P-Mix follows the chord instrument, introducing probabilistic rhythmic gaps and stereo variation. This lets a sustained harmonic pattern breathe differently from one passage to the next while the underlying progression remains stable.</p>
-<p>The chord part appears in the groove and both drops, but its volume envelope changes by section. It begins cautiously, grows through the first drop, retreats during the breakdown, and reaches its strongest point in the anthem section before fading toward the outro.</p>
-<h2>Generating motion with ArpGen and Floozy</h2>
-<p>The arpeggio track demonstrates the generator-to-instrument workflow at the heart of Downspout. ArpGen receives held seventh chords—C minor 7, A-flat major 7, E-flat major 7, and B-flat 7—and converts them into transport-synchronized motion. Floozy then turns that MIDI output into a more animated synthetic voice.</p>
-<p>This track stays silent during the opening. It enters during the build, becomes audible in the first drop, disappears for the breakdown, and returns more strongly for the second build and anthem drop.</p>
-<p>A conventional ReaDelay follows Floozy. The delay is there to extend the rhythmic pattern into the spaces between generated notes, while the track&#39;s conservative level prevents the repeats from masking the lead or chord stabs.</p>
-<h2>Saving the lead for the payoff</h2>
-<p>The lead does not appear until the final major drop. Canticle plays a four-bar melody in C minor built from a small set of recognizable gestures: a high C opening, a fall toward G and A-flat, an E-flat peak, and a response that resolves through the minor scale.</p>
-<p>The motif repeats across 16 bars with enough space between notes for the processing chain to speak. Orchid adds voiced freeze and held-loop character, while Ambo supplies the wider time, shimmer, tape, and ambient field.</p>
-<p>Keeping the lead out of the first half of the song makes it feel like an event when it finally arrives. The first drop proves the groove; the second drop delivers the theme.</p>
-<h2>Designing the breakdown</h2>
-<p>The breakdown uses a separate Canticle instance feeding Ambo. It plays four long minor and suspended-feeling chord voicings across 16 bars. Velocities are lower than the main stabs, and the notes overlap the space rather than behaving like rhythmic punctuation.</p>
-<p>This track fades in at the start of the breakdown, grows toward its midpoint, and retreats just before the drums and bass return. The contrast is mostly architectural: remove the kick, reduce the bass, lengthen the notes, and let the ambient processor occupy the newly available depth.</p>
-<h2>Adding controlled instability</h2>
-<p>Gremlin provides sparse accents at section boundaries. Instead of running continuously at the front of the mix, it receives occasional low and mid-register trigger notes near bars 31, 47, 71, 87, 103, and 119. Rift follows it, turning those events into more disruptive transition material.</p>
-<p>The Gremlin track is kept quiet most of the time. Its automation rises briefly near major boundaries and falls back immediately afterward. This makes the glitches feel like arrangement punctuation rather than a permanent layer of noise.</p>
-<h2>Mixing with envelopes</h2>
-<p>The mix uses broad automation rather than dozens of tiny corrective moves. Volume-envelope points sit mainly at structural boundaries:</p>
-<ul>
-<li>the chord stabs rise between groove and drops;</li>
-<li>the arpeggio fades into builds and out of breakdowns;</li>
-<li>the lead remains effectively silent until its entrance;</li>
-<li>Gremlin receives short transition-focused lifts;</li>
-<li>the ambient breakdown track forms one large rise and fall.</li>
-</ul>
-<p>These are arrangement envelopes as much as mix envelopes. They control attention: which layer owns the foreground, when density should increase, and how much room remains for the next arrival.</p>
-<p>Static track levels establish the initial hierarchy. Kick and bass are strongest, drums sit below them, chord and lead parts occupy the middle, and atmospheric/glitch layers remain quieter. Moderate pan offsets separate complementary parts while the low-frequency foundation stays centered.</p>
-<h2>Working through the technical edges</h2>
-<p>Building the song through the REAPER MCP server exposed several compatibility differences between the server and the installed <code>reapy</code> 0.10 API. Track volume and pan properties needed to use REAPER&#39;s native information calls. Project saving required the correct native save function. MIDI construction became much more reliable after adding a batched clip operation instead of sending every note as a separate high-level request.</p>
-<p>Envelope handling had two subtleties. A missing REAPER envelope is represented as a nonempty null-pointer string, so a simple truth test is insufficient. Volume-envelope values also need conversion through REAPER&#39;s envelope scaling mode; otherwise apparently successful points can be written with the wrong values.</p>
-<p>I verified the automation by inspecting the saved <code>.RPP</code> data, not merely by trusting successful API responses. I also opened the final project from its requested path and ran an eight-second playback smoke test across the transition into the first drop.</p>
-<h2>The completed project</h2>
-<p>The final session contains eight tracks, 22 MIDI items, 18 plugin instances, and a 128-bar arrangement lasting approximately 3:53.</p>
-<p>Its most important design decision is restraint. Downspout contains enough generative and destructive tools to make every track move constantly. The anthem works because those tools have assigned roles: stable rhythm at the center, generative movement around it, recognizable harmony above it, and controlled instability only when the arrangement needs a transition.</p>
-<p>The result is not merely a demonstration of 24 plugins. It is a song built from a smaller, complementary subset—one that uses algorithmic tools to reinforce a familiar dance-floor arc rather than obscure it.</p>
-<h1>Following the Techno Anthem with an Original Modal Jazz Quartet</h1>
-<p>After building a full techno anthem through REAPER MCP, I tried a very different challenge: create a short original jazz piece that draws on the broad musical qualities associated with John Coltrane—modal harmony, motivic development, rhythmic urgency, and an increasingly intense melodic arc—without copying any particular tune or recording.</p>
-<p>I began by reading Downspout&#39;s plugin summary and reducing the collection to a small acoustic-style quartet. Canticle supplied both a reed-like lead and a keyboard voice, Basilico used its upright model for bass, and DrumKit handled percussion. A shared ReaVerb bus gave the ensemble a common room rather than placing a different ambience on every track.</p>
-<p>The piece is a 32-bar form in 6/8 at 168 BPM. It opens sparsely, states an original eight-bar head, expands that material into a developmental solo, and returns to the head in a higher and more forceful register. The harmony stays mostly minor and modal, with chromatic shifts and a dominant pedal providing contrast. Instead of generating unrelated solo notes, I built the improvisation from short cells taken from the head, then changed their register, rhythmic placement, density, and velocity across the middle section.</p>
-<p>The rhythm section was written to support that arc. Basilico plays a six-note walking pattern in each bar, mixing chord tones with approach notes. Canticle&#39;s piano part uses restrained offbeat voicings rather than continuous block chords. DrumKit maintains the compound-meter pulse with ride cymbal, hi-hat, kick, and occasional snare comping. The parts remain on separate tracks so that every musical role is editable inside REAPER.</p>
-<p>I sent the MIDI to REAPER in four batched clips: 124 lead notes, 240 piano notes, 192 bass notes, and 336 drum notes. Batching was important because sending individual notes through MCP would have made the session much slower and more fragile. I also saved the construction logic as <code>scripts/reaper-modal-jazz-arrangement.py</code>. The script accepts tempo and bar-count arguments and emits the same relative-time MIDI dictionaries used by REAPER MCP, making the arrangement technique reusable without relying on temporary files.</p>
-<p>The mix was intentionally conservative. The lead sits slightly left, piano and drums slightly right, and bass remains centered. Lead, piano, and drums feed the shared room at low send levels, while the master stays at -1.5 dB for headroom. REAPER&#39;s master-FX helper exposed a bridge-side type error, so I did not claim that a limiter had been installed. The project saved successfully as an editable <code>.RPP</code>; the offline WAV render later exceeded the MCP timeout and produced no audio file.</p>
-<p>This smaller experiment reinforced the main lesson from the techno project: generative tools become musical when they serve a clear form. The important work was not asking the system for hundreds of notes. It was defining an ensemble, giving each part a role, developing one recognizable idea, and preserving enough space for the arrangement to breathe.</p>
-
-</article>
-<p class="post-title h-cinzel">
-    <a href="http://danny.ayers.name/entries/2026-07-12_approach.html">
-        A Different Approach to AI Music
-    </a>
-</p> <em></em>
-                    </div>
-                </article>
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
