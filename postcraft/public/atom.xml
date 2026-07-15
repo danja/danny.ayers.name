@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2026-07-15T15:27:49.152Z</updated>
+  <updated>2026-07-15T15:43:03.887Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -10,6 +10,206 @@
     <name>Danny Ayers</name>
     <email>danny.ayers@gmail.com</email>
   </author>
+  <entry>
+    <title>ELFQuake: A Working Experiment, Not Yet a Predictor</title>
+    <id>http://danny.ayers.name/entries/2026-07-15_elfquake-progress</id>
+    <updated>2026-07-15T14:53:55.165Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-07-15_elfquake-progress" />
+    <published>2026-07-15T14:53:55.165Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>ELFQuake: A Working Experiment, Not Yet a Predictor</h1>
+        <p><a href="https://github.com/danja/elfquake/">Project Code/Docs</a> (GitHub)</p>
+        <p><em>15 July 2026</em></p>
+        <p><strong>tl;dr</strong></p>
+        <p><a href="/images/2026-07/map_2026-07-15.png">latest prediction map (not good)</a></p>
+        <p>ELFQuake is a research project asking a difficult question: can earthquake records be combined with very-low-frequency radio observations and astronomical data to improve forecasts of earthquakes in Italy?</p>
+        <p>The important word is &quot;improve&quot;. A model that appears accurate but does no better than a simple historical estimate is not useful. The project therefore treats every result as an experiment against clear baselines, with the future held out from training.</p>
+        <h2>The System Is Now End to End</h2>
+        <p>The project can now collect and organize the main data sources, train CPU-based models, and produce a seven-day map of actual and predicted earthquake locations.</p>
+        <p>The real earthquake catalogue comes from INGV, Italy’s national earthquake data service. The current historical file contains 4,836 events from January 2024 to July 2026. Cumiana VLF observations are being collected as spectrogram images. A spectrogram is simply a picture showing how radio energy changes over time and across frequencies. Astronomy and space-weather connectors are also in place.</p>
+        <p>The VLF record is not yet long enough to support a fair supervised test. The available earthquake-aligned VLF rows still contain only one class of outcome in the current windows. In plain terms, the system has examples of one kind of week, but not enough examples of both &quot;an event followed&quot; and &quot;no event followed&quot;. The model therefore cannot honestly learn or test a real VLF earthquake signal yet.</p>
+        <h2>Why Use a Sandpile Simulation?</h2>
+        <p>Real strong earthquakes are rare, and the suspected radio effects are even harder to label. ELFQuake uses a sandpile-style avalanche simulation as a controlled source of synthetic data.</p>
+        <p>The simulation represents stress building up at localized points, followed by sudden avalanches. It produces two separate signal families:</p>
+        <ul>
+        <li>a direct avalanche signal, intended as a rough analogue of seismic activity;</li>
+        <li>a piezo-like signal, intended as a rough analogue of a radio response caused by stress in quartz-bearing rock.</li>
+        </ul>
+        <p>These signals are not claimed to be physically equivalent to earthquakes or VLF radio. Their purpose is to provide test data for the software and model interfaces while the real record grows. The simulation is also useful for checking whether an apparently promising model works across different runs, rather than only on one convenient example.</p>
+        <p>A new 20,000-step CPU simulation run was completed at seed 4300. Together with three earlier long runs, the dense synthetic corpus now contains 79,976 records. Independent simulations share a demonstration start date, so the training pipeline offsets their synthetic times when stacking them. This changes no real timestamp; it only prevents separate experiments from being mistaken for simultaneous observations.</p>
+        <h2>The First Synthetic-to-Real Test</h2>
+        <p>An all-Italy weekly target is too easy to define badly: at a threshold around magnitude 2.5, Italy has an event in most weeks. To create a meaningful comparison, the country was divided into fixed geographic cells. The task became:</p>
+        <blockquote>
+        <p>Will a particular cell contain at least one magnitude 2.5 or greater earthquake during the next seven days?</p>
+        </blockquote>
+        <p>The model was trained on the first 80% of the real timeline and evaluated on the final 20%. This is a chronological holdout: the model only sees the past, then is tested on a later period.</p>
+        <p>Three approaches were compared:</p>
+        <ul>
+        <li>a historical spatial-rate baseline, which predicts using how often each cell has produced events in the past;</li>
+        <li>a small neural network trained only on real seismic features;</li>
+        <li>the same type of network first trained on synthetic data, then fine-tuned (adapted) using real seismic data.</li>
+        </ul>
+        <p>The historical baseline achieved a balanced accuracy of <code>0.686</code> and precision of <code>0.344</code>. Balanced accuracy gives equal weight to finding event cells and correctly rejecting quiet cells. Precision measures how many predicted cells really contained an event.</p>
+        <p>The real-only model reached <code>0.666</code> balanced accuracy and <code>0.269</code> precision. Synthetic pretraining improved this to <code>0.681</code> and <code>0.307</code>, but it still did not beat the historical baseline. Four rolling tests, using several different training cutoffs, produced an average balanced accuracy of <code>0.668</code>, with the weakest fold at <code>0.656</code>.</p>
+        <p>These results are useful because they show the complete process working, but they do not show useful earthquake prediction. The model is not yet adding reliable information beyond the known geographical distribution of Italian seismicity.</p>
+        <h2>A Map for Inspection</h2>
+        <p>The system also renders a randomly selected held-out week on an offline map of Italy. Blue circles show actual INGV events; red crosses show the centres of cells predicted by the model. Marker size represents the magnitude proxy.</p>
+        <p>The map is deliberately a diagnostic picture, not a forecast product. Predicted crosses are independently generated cell locations, not actual events relabelled after the fact.</p>
+        <h2>What Comes Next</h2>
+        <p>The immediate work is to grow the synthetic corpus with more independent long runs and repeat the transfer experiment. The aim is to establish whether synthetic pretraining consistently helps across time periods, not merely in one split.</p>
+        <p>The real model will also be tested at several cell sizes and magnitude thresholds, with the choice made using training data only. More rolling holdouts will show whether performance survives changes in time period.</p>
+        <p>Most importantly, VLF data will remain a separate ablation (a controlled test with one input removed). Once the live record contains both positive and negative outcomes, seismic-only, seismic-plus-VLF, and astronomy-augmented models can be compared fairly.</p>
+        <p>At this point ELFQuake has a reproducible research pipeline and a clear baseline. It does not have demonstrated earthquake prediction capability. That is a useful result: the next improvements can now be judged against a real held-out standard rather than against a demonstration that merely looks convincing.
+         </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-07-15_elfquake-progress.html">
+                ELFQuake: A Working Experiment, Not Yet a Predictor
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
+  <entry>
+    <title>ELFQuake: A Working Experiment, Not Yet a Predictor</title>
+    <id>http://danny.ayers.name/entries/2026-07-15_elfquake-progress</id>
+    <updated>2026-07-15T14:53:55.165Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-07-15_elfquake-progress" />
+    <published>2026-07-15T14:53:55.165Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>ELFQuake: A Working Experiment, Not Yet a Predictor</h1>
+        <p><a href="https://github.com/danja/elfquake/">Project Code/Docs</a> (GitHub)</p>
+        <p><em>15 July 2026</em></p>
+        <p><strong>tl;dr</strong></p>
+        <p><img src="/images/2026-07/map_2026-07-15.png" alt="latest prediction map (not good)"></p>
+        <p>ELFQuake is a research project asking a difficult question: can earthquake records be combined with very-low-frequency radio observations and astronomical data to improve forecasts of earthquakes in Italy?</p>
+        <p>The important word is &quot;improve&quot;. A model that appears accurate but does no better than a simple historical estimate is not useful. The project therefore treats every result as an experiment against clear baselines, with the future held out from training.</p>
+        <h2>The System Is Now End to End</h2>
+        <p>The project can now collect and organize the main data sources, train CPU-based models, and produce a seven-day map of actual and predicted earthquake locations.</p>
+        <p>The real earthquake catalogue comes from INGV, Italy’s national earthquake data service. The current historical file contains 4,836 events from January 2024 to July 2026. Cumiana VLF observations are being collected as spectrogram images. A spectrogram is simply a picture showing how radio energy changes over time and across frequencies. Astronomy and space-weather connectors are also in place.</p>
+        <p>The VLF record is not yet long enough to support a fair supervised test. The available earthquake-aligned VLF rows still contain only one class of outcome in the current windows. In plain terms, the system has examples of one kind of week, but not enough examples of both &quot;an event followed&quot; and &quot;no event followed&quot;. The model therefore cannot honestly learn or test a real VLF earthquake signal yet.</p>
+        <h2>Why Use a Sandpile Simulation?</h2>
+        <p>Real strong earthquakes are rare, and the suspected radio effects are even harder to label. ELFQuake uses a sandpile-style avalanche simulation as a controlled source of synthetic data.</p>
+        <p>The simulation represents stress building up at localized points, followed by sudden avalanches. It produces two separate signal families:</p>
+        <ul>
+        <li>a direct avalanche signal, intended as a rough analogue of seismic activity;</li>
+        <li>a piezo-like signal, intended as a rough analogue of a radio response caused by stress in quartz-bearing rock.</li>
+        </ul>
+        <p>These signals are not claimed to be physically equivalent to earthquakes or VLF radio. Their purpose is to provide test data for the software and model interfaces while the real record grows. The simulation is also useful for checking whether an apparently promising model works across different runs, rather than only on one convenient example.</p>
+        <p>A new 20,000-step CPU simulation run was completed at seed 4300. Together with three earlier long runs, the dense synthetic corpus now contains 79,976 records. Independent simulations share a demonstration start date, so the training pipeline offsets their synthetic times when stacking them. This changes no real timestamp; it only prevents separate experiments from being mistaken for simultaneous observations.</p>
+        <h2>The First Synthetic-to-Real Test</h2>
+        <p>An all-Italy weekly target is too easy to define badly: at a threshold around magnitude 2.5, Italy has an event in most weeks. To create a meaningful comparison, the country was divided into fixed geographic cells. The task became:</p>
+        <blockquote>
+        <p>Will a particular cell contain at least one magnitude 2.5 or greater earthquake during the next seven days?</p>
+        </blockquote>
+        <p>The model was trained on the first 80% of the real timeline and evaluated on the final 20%. This is a chronological holdout: the model only sees the past, then is tested on a later period.</p>
+        <p>Three approaches were compared:</p>
+        <ul>
+        <li>a historical spatial-rate baseline, which predicts using how often each cell has produced events in the past;</li>
+        <li>a small neural network trained only on real seismic features;</li>
+        <li>the same type of network first trained on synthetic data, then fine-tuned (adapted) using real seismic data.</li>
+        </ul>
+        <p>The historical baseline achieved a balanced accuracy of <code>0.686</code> and precision of <code>0.344</code>. Balanced accuracy gives equal weight to finding event cells and correctly rejecting quiet cells. Precision measures how many predicted cells really contained an event.</p>
+        <p>The real-only model reached <code>0.666</code> balanced accuracy and <code>0.269</code> precision. Synthetic pretraining improved this to <code>0.681</code> and <code>0.307</code>, but it still did not beat the historical baseline. Four rolling tests, using several different training cutoffs, produced an average balanced accuracy of <code>0.668</code>, with the weakest fold at <code>0.656</code>.</p>
+        <p>These results are useful because they show the complete process working, but they do not show useful earthquake prediction. The model is not yet adding reliable information beyond the known geographical distribution of Italian seismicity.</p>
+        <h2>A Map for Inspection</h2>
+        <p>The system also renders a randomly selected held-out week on an offline map of Italy. Blue circles show actual INGV events; red crosses show the centres of cells predicted by the model. Marker size represents the magnitude proxy.</p>
+        <p>The map is deliberately a diagnostic picture, not a forecast product. Predicted crosses are independently generated cell locations, not actual events relabelled after the fact.</p>
+        <h2>What Comes Next</h2>
+        <p>The immediate work is to grow the synthetic corpus with more independent long runs and repeat the transfer experiment. The aim is to establish whether synthetic pretraining consistently helps across time periods, not merely in one split.</p>
+        <p>The real model will also be tested at several cell sizes and magnitude thresholds, with the choice made using training data only. More rolling holdouts will show whether performance survives changes in time period.</p>
+        <p>Most importantly, VLF data will remain a separate ablation (a controlled test with one input removed). Once the live record contains both positive and negative outcomes, seismic-only, seismic-plus-VLF, and astronomy-augmented models can be compared fairly.</p>
+        <p>At this point ELFQuake has a reproducible research pipeline and a clear baseline. It does not have demonstrated earthquake prediction capability. That is a useful result: the next improvements can now be judged against a real held-out standard rather than against a demonstration that merely looks convincing.
+         </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-07-15_elfquake-progress.html">
+                ELFQuake: A Working Experiment, Not Yet a Predictor
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
+  <entry>
+    <title>ELFQuake: A Working Experiment, Not Yet a Predictor</title>
+    <id>http://danny.ayers.name/entries/2026-07-15_elfquake-progress</id>
+    <updated>2026-07-15T14:53:55.165Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-07-15_elfquake-progress" />
+    <published>2026-07-15T14:53:55.165Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>ELFQuake: A Working Experiment, Not Yet a Predictor</h1>
+        <p><em>15 July 2026</em></p>
+        <p><strong>tl;dr</strong></p>
+        <p><a href="/images/2026-07/map_2026-07-15.png">latest prediction map (not good)</a></p>
+        <p>ELFQuake is a research project asking a difficult question: can earthquake records be combined with very-low-frequency radio observations and astronomical data to improve forecasts of earthquakes in Italy?</p>
+        <p>The important word is &quot;improve&quot;. A model that appears accurate but does no better than a simple historical estimate is not useful. The project therefore treats every result as an experiment against clear baselines, with the future held out from training.</p>
+        <h2>The System Is Now End to End</h2>
+        <p>The project can now collect and organize the main data sources, train CPU-based models, and produce a seven-day map of actual and predicted earthquake locations.</p>
+        <p>The real earthquake catalogue comes from INGV, Italy’s national earthquake data service. The current historical file contains 4,836 events from January 2024 to July 2026. Cumiana VLF observations are being collected as spectrogram images. A spectrogram is simply a picture showing how radio energy changes over time and across frequencies. Astronomy and space-weather connectors are also in place.</p>
+        <p>The VLF record is not yet long enough to support a fair supervised test. The available earthquake-aligned VLF rows still contain only one class of outcome in the current windows. In plain terms, the system has examples of one kind of week, but not enough examples of both &quot;an event followed&quot; and &quot;no event followed&quot;. The model therefore cannot honestly learn or test a real VLF earthquake signal yet.</p>
+        <h2>Why Use a Sandpile Simulation?</h2>
+        <p>Real strong earthquakes are rare, and the suspected radio effects are even harder to label. ELFQuake uses a sandpile-style avalanche simulation as a controlled source of synthetic data.</p>
+        <p>The simulation represents stress building up at localized points, followed by sudden avalanches. It produces two separate signal families:</p>
+        <ul>
+        <li>a direct avalanche signal, intended as a rough analogue of seismic activity;</li>
+        <li>a piezo-like signal, intended as a rough analogue of a radio response caused by stress in quartz-bearing rock.</li>
+        </ul>
+        <p>These signals are not claimed to be physically equivalent to earthquakes or VLF radio. Their purpose is to provide test data for the software and model interfaces while the real record grows. The simulation is also useful for checking whether an apparently promising model works across different runs, rather than only on one convenient example.</p>
+        <p>A new 20,000-step CPU simulation run was completed at seed 4300. Together with three earlier long runs, the dense synthetic corpus now contains 79,976 records. Independent simulations share a demonstration start date, so the training pipeline offsets their synthetic times when stacking them. This changes no real timestamp; it only prevents separate experiments from being mistaken for simultaneous observations.</p>
+        <h2>The First Synthetic-to-Real Test</h2>
+        <p>An all-Italy weekly target is too easy to define badly: at a threshold around magnitude 2.5, Italy has an event in most weeks. To create a meaningful comparison, the country was divided into fixed geographic cells. The task became:</p>
+        <blockquote>
+        <p>Will a particular cell contain at least one magnitude 2.5 or greater earthquake during the next seven days?</p>
+        </blockquote>
+        <p>The model was trained on the first 80% of the real timeline and evaluated on the final 20%. This is a chronological holdout: the model only sees the past, then is tested on a later period.</p>
+        <p>Three approaches were compared:</p>
+        <ul>
+        <li>a historical spatial-rate baseline, which predicts using how often each cell has produced events in the past;</li>
+        <li>a small neural network trained only on real seismic features;</li>
+        <li>the same type of network first trained on synthetic data, then fine-tuned (adapted) using real seismic data.</li>
+        </ul>
+        <p>The historical baseline achieved a balanced accuracy of <code>0.686</code> and precision of <code>0.344</code>. Balanced accuracy gives equal weight to finding event cells and correctly rejecting quiet cells. Precision measures how many predicted cells really contained an event.</p>
+        <p>The real-only model reached <code>0.666</code> balanced accuracy and <code>0.269</code> precision. Synthetic pretraining improved this to <code>0.681</code> and <code>0.307</code>, but it still did not beat the historical baseline. Four rolling tests, using several different training cutoffs, produced an average balanced accuracy of <code>0.668</code>, with the weakest fold at <code>0.656</code>.</p>
+        <p>These results are useful because they show the complete process working, but they do not show useful earthquake prediction. The model is not yet adding reliable information beyond the known geographical distribution of Italian seismicity.</p>
+        <h2>A Map for Inspection</h2>
+        <p>The system also renders a randomly selected held-out week on an offline map of Italy. Blue circles show actual INGV events; red crosses show the centres of cells predicted by the model. Marker size represents the magnitude proxy.</p>
+        <p>The map is deliberately a diagnostic picture, not a forecast product. Predicted crosses are independently generated cell locations, not actual events relabelled after the fact.</p>
+        <h2>What Comes Next</h2>
+        <p>The immediate work is to grow the synthetic corpus with more independent long runs and repeat the transfer experiment. The aim is to establish whether synthetic pretraining consistently helps across time periods, not merely in one split.</p>
+        <p>The real model will also be tested at several cell sizes and magnitude thresholds, with the choice made using training data only. More rolling holdouts will show whether performance survives changes in time period.</p>
+        <p>Most importantly, VLF data will remain a separate ablation (a controlled test with one input removed). Once the live record contains both positive and negative outcomes, seismic-only, seismic-plus-VLF, and astronomy-augmented models can be compared fairly.</p>
+        <p>At this point ELFQuake has a reproducible research pipeline and a clear baseline. It does not have demonstrated earthquake prediction capability. That is a useful result: the next improvements can now be judged against a real held-out standard rather than against a demonstration that merely looks convincing.
+         </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-07-15_elfquake-progress.html">
+                ELFQuake: A Working Experiment, Not Yet a Predictor
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
   <entry>
     <title>ELFQuake: A Working Experiment, Not Yet a Predictor</title>
     <id>http://danny.ayers.name/entries/2026-07-15_elfquake-progress</id>
@@ -1277,98 +1477,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/entries/2026-05-21_attone.html">
                 Attone
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Postcraft Update</title>
-    <id>http://danny.ayers.name/entries/2026-02-07_postcraft</id>
-    <updated>2026-02-07T10:33:03.538Z</updated>
-    <link href="http://danny.ayers.name/entries/2026-02-07_postcraft" />
-    <published>2026-02-07T10:33:03.538Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Postcraft Update</h1>
-        <p>This is a test.</p>
-        <p>Rather wonderfully both Codex and Claude have a decent grip on how <a href="https://github.com/danja/transmissions">Transmissions</a>, my pipeliney thing, works.
-        I&#39;m not entirely sure what&#39;s being used under the hood, but I did get <strong>Claude</strong> to create a <strong>Skill</strong> for creating <em>Transmissions</em> (what I call my pipelines).
-        Claude was then able to build me a feed aggregator using Transmissions as the engine.</p>
-        <p>I&#39;ve been using Transmissions-based apps for publishing my blog content for a while now. The source content I write as markdown files in my local filesystem. One app pushes this content off to a remote SPARQL store (Fuseki on my server), another app renders the content as HTML, yet another creates the index pages.</p>
-        <p>This works ok but an outstanding issue was that each time I ran these apps, every single blog post was processed again. So I just got Codex to modify the pipelines to keep a note of changes. It chose to use a local JSON file for keeping the cache info, which is fine by me. Everything looks like it still functions ok. My tests are a bit haphazard, the best test is to run the thing. For which I need a new blog post. So,</p>
-        <p>This is a test.
-         </p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2026-02-07_postcraft.html">
-                Postcraft Update
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>P-Mix</title>
-    <id>http://danny.ayers.name/entries/2026-02-02_p-mix</id>
-    <updated>2026-02-02T15:04:45.947Z</updated>
-    <link href="http://danny.ayers.name/entries/2026-02-02_p-mix" />
-    <published>2026-02-02T15:04:45.947Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>P-Mix</h1>
-        <p><a href="https://github.com/danja/flues/tree/main/lv2/p-mix">P-Mix</a> is an lv2 plugin that acts kinda like an autonomous DJ. It fades/cuts tracks in a DAW in &amp; out.</p>
-        <p>Recently I&#39;ve had quite a good workflow going on in the music room. A lot of experimentation with modular etc, building up tunes. I&#39;ve got quite systematic about the process for mixing &amp; mastering. I&#39;ve stuck a few quasi-finished pieces on YouTube (<a href="https://www.youtube.com/results?search_query=Spike+%26+Wave+hyperdata">search query &quot;Spike &amp; Wave hyperdata&quot;</a>). But I&#39;ve got loads of material stuck at a certain point between the build up of layers and the final mix. Typically 8+ tracks, some of them loops, some of them changing over time. But all there in parallel, by default on all the time. Things need to come in and out.</p>
-        <p>What&#39;s really frustrating is that the stage after this, putting icing on things, an effect here and there, novel sample or whatever, is good fun. I just tend to get stuck at this just-beyond-loops phase. Doing this part of the mixing takes ages, and because you&#39;re going over the same material over &amp; over again it gets tiring and your judgement quickly goes downhill. Like it&#39;s pretty easy to decide on an intro, the first 20 seconds or so of a piece. Then it starts to become a chore and you lose engagement. Ok, I&#39;ve been attempting to get around this by breaking it up into short sessions, do a bit at a time. But still, the brain fog from repitition descends pretty quickly.</p>
-        <p>Then it occurred to me - automate it!</p>
-        <p>I&#39;ve been doing loads of coding with Claude &amp; Codex AI assistants, including a bunch of (mostly unfinished) lv2 plugins. So I&#39;d got the infrastructure in place - ie. basically workinig example code which the AI can use for reference. Which is fortunate, seeing as I&#39;m really lousy at C/C++. It pleases me immensely that <strong>lv2</strong>s use Turtle syntax RDF (<a href="https://en.wikipedia.org/wiki/Semantic_Web">semweb</a> ftw!).</p>
-        <p>Here I set a bunch of 8 or so parallel tracks in a loop with the plugin on each of them, and had a play with the modular while it did its thing : <a href="https://www.youtube.com/watch?v=4tD_csaHqdQ">Live from the music room</a></p>
-        <hr>
-        <p>P-Mix : a probabilistic mixer lv2</p>
-        <p><a href="https://github.com/danja/flues/tree/main/lv2/p-mix">P-Mix</a> is a very simple lv2 plugin that acts kinda like an autonomous DJ. It fades/cuts audio tracks in a DAW in &amp; out. For when you get stuck with a loop.</p>
-        <p> <a href="https://www.youtube.com/watch?v=4tD_csaHqdQ">Here</a> I set a bunch of 8 or so parallel tracks in a loop with the plugin on each of them, and had a play with the modular while it did its thing.</p>
-        <p>(There are a bunch of other toys in the <a href="https://github.com/danja/flues">repo</a>, various levels of unfinishedness)
-         </p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2026-02-02_p-mix.html">
-                P-Mix
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Synth Experiments</title>
-    <id>http://danny.ayers.name/entries/2025-12-06_synths</id>
-    <updated>2025-12-06T08:07:07.851Z</updated>
-    <link href="http://danny.ayers.name/entries/2025-12-06_synths" />
-    <published>2025-12-06T08:07:07.851Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Synth Experiments</h1>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2025-12-06_synths.html">
-                Synth Experiments
             </a>
         </p> <em></em>
       </div>
