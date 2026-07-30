@@ -1,3 +1,4 @@
+<!-- layout/base/templates/article-page.njk -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,19 +10,16 @@
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
         <title>Dogalog</title>
     </head>
-    <!-- POST PAGE TEMPLATE -->
     <body>
         <div class="article-container">
             <nav class="article-nav">
-                <a href="https://danny.ayers.name">← Home</a>
+                <a href="/">← Recent articles</a>
             </nav>
             
             <header id="entry-header">
-                <h1 class="post-title h-cinzel">
-                    
-                </h1>
+                <h1 class="post-title h-cinzel">Dogalog</h1>
             </header>
-            <div class="post-content">
+            <main class="post-content" id="main-content">
                 <!-- ARTICLE CONTENT -->
 
 <article class="post-content">
@@ -42,7 +40,10 @@ I guess I&#39;ll post to Reddit, <a href="https://www.reddit.com/r/livecoding/">
         Dogalog
     </a>
 </p> <em></em>
-            </div>
+            </main>
+            <footer class="article-footer">
+                <a href="/">Back to recent articles</a>
+            </footer>
         </div>
     </body>
 </html>

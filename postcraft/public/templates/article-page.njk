@@ -1,3 +1,4 @@
+<!-- layout/base/templates/article-page.njk -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,25 +10,23 @@
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
         <title>{{title}}</title>
     </head>
-    <!-- POST PAGE TEMPLATE -->
     <body>
         <div class="article-container">
             <nav class="article-nav">
-                <a href="https://danny.ayers.name">← Home</a>
+                <a href="/">← Recent articles</a>
             </nav>
             {% if dates.created %}
-            <div class="article-dates">
-                <strong>{{dates.created}}</strong>
-            </div>
+            <time class="article-dates" datetime="{{dates.created}}">{{dates.created}}</time>
             {% endif %}
             <header id="entry-header">
-                <h1 class="post-title h-cinzel">
-                    {{header}}
-                </h1>
+                <h1 class="post-title h-cinzel">{{title}}</h1>
             </header>
-            <div class="post-content">
+            <main class="post-content" id="main-content">
                 {{content | safe}}
-            </div>
+            </main>
+            <footer class="article-footer">
+                <a href="/">Back to recent articles</a>
+            </footer>
         </div>
     </body>
 </html>

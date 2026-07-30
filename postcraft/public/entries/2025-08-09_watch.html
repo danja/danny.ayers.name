@@ -1,3 +1,4 @@
+<!-- layout/base/templates/article-page.njk -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,19 +10,16 @@
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
         <title>Watch</title>
     </head>
-    <!-- POST PAGE TEMPLATE -->
     <body>
         <div class="article-container">
             <nav class="article-nav">
-                <a href="https://danny.ayers.name">← Home</a>
+                <a href="/">← Recent articles</a>
             </nav>
             
             <header id="entry-header">
-                <h1 class="post-title h-cinzel">
-                    
-                </h1>
+                <h1 class="post-title h-cinzel">Watch</h1>
             </header>
-            <div class="post-content">
+            <main class="post-content" id="main-content">
                 <!-- ARTICLE CONTENT -->
 
 <article class="post-content">
@@ -87,7 +85,10 @@ When I say <em>I</em>, Claude Code did most of the work. I have looked at node&#
         Watch
     </a>
 </p> <em></em>
-            </div>
+            </main>
+            <footer class="article-footer">
+                <a href="/">Back to recent articles</a>
+            </footer>
         </div>
     </body>
 </html>

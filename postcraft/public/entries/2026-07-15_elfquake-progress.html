@@ -1,3 +1,4 @@
+<!-- layout/base/templates/article-page.njk -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,19 +10,16 @@
         <link rel="stylesheet" href="/css/style.css" type="text/css"/>
         <title>ELFQuake: A Working Experiment, Not Yet a Predictor</title>
     </head>
-    <!-- POST PAGE TEMPLATE -->
     <body>
         <div class="article-container">
             <nav class="article-nav">
-                <a href="https://danny.ayers.name">← Home</a>
+                <a href="/">← Recent articles</a>
             </nav>
             
             <header id="entry-header">
-                <h1 class="post-title h-cinzel">
-                    
-                </h1>
+                <h1 class="post-title h-cinzel">ELFQuake: A Working Experiment, Not Yet a Predictor</h1>
             </header>
-            <div class="post-content">
+            <main class="post-content" id="main-content">
                 <!-- ARTICLE CONTENT -->
 
 <article class="post-content">
@@ -29,7 +27,7 @@
 <p><a href="https://github.com/danja/elfquake/">Project Code/Docs</a> (GitHub)</p>
 <p><em>15 July 2026</em></p>
 <p><strong>tl;dr</strong></p>
-<p><a href="/images/2026-07/map_2026-07-15.png">latest prediction map (not good)</a></p>
+<p><img src="/images/2026-07/map_2026-07-15.png" alt="latest prediction map (not good)"></p>
 <p>ELFQuake is a research project asking a difficult question: can earthquake records be combined with very-low-frequency radio observations and astronomical data to improve forecasts of earthquakes in Italy?</p>
 <p>The important word is &quot;improve&quot;. A model that appears accurate but does no better than a simple historical estimate is not useful. The project therefore treats every result as an experiment against clear baselines, with the future held out from training.</p>
 <h2>The System Is Now End to End</h2>
@@ -76,7 +74,10 @@
         ELFQuake: A Working Experiment, Not Yet a Predictor
     </a>
 </p> <em></em>
-            </div>
+            </main>
+            <footer class="article-footer">
+                <a href="/">Back to recent articles</a>
+            </footer>
         </div>
     </body>
 </html>
