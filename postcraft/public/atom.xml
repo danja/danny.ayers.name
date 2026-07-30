@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2026-07-30T08:45:40.259Z</updated>
+  <updated>2026-07-30T08:55:32.303Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -42,6 +42,143 @@
         <p>Most of the rest of the day I spend at the computer. Current projects :</p>
         <h3>Research into potential earthquake prediction</h3>
         <p>This is something I&#39;ve been looking anto, on and off, for a few years now. I recently decided to get back to it. There are two things which I think may make a difference : extended data (natural radio and astronomical) and recent developments in AI (transformer model, GPT-aided coding). I&#39;m pulling seismic and radio data from Italy and Japan for model training as well as creating an avalanche-based simulator I&#39;m hoping will be suitable for generating synthetic data. It&#39;s still early days in what is bound to be a long-term project (even if it works). Details at <a href="https://danja.github.io/elfquake/">ELFQuake</a>.</p>
+        <h3>Generative music software</h3>
+        <p>The main thrust of this has been <a href="https://github.com/danja/downspout#downspout">Downspout</a>, a set of <a href="https://en.wikipedia.org/wiki/Digital_audio_workstation">Digital Audio Workstation</a> (DAW) plugins. All very experimental.</p>
+        <p>I usually use <a href="https://www.reaper.fm/">Reaper</a> DAW, but it can get a bit clunky when setting up the generative plugins. Given that I have an AI assistant to help (Codex), I thought I&#39;d have a go at making a tool designed for this purpose from the bottom up. I already had a node &amp; arc graph-oriented system (designed mostly for text processing) <a href="https://github.com/danja/transmissions">Transmissions</a> so I used that as a reference and made <a href="https://github.com/danja/transmission">Transmission</a>.</p>
+        <p><img src="https://danny.ayers.name/images/2026-07/transmission.jpeg" alt="transmission screenshot"> </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-07-29_current.html">
+                Current Activities
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
+  <entry>
+    <title>Current Activities</title>
+    <id>http://danny.ayers.name/entries/2026-07-29_current</id>
+    <updated>2026-07-29T07:20:02.018Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-07-29_current" />
+    <published>2026-07-29T07:20:02.018Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Current Activities</h1>
+        <p>I&#39;ve not been very good at updating here recently so I&#39;ll bundle this up.</p>
+        <h2>What I should have been doing</h2>
+        <ol>
+        <li>Cleaning this house (it is a bloody mess). </li>
+        <li>Tidying the garden and field (it is one big jungle). </li>
+        <li>Finding some paid work (I am skint).</li>
+        <li>Practicing clarinet, guitar and keyboards (I am lazy).</li>
+        </ol>
+        <p><em>But I have been busy.</em></p>
+        <h2>What I have been doing</h2>
+        <p>My ADHD means sticking to a routine is rather alien to me, but aside from the above, I have been relatively good at it recently. I wake up at 7 and take my Ritalin, make a coffee, doomscroll, get out of bed around 9. I take Claudio out for two walks a day (short, it&#39;s hard work in this heat). Beer cellar with Jacopo on a Saturday night, walk up to Silvano&#39;s bar in Castiglione on a Sunday (when I have the energy). </p>
+        <p><img src="https://danny.ayers.name/images/2026-07/claudio.jpeg" alt="claudio"></p>
+        <p>Most mornings I have a couple of hours in the music room. This mostly amounts to practice of sorts, though I am frequently uploading a <em>solo jam</em> up to YouTube, over <a href="https://www.youtube.com/@djayers/videos">here</a>. I&#39;m slowly working on the not-too-difficult second album (here&#39;s the first : <a href="https://github.com/danja/attone#attone">Attone</a>). This will be themed - inspired by mythical medieval creatures, such as those from the <a href="https://www.abdn.ac.uk/bestiary/">Aberdeen Bestiary</a>. So far I have done the <a href="https://www.youtube.com/watch?v=dIStJlJMb18">Bonnacon</a> and the <a href="https://www.youtube.com/watch?v=lRzpHg-FpnQ">Griffin</a>.</p>
+        <p><img src="https://danny.ayers.name/images/2026-07/music-room.jpeg" alt="music room"></p>
+        <p>Most of the rest of the day I spend at the computer. Current projects :</p>
+        <h3>Research into potential earthquake prediction</h3>
+        <p>This is something I&#39;ve been looking anto, on and off, for a few years now. I recently decided to get back to it. There are two things which I think may make a difference : extended data (natural radio and astronomical) and recent developments in AI (transformer model, GPT-aided coding). I&#39;m pulling seismic and radio data from Italy and Japan for model training as well as creating an avalanche-based simulator I&#39;m hoping will be suitable for generating synthetic data. It&#39;s still early days in what is bound to be a long-term project (even if it works). Details at <a href="https://danja.github.io/elfquake/">ELFQuake</a>.</p>
+        <p><img src="https://danny.ayers.name/images/2026-07/map.png" alt="map"></p>
+        <h3>Generative music software</h3>
+        <p>The main thrust of this has been <a href="https://github.com/danja/downspout#downspout">Downspout</a>, a set of <a href="https://en.wikipedia.org/wiki/Digital_audio_workstation">Digital Audio Workstation</a> (DAW) plugins. All very experimental.</p>
+        <p>I usually use <a href="https://www.reaper.fm/">Reaper</a> DAW, but it can get a bit clunky when setting up the generative plugins. Given that I have an AI assistant to help (Codex), I thought I&#39;d have a go at making a tool designed for this purpose from the bottom up. I already had a node &amp; arc graph-oriented system (designed mostly for text processing) <a href="https://github.com/danja/transmissions">Transmissions</a> so I used that as a reference and made <a href="https://github.com/danja/transmission">Transmission</a>.</p>
+        <p><img src="https://danny.ayers.name/images/2026-07/transmission.jpeg" alt="transmission screenshot"> </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-07-29_current.html">
+                Current Activities
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
+  <entry>
+    <title>Current Activities</title>
+    <id>http://danny.ayers.name/entries/2026-07-29_current</id>
+    <updated>2026-07-29T07:20:02.018Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-07-29_current" />
+    <published>2026-07-29T07:20:02.018Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Current Activities</h1>
+        <p>I&#39;ve not been very good at updating here recently so I&#39;ll bundle this up.</p>
+        <h2>What I should have been doing</h2>
+        <ol>
+        <li>Cleaning this house (it is a bloody mess). </li>
+        <li>Tidying the garden and field (it is one big jungle). </li>
+        <li>Finding some paid work (I am skint).</li>
+        <li>Practicing clarinet, guitar and keyboards (I am lazy).</li>
+        </ol>
+        <p><em>But I have been busy.</em></p>
+        <h2>What I have been doing</h2>
+        <p>My ADHD means sticking to a routine is rather alien to me, but aside from the above, I have been relatively good at it recently. I wake up at 7 and take my Ritalin, make a coffee, doomscroll, get out of bed around 9. I take Claudio out for two walks a day (short, it&#39;s hard work in this heat). Beer cellar with Jacopo on a Saturday night, walk up to Silvano&#39;s bar in Castiglione on a Sunday (when I have the energy). </p>
+        <p><img src="https://danny.ayers.name/images/2026-07/claudio.jpeg" alt="claudio"></p>
+        <p>Most mornings I have a couple of hours in the music room. This mostly amounts to practice of sorts, though I am frequently uploading a <em>solo jam</em> up to YouTube, over <a href="https://www.youtube.com/@djayers/videos">here</a>. I&#39;m slowly working on the not-too-difficult second album (here&#39;s the first : <a href="https://github.com/danja/attone#attone">Attone</a>). This will be themed - inspired by mythical medieval creatures, such as those from the <a href="https://www.abdn.ac.uk/bestiary/">Aberdeen Bestiary</a>. So far I have done the <a href="https://www.youtube.com/watch?v=dIStJlJMb18">Bonnacon</a> and the <a href="https://www.youtube.com/watch?v=lRzpHg-FpnQ">Griffin</a>.</p>
+        <p><img src="https://danny.ayers.name/images/2026-07/music-room.jpeg" alt="music room"></p>
+        <p>Most of the rest of the day I spend at the computer. Current projects :</p>
+        <h3>Research into potential earthquake prediction</h3>
+        <p>This is something I&#39;ve been looking anto, on and off, for a few years now. I recently decided to get back to it. There are two things which I think may make a difference : extended data (natural radio and astronomical) and recent developments in AI (transformer model, GPT-aided coding). I&#39;m pulling seismic and radio data from Italy and Japan for model training as well as creating an avalanche-based simulator I&#39;m hoping will be suitable for generating synthetic data. It&#39;s still early days in what is bound to be a long-term project (even if it works). Details at <a href="https://danja.github.io/elfquake/">ELFQuake</a>.</p>
+        <h3>Generative music software</h3>
+        <p>The main thrust of this has been <a href="https://github.com/danja/downspout#downspout">Downspout</a>, a set of <a href="https://en.wikipedia.org/wiki/Digital_audio_workstation">Digital Audio Workstation</a> (DAW) plugins. All very experimental.</p>
+        <p>I usually use <a href="https://www.reaper.fm/">Reaper</a> DAW, but it can get a bit clunky when setting up the generative plugins. Given that I have an AI assistant to help (Codex), I thought I&#39;d have a go at making a tool designed for this purpose from the bottom up. I already had a node &amp; arc graph-oriented system (designed mostly for text processing) <a href="https://github.com/danja/transmissions">Transmissions</a> so I used that as a reference and made <a href="https://github.com/danja/transmission">Transmission</a>.</p>
+        <p><img src="https://danny.ayers.name/images/2026-07/transmission.jpeg" alt="transmission screenshot"> </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-07-29_current.html">
+                Current Activities
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
+  <entry>
+    <title>Current Activities</title>
+    <id>http://danny.ayers.name/entries/2026-07-29_current</id>
+    <updated>2026-07-29T07:20:02.018Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-07-29_current" />
+    <published>2026-07-29T07:20:02.018Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Current Activities</h1>
+        <p>I&#39;ve not been very good at updating here recently so I&#39;ll bundle this up.</p>
+        <h2>What I should have been doing</h2>
+        <ol>
+        <li>Cleaning this house (it is a bloody mess). </li>
+        <li>Tidying the garden and field (it is one big jungle). </li>
+        <li>Finding some paid work (I am skint).</li>
+        <li>Practicing clarinet, guitar and keyboards (I am lazy).</li>
+        </ol>
+        <p><em>But I have been busy.</em></p>
+        <h2>What I have been doing</h2>
+        <p>My ADHD means sticking to a routine is rather alien to me, but aside from the above, I have been relatively good at it recently. I wake up at 7 and take my Ritalin, make a coffee, doomscroll, get out of bed around 9. I take Claudio out for two walks a day (short, it&#39;s hard work in this heat). Beer cellar with Jacopo on a Saturday night, walk up to Silvano&#39;s bar in Castiglione on a Sunday (when I have the energy). </p>
+        <p><img src="https://danny.ayers.name/images/2026-07/claudio.jpeg" alt="claudio"></p>
+        <p>Most mornings I have a couple of hours in the music room. This mostly amounts to practice of sorts, though I am frequently uploading a <em>solo jam</em> up to YouTube, over <a href="https://www.youtube.com/@djayers/videos">here</a>. I&#39;m slowly working on the not-too-difficult second album (here&#39;s the first : <a href="https://github.com/danja/attone#attone">Attone</a>). This will be themed - inspired by mythical medieval creatures, such as those from the <a href="https://www.abdn.ac.uk/bestiary/">Aberdeen Bestiary</a>. So far I have done the <a href="https://www.youtube.com/watch?v=dIStJlJMb18">Bonnacon</a> and the <a href="https://www.youtube.com/watch?v=lRzpHg-FpnQ">Griffin</a>.</p>
+        <p><img src="https://danny.ayers.name/images/2026-07/music-room.jpeg" alt="music room"></p>
+        <p>Most of the rest of the day I spend at the computer. Current projects :</p>
+        <h3>Research into potential earthquake prediction</h3>
+        <p>This is something I&#39;ve been looking anto, on and off, for a few years now. I recently decided to get back to it. There are two things which I think may make a difference : extended data (natural radio and astronomical) and recent developments in AI (transformer model, GPT-aided coding). I&#39;m pulling seismic and radio data from Italy and Japan for model training as well as creating an avalanche-based simulator I&#39;m hoping will be suitable for generating synthetic data. It&#39;s still early days in what is bound to be a long-term project (even if it works). Details at <a href="https://danja.github.io/elfquake/">ELFQuake</a>.</p>
+        <p><img src="https://danny.ayers.name/images/2026-07/map.png" alt="map"></p>
         <h3>Generative music software</h3>
         <p>The main thrust of this has been <a href="https://github.com/danja/downspout#downspout">Downspout</a>, a set of <a href="https://en.wikipedia.org/wiki/Digital_audio_workstation">Digital Audio Workstation</a> (DAW) plugins. All very experimental.</p>
         <p>I usually use <a href="https://www.reaper.fm/">Reaper</a> DAW, but it can get a bit clunky when setting up the generative plugins. Given that I have an AI assistant to help (Codex), I thought I&#39;d have a go at making a tool designed for this purpose from the bottom up. I already had a node &amp; arc graph-oriented system (designed mostly for text processing) <a href="https://github.com/danja/transmissions">Transmissions</a> so I used that as a reference and made <a href="https://github.com/danja/transmission">Transmission</a>.</p>
@@ -1394,103 +1531,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/entries/2026-07-12_approach.html">
                 A Different Approach to AI Music
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Generative VST Plugins</title>
-    <id>http://danny.ayers.name/entries/2026-06-27_generative-plugins</id>
-    <updated>2026-06-27T17:52:37.964Z</updated>
-    <link href="http://danny.ayers.name/entries/2026-06-27_generative-plugins" />
-    <published>2026-06-27T17:52:37.964Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Generative VST Plugins</h1>
-        <p><img src="/images/2026-06/score.jpeg" alt="score"></p>
-        <p>With considerable help from Codex, I&#39;ve built a bunch of these. They are over here on GitHub : <a href="https://github.com/danja/downspout">code</a>, <a href="https://danja.github.io/downspout/">docs</a>.</p>
-        <p>This <a href="https://www.youtube.com/watch?v=Rd-ACU0JUdo">demo on YouTube</a> features a bunch of them wired via sends in Reaper. Some of the sounds were made in the box, some created in modular. But all the midi notes have been generated algorithmically.</p>
-        <p>The bass line, as in the unintelligible score above was created by <a href="https://danja.github.io/downspout/plugins/ground/">Ground</a> :</p>
-        <p><img src="/images/2026-06/ground.jpeg" alt="screenshot"></p>
-        <p>Here is a description of the <a href="https://github.com/danja/downspout/blob/main/docs/algorithms.md">algorithms</a>.</p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2026-06-27_generative-plugins.html">
-                Generative VST Plugins
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>A Tune Created for AI</title>
-    <id>http://danny.ayers.name/entries/2026-06-17_tidepool</id>
-    <updated>2026-06-17T12:26:49.842Z</updated>
-    <link href="http://danny.ayers.name/entries/2026-06-17_tidepool" />
-    <published>2026-06-17T12:26:49.842Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>A Tune Created for AI</h1>
-        <p>A few days ago, after a morning in the music room I had a track I thought was ok, wanted to upload to YouTube, but couldn&#39;t help thinking it really needed some visuals to go with it. Last year, with the help of Claude, I made <a href="https://github.com/danja/hillside">Hillside</a>, a set of generative visualizations for a set of tracks I&#39;d recorded (live <a href="https://danja.github.io/hillside/">here</a>). It runs in a browser, canvas-based JS. So I dug that out and spent <em>many</em> hours with Codex trying to get it to render to mp4. It really was a gruelling session. Codex went down many blind alleys to get <em>anything</em> properly rendering. In the process managed to mess up the original generative algorithm. But it finally managed to get it to render one of the visuals as a reasonable vid (result <a href="https://www.youtube.com/watch?v=QOtwQIBOddU">here</a>).</p>
-        <p>I couldn&#39;t help anthropomorphising Codex a bit. It&#39;d put so much effort in. So then I asked it to <strong>make the kind of generative video setup you&#39;d like to see, tell me what you want and I&#39;ll make the sounds</strong>. Twenty minutes later Codex had built something, and gave me a brief.</p>
-        <h2>Tides</h2>
-        <p>Tides is intended for quiet, spacious, late-night ambient techno.</p>
-        <h3>Music Brief</h3>
-        <ul>
-        <li>Around 95-115 BPM, with a slow pulse but not sleepy.</li>
-        <li>Deep rounded kick, soft sub-bass, and lots of negative space.</li>
-        <li>Small delayed percussion clicks, filtered noise, and occasional metallic ticks.</li>
-        <li>Warm pads or drones that slowly change harmony.</li>
-        <li>No huge drops; more like pressure, drift, and small details emerging from darkness.</li>
-        </ul>
-        <p><em>There was also a description of the visualization etc, here : <a href="https://github.com/danja/hillside/blob/render/docs/tides.md">tides.md</a></em></p>
-        <p>This morning I created something vaguely along the lines of the brief. I&#39;ve been having a lot of fun recently creating VST plugins with Codex, so this was a good opportunity to try them out. The sounds are about 50/50 the <a href="https://github.com/danja/downspout">Downspout Plugins</a> and the modular rack (including <a href="https://github.com/danja/daisy-maybe">neurotic</a> firmware on a module to give the bass a bit of grit).</p>
-        <p>Then tried Codex&#39;s new visualization renderer. Took about an hour and the result was a bit disappointing. Some expanding circles and some very faint wavy lines.</p>
-        <p>But I saw the potential... Ok, I asked for the circles to be wavy, the faint lines to be more visible, and <strong>please add some procedurally generated sea creatures</strong>.</p>
-        <p>Another hour later, this was the result <a href="https://www.youtube.com/watch?v=W5DUwjN95RA">Tidepool</a>. It looks like it might feature in a 20th century kids TV animation. But I&#39;m happy with it.</p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2026-06-17_tidepool.html">
-                A Tune Created for AI
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Novel VST Plugins</title>
-    <id>http://danny.ayers.name/entries/2026-05-26_vsts</id>
-    <updated>2026-05-29T07:58:41.470Z</updated>
-    <link href="http://danny.ayers.name/entries/2026-05-26_vsts" />
-    <published>2026-05-29T07:58:41.470Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Novel VST Plugins</h1>
-        <p>I&#39;ve had a lot of fun over the past year or so doing music experiments with the help of AI assistants. I&#39;ve had a variety of targets including native apps, browser-based runtimes, a Daisy Seed Eurorack module and lv2 plugins. Most of the material is around <a href="https://github.com/danja/flues/">Flues</a> on GitHub. All open source, natch.</p>
-        <p>I have been using the results quite a lot in the music room, in fact the lv2s played a significant role in the making of my new album, <a href="https://github.com/danja/attone">Attone</a>. </p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2026-05-26_vsts.html">
-                Novel VST Plugins
             </a>
         </p> <em></em>
       </div>
