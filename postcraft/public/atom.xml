@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2026-07-15T15:43:03.887Z</updated>
+  <updated>2026-07-30T08:45:40.259Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -10,6 +10,51 @@
     <name>Danny Ayers</name>
     <email>danny.ayers@gmail.com</email>
   </author>
+  <entry>
+    <title>Current Activities</title>
+    <id>http://danny.ayers.name/entries/2026-07-29_current</id>
+    <updated>2026-07-29T07:20:02.018Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-07-29_current" />
+    <published>2026-07-29T07:20:02.018Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Current Activities</h1>
+        <p>I&#39;ve not been very good at updating here recently so I&#39;ll bundle this up.</p>
+        <h2>What I should have been doing</h2>
+        <ol>
+        <li>Cleaning this house (it is a bloody mess). </li>
+        <li>Tidying the garden and field (it is one big jungle). </li>
+        <li>Finding some paid work (I am skint).</li>
+        <li>Practicing clarinet, guitar and keyboards (I am lazy).</li>
+        </ol>
+        <p><em>But I have been busy.</em></p>
+        <h2>What I have been doing</h2>
+        <p>My ADHD means sticking to a routine is rather alien to me, but aside from the above, I have been relatively good at it recently. I wake up at 7 and take my Ritalin, make a coffee, doomscroll, get out of bed around 9. I take Claudio out for two walks a day (short, it&#39;s hard work in this heat). Beer cellar with Jacopo on a Saturday night, walk up to Silvano&#39;s bar in Castiglione on a Sunday (when I have the energy). </p>
+        <p><img src="https://danny.ayers.name/images/2026-07/claudio.jpeg" alt="claudio"></p>
+        <p>Most mornings I have a couple of hours in the music room. This mostly amounts to practice of sorts, though I am frequently uploading a <em>solo jam</em> up to YouTube, over <a href="https://www.youtube.com/@djayers/videos">here</a>. I&#39;m slowly working on the not-too-difficult second album (here&#39;s the first : <a href="https://github.com/danja/attone#attone">Attone</a>). This will be themed - inspired by mythical medieval creatures, such as those from the <a href="https://www.abdn.ac.uk/bestiary/">Aberdeen Bestiary</a>. So far I have done the <a href="https://www.youtube.com/watch?v=dIStJlJMb18">Bonnacon</a> and the <a href="https://www.youtube.com/watch?v=lRzpHg-FpnQ">Griffin</a>.</p>
+        <p><img src="https://danny.ayers.name/images/2026-07/music-room.jpeg" alt="music room"></p>
+        <p>Most of the rest of the day I spend at the computer. Current projects :</p>
+        <h3>Research into potential earthquake prediction</h3>
+        <p>This is something I&#39;ve been looking anto, on and off, for a few years now. I recently decided to get back to it. There are two things which I think may make a difference : extended data (natural radio and astronomical) and recent developments in AI (transformer model, GPT-aided coding). I&#39;m pulling seismic and radio data from Italy and Japan for model training as well as creating an avalanche-based simulator I&#39;m hoping will be suitable for generating synthetic data. It&#39;s still early days in what is bound to be a long-term project (even if it works). Details at <a href="https://danja.github.io/elfquake/">ELFQuake</a>.</p>
+        <h3>Generative music software</h3>
+        <p>The main thrust of this has been <a href="https://github.com/danja/downspout#downspout">Downspout</a>, a set of <a href="https://en.wikipedia.org/wiki/Digital_audio_workstation">Digital Audio Workstation</a> (DAW) plugins. All very experimental.</p>
+        <p>I usually use <a href="https://www.reaper.fm/">Reaper</a> DAW, but it can get a bit clunky when setting up the generative plugins. Given that I have an AI assistant to help (Codex), I thought I&#39;d have a go at making a tool designed for this purpose from the bottom up. I already had a node &amp; arc graph-oriented system (designed mostly for text processing) <a href="https://github.com/danja/transmissions">Transmissions</a> so I used that as a reference and made <a href="https://github.com/danja/transmission">Transmission</a>.</p>
+        <p><img src="https://danny.ayers.name/images/2026-07/transmission.jpeg" alt="transmission screenshot"> </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-07-29_current.html">
+                Current Activities
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
   <entry>
     <title>ELFQuake: A Working Experiment, Not Yet a Predictor</title>
     <id>http://danny.ayers.name/entries/2026-07-15_elfquake-progress</id>
@@ -1446,37 +1491,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/entries/2026-05-26_vsts.html">
                 Novel VST Plugins
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Attone</title>
-    <id>http://danny.ayers.name/entries/2026-05-21_attone</id>
-    <updated>2026-05-21T09:15:06.185Z</updated>
-    <link href="http://danny.ayers.name/entries/2026-05-21_attone" />
-    <published>2026-05-21T09:15:06.185Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Attone</h1>
-        <p>I have released a new album, using CD Baby as a distributor so it&#39;s now available on all major streaming music outlets.</p>
-        <ul>
-        <li><a href="https://dannyayers.bandcamp.com/album/attone">Bandcamp</a></li>
-        <li><a href="https://www.youtube.com/playlist?list=PLcI4DK1XcRAHjA180H0dYr7Dvaju027RV">YouTube</a></li>
-        <li><a href="https://open.spotify.com/album/4RRP11wg5aI3zDugMt3gcr">Spotify</a></li>
-        </ul>
-        <p>If you remember what a CD-R is, you can burn your own copy using the source files of <a href="https://github.com/danja/attone">Attone on GitHub</a>. </p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2026-05-21_attone.html">
-                Attone
             </a>
         </p> <em></em>
       </div>
