@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2026-07-30T09:13:39.814Z</updated>
+  <updated>2026-09-23T15:20:21.330Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -10,6 +10,38 @@
     <name>Danny Ayers</name>
     <email>danny.ayers@gmail.com</email>
   </author>
+  <entry>
+    <title>Stacks</title>
+    <id>http://danny.ayers.name/entries/2026-09-08_stacks</id>
+    <updated>2026-09-08T13:19:48.370Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-09-08_stacks" />
+    <published>2026-09-08T13:19:48.370Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Stacks</h1>
+        <p>On Sunday morning I woke with an idea I had to try out : <a href="https://plugin-universe.com">Plugin Universe</a>. Basically an online database of DAW plugins. I wrote a handful of docs with the general plan.</p>
+        <p>I decided to use the core of the bloated <a href="https://github.com/danja/semem">Semem</a>, the SPARQL and Semantic Search (embedding) infrastructure. Most of Sunday and Monday were spent ploughing through this with Claude. But then I ran out of tokens: reset on Wednesday.</p>
+        <p><em>So last night I went for beers.</em> </p>
+        <p>Today, Plan B : try <a href="https://opencode.ai/docs/">OpenCode</a>. It took a little while, but it&#39;s now running with model &quot;Muse Spark 1.3 Free&quot;. The only thing is, with this being a new setup I didn&#39;t want to mess up the already working code for Plugin Universe. For a while now I&#39;ve wanted to do something useful with a list of 5,000+ bookmarks I&#39;ve accumulated (on <a href="https://workflowy.com/">Workflowy</a>, it&#39;s convenient to Share to..).</p>
+        <p>This time to really keep streamlined, I asked the assistant to build a knowledgebase using the core code of Plugin Universe.</p>
+        <p>OpenCode seems to be working pretty well with this model, just a handful of <em>rate limit exceeded</em> messages.</p>
+        <p>Heh, nice message : &quot;...measured nonsense scores 0.562 on this corpus...&quot;</p>
+        <p><a href="https://github.com/DeusData/codebase-memory-mcp">codebase-memory-mcp</a> </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-09-08_stacks.html">
+                Stacks
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
   <entry>
     <title>Current Activities</title>
     <id>http://danny.ayers.name/entries/2026-07-29_current</id>
@@ -1014,44 +1046,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/entries/2025-12-04_raspberry-pi.html">
                 Runny floozy-poly on Raspberry Pi
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>What have I been doing recently?</title>
-    <id>http://danny.ayers.name/entries/2025-10-30_what</id>
-    <updated>2025-10-30T09:11:25.448Z</updated>
-    <link href="http://danny.ayers.name/entries/2025-10-30_what" />
-    <published>2025-10-30T09:11:25.448Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>What have I been doing recently?</h1>
-        <ul>
-        <li><p>Building Feed Aggregator with Transmissions : <a href="https://github.com/danja/transmissions/tree/main/src/apps/newsmonitor">NewsMonitor</a></p>
-        </li>
-        <li><p>Synth Experiments : <a href="https://danja.github.io/flues/">Flues</a></p>
-        </li>
-        <li><p>Music visualization experiments : <a href="https://danja.github.io/hillside/">Hillside</a></p>
-        </li>
-        <li><p>BPM Finder app : <a href="https://github.com/danja/bpm">bpm</a></p>
-        </li>
-        <li><p>Music room fun : eg. <a href="https://youtu.be/gelhekbv1nw">Some What</a></p>
-        </li>
-        </ul>
-        <p>What I&#39;ve not been doing is clearing the jungle outside or tidying the pigsty inside.
-         </p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2025-10-30_what.html">
-                What have I been doing recently?
             </a>
         </p> <em></em>
       </div>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" prefix="foaf: http://xmlns.com/foaf/0.1/ schema: https://schema.org/ dcterms: http://purl.org/dc/terms/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Danny Ayers — electronics, music, the Semantic Web</title>
+<meta name="description" content="Danny Ayers (Daniel John Ayers, danja): independent Web researcher and developer. Semantic Web and Linked Data, knowledge graphs for AI agents, electronics and synthesizer DSP.">
+<meta name="author" content="Danny Ayers">
+<link rel="canonical" href="https://danny.ayers.name/cv/">
+<link rel="meta" type="text/turtle" title="FOAF" href="/foaf.ttl">
+<link rel="alternate" type="text/turtle" href="/foaf.ttl">
+<link rel="alternate" type="application/rdf+xml" href="/foaf.rdf">
+<link rel="me" href="https://github.com/danja">
+<link rel="me" href="https://x.com/danja">
+<link rel="me" href="https://www.youtube.com/@djayers">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M2 16 Q7 4 12 16 T22 16 L22 8 L28 8 L28 24' fill='none' stroke='%23C8860D' stroke-width='3'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --panel:#E4E8E3; --panel-2:#D8DED8; --ink:#1F2A36; --muted:#56646F; --rule:#B6C0BA;
+  --signal:#B7790A; --link:#0A6670;
+  --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body:"Newsreader", Georgia, "Times New Roman", serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --measure:36rem;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --panel:#162029; --panel-2:#1D2934; --ink:#DCE3DE; --muted:#97A5AF; --rule:#34434F;
+    --signal:#EDB04A; --link:#6CC9D1;
+  }
+}
+:root[data-theme="dark"]{
+  --panel:#162029; --panel-2:#1D2934; --ink:#DCE3DE; --muted:#97A5AF; --rule:#34434F;
+  --signal:#EDB04A; --link:#6CC9D1;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0; background:var(--panel); color:var(--ink);
+  font-family:var(--body); font-size:clamp(1.05rem,.98rem + .3vw,1.2rem); line-height:1.6;
+  font-optical-sizing:auto; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--link); text-decoration-thickness:1px; text-underline-offset:.18em}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible{outline:2px solid var(--signal); outline-offset:3px; border-radius:2px}
+.wrap{max-width:72rem; margin-inline:auto; padding-inline:clamp(1.25rem,4vw,3rem)}
+
+/* ---------- hero ---------- */
+header.hero{padding-block:clamp(3rem,9vw,7rem) 1rem}
+.hero h1{
+  font-family:var(--display); font-weight:800; font-variation-settings:"opsz" 96;
+  font-size:clamp(3.4rem,13vw,10rem); line-height:.86; letter-spacing:-.045em;
+  margin:0 0 1.1rem; max-width:10ch;
+}
+.aka{font-style:italic; color:var(--muted); margin:0; max-width:var(--measure)}
+.aka b{font-style:normal; font-weight:600; color:var(--ink)}
+.trace{display:block; width:100%; height:auto; margin:2.5rem 0 .25rem; overflow:visible}
+.trace .axis{stroke:var(--rule); stroke-width:1; stroke-dasharray:2 6}
+.trace .edge{stroke:var(--rule); stroke-width:1.5}
+.trace .sig{fill:none; stroke:var(--signal); stroke-width:3; stroke-linejoin:round; stroke-linecap:round}
+.trace .node{fill:var(--panel); stroke:var(--signal); stroke-width:3}
+.trace text{font-family:var(--body); font-style:italic; font-size:17px; fill:var(--muted)}
+@media (prefers-reduced-motion: no-preference){
+  .trace .sig{stroke-dasharray:2400; stroke-dashoffset:2400; animation:draw 2.6s cubic-bezier(.55,.1,.3,1) .2s forwards}
+  .trace .node,.trace .edge{opacity:0; animation:on .4s ease-out forwards}
+  .trace .n1{animation-delay:2.05s}.trace .n2{animation-delay:2.2s}.trace .n3{animation-delay:2.35s}
+  .trace .n4{animation-delay:2.5s}.trace .n5{animation-delay:2.65s}.trace .n6{animation-delay:2.8s}
+  .trace .edge{animation-delay:3s}
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes on{to{opacity:1}}
+
+nav.jump{display:flex; flex-wrap:wrap; gap:.4rem 1.4rem; padding:1.25rem 0 0; margin-top:1.5rem; border-top:1px solid var(--rule); font-family:var(--display); font-weight:500; font-size:1rem}
+nav.jump a{color:var(--ink); text-decoration:none}
+nav.jump a:hover{color:var(--link); text-decoration:underline}
+
+/* ---------- sections ---------- */
+section{padding-top:clamp(3rem,7vw,5.5rem)}
+h2{
+  font-family:var(--display); font-weight:800; font-variation-settings:"opsz" 48;
+  font-size:clamp(1.9rem,3.6vw,2.8rem); line-height:1; letter-spacing:-.03em; margin:0 0 1.75rem;
+}
+h3{font-family:var(--display); font-weight:800; font-size:1.3rem; letter-spacing:-.015em; margin:0 0 .5rem; line-height:1.15}
+p{margin:0 0 1rem}
+.lede{font-size:clamp(1.25rem,1.1rem + .7vw,1.6rem); line-height:1.45; max-width:34rem; margin:0}
+
+.intro{display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:clamp(2rem,5vw,5rem); align-items:start}
+.facts{margin:0; border-left:3px solid var(--signal); padding-left:1.25rem}
+.facts dt{font-family:var(--display); font-weight:500; font-size:.95rem; color:var(--muted)}
+.facts dd{margin:0 0 .9rem}
+
+.strands{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(1.5rem,4vw,3.5rem)}
+.strand svg{display:block; width:64px; height:22px; margin-bottom:.8rem}
+.strand svg path{fill:none; stroke:var(--signal); stroke-width:2.5; stroke-linejoin:round; stroke-linecap:round}
+.strand svg circle{fill:var(--panel); stroke:var(--signal); stroke-width:2.5}
+.strand p{max-width:var(--measure)}
+
+/* timeline: a genuine sequence, so years lead */
+ol.timeline{list-style:none; margin:0; padding:0; max-width:52rem}
+ol.timeline li{display:grid; grid-template-columns:9.5rem minmax(0,1fr); gap:1.5rem; padding:1.1rem 0; border-top:1px solid var(--rule)}
+ol.timeline li:last-child{border-bottom:1px solid var(--rule)}
+.when{font-family:var(--display); font-weight:500; font-variant-numeric:tabular-nums; color:var(--signal)}
+ol.timeline h3{font-size:1.15rem}
+ol.timeline p{margin:0; color:var(--ink); max-width:var(--measure)}
+.org{color:var(--muted); font-style:italic}
+
+.projects{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 clamp(2rem,5vw,4rem)}
+.project{padding:1.1rem 0; border-top:1px solid var(--rule)}
+.project h3 a{color:var(--ink); text-decoration:none}
+.project h3 a:hover{color:var(--link); text-decoration:underline}
+.project p{margin:0; max-width:var(--measure)}
+.lang{color:var(--muted); font-style:italic; font-size:.92em}
+
+.pubs{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(2rem,5vw,4rem)}
+.pubs ul{list-style:none; margin:0 0 1rem; padding:0}
+.pubs .small{margin-bottom:2.25rem}
+.pubs li{margin:0 0 .85rem; padding-left:1rem; border-left:1px solid var(--rule)}
+.pubs .t{font-weight:600}
+.pubs .m{display:block; color:var(--muted); font-size:.92em}
+.scholar{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:.3rem 1rem; margin:0 0 2.5rem;
+  padding:1rem 1.25rem; background:var(--panel-2); border-radius:3px; max-width:52rem;
+}
+.scholar strong{font-family:var(--display); font-weight:800; font-size:1.6rem; letter-spacing:-.02em}
+
+.elsewhere{display:grid; grid-template-columns:repeat(auto-fill,minmax(14rem,1fr)); gap:.25rem 2rem; margin:0; padding:0; list-style:none}
+.elsewhere li{padding:.6rem 0; border-top:1px solid var(--rule)}
+.elsewhere .h{display:block; color:var(--muted); font-size:.9em}
+
+footer{margin-top:clamp(4rem,9vw,7rem); padding-block:2.5rem 3.5rem; background:var(--panel-2)}
+footer .cols{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:clamp(2rem,5vw,4rem); align-items:start}
+.code-wrap{overflow-x:auto; max-width:100%; border-left:3px solid var(--link); background:var(--panel)}
+pre{margin:0; padding:1rem 1.25rem; font-family:var(--mono); font-size:.8rem; line-height:1.55; color:var(--ink)}
+pre .c{color:var(--muted)}
+.small{font-size:.9em; color:var(--muted)}
+
+@media (max-width:52rem){
+  .intro,.pubs,footer .cols{grid-template-columns:1fr}
+  .strands{grid-template-columns:1fr}
+  .projects{grid-template-columns:1fr}
+  ol.timeline li{grid-template-columns:1fr; gap:.25rem}
+  .trace text{font-size:40px}
+  .trace .sig,.trace .node{stroke-width:5}
+}
+@media print{
+  :root{--panel:#fff; --panel-2:#fff; --ink:#000; --signal:#8a5a00; --link:#000}
+  .trace,nav.jump{display:none}
+  section{padding-top:1.5rem}
+  a{text-decoration:none}
+}
+</style>
+</head>
+
+<body vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="https://danny.ayers.name/#me">
+<link property="isPrimaryTopicOf" href="https://danny.ayers.name/cv/">
+<link rel="seeAlso" href="/foaf.ttl">
+
+<header class="hero wrap">
+  <h1 property="name" content="Daniel John Ayers">Danny Ayers</h1>
+  <p class="aka">Full name <b>Daniel John Ayers</b>, also <span property="nick">Dan Ayers</span>, and <span property="nick">danja</span> on GitHub and Twitter, djayers on YouTube.</p>
+
+  <svg class="trace" viewBox="0 0 1200 180" role="img" aria-labelledby="trace-t">
+    <title id="trace-t">A signal trace that starts as a sine wave, becomes a square wave, and ends as a graph of connected nodes: music, electronics and the Semantic Web.</title>
+    <line class="axis" x1="0" y1="80" x2="1200" y2="80"/>
+    <line class="edge" x1="760" y1="80" x2="930" y2="110"/>
+    <line class="edge" x1="850" y1="40" x2="1010" y2="55"/>
+    <line class="edge" x1="1010" y1="55" x2="1170" y2="70"/>
+    <line class="edge" x1="930" y1="110" x2="1170" y2="70"/>
+    <path class="sig" d="M0,80.0 L4,77.9 L8,75.8 L12,73.7 L16,71.7 L20,69.9 L24,68.4 L28,67.3 L32,66.6 L36,66.5 L40,67.0 L44,68.0 L48,69.6 L52,71.8 L56,74.3 L60,77.3 L64,80.6 L68,83.9 L72,87.3 L76,90.6 L80,93.6 L84,96.1 L88,98.1 L92,99.5 L96,100.1 L100,99.9 L104,98.9 L108,97.1 L112,94.5 L116,91.2 L120,87.3 L124,83.0 L128,78.4 L132,73.8 L136,69.1 L140,64.8 L144,60.9 L148,57.7 L152,55.3 L156,53.8 L160,53.2 L164,53.8 L168,55.4 L172,58.1 L176,61.7 L180,66.2 L184,71.4 L188,77.0 L192,83.0 L196,89.0 L200,94.8 L204,100.1 L208,104.8 L212,108.7 L216,111.5 L220,113.0 L224,113.4 L228,112.3 L232,110.0 L236,106.4 L240,101.7 L244,95.9 L248,89.4 L252,82.4 L256,75.1 L260,67.9 L264,60.9 L268,54.6 L272,49.1 L276,44.8 L280,41.7 L284,40.2 L288,40.1 L292,41.7 L296,44.8 L300,49.4 L304,55.3 L308,62.3 L312,70.2 L316,78.6 L320,87.2 L324,95.7 L328,103.7 L332,111.0 L336,117.1 L340,121.9 L344,125.1 L348,126.6 L352,126.3 L356,124.1 L360,120.1 L364,114.4 L368,107.3 L372,99.0 L376,89.8 L380,80.0 L380,30 L420,30 L420,130 L460,130 L460,30 L500,30 L500,130 L540,130 L540,30 L580,30 L580,130 L620,130 L620,30 L660,30 L660,130 L700,130 L700,80 L760,80 L850,40 L930,110 L1010,55 L1090,120 L1170,70"/>
+    <circle class="node n1" cx="760" cy="80" r="8"/>
+    <circle class="node n2" cx="850" cy="40" r="8"/>
+    <circle class="node n3" cx="930" cy="110" r="8"/>
+    <circle class="node n4" cx="1010" cy="55" r="8"/>
+    <circle class="node n5" cx="1090" cy="120" r="8"/>
+    <circle class="node n6" cx="1170" cy="70" r="8"/>
+    <text x="0" y="172">sound</text>
+    <text x="380" y="172">circuits</text>
+    <text x="760" y="172">graphs</text>
+  </svg>
+
+  <nav class="jump" aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#history">History</a>
+    <a href="#now">Current work</a>
+    <a href="#writing">Writing</a>
+    <a href="#elsewhere">Elsewhere</a>
+    <a href="/foaf.ttl">FOAF</a>
+  </nav>
+</header>
+
+<main>
+<section id="about" class="wrap" aria-labelledby="about-h">
+  <h2 id="about-h" hidden>About</h2>
+  <div class="intro">
+    <div>
+      <p class="lede" property="schema:description">I work where signals, sound and meaning meet. That has meant electronics and music, a lot of writing about the Web, and a long stretch helping get the Semantic Web and Linked Data off the ground. These days I do independent Web research and development from the Tuscan hills, mostly on knowledge graphs for AI agents and on synthesizer DSP.</p>
+    </div>
+    <dl class="facts">
+      <dt>Based</dt>
+      <dd><span rel="based_near" resource="http://dbpedia.org/resource/Garfagnana">Garfagnana, Tuscany, Italy</span>. Originally from Tideswell, Derbyshire.</dd>
+      <dt>Working as</dt>
+      <dd>Independent: Web R&amp;D, Semantic Web, electronics, music</dd>
+      <dt>Cited</dt>
+      <dd><a rel="publications" href="https://scholar.google.com/citations?user=46QopZwAAAAJ">Google Scholar</a> and <a href="https://dblp.org/pid/46/6676.html">dblp</a></dd>
+      <dt>Machine-readable</dt>
+      <dd>This page carries RDFa; the full profile is in <a href="/foaf.ttl">Turtle</a> and <a href="/foaf.rdf">RDF/XML</a></dd>
+    </dl>
+  </div>
+</section>
+
+<section id="strands" class="wrap" aria-labelledby="strands-h">
+  <h2 id="strands-h">Three strands</h2>
+  <div class="strands">
+    <div class="strand">
+      <svg viewBox="0 0 64 22" aria-hidden="true"><path d="M2 11 L2 3 L17 3 L17 19 L32 19 L32 3 L47 3 L47 19 L62 19"/></svg>
+      <h3>Electronics</h3>
+      <p>Where it started, and it never went away. Analogue circuits and instruments, microcontrollers such as the ESP32 and Daisy Seed, Eurorack modules, and lately experiments with LLM-assisted circuit design.</p>
+    </div>
+    <div class="strand">
+      <svg viewBox="0 0 64 22" aria-hidden="true"><path d="M2 11 C8 -2 14 -2 20 11 S32 24 38 11 S50 -2 56 11 L62 11"/></svg>
+      <h3>Music</h3>
+      <p>It began in the late 1970s with the experimental groups The Pump and Nocturnal Emissions. Now it’s synthesis and signal processing: distortion and physical-modelling synthesis, wavefolding, generative plugins, MCP servers that let agents drive a DAW or TouchDesigner, and my own recordings.</p>
+    </div>
+    <div class="strand">
+      <svg viewBox="0 0 64 22" aria-hidden="true"><path d="M6 15 L26 5 L42 17 L58 7"/><circle cx="6" cy="15" r="3.5"/><circle cx="26" cy="5" r="3.5"/><circle cx="42" cy="17" r="3.5"/><circle cx="58" cy="7" r="3.5"/></svg>
+      <h3>The Web</h3>
+      <p>RDF, SPARQL, Linked Data, XML and syndication feeds. Community work around W3C’s Semantic Web outreach and the Linking Open Data project; now, Semantic Web memory and messaging for LLM agents.</p>
+    </div>
+  </div>
+</section>
+
+<section id="history" class="wrap" aria-labelledby="history-h">
+  <h2 id="history-h">History</h2>
+  <ol class="timeline">
+    <li>
+      <span class="when">2024 – now</span>
+      <div>
+        <h3>Independent research &amp; development</h3>
+        <p>The JigDAW web-native audio plugin specification, and knowledge-graph infrastructure for AI agents: Semem (Semantic Web memory), Transmissions (pipelines), TIA (XMPP multi-agent dialogue), plus Model Context Protocol servers and DSP for Eurorack hardware.</p>
+      </div>
+    </li>
+    <li>
+      <span class="when">2011 – 2023</span>
+      <div>
+        <h3>Independent Web R&amp;D and writing</h3>
+        <p>Web and Linked Data development, tooling experiments, and co-authoring <cite>Beginning XML</cite>, 5th edition (2012).</p>
+      </div>
+    </li>
+    <li>
+      <span class="when">2007 – 2011</span>
+      <div>
+        <h3>Semantic Web evangelist, Community Platform manager</h3>
+        <p><span class="org">Talis.</span> Building applications on Talis’s hosted Semantic Web platform, community work, and the weekly <cite>This Week’s Semantic Web</cite> round-up on the Nodalities blog. In parallel: W3C Semantic Web Education and Outreach group, co-author of <cite>Cool URIs for the Semantic Web</cite>, and early contributor to Linking Open Data.</p>
+      </div>
+    </li>
+    <li>
+      <span class="when">2006 – 2009</span>
+      <div>
+        <h3>Columnist</h3>
+        <p><span class="org">IEEE Internet Computing.</span> A run of columns on the Semantic Web and where the Web was heading.</p>
+      </div>
+    </li>
+    <li>
+      <span class="when">2003 – 2006</span>
+      <div>
+        <h3>Independent developer and author</h3>
+        <p>IdeaGraph, idea mapping for the Semantic Web; contributions to the IETF Atom Syndication Format (RFC 4287); books on RSS and Atom and on Web 2.0 programming; a widely read blog.</p>
+      </div>
+    </li>
+    <li>
+      <span class="when">1999 – 2002</span>
+      <div>
+        <h3>Technical author</h3>
+        <p><span class="org">Wrox Press and Sams.</span> Co-author of books on server-side and mobile Java, JSP, XML metadata, MSXML and SVG, plus technical reviews of many more.</p>
+      </div>
+    </li>
+    <li>
+      <span class="when">Before 1999</span>
+      <div>
+        <h3>Electronics</h3>
+        <p>Circuit design and writing about it, including two cover articles for <cite>Electronics World</cite> and <cite>Wireless World</cite>.</p>
+      </div>
+    </li>
+    <li>
+      <span class="when">1980 – 1984</span>
+      <div>
+        <h3>Nocturnal Emissions</h3>
+        <p><span class="org">Founding member, with Nigel Ayers and Caroline K.</span> Industrial and post-industrial sound collage, tape work and live noise on the Sterile Records label; first performance March 1981. <a href="https://en.wikipedia.org/wiki/Nocturnal_Emissions">About the group</a>.</p>
+      </div>
+    </li>
+    <li>
+      <span class="when">1977 – 1980</span>
+      <div>
+        <h3>The Pump</h3>
+        <p><span class="org">With Nigel Ayers and Ian Round.</span> An experimental group of heavy bass, distorted guitar and cut-up tapes; I played synth and guitar and sang. Cassette-only releases went out through Rough Trade; the 1980 sessions were reissued on CD by Klanggalerie in 2009. <a href="https://nocturnalemissions.bandcamp.com/album/the-pump">Listen</a>.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section id="now" class="wrap" aria-labelledby="now-h">
+  <h2 id="now-h">Current work</h2>
+  <div class="projects">
+    <article class="project" rel="currentProject" resource="https://danny.ayers.name/#jigdaw">
+      <h3><a href="https://danja.github.io/jigdaw/">JigDAW</a></h3>
+      <p>A plugin format native to the Web, and a browser DAW to host it. Plugins are described in RDF, run as WebAssembly, and also load in native hosts as VST3, CLAP or LV2. <a href="https://strandz.it/jigdaw/">Try it live</a>. <span class="lang">JavaScript, C++</span></p>
+    </article>
+    <article class="project" rel="currentProject" resource="https://danny.ayers.name/#semem">
+      <h3><a href="https://github.com/danja/semem">Semem</a></h3>
+      <p>Semantic Web memory for intelligent agents: Graph RAG over RDF, with MCP access and a browser workbench. <span class="lang">JavaScript</span></p>
+    </article>
+    <article class="project" rel="currentProject" resource="https://danny.ayers.name/#transmissions">
+      <h3><a href="https://github.com/danja/transmissions">Transmissions</a></h3>
+      <p>A workflow compositor for building small data-processing pipelines from simple steps. <span class="lang">JavaScript</span></p>
+    </article>
+    <article class="project" rel="currentProject" resource="https://danny.ayers.name/#tia">
+      <h3><a href="https://github.com/danja/tia">TIA</a></h3>
+      <p>An experimental XMPP framework where agents debate, poll and plan, using Lingue/IBIS structured dialogue and MCP tools. <span class="lang">JavaScript</span></p>
+    </article>
+    <article class="project" rel="currentProject" resource="https://danny.ayers.name/#disyn">
+      <h3><a href="https://github.com/danja/disyn-esp32">Disyn</a></h3>
+      <p>Distortion-synthesis oscillators (DSF, ModFM, PAF, wavefolding, through-zero FM) running in the browser, on ESP32 and on the Daisy-based Bluemchen Eurorack module. <span class="lang">C++</span></p>
+    </article>
+    <article class="project" rel="currentProject" resource="https://danny.ayers.name/#chatterbox">
+      <h3><a href="https://github.com/danja/chatterbox">Chatterbox</a></h3>
+      <p>A speech-like sound generator, sometimes played by hand. <span class="lang">C++</span></p>
+    </article>
+    <article class="project" rel="currentProject" resource="https://danny.ayers.name/#downspout">
+      <h3><a href="https://github.com/danja/downspout">Downspout</a></h3>
+      <p>Generative VST plugin experiments. <span class="lang">C++</span></p>
+    </article>
+    <article class="project">
+      <h3><a href="https://github.com/danja/reaper-mcp">Reaper MCP</a></h3>
+      <p>An MCP server that lets AI agents build, mix and master tracks in the Reaper DAW.</p>
+    </article>
+    <article class="project" rel="currentProject" resource="https://danny.ayers.name/#postcraft">
+      <h3><a href="https://github.com/danja/postcraft">Postcraft</a></h3>
+      <p>A minimal static site builder, used for this site’s blog.</p>
+    </article>
+  </div>
+</section>
+
+<section id="writing" class="wrap" aria-labelledby="writing-h">
+  <h2 id="writing-h">Writing</h2>
+  <p class="scholar"><strong>1,400+</strong> <span>citations on <a href="https://scholar.google.com/citations?user=46QopZwAAAAJ">Google Scholar</a>, across books, papers, a W3C note and magazine articles.</span></p>
+
+  <div class="pubs">
+    <div>
+      <h3>Books</h3>
+      <ul>
+        <li><span class="t">Beginning XML</span>, 5th edition <span class="m">with Joe Fawcett and Liam Quin. Wrox, 2012</span></li>
+        <li><span class="t">Beginning XML</span>, 4th edition <span class="m">with David Hunter, Jeff Rafter, Joe Fawcett, Eric van der Vlist and others. Wrox, 2007</span></li>
+        <li><span class="t">Professional Web 2.0 Programming</span> <span class="m">with Eric van der Vlist, Erik Bruchez, Joe Fawcett and Alessandro Vernet. Wrox, 2006</span></li>
+        <li><span class="t">Beginning RSS and Atom Programming</span> <span class="m">with Andrew Watt. Wrox, 2005</span></li>
+        <li><span class="t">Beginning XML</span>, 3rd edition <span class="m">with David Hunter, Andrew Watt, Jeff Rafter, Jon Duckett and others. Wrox, 2004</span></li>
+        <li><span class="t">SVG Unleashed</span> <span class="m">with Chris Lilley, Randy George, Christian Wenz, Kevin Lindsey and others; edited by Andrew Watt. Sams, 2002</span></li>
+        <li><span class="t">XML Application Development with MSXML 4.0</span> <span class="m">with Steven Livingstone and Stephen Mohr. Wrox, 2002</span></li>
+        <li><span class="t">Professional XML Meta Data</span> <span class="m">with Kal Ahmed, Mark Birbeck and others. Wrox, 2001</span></li>
+        <li><span class="t">Professional Java Mobile Programming</span> <span class="m">with Ronald Ashri, Steve Atkinson, Nadia Nashi and others. Wrox, 2001</span></li>
+        <li><span class="t">Professional JSP</span> <span class="m">with Karl Avedal, Timothy Briggs and others. Wrox, 2000</span></li>
+        <li><span class="t">Professional Java Server Programming</span> <span class="m">with Hans Bergsten, Jason Diamond, Mark Wilcox and others. Wrox, 1999</span></li>
+      </ul>
+      <p class="small">I’ve also been technical reviewer on many other books.</p>
+
+      <h3>Specifications</h3>
+      <ul>
+        <li><span class="t"><a href="https://danja.github.io/jigdaw/">JigDAW</a></span> <span class="m">A web-native audio plugin format: a plugin is a URL whose RDF profile describes it and whose WebAssembly runs in the browser. Author, 2026</span></li>
+        <li><span class="t"><a href="https://www.w3.org/TR/cooluris/">Cool URIs for the Semantic Web</a></span> <span class="m">with Sauermann, Cyganiak and Völkel. W3C Interest Group Note, 2008</span></li>
+        <li><span class="t"><a href="https://www.rfc-editor.org/rfc/rfc4287">The Atom Syndication Format</a></span> <span class="m">RFC 4287. Contributor in the IETF Atom Publishing Format and Protocol working group, 2005</span></li>
+      </ul>
+
+      <h3>Papers</h3>
+      <ul>
+        <li><span class="t">SCOVO: Using Statistics on the Web of Data</span> <span class="m">with Hausenblas, Halb, Raimond and Feigenbaum. ESWC 2009</span></li>
+        <li><span class="t">Tal4Rdf: lightweight presentation for the Semantic Web</span> <span class="m">SFSW 2009</span></li>
+        <li><span class="t">Semantic MARC, MARC21 and the Semantic Web</span> <span class="m">with Styles and Shabir. LDOW 2008</span></li>
+        <li><span class="t">Interlinking Open Data on the Web</span> <span class="m">with Bizer, Heath and Raimond. ESWC 2007 demo; the Linking Open Data project</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Magazine features</h3>
+      <ul>
+        <li><span class="t">Cover article</span> <span class="m">Electronics World</span></li>
+        <li><span class="t">Cover article</span> <span class="m">Wireless World</span></li>
+      </ul>
+
+      <h3>Columns in IEEE Internet Computing</h3>
+      <ul>
+        <li><span class="t"><a href="https://danja.github.io/stuff/ieee/w6.pdf">Delivered Deliverables: The State of the Semantic Web, Part 1</a></span> <span class="m">13(1), 2009</span></li>
+        <li><span class="t">Graph Farming</span> <span class="m">12(1), 2008</span></li>
+        <li><span class="t">A Difficult Abstraction</span> <span class="m">11(5), 2007</span></li>
+        <li><span class="t">Evolving the Link</span> <span class="m">11(3), 2007</span></li>
+        <li><span class="t">From Here to There</span> <span class="m">11(1), 2007</span></li>
+        <li><span class="t">The Shortest Path to the Future Web</span> <span class="m">10(6), 2006</span></li>
+      </ul>
+      <p class="small">Full lists on <a href="https://dblp.org/pid/46/6676.html">dblp</a>, <a href="https://independent.academia.edu/DannyAyers">Academia.edu</a> and my <a href="https://www.amazon.com/stores/author/B001IYVELQ">author page</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="elsewhere" class="wrap" aria-labelledby="elsewhere-h">
+  <h2 id="elsewhere-h">Elsewhere</h2>
+  <ul class="elsewhere">
+    <li rel="account" typeof="OnlineAccount"><a property="page" href="https://github.com/danja"><span property="accountName">danja</span></a><span class="h">GitHub, where most of the code lives</span></li>
+    <li rel="account" typeof="OnlineAccount"><a property="page" href="https://x.com/danja"><span property="accountName">@danja</span></a><span class="h">Twitter / X</span></li>
+    <li rel="account" typeof="OnlineAccount"><a property="page" href="https://www.youtube.com/@djayers"><span property="accountName">djayers</span></a><span class="h">YouTube: music and experiments</span></li>
+    <li><a href="https://scholar.google.com/citations?user=46QopZwAAAAJ">Google Scholar</a><span class="h">Citations</span></li>
+    <li><a href="https://nocturnalemissions.bandcamp.com/album/the-pump">The Pump</a><span class="h">1980 recordings on Bandcamp</span></li>
+    <li><a href="https://en.wikipedia.org/wiki/Nocturnal_Emissions">Nocturnal Emissions</a><span class="h">Wikipedia</span></li>
+    <li><a href="https://danja.github.io/transmissions/manual/">Transmissions manual</a><span class="h">Documentation</span></li>
+    <li><a href="https://tensegrity.it/chat/">TIA live chat</a><span class="h">Talk to the agents</span></li>
+  </ul>
+</section>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <div>
+      <h2 id="data-h">This page as data</h2>
+      <p>Everything here is also published as a FOAF profile: accounts, publications, projects and people, linked to DBpedia, dblp and Scholar. My URI is <code>https://danny.ayers.name/#me</code>.</p>
+      <p><a href="/foaf.ttl">foaf.ttl</a> (Turtle) and <a href="/foaf.rdf">foaf.rdf</a> (RDF/XML).</p>
+      <p class="small">Page and profile last updated September 2026.</p>
+    </div>
+    <div class="code-wrap" role="region" aria-label="Excerpt of the FOAF profile" tabindex="0">
+<pre><span class="c"># excerpt from foaf.ttl</span>
+&lt;https://danny.ayers.name/#me&gt;
+    a foaf:Person ;
+    foaf:name "Daniel John Ayers" ;
+    foaf:nick "Danny", "Dan Ayers", "danja" ;
+    foaf:based_near dbr:Garfagnana ;
+    foaf:publications &lt;https://scholar.google.com/citations?user=46QopZwAAAAJ&gt; ;
+    foaf:account :github, :twitter, :youtube ;
+    foaf:topic_interest dbr:Semantic_Web,
+        dbr:Sound_synthesis, dbr:Electronics ;
+    foaf:currentProject :semem, :transmissions, :tia .
+
+:nocturnal-emissions a mo:MusicGroup ;
+    owl:sameAs dbr:Nocturnal_Emissions ;
+    mo:member :me .</pre>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

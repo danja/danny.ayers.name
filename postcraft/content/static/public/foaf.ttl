@@ -1,0 +1,376 @@
+# FOAF profile for Danny Ayers
+# Canonical person URI : https://danny.ayers.name/#me
+# This document        : https://danny.ayers.name/foaf.ttl  (RDF/XML twin: foaf.rdf)
+
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix bibo:    <http://purl.org/ontology/bibo/> .
+@prefix doap:    <http://usefulinc.com/ns/doap#> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix schema:  <https://schema.org/> .
+@prefix con:     <http://www.w3.org/2000/10/swap/pim/contact#> .
+@prefix dbr:     <http://dbpedia.org/resource/> .
+@prefix mo:      <http://purl.org/ontology/mo/> .
+@prefix rel:     <http://purl.org/vocab/relationship/> .
+@prefix :        <https://danny.ayers.name/#> .
+
+# ---------------------------------------------------------------- document
+
+<https://danny.ayers.name/foaf.ttl>
+    a foaf:PersonalProfileDocument ;
+    foaf:primaryTopic :me ;
+    foaf:maker :me ;
+    dcterms:title "FOAF profile for Danny Ayers" ;
+    dcterms:modified "2026-09-23"^^xsd:date ;
+    dcterms:hasFormat <https://danny.ayers.name/foaf.rdf> ;
+    rdfs:seeAlso <https://danny.ayers.name/foaf_2012.ttl> .
+
+<https://danny.ayers.name/foaf.rdf> dcterms:format "application/rdf+xml" .
+
+# ------------------------------------------------------------------ person
+
+:me
+    a foaf:Person , schema:Person ;
+    foaf:name "Daniel John Ayers" ;
+    foaf:givenName "Daniel" ;
+    foaf:familyName "Ayers" ;
+    foaf:nick "Danny" , "Danny Ayers" , "Dan Ayers" , "danja" ;
+    rdfs:label "Danny Ayers" ;
+    schema:alternateName "Danny Ayers" , "Dan Ayers" ;
+    schema:jobTitle "Independent Web researcher and developer" ;
+    schema:description "Independent Web R&D: Semantic Web and Linked Data, knowledge graphs for AI agents, electronics and music DSP."@en ;
+
+    foaf:homepage <https://danny.ayers.name/> ;
+    foaf:isPrimaryTopicOf <https://danny.ayers.name/> , <https://danny.ayers.name/foaf.ttl> ;
+    foaf:mbox_sha1sum "669fe353dbef63d12ba11f69ace8acbec1ac8b17" ;
+    # foaf:mbox <mailto:danny.ayers@gmail.com> ;   # uncomment to publish the address itself
+    foaf:schoolHomepage <http://www.ladymanners.org.uk/> ;
+    foaf:myersBriggs "INTP" ;
+
+    foaf:based_near dbr:Garfagnana ;
+    con:nearestAirport [ a con:Airport ; con:iataCode "PSA" ; rdfs:label "Pisa International Airport" ] ;
+    schema:homeLocation [ a schema:Place ; schema:name "Garfagnana, Tuscany, Italy" ] ;
+    schema:birthPlace [ a schema:Place ; schema:name "Tideswell, Derbyshire, England" ; owl:sameAs dbr:Tideswell ] ;
+
+    foaf:publications <https://scholar.google.com/citations?user=46QopZwAAAAJ> ;
+    owl:sameAs <https://dblp.org/pid/46/6676> ;
+    rdfs:seeAlso <https://dblp.org/pid/46/6676.rdf> ;
+
+    foaf:account :github , :twitter , :youtube , :scholar , :dblp , :academia , :amazon ;
+
+    foaf:topic_interest
+        dbr:Semantic_Web , dbr:Linked_data , dbr:Resource_Description_Framework , dbr:SPARQL ,
+        dbr:Knowledge_graph , dbr:Large_language_model , dbr:Multi-agent_system ,
+        dbr:Web_feed , dbr:Atom_\(web_standard\) , dbr:RSS , dbr:XML ,
+        dbr:Electronics , dbr:Scalable_Vector_Graphics , dbr:Microcontroller , dbr:Digital_signal_processing ,
+        dbr:Sound_synthesis , dbr:Modular_synthesizer , dbr:Eurorack , dbr:Physical_modelling_synthesis ,
+        dbr:Electronic_music , dbr:Industrial_music , dbr:Sound_collage , dbr:Wood_carving , dbr:Constructed_language ;
+
+    foaf:made
+        :book-java-server , :book-jsp , :book-java-mobile , :book-xml-metadata , :book-svg-unleashed , :book-msxml4 ,
+        :art-electronics-world , :art-wireless-world ,
+        :book-xml3 , :book-rss-atom , :book-web20 , :book-xml4 , :book-xml5 ,
+        :spec-jigdaw , :paper-lod-2007 , :paper-semantic-marc , :note-cool-uris , :paper-scovo , :paper-tal4rdf ,
+        :col-shortest-path , :col-here-to-there , :col-evolving-link , :col-difficult-abstraction ,
+        :col-graph-farming , :col-delivered-deliverables ;
+
+    foaf:currentProject :jigdaw , :semem , :transmissions , :tia , :postcraft , :hyperdata , :disyn , :chatterbox , :downspout ;
+    foaf:pastProject :ideagraph , :lod , :this-weeks-semweb ;
+
+    org:memberOf :talis-membership-org ;
+    schema:worksFor [ a schema:Organization ; schema:name "Independent" ] ;
+    schema:alumniOf [ a schema:EducationalOrganization ; schema:name "Lady Manners School, Bakewell" ; schema:url <http://www.ladymanners.org.uk/> ] ;
+
+    schema:description "Contributing author of books on Java, XML, SVG, RSS/Atom and Web 2.0; technical reviewer of many others. Cover articles for Electronics World and Wireless World."@en ;
+    foaf:knows :nigel , :uldis , :kenneth , :manos , :jay , :morten , :marc , :jim , :libby , :danbri , :reto .
+
+# ---------------------------------------------------------------- accounts
+
+:github  a foaf:OnlineAccount ; foaf:accountServiceHomepage <https://github.com/>  ; foaf:accountName "danja" ; foaf:page <https://github.com/danja> .
+:twitter a foaf:OnlineAccount ; foaf:accountServiceHomepage <https://x.com/>       ; foaf:accountName "danja" ; foaf:page <https://x.com/danja> .
+:youtube a foaf:OnlineAccount ; foaf:accountServiceHomepage <https://www.youtube.com/> ; foaf:accountName "djayers" ; foaf:page <https://www.youtube.com/@djayers> .
+:scholar a foaf:OnlineAccount ; foaf:accountServiceHomepage <https://scholar.google.com/> ; foaf:accountName "46QopZwAAAAJ" ; foaf:page <https://scholar.google.com/citations?user=46QopZwAAAAJ> .
+:dblp    a foaf:OnlineAccount ; foaf:accountServiceHomepage <https://dblp.org/> ; foaf:accountName "46/6676" ; foaf:page <https://dblp.org/pid/46/6676.html> .
+:academia a foaf:OnlineAccount ; foaf:accountServiceHomepage <https://www.academia.edu/> ; foaf:accountName "DannyAyers" ; foaf:page <https://independent.academia.edu/DannyAyers> .
+:amazon  a foaf:OnlineAccount ; foaf:accountServiceHomepage <https://www.amazon.com/> ; foaf:accountName "B001IYVELQ" ; foaf:page <https://www.amazon.com/stores/author/B001IYVELQ> .
+
+# ---------------------------------------------------------- employment
+
+:talis-membership-org a org:Membership ;
+    org:member :me ;
+    org:organization [ a foaf:Organization ; foaf:name "Talis Information Ltd" ] ;
+    org:role [ a org:Role ; rdfs:label "Semantic Web evangelist; Community Platform manager" ] .
+
+# ---------------------------------------------------------------- music
+
+:the-pump a mo:MusicGroup , foaf:Group ;
+    foaf:name "The Pump" ;
+    dcterms:description "Experimental group formed in 1977: heavy bass, distorted guitar, cut-up tapes. Cassette-only releases; 1980 sessions reissued on CD by Klanggalerie (2009)."@en ;
+    mo:member :me , :nigel , [ a foaf:Person ; foaf:name "Ian Round" ] ;
+    foaf:member :me , :nigel ;
+    foaf:page <https://nocturnalemissions.bandcamp.com/album/the-pump> ;
+    schema:foundingDate "1977" .
+
+:the-pump-1980 a mo:Record ;
+    dcterms:title "The Pump" ;
+    dcterms:description "Recorded 1980, remastered 2009. Danny (credited as Daniel Ayers): synth, guitar, voice."@en ;
+    foaf:maker :the-pump ;
+    dcterms:issued "2009"^^xsd:gYear ;
+    dcterms:publisher "Klanggalerie" ;
+    foaf:page <https://nocturnalemissions.bandcamp.com/album/the-pump> .
+
+:nocturnal-emissions a mo:MusicGroup , foaf:Group ;
+    foaf:name "Nocturnal Emissions" ;
+    owl:sameAs dbr:Nocturnal_Emissions ;
+    dcterms:description "Industrial / post-industrial sound art project. Danny was a founding member with Nigel Ayers and Caroline K, 1980-1984."@en ;
+    mo:member :me , :nigel , [ a foaf:Person ; foaf:name "Caroline K" ; owl:sameAs dbr:Caroline_K ] ;
+    foaf:member :me , :nigel ;
+    foaf:page <https://en.wikipedia.org/wiki/Nocturnal_Emissions> .
+
+:nigel a foaf:Person ;
+    foaf:name "Nigel Ayers" ;
+    owl:sameAs dbr:Nigel_Ayers ;
+    rel:siblingOf :me .
+
+:me rel:siblingOf :nigel .
+
+# ---------------------------------------------------------------- books
+
+:book-java-server a bibo:Book ;
+    dcterms:title "Professional Java Server Programming" ;
+    dcterms:publisher "Wrox Press" ; dcterms:issued "1999"^^xsd:gYear ;
+    dcterms:creator :me ; bibo:authorList "Danny Ayers, Hans Bergsten, Michael Bogovich, Jason Diamond, et al." .
+
+:book-jsp a bibo:Book ;
+    dcterms:title "Professional JSP: Using JavaServer Pages, Servlets, EJB, JNDI, JDBC, XML, XSLT, and WML" ;
+    dcterms:publisher "Wrox Press" ; dcterms:issued "2000"^^xsd:gYear ;
+    dcterms:creator :me ; bibo:authorList "Karl Avedal, Danny Ayers, Timothy Briggs, George Gonchar, et al." .
+
+:book-java-mobile a bibo:Book ;
+    dcterms:title "Professional Java Mobile Programming" ;
+    dcterms:publisher "Wrox Press" ; dcterms:issued "2001"^^xsd:gYear ;
+    dcterms:creator :me ; bibo:authorList "Ronald Ashri, Danny Ayers, Steve Atkinson, Nadia Nashi, et al." .
+
+:book-xml-metadata a bibo:Book ;
+    dcterms:title "Professional XML Meta Data" ;
+    dcterms:publisher "Wrox Press" ; dcterms:issued "2001"^^xsd:gYear ;
+    dcterms:creator :me ; bibo:authorList "Kal Ahmed, Danny Ayers, Mark Birbeck, et al." .
+
+:book-xml3 a bibo:Book ;
+    dcterms:title "Beginning XML, 3rd Edition" ; bibo:isbn13 "9780764570773" ;
+    dcterms:publisher "Wrox" ; dcterms:issued "2004"^^xsd:gYear ;
+    dcterms:creator :me ; bibo:authorList "David Hunter, Andrew Watt, Jeff Rafter, Jon Duckett, Danny Ayers, Nicholas Chase, Joe Fawcett, Tom Gaven, Bill Patterson" ;
+    dcterms:description "Contributed chapters 13 and 18." .
+
+:book-xml4 a bibo:Book ;
+    dcterms:title "Beginning XML, 4th Edition" ;
+    dcterms:publisher "Wrox" ; dcterms:issued "2007"^^xsd:gYear ;
+    dcterms:creator :me ; bibo:authorList "David Hunter, Jeff Rafter, Joe Fawcett, Eric van der Vlist, Danny Ayers, Jon Duckett, Andrew Watt, Linda McKinnon" .
+
+:book-msxml4 a bibo:Book ;
+    dcterms:title "XML Application Development with MSXML 4.0" ;
+    dcterms:publisher "Wrox Press" ; dcterms:issued "2002"^^xsd:gYear ;
+    dcterms:creator :me ; bibo:authorList "Danny Ayers, Steven Livingstone, Stephen F. Mohr" .
+
+:book-rss-atom a bibo:Book ;
+    dcterms:title "Beginning RSS and Atom Programming" ;
+    dcterms:publisher "Wrox" ; dcterms:issued "2005"^^xsd:gYear ;
+    dcterms:creator :me ; bibo:authorList "Danny Ayers, Andrew Watt" .
+
+:book-web20 a bibo:Book ;
+    dcterms:title "Professional Web 2.0 Programming" ;
+    dcterms:publisher "Wrox" ; dcterms:issued "2006"^^xsd:gYear ;
+    dcterms:creator :me ; bibo:authorList "Eric van der Vlist, Danny Ayers, Erik Bruchez, Joe Fawcett, Alessandro Vernet" .
+
+:book-xml5 a bibo:Book ;
+    dcterms:title "Beginning XML, 5th Edition" ;
+    dcterms:publisher "Wrox" ; dcterms:issued "2012"^^xsd:gYear ;
+    dcterms:creator :me ; bibo:authorList "Joe Fawcett, Liam R. E. Quin, Danny Ayers" ;
+    foaf:page <https://www.wiley.com/en-us/Beginning+XML,+5th+Edition-p-9781118162132> .
+
+:book-svg-unleashed a bibo:Book ;
+    dcterms:title "SVG Unleashed" ; bibo:isbn10 "0672324296" ;
+    dcterms:publisher "Sams" ; dcterms:issued "2002"^^xsd:gYear ;
+    dcterms:creator :me ; bibo:authorList "Chris Lilley, Daniel J. Ayers, Randy George, Christian Wenz, Tobias Hauser, Kevin Lindsey, Niklas Gustavsson" ;
+    bibo:editor [ a foaf:Person ; foaf:name "Andrew Watt" ] .
+
+# ------------------------------------------------------ magazine articles
+# TODO: add dcterms:title and dcterms:issued when known
+
+:art-electronics-world a bibo:Article ;
+    dcterms:description "Cover article"@en ;
+    dcterms:isPartOf [ a bibo:Magazine ; dcterms:title "Electronics World" ] ;
+    dcterms:creator :me .
+
+:art-wireless-world a bibo:Article ;
+    dcterms:description "Cover article"@en ;
+    dcterms:isPartOf [ a bibo:Magazine ; dcterms:title "Wireless World" ] ;
+    dcterms:creator :me .
+
+# ------------------------------------------------------ papers and notes
+
+:paper-lod-2007 a bibo:Document ;
+    dcterms:title "Interlinking Open Data on the Web" ;
+    bibo:authorList "Chris Bizer, Tom Heath, Danny Ayers, Yves Raimond" ;
+    dcterms:isPartOf "Demonstrations Track, 4th European Semantic Web Conference (ESWC 2007)" ;
+    dcterms:issued "2007"^^xsd:gYear ; dcterms:creator :me ; dcterms:subject :lod .
+
+:paper-semantic-marc a bibo:Document ;
+    dcterms:title "Semantic MARC, MARC21 and the Semantic Web" ;
+    bibo:authorList "Rob Styles, Danny Ayers, Nadeem Shabir" ;
+    dcterms:isPartOf "Linked Data on the Web Workshop (LDOW 2008)" ;
+    dcterms:issued "2008"^^xsd:gYear ; dcterms:creator :me .
+
+:note-cool-uris a bibo:Standard ;
+    dcterms:title "Cool URIs for the Semantic Web" ;
+    bibo:authorList "Leo Sauermann, Richard Cyganiak, Danny Ayers, Max Völkel" ;
+    dcterms:publisher "W3C (SWEO Interest Group Note)" ;
+    dcterms:issued "2008"^^xsd:gYear ; dcterms:creator :me ;
+    foaf:page <https://www.w3.org/TR/cooluris/> .
+
+:paper-scovo a bibo:Document ;
+    dcterms:title "SCOVO: Using Statistics on the Web of Data" ;
+    bibo:authorList "Michael Hausenblas, Wolfgang Halb, Yves Raimond, Lee Feigenbaum, Danny Ayers" ;
+    dcterms:isPartOf "European Semantic Web Conference (ESWC 2009)" ;
+    dcterms:issued "2009"^^xsd:gYear ; dcterms:creator :me .
+
+:paper-tal4rdf a bibo:Document ;
+    dcterms:title "Tal4Rdf: lightweight presentation for the Semantic Web" ;
+    dcterms:isPartOf "5th Workshop on Scripting and Development for the Semantic Web (SFSW 2009)" ;
+    dcterms:issued "2009"^^xsd:gYear ; dcterms:creator :me .
+
+:spec-atom a bibo:Standard ;
+    dcterms:title "The Atom Syndication Format" ;
+    bibo:identifier "RFC 4287" ;
+    dcterms:publisher "IETF (Atom Publishing Format and Protocol working group)" ;
+    dcterms:issued "2005-12"^^xsd:gYearMonth ;
+    dcterms:contributor :me ;
+    foaf:page <https://www.rfc-editor.org/rfc/rfc4287> .
+
+:spec-jigdaw a bibo:Standard ;
+    dcterms:title "JigDAW: a web-native audio plugin specification" ;
+    dcterms:description "A plugin is a URL: dereference it for an RDF profile (transmissions, jig: and LV2 vocabularies) and a WebAssembly module that runs in the browser."@en ;
+    dcterms:creator :me ;
+    dcterms:issued "2026"^^xsd:gYear ;
+    dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+    rdfs:seeAlso <http://purl.org/stuff/jigdaw/> ;
+    foaf:page <https://danja.github.io/jigdaw/> .
+
+# ------------------------------------------- IEEE Internet Computing columns
+
+:col-shortest-path a bibo:Article ; dcterms:title "The Shortest Path to the Future Web" ;
+    dcterms:isPartOf :ieee-ic ; bibo:volume "10" ; bibo:issue "6" ; bibo:pages "76-79" ; dcterms:issued "2006"^^xsd:gYear ; dcterms:creator :me .
+:col-here-to-there a bibo:Article ; dcterms:title "From Here to There" ;
+    dcterms:isPartOf :ieee-ic ; bibo:volume "11" ; bibo:issue "1" ; bibo:pages "85-89" ; dcterms:issued "2007"^^xsd:gYear ; dcterms:creator :me .
+:col-evolving-link a bibo:Article ; dcterms:title "Evolving the Link" ;
+    dcterms:isPartOf :ieee-ic ; bibo:volume "11" ; bibo:issue "3" ; bibo:pages "94-96" ; dcterms:issued "2007"^^xsd:gYear ; dcterms:creator :me .
+:col-difficult-abstraction a bibo:Article ; dcterms:title "A Difficult Abstraction" ;
+    dcterms:isPartOf :ieee-ic ; bibo:volume "11" ; bibo:issue "5" ; bibo:pages "86-89" ; dcterms:issued "2007"^^xsd:gYear ; dcterms:creator :me .
+:col-graph-farming a bibo:Article ; dcterms:title "Graph Farming" ;
+    dcterms:isPartOf :ieee-ic ; bibo:volume "12" ; bibo:issue "1" ; bibo:pages "80-83" ; dcterms:issued "2008"^^xsd:gYear ; dcterms:creator :me .
+:col-delivered-deliverables a bibo:Article ; dcterms:title "Delivered Deliverables: The State of the Semantic Web, Part 1" ;
+    dcterms:isPartOf :ieee-ic ; bibo:volume "13" ; bibo:issue "1" ; bibo:pages "86-89" ; dcterms:issued "2009"^^xsd:gYear ; dcterms:creator :me ;
+    foaf:page <https://danja.github.io/stuff/ieee/w6.pdf> .
+
+:ieee-ic a bibo:Journal ; dcterms:title "IEEE Internet Computing" ; dcterms:publisher "IEEE Computer Society" .
+
+# -------------------------------------------------------------- projects
+
+:jigdaw a doap:Project , foaf:Project ;
+    doap:name "JigDAW" ;
+    doap:shortdesc "A plugin format native to the web, with a browser DAW host; plugins also load natively as VST3, CLAP or LV2."@en ;
+    doap:homepage <https://danja.github.io/jigdaw/> ;
+    doap:repository [ a doap:GitRepository ; doap:location <https://github.com/danja/jigdaw> ] ;
+    doap:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+    doap:programming-language "JavaScript" , "C++" ;
+    doap:implements :spec-jigdaw ;
+    foaf:page <https://strandz.it/jigdaw/> ;
+    doap:developer :me .
+
+:semem a doap:Project , foaf:Project ;
+    doap:name "Semem" ; doap:shortdesc "Semantic Web memory for intelligent agents: Graph RAG over RDF, with MCP and a browser workbench."@en ;
+    doap:repository [ a doap:GitRepository ; doap:location <https://github.com/danja/semem> ] ;
+    doap:homepage <https://github.com/danja/semem> ; doap:programming-language "JavaScript" ; doap:developer :me .
+
+:transmissions a doap:Project , foaf:Project ;
+    doap:name "Transmissions" ; doap:shortdesc "A workflow compositor: small pipeliney data-processing applications built from simple steps."@en ;
+    doap:homepage <https://danja.github.io/transmissions/manual/> ;
+    doap:repository [ a doap:GitRepository ; doap:location <https://github.com/danja/transmissions> ] ;
+    doap:programming-language "JavaScript" ; doap:developer :me .
+
+:tia a doap:Project , foaf:Project ;
+    doap:name "TIA" ; doap:shortdesc "Experimental XMPP agent framework combining chat, Lingue/IBIS structured dialogue and MCP tools."@en ;
+    doap:homepage <https://danja.github.io/tia/> ;
+    doap:repository [ a doap:GitRepository ; doap:location <https://github.com/danja/tia> ] ;
+    doap:programming-language "JavaScript" ; doap:developer :me .
+
+:postcraft a doap:Project , foaf:Project ;
+    doap:name "Postcraft" ; doap:shortdesc "A minimal static site builder."@en ;
+    doap:repository [ a doap:GitRepository ; doap:location <https://github.com/danja/postcraft> ] ; doap:developer :me .
+
+:hyperdata a doap:Project , foaf:Project ;
+    doap:name "Hyperdata" ; doap:shortdesc "2024 reboot of hyperdata tooling."@en ;
+    doap:repository [ a doap:GitRepository ; doap:location <https://github.com/danja/hyperdata> ] ; doap:developer :me .
+
+:disyn a doap:Project , foaf:Project ;
+    doap:name "Disyn" ; doap:shortdesc "Distortion-synthesis oscillators (DSF, ModFM, PAF, wavefolding, through-zero FM) for the browser, ESP32 and the Daisy-based kxmx Bluemchen Eurorack module."@en ;
+    doap:repository [ a doap:GitRepository ; doap:location <https://github.com/danja/disyn-esp32> ] ;
+    doap:programming-language "C++" ; doap:developer :me .
+
+:chatterbox a doap:Project , foaf:Project ;
+    doap:name "Chatterbox" ; doap:shortdesc "A (sometimes) manually controlled speech-like sound generator."@en ;
+    doap:repository [ a doap:GitRepository ; doap:location <https://github.com/danja/chatterbox> ] ;
+    doap:programming-language "C++" ; doap:developer :me .
+
+:downspout a doap:Project , foaf:Project ;
+    doap:name "Downspout" ; doap:shortdesc "Generative VST plugin experiments."@en ;
+    doap:repository [ a doap:GitRepository ; doap:location <https://github.com/danja/downspout> ] ;
+    doap:programming-language "C++" ; doap:developer :me .
+
+:ideagraph a foaf:Project ;
+    foaf:name "IdeaGraph" ; dcterms:description "Idea mapping for the Semantic Web." ;
+    foaf:homepage <http://ideagraph.net/> .
+
+:lod a foaf:Project ;
+    foaf:name "Linking Open Data" ;
+    dcterms:description "W3C SWEO community project that seeded the Linked Open Data cloud (2007-)." ;
+    foaf:homepage <https://www.w3.org/wiki/SweoIG/TaskForces/CommunityProjects/LinkingOpenData> .
+
+:this-weeks-semweb a foaf:Project ;
+    foaf:name "This Week's Semantic Web" ;
+    dcterms:description "Weekly round-up of Semantic Web news on the Talis Nodalities blog (2007-2008)." .
+
+# ------------------------------------------------------------------ knows
+# Carried over from the 2012 profile. Email addresses replaced by SHA1 sums.
+
+:uldis a foaf:Person ; foaf:name "Uldis Bojars" ; foaf:nick "CaptSolo" ;
+    foaf:mbox_sha1sum "56e6f2903933a611708ebac456d45e454ddb8838" ;
+    foaf:homepage <http://captsolo.net> ; rdfs:seeAlso <http://captsolo.net/semweb/foaf-captsolo.rdf> .
+:kenneth a foaf:Person ; foaf:name "Kenneth Fields" ; foaf:nick "YiKe" ;
+    foaf:mbox_sha1sum "24c4b5d3e71c117c9130ae0a94b4acf98cf49666" .
+:manos a foaf:Person ; foaf:name "Manos Batsis" ; foaf:nick "mbatsis" ;
+    foaf:mbox_sha1sum "4997782d69be8ec448dce2b9af34879f1de894ab" .
+:jay a foaf:Person ; foaf:name "Jay Fienberg" ;
+    foaf:mbox_sha1sum "80d1b91a49ba0b0817a18807b400ef3e3375dbf4" ;
+    foaf:homepage <http://icite.net/about/people.html> .
+:morten a foaf:Person ; foaf:name "Morten Frederiksen" ;
+    foaf:mbox_sha1sum "65b983bb397fb71849da910996741752ace8369b" ;
+    foaf:homepage <http://purl.org/net/morten/> .
+:marc a foaf:Person ; foaf:name "Marc Canter" ;
+    foaf:mbox_sha1sum "41e872618d70ba18a7af715083f522afe7fc3238" ;
+    foaf:homepage <http://marc.canter.com> .
+:jim a foaf:Person ; foaf:name "Jim Ley" ; foaf:nick "JibberJim" ;
+    foaf:mbox_sha1sum "35022e505e6a64c05837eccf4beb5d8f981a4e5a" ;
+    rdfs:seeAlso <http://jibbering.com/foaf.rdf> .
+:libby a foaf:Person ; foaf:name "Libby Miller" ;
+    foaf:mbox_sha1sum "289d4d44325d0b0218edc856c8c3904fa3fd2875" .
+:danbri a foaf:Person ; foaf:name "Dan Brickley" ; foaf:nick "danbri" ;
+    foaf:mbox_sha1sum "f46850eab07e26c850847d88390530afcfee0711" , "362ce75324396f0aa2d3e5f1246f40bf3bb44401" ;
+    foaf:homepage <https://danbri.org/> .
+:reto a foaf:Person ; foaf:name "Reto Bachmann-Gmür" ;
+    foaf:mbox_sha1sum "63267630b67d56a6fca96d01bfc324d7e0a31df1" ;
+    foaf:homepage <http://gmuer.ch> .

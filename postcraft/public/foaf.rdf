@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xml:base="https://danny.ayers.name/"
+  xmlns:doap="http://usefulinc.com/ns/doap#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:bibo="http://purl.org/ontology/bibo/"
+  xmlns:org="http://www.w3.org/ns/org#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:schema="https://schema.org/"
+  xmlns:mo="http://purl.org/ontology/mo/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:con="http://www.w3.org/2000/10/swap/pim/contact#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:rel="http://purl.org/vocab/relationship/"
+>
+  <mo:Record rdf:about="#the-pump-1980">
+    <dcterms:title>The Pump</dcterms:title>
+    <dcterms:description xml:lang="en">Recorded 1980, remastered 2009. Danny (credited as Daniel Ayers): synth, guitar, voice.</dcterms:description>
+    <foaf:maker>
+      <mo:MusicGroup rdf:about="#the-pump">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Group"/>
+        <foaf:name>The Pump</foaf:name>
+        <dcterms:description xml:lang="en">Experimental group formed in 1977: heavy bass, distorted guitar, cut-up tapes. Cassette-only releases; 1980 sessions reissued on CD by Klanggalerie (2009).</dcterms:description>
+        <mo:member rdf:resource="#me"/>
+        <mo:member rdf:resource="#nigel"/>
+        <mo:member>
+          <foaf:Person rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b8">
+            <foaf:name>Ian Round</foaf:name>
+          </foaf:Person>
+        </mo:member>
+        <foaf:member rdf:resource="#me"/>
+        <foaf:member rdf:resource="#nigel"/>
+        <foaf:page rdf:resource="https://nocturnalemissions.bandcamp.com/album/the-pump"/>
+        <schema:foundingDate>1977</schema:foundingDate>
+      </mo:MusicGroup>
+    </foaf:maker>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2009</dcterms:issued>
+    <dcterms:publisher>Klanggalerie</dcterms:publisher>
+    <foaf:page rdf:resource="https://nocturnalemissions.bandcamp.com/album/the-pump"/>
+  </mo:Record>
+  <bibo:Standard rdf:about="#spec-atom">
+    <dcterms:title>The Atom Syndication Format</dcterms:title>
+    <bibo:identifier>RFC 4287</bibo:identifier>
+    <dcterms:publisher>IETF (Atom Publishing Format and Protocol working group)</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYearMonth">2005-12</dcterms:issued>
+    <dcterms:contributor>
+      <foaf:Person rdf:about="#me">
+        <rdf:type rdf:resource="https://schema.org/Person"/>
+        <foaf:name>Daniel John Ayers</foaf:name>
+        <foaf:givenName>Daniel</foaf:givenName>
+        <foaf:familyName>Ayers</foaf:familyName>
+        <foaf:nick>Danny</foaf:nick>
+        <foaf:nick>Danny Ayers</foaf:nick>
+        <foaf:nick>Dan Ayers</foaf:nick>
+        <foaf:nick>danja</foaf:nick>
+        <rdfs:label>Danny Ayers</rdfs:label>
+        <schema:alternateName>Danny Ayers</schema:alternateName>
+        <schema:alternateName>Dan Ayers</schema:alternateName>
+        <schema:jobTitle>Independent Web researcher and developer</schema:jobTitle>
+        <schema:description xml:lang="en">Independent Web R&amp;D: Semantic Web and Linked Data, knowledge graphs for AI agents, electronics and music DSP.</schema:description>
+        <schema:description xml:lang="en">Contributing author of books on Java, XML, SVG, RSS/Atom and Web 2.0; technical reviewer of many others. Cover articles for Electronics World and Wireless World.</schema:description>
+        <foaf:homepage rdf:resource=""/>
+        <foaf:isPrimaryTopicOf rdf:resource=""/>
+        <foaf:isPrimaryTopicOf rdf:resource="foaf.ttl"/>
+        <foaf:mbox_sha1sum>669fe353dbef63d12ba11f69ace8acbec1ac8b17</foaf:mbox_sha1sum>
+        <foaf:schoolHomepage rdf:resource="http://www.ladymanners.org.uk/"/>
+        <foaf:myersBriggs>INTP</foaf:myersBriggs>
+        <foaf:based_near rdf:resource="http://dbpedia.org/resource/Garfagnana"/>
+        <con:nearestAirport>
+          <con:Airport rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b1">
+            <con:iataCode>PSA</con:iataCode>
+            <rdfs:label>Pisa International Airport</rdfs:label>
+          </con:Airport>
+        </con:nearestAirport>
+        <schema:homeLocation>
+          <schema:Place rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b2">
+            <schema:name>Garfagnana, Tuscany, Italy</schema:name>
+          </schema:Place>
+        </schema:homeLocation>
+        <schema:birthPlace>
+          <schema:Place rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b3">
+            <schema:name>Tideswell, Derbyshire, England</schema:name>
+            <owl:sameAs rdf:resource="http://dbpedia.org/resource/Tideswell"/>
+          </schema:Place>
+        </schema:birthPlace>
+        <foaf:publications rdf:resource="https://scholar.google.com/citations?user=46QopZwAAAAJ"/>
+        <owl:sameAs rdf:resource="https://dblp.org/pid/46/6676"/>
+        <rdfs:seeAlso rdf:resource="https://dblp.org/pid/46/6676.rdf"/>
+        <foaf:account rdf:resource="#github"/>
+        <foaf:account rdf:resource="#twitter"/>
+        <foaf:account rdf:resource="#youtube"/>
+        <foaf:account rdf:resource="#scholar"/>
+        <foaf:account rdf:resource="#dblp"/>
+        <foaf:account rdf:resource="#academia"/>
+        <foaf:account rdf:resource="#amazon"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Semantic_Web"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Linked_data"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Resource_Description_Framework"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/SPARQL"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Knowledge_graph"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Large_language_model"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Multi-agent_system"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Web_feed"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Atom_(web_standard)"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/RSS"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/XML"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Electronics"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Scalable_Vector_Graphics"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Microcontroller"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Digital_signal_processing"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Sound_synthesis"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Modular_synthesizer"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Eurorack"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Physical_modelling_synthesis"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Electronic_music"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Industrial_music"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Sound_collage"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Wood_carving"/>
+        <foaf:topic_interest rdf:resource="http://dbpedia.org/resource/Constructed_language"/>
+        <foaf:made rdf:resource="#book-java-server"/>
+        <foaf:made rdf:resource="#book-jsp"/>
+        <foaf:made rdf:resource="#book-java-mobile"/>
+        <foaf:made rdf:resource="#book-xml-metadata"/>
+        <foaf:made rdf:resource="#book-svg-unleashed"/>
+        <foaf:made rdf:resource="#book-msxml4"/>
+        <foaf:made rdf:resource="#art-electronics-world"/>
+        <foaf:made rdf:resource="#art-wireless-world"/>
+        <foaf:made rdf:resource="#book-xml3"/>
+        <foaf:made rdf:resource="#book-rss-atom"/>
+        <foaf:made rdf:resource="#book-web20"/>
+        <foaf:made rdf:resource="#book-xml4"/>
+        <foaf:made rdf:resource="#book-xml5"/>
+        <foaf:made rdf:resource="#spec-jigdaw"/>
+        <foaf:made rdf:resource="#paper-lod-2007"/>
+        <foaf:made rdf:resource="#paper-semantic-marc"/>
+        <foaf:made rdf:resource="#note-cool-uris"/>
+        <foaf:made rdf:resource="#paper-scovo"/>
+        <foaf:made rdf:resource="#paper-tal4rdf"/>
+        <foaf:made rdf:resource="#col-shortest-path"/>
+        <foaf:made rdf:resource="#col-here-to-there"/>
+        <foaf:made rdf:resource="#col-evolving-link"/>
+        <foaf:made rdf:resource="#col-difficult-abstraction"/>
+        <foaf:made rdf:resource="#col-graph-farming"/>
+        <foaf:made rdf:resource="#col-delivered-deliverables"/>
+        <foaf:currentProject rdf:resource="#jigdaw"/>
+        <foaf:currentProject rdf:resource="#semem"/>
+        <foaf:currentProject rdf:resource="#transmissions"/>
+        <foaf:currentProject rdf:resource="#tia"/>
+        <foaf:currentProject rdf:resource="#postcraft"/>
+        <foaf:currentProject rdf:resource="#hyperdata"/>
+        <foaf:currentProject rdf:resource="#disyn"/>
+        <foaf:currentProject rdf:resource="#chatterbox"/>
+        <foaf:currentProject rdf:resource="#downspout"/>
+        <foaf:pastProject rdf:resource="#ideagraph"/>
+        <foaf:pastProject rdf:resource="#lod"/>
+        <foaf:pastProject rdf:resource="#this-weeks-semweb"/>
+        <org:memberOf rdf:resource="#talis-membership-org"/>
+        <schema:worksFor>
+          <schema:Organization rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b4">
+            <schema:name>Independent</schema:name>
+          </schema:Organization>
+        </schema:worksFor>
+        <schema:alumniOf>
+          <schema:EducationalOrganization rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b5">
+            <schema:name>Lady Manners School, Bakewell</schema:name>
+            <schema:url rdf:resource="http://www.ladymanners.org.uk/"/>
+          </schema:EducationalOrganization>
+        </schema:alumniOf>
+        <foaf:knows rdf:resource="#nigel"/>
+        <foaf:knows rdf:resource="#uldis"/>
+        <foaf:knows rdf:resource="#kenneth"/>
+        <foaf:knows rdf:resource="#manos"/>
+        <foaf:knows rdf:resource="#jay"/>
+        <foaf:knows rdf:resource="#morten"/>
+        <foaf:knows rdf:resource="#marc"/>
+        <foaf:knows rdf:resource="#jim"/>
+        <foaf:knows rdf:resource="#libby"/>
+        <foaf:knows rdf:resource="#danbri"/>
+        <foaf:knows rdf:resource="#reto"/>
+        <rel:siblingOf rdf:resource="#nigel"/>
+      </foaf:Person>
+    </dcterms:contributor>
+    <foaf:page rdf:resource="https://www.rfc-editor.org/rfc/rfc4287"/>
+  </bibo:Standard>
+  <mo:MusicGroup rdf:about="#nocturnal-emissions">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Group"/>
+    <foaf:name>Nocturnal Emissions</foaf:name>
+    <owl:sameAs rdf:resource="http://dbpedia.org/resource/Nocturnal_Emissions"/>
+    <dcterms:description xml:lang="en">Industrial / post-industrial sound art project. Danny was a founding member with Nigel Ayers and Caroline K, 1980-1984.</dcterms:description>
+    <mo:member rdf:resource="#me"/>
+    <mo:member>
+      <foaf:Person rdf:about="#nigel">
+        <foaf:name>Nigel Ayers</foaf:name>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Nigel_Ayers"/>
+        <rel:siblingOf rdf:resource="#me"/>
+      </foaf:Person>
+    </mo:member>
+    <mo:member>
+      <foaf:Person rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b9">
+        <foaf:name>Caroline K</foaf:name>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Caroline_K"/>
+      </foaf:Person>
+    </mo:member>
+    <foaf:member rdf:resource="#me"/>
+    <foaf:member rdf:resource="#nigel"/>
+    <foaf:page rdf:resource="https://en.wikipedia.org/wiki/Nocturnal_Emissions"/>
+  </mo:MusicGroup>
+  <doap:Project rdf:about="#tia">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Project"/>
+    <doap:name>TIA</doap:name>
+    <doap:shortdesc xml:lang="en">Experimental XMPP agent framework combining chat, Lingue/IBIS structured dialogue and MCP tools.</doap:shortdesc>
+    <doap:homepage rdf:resource="https://danja.github.io/tia/"/>
+    <doap:repository>
+      <doap:GitRepository rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b16">
+        <doap:location rdf:resource="https://github.com/danja/tia"/>
+      </doap:GitRepository>
+    </doap:repository>
+    <doap:programming-language>JavaScript</doap:programming-language>
+    <doap:developer rdf:resource="#me"/>
+  </doap:Project>
+  <foaf:Person rdf:about="#jim">
+    <foaf:name>Jim Ley</foaf:name>
+    <foaf:nick>JibberJim</foaf:nick>
+    <foaf:mbox_sha1sum>35022e505e6a64c05837eccf4beb5d8f981a4e5a</foaf:mbox_sha1sum>
+    <rdfs:seeAlso rdf:resource="http://jibbering.com/foaf.rdf"/>
+  </foaf:Person>
+  <foaf:Person rdf:about="#uldis">
+    <foaf:name>Uldis Bojars</foaf:name>
+    <foaf:nick>CaptSolo</foaf:nick>
+    <foaf:mbox_sha1sum>56e6f2903933a611708ebac456d45e454ddb8838</foaf:mbox_sha1sum>
+    <foaf:homepage rdf:resource="http://captsolo.net"/>
+    <rdfs:seeAlso rdf:resource="http://captsolo.net/semweb/foaf-captsolo.rdf"/>
+  </foaf:Person>
+  <doap:Project rdf:about="#downspout">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Project"/>
+    <doap:name>Downspout</doap:name>
+    <doap:shortdesc xml:lang="en">Generative VST plugin experiments.</doap:shortdesc>
+    <doap:repository>
+      <doap:GitRepository rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b21">
+        <doap:location rdf:resource="https://github.com/danja/downspout"/>
+      </doap:GitRepository>
+    </doap:repository>
+    <doap:programming-language>C++</doap:programming-language>
+    <doap:developer rdf:resource="#me"/>
+  </doap:Project>
+  <foaf:OnlineAccount rdf:about="#scholar">
+    <foaf:accountServiceHomepage rdf:resource="https://scholar.google.com/"/>
+    <foaf:accountName>46QopZwAAAAJ</foaf:accountName>
+    <foaf:page rdf:resource="https://scholar.google.com/citations?user=46QopZwAAAAJ"/>
+  </foaf:OnlineAccount>
+  <foaf:Project rdf:about="#ideagraph">
+    <foaf:name>IdeaGraph</foaf:name>
+    <dcterms:description>Idea mapping for the Semantic Web.</dcterms:description>
+    <foaf:homepage rdf:resource="http://ideagraph.net/"/>
+  </foaf:Project>
+  <doap:Project rdf:about="#jigdaw">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Project"/>
+    <doap:name>JigDAW</doap:name>
+    <doap:shortdesc xml:lang="en">A plugin format native to the web, with a browser DAW host; plugins also load natively as VST3, CLAP or LV2.</doap:shortdesc>
+    <doap:homepage rdf:resource="https://danja.github.io/jigdaw/"/>
+    <doap:repository>
+      <doap:GitRepository rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b13">
+        <doap:location rdf:resource="https://github.com/danja/jigdaw"/>
+      </doap:GitRepository>
+    </doap:repository>
+    <doap:license rdf:resource="https://www.apache.org/licenses/LICENSE-2.0"/>
+    <doap:programming-language>JavaScript</doap:programming-language>
+    <doap:programming-language>C++</doap:programming-language>
+    <doap:implements>
+      <bibo:Standard rdf:about="#spec-jigdaw">
+        <dcterms:title>JigDAW: a web-native audio plugin specification</dcterms:title>
+        <dcterms:description xml:lang="en">A plugin is a URL: dereference it for an RDF profile (transmissions, jig: and LV2 vocabularies) and a WebAssembly module that runs in the browser.</dcterms:description>
+        <dcterms:creator rdf:resource="#me"/>
+        <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2026</dcterms:issued>
+        <dcterms:license rdf:resource="https://www.apache.org/licenses/LICENSE-2.0"/>
+        <rdfs:seeAlso rdf:resource="http://purl.org/stuff/jigdaw/"/>
+        <foaf:page rdf:resource="https://danja.github.io/jigdaw/"/>
+      </bibo:Standard>
+    </doap:implements>
+    <foaf:page rdf:resource="https://strandz.it/jigdaw/"/>
+    <doap:developer rdf:resource="#me"/>
+  </doap:Project>
+  <bibo:Book rdf:about="#book-xml3">
+    <dcterms:title>Beginning XML, 3rd Edition</dcterms:title>
+    <bibo:isbn13>9780764570773</bibo:isbn13>
+    <dcterms:publisher>Wrox</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2004</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <bibo:authorList>David Hunter, Andrew Watt, Jeff Rafter, Jon Duckett, Danny Ayers, Nicholas Chase, Joe Fawcett, Tom Gaven, Bill Patterson</bibo:authorList>
+    <dcterms:description>Contributed chapters 13 and 18.</dcterms:description>
+  </bibo:Book>
+  <bibo:Book rdf:about="#book-jsp">
+    <dcterms:title>Professional JSP: Using JavaServer Pages, Servlets, EJB, JNDI, JDBC, XML, XSLT, and WML</dcterms:title>
+    <dcterms:publisher>Wrox Press</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2000</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <bibo:authorList>Karl Avedal, Danny Ayers, Timothy Briggs, George Gonchar, et al.</bibo:authorList>
+  </bibo:Book>
+  <bibo:Document rdf:about="#paper-semantic-marc">
+    <dcterms:title>Semantic MARC, MARC21 and the Semantic Web</dcterms:title>
+    <bibo:authorList>Rob Styles, Danny Ayers, Nadeem Shabir</bibo:authorList>
+    <dcterms:isPartOf>Linked Data on the Web Workshop (LDOW 2008)</dcterms:isPartOf>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2008</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+  </bibo:Document>
+  <bibo:Article rdf:about="#col-evolving-link">
+    <dcterms:title>Evolving the Link</dcterms:title>
+    <dcterms:isPartOf>
+      <bibo:Journal rdf:about="#ieee-ic">
+        <dcterms:title>IEEE Internet Computing</dcterms:title>
+        <dcterms:publisher>IEEE Computer Society</dcterms:publisher>
+      </bibo:Journal>
+    </dcterms:isPartOf>
+    <bibo:volume>11</bibo:volume>
+    <bibo:issue>3</bibo:issue>
+    <bibo:pages>94-96</bibo:pages>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2007</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+  </bibo:Article>
+  <bibo:Document rdf:about="#paper-lod-2007">
+    <dcterms:title>Interlinking Open Data on the Web</dcterms:title>
+    <bibo:authorList>Chris Bizer, Tom Heath, Danny Ayers, Yves Raimond</bibo:authorList>
+    <dcterms:isPartOf>Demonstrations Track, 4th European Semantic Web Conference (ESWC 2007)</dcterms:isPartOf>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2007</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <dcterms:subject>
+      <foaf:Project rdf:about="#lod">
+        <foaf:name>Linking Open Data</foaf:name>
+        <dcterms:description>W3C SWEO community project that seeded the Linked Open Data cloud (2007-).</dcterms:description>
+        <foaf:homepage rdf:resource="https://www.w3.org/wiki/SweoIG/TaskForces/CommunityProjects/LinkingOpenData"/>
+      </foaf:Project>
+    </dcterms:subject>
+  </bibo:Document>
+  <bibo:Book rdf:about="#book-svg-unleashed">
+    <dcterms:title>SVG Unleashed</dcterms:title>
+    <bibo:isbn10>0672324296</bibo:isbn10>
+    <dcterms:publisher>Sams</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2002</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <bibo:authorList>Chris Lilley, Daniel J. Ayers, Randy George, Christian Wenz, Tobias Hauser, Kevin Lindsey, Niklas Gustavsson</bibo:authorList>
+    <bibo:editor>
+      <foaf:Person rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b10">
+        <foaf:name>Andrew Watt</foaf:name>
+      </foaf:Person>
+    </bibo:editor>
+  </bibo:Book>
+  <bibo:Article rdf:about="#col-difficult-abstraction">
+    <dcterms:title>A Difficult Abstraction</dcterms:title>
+    <dcterms:isPartOf rdf:resource="#ieee-ic"/>
+    <bibo:volume>11</bibo:volume>
+    <bibo:issue>5</bibo:issue>
+    <bibo:pages>86-89</bibo:pages>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2007</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+  </bibo:Article>
+  <bibo:Book rdf:about="#book-web20">
+    <dcterms:title>Professional Web 2.0 Programming</dcterms:title>
+    <dcterms:publisher>Wrox</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2006</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <bibo:authorList>Eric van der Vlist, Danny Ayers, Erik Bruchez, Joe Fawcett, Alessandro Vernet</bibo:authorList>
+  </bibo:Book>
+  <foaf:Person rdf:about="#marc">
+    <foaf:name>Marc Canter</foaf:name>
+    <foaf:mbox_sha1sum>41e872618d70ba18a7af715083f522afe7fc3238</foaf:mbox_sha1sum>
+    <foaf:homepage rdf:resource="http://marc.canter.com"/>
+  </foaf:Person>
+  <doap:Project rdf:about="#chatterbox">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Project"/>
+    <doap:name>Chatterbox</doap:name>
+    <doap:shortdesc xml:lang="en">A (sometimes) manually controlled speech-like sound generator.</doap:shortdesc>
+    <doap:repository>
+      <doap:GitRepository rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b20">
+        <doap:location rdf:resource="https://github.com/danja/chatterbox"/>
+      </doap:GitRepository>
+    </doap:repository>
+    <doap:programming-language>C++</doap:programming-language>
+    <doap:developer rdf:resource="#me"/>
+  </doap:Project>
+  <bibo:Article rdf:about="#col-here-to-there">
+    <dcterms:title>From Here to There</dcterms:title>
+    <dcterms:isPartOf rdf:resource="#ieee-ic"/>
+    <bibo:volume>11</bibo:volume>
+    <bibo:issue>1</bibo:issue>
+    <bibo:pages>85-89</bibo:pages>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2007</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+  </bibo:Article>
+  <foaf:OnlineAccount rdf:about="#github">
+    <foaf:accountServiceHomepage rdf:resource="https://github.com/"/>
+    <foaf:accountName>danja</foaf:accountName>
+    <foaf:page rdf:resource="https://github.com/danja"/>
+  </foaf:OnlineAccount>
+  <foaf:Person rdf:about="#danbri">
+    <foaf:name>Dan Brickley</foaf:name>
+    <foaf:nick>danbri</foaf:nick>
+    <foaf:mbox_sha1sum>f46850eab07e26c850847d88390530afcfee0711</foaf:mbox_sha1sum>
+    <foaf:mbox_sha1sum>362ce75324396f0aa2d3e5f1246f40bf3bb44401</foaf:mbox_sha1sum>
+    <foaf:homepage rdf:resource="https://danbri.org/"/>
+  </foaf:Person>
+  <bibo:Book rdf:about="#book-java-mobile">
+    <dcterms:title>Professional Java Mobile Programming</dcterms:title>
+    <dcterms:publisher>Wrox Press</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2001</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <bibo:authorList>Ronald Ashri, Danny Ayers, Steve Atkinson, Nadia Nashi, et al.</bibo:authorList>
+  </bibo:Book>
+  <bibo:Document rdf:about="#paper-scovo">
+    <dcterms:title>SCOVO: Using Statistics on the Web of Data</dcterms:title>
+    <bibo:authorList>Michael Hausenblas, Wolfgang Halb, Yves Raimond, Lee Feigenbaum, Danny Ayers</bibo:authorList>
+    <dcterms:isPartOf>European Semantic Web Conference (ESWC 2009)</dcterms:isPartOf>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2009</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+  </bibo:Document>
+  <bibo:Book rdf:about="#book-xml4">
+    <dcterms:title>Beginning XML, 4th Edition</dcterms:title>
+    <dcterms:publisher>Wrox</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2007</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <bibo:authorList>David Hunter, Jeff Rafter, Joe Fawcett, Eric van der Vlist, Danny Ayers, Jon Duckett, Andrew Watt, Linda McKinnon</bibo:authorList>
+  </bibo:Book>
+  <foaf:Project rdf:about="#this-weeks-semweb">
+    <foaf:name>This Week's Semantic Web</foaf:name>
+    <dcterms:description>Weekly round-up of Semantic Web news on the Talis Nodalities blog (2007-2008).</dcterms:description>
+  </foaf:Project>
+  <foaf:Person rdf:about="#morten">
+    <foaf:name>Morten Frederiksen</foaf:name>
+    <foaf:mbox_sha1sum>65b983bb397fb71849da910996741752ace8369b</foaf:mbox_sha1sum>
+    <foaf:homepage rdf:resource="http://purl.org/net/morten/"/>
+  </foaf:Person>
+  <bibo:Book rdf:about="#book-java-server">
+    <dcterms:title>Professional Java Server Programming</dcterms:title>
+    <dcterms:publisher>Wrox Press</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1999</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <bibo:authorList>Danny Ayers, Hans Bergsten, Michael Bogovich, Jason Diamond, et al.</bibo:authorList>
+  </bibo:Book>
+  <bibo:Book rdf:about="#book-xml-metadata">
+    <dcterms:title>Professional XML Meta Data</dcterms:title>
+    <dcterms:publisher>Wrox Press</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2001</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <bibo:authorList>Kal Ahmed, Danny Ayers, Mark Birbeck, et al.</bibo:authorList>
+  </bibo:Book>
+  <foaf:OnlineAccount rdf:about="#dblp">
+    <foaf:accountServiceHomepage rdf:resource="https://dblp.org/"/>
+    <foaf:accountName>46/6676</foaf:accountName>
+    <foaf:page rdf:resource="https://dblp.org/pid/46/6676.html"/>
+  </foaf:OnlineAccount>
+  <bibo:Standard rdf:about="#note-cool-uris">
+    <dcterms:title>Cool URIs for the Semantic Web</dcterms:title>
+    <bibo:authorList>Leo Sauermann, Richard Cyganiak, Danny Ayers, Max Völkel</bibo:authorList>
+    <dcterms:publisher>W3C (SWEO Interest Group Note)</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2008</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <foaf:page rdf:resource="https://www.w3.org/TR/cooluris/"/>
+  </bibo:Standard>
+  <doap:Project rdf:about="#transmissions">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Project"/>
+    <doap:name>Transmissions</doap:name>
+    <doap:shortdesc xml:lang="en">A workflow compositor: small pipeliney data-processing applications built from simple steps.</doap:shortdesc>
+    <doap:homepage rdf:resource="https://danja.github.io/transmissions/manual/"/>
+    <doap:repository>
+      <doap:GitRepository rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b15">
+        <doap:location rdf:resource="https://github.com/danja/transmissions"/>
+      </doap:GitRepository>
+    </doap:repository>
+    <doap:programming-language>JavaScript</doap:programming-language>
+    <doap:developer rdf:resource="#me"/>
+  </doap:Project>
+  <foaf:OnlineAccount rdf:about="#twitter">
+    <foaf:accountServiceHomepage rdf:resource="https://x.com/"/>
+    <foaf:accountName>danja</foaf:accountName>
+    <foaf:page rdf:resource="https://x.com/danja"/>
+  </foaf:OnlineAccount>
+  <bibo:Article rdf:about="#col-delivered-deliverables">
+    <dcterms:title>Delivered Deliverables: The State of the Semantic Web, Part 1</dcterms:title>
+    <dcterms:isPartOf rdf:resource="#ieee-ic"/>
+    <bibo:volume>13</bibo:volume>
+    <bibo:issue>1</bibo:issue>
+    <bibo:pages>86-89</bibo:pages>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2009</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <foaf:page rdf:resource="https://danja.github.io/stuff/ieee/w6.pdf"/>
+  </bibo:Article>
+  <bibo:Article rdf:about="#col-graph-farming">
+    <dcterms:title>Graph Farming</dcterms:title>
+    <dcterms:isPartOf rdf:resource="#ieee-ic"/>
+    <bibo:volume>12</bibo:volume>
+    <bibo:issue>1</bibo:issue>
+    <bibo:pages>80-83</bibo:pages>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2008</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+  </bibo:Article>
+  <doap:Project rdf:about="#postcraft">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Project"/>
+    <doap:name>Postcraft</doap:name>
+    <doap:shortdesc xml:lang="en">A minimal static site builder.</doap:shortdesc>
+    <doap:repository>
+      <doap:GitRepository rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b17">
+        <doap:location rdf:resource="https://github.com/danja/postcraft"/>
+      </doap:GitRepository>
+    </doap:repository>
+    <doap:developer rdf:resource="#me"/>
+  </doap:Project>
+  <foaf:Person rdf:about="#jay">
+    <foaf:name>Jay Fienberg</foaf:name>
+    <foaf:mbox_sha1sum>80d1b91a49ba0b0817a18807b400ef3e3375dbf4</foaf:mbox_sha1sum>
+    <foaf:homepage rdf:resource="http://icite.net/about/people.html"/>
+  </foaf:Person>
+  <doap:Project rdf:about="#semem">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Project"/>
+    <doap:name>Semem</doap:name>
+    <doap:shortdesc xml:lang="en">Semantic Web memory for intelligent agents: Graph RAG over RDF, with MCP and a browser workbench.</doap:shortdesc>
+    <doap:repository>
+      <doap:GitRepository rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b14">
+        <doap:location rdf:resource="https://github.com/danja/semem"/>
+      </doap:GitRepository>
+    </doap:repository>
+    <doap:homepage rdf:resource="https://github.com/danja/semem"/>
+    <doap:programming-language>JavaScript</doap:programming-language>
+    <doap:developer rdf:resource="#me"/>
+  </doap:Project>
+  <bibo:Book rdf:about="#book-msxml4">
+    <dcterms:title>XML Application Development with MSXML 4.0</dcterms:title>
+    <dcterms:publisher>Wrox Press</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2002</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <bibo:authorList>Danny Ayers, Steven Livingstone, Stephen F. Mohr</bibo:authorList>
+  </bibo:Book>
+  <foaf:OnlineAccount rdf:about="#youtube">
+    <foaf:accountServiceHomepage rdf:resource="https://www.youtube.com/"/>
+    <foaf:accountName>djayers</foaf:accountName>
+    <foaf:page rdf:resource="https://www.youtube.com/@djayers"/>
+  </foaf:OnlineAccount>
+  <foaf:OnlineAccount rdf:about="#amazon">
+    <foaf:accountServiceHomepage rdf:resource="https://www.amazon.com/"/>
+    <foaf:accountName>B001IYVELQ</foaf:accountName>
+    <foaf:page rdf:resource="https://www.amazon.com/stores/author/B001IYVELQ"/>
+  </foaf:OnlineAccount>
+  <bibo:Book rdf:about="#book-rss-atom">
+    <dcterms:title>Beginning RSS and Atom Programming</dcterms:title>
+    <dcterms:publisher>Wrox</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2005</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <bibo:authorList>Danny Ayers, Andrew Watt</bibo:authorList>
+  </bibo:Book>
+  <foaf:Person rdf:about="#manos">
+    <foaf:name>Manos Batsis</foaf:name>
+    <foaf:nick>mbatsis</foaf:nick>
+    <foaf:mbox_sha1sum>4997782d69be8ec448dce2b9af34879f1de894ab</foaf:mbox_sha1sum>
+  </foaf:Person>
+  <doap:Project rdf:about="#hyperdata">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Project"/>
+    <doap:name>Hyperdata</doap:name>
+    <doap:shortdesc xml:lang="en">2024 reboot of hyperdata tooling.</doap:shortdesc>
+    <doap:repository>
+      <doap:GitRepository rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b18">
+        <doap:location rdf:resource="https://github.com/danja/hyperdata"/>
+      </doap:GitRepository>
+    </doap:repository>
+    <doap:developer rdf:resource="#me"/>
+  </doap:Project>
+  <foaf:Person rdf:about="#reto">
+    <foaf:name>Reto Bachmann-Gmür</foaf:name>
+    <foaf:mbox_sha1sum>63267630b67d56a6fca96d01bfc324d7e0a31df1</foaf:mbox_sha1sum>
+    <foaf:homepage rdf:resource="http://gmuer.ch"/>
+  </foaf:Person>
+  <doap:Project rdf:about="#disyn">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Project"/>
+    <doap:name>Disyn</doap:name>
+    <doap:shortdesc xml:lang="en">Distortion-synthesis oscillators (DSF, ModFM, PAF, wavefolding, through-zero FM) for the browser, ESP32 and the Daisy-based kxmx Bluemchen Eurorack module.</doap:shortdesc>
+    <doap:repository>
+      <doap:GitRepository rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b19">
+        <doap:location rdf:resource="https://github.com/danja/disyn-esp32"/>
+      </doap:GitRepository>
+    </doap:repository>
+    <doap:programming-language>C++</doap:programming-language>
+    <doap:developer rdf:resource="#me"/>
+  </doap:Project>
+  <foaf:Person rdf:about="#kenneth">
+    <foaf:name>Kenneth Fields</foaf:name>
+    <foaf:nick>YiKe</foaf:nick>
+    <foaf:mbox_sha1sum>24c4b5d3e71c117c9130ae0a94b4acf98cf49666</foaf:mbox_sha1sum>
+  </foaf:Person>
+  <bibo:Article rdf:about="#art-electronics-world">
+    <dcterms:description xml:lang="en">Cover article</dcterms:description>
+    <dcterms:isPartOf>
+      <bibo:Magazine rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b11">
+        <dcterms:title>Electronics World</dcterms:title>
+      </bibo:Magazine>
+    </dcterms:isPartOf>
+    <dcterms:creator rdf:resource="#me"/>
+  </bibo:Article>
+  <foaf:Person rdf:about="#libby">
+    <foaf:name>Libby Miller</foaf:name>
+    <foaf:mbox_sha1sum>289d4d44325d0b0218edc856c8c3904fa3fd2875</foaf:mbox_sha1sum>
+  </foaf:Person>
+  <org:Membership rdf:about="#talis-membership-org">
+    <org:member rdf:resource="#me"/>
+    <org:organization>
+      <foaf:Organization rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b6">
+        <foaf:name>Talis Information Ltd</foaf:name>
+      </foaf:Organization>
+    </org:organization>
+    <org:role>
+      <org:Role rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b7">
+        <rdfs:label>Semantic Web evangelist; Community Platform manager</rdfs:label>
+      </org:Role>
+    </org:role>
+  </org:Membership>
+  <bibo:Document rdf:about="#paper-tal4rdf">
+    <dcterms:title>Tal4Rdf: lightweight presentation for the Semantic Web</dcterms:title>
+    <dcterms:isPartOf>5th Workshop on Scripting and Development for the Semantic Web (SFSW 2009)</dcterms:isPartOf>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2009</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+  </bibo:Document>
+  <bibo:Article rdf:about="#col-shortest-path">
+    <dcterms:title>The Shortest Path to the Future Web</dcterms:title>
+    <dcterms:isPartOf rdf:resource="#ieee-ic"/>
+    <bibo:volume>10</bibo:volume>
+    <bibo:issue>6</bibo:issue>
+    <bibo:pages>76-79</bibo:pages>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2006</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+  </bibo:Article>
+  <bibo:Article rdf:about="#art-wireless-world">
+    <dcterms:description xml:lang="en">Cover article</dcterms:description>
+    <dcterms:isPartOf>
+      <bibo:Magazine rdf:nodeID="n700155780abe4184ad4c0fd06c000d28b12">
+        <dcterms:title>Wireless World</dcterms:title>
+      </bibo:Magazine>
+    </dcterms:isPartOf>
+    <dcterms:creator rdf:resource="#me"/>
+  </bibo:Article>
+  <bibo:Book rdf:about="#book-xml5">
+    <dcterms:title>Beginning XML, 5th Edition</dcterms:title>
+    <dcterms:publisher>Wrox</dcterms:publisher>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2012</dcterms:issued>
+    <dcterms:creator rdf:resource="#me"/>
+    <bibo:authorList>Joe Fawcett, Liam R. E. Quin, Danny Ayers</bibo:authorList>
+    <foaf:page rdf:resource="https://www.wiley.com/en-us/Beginning+XML,+5th+Edition-p-9781118162132"/>
+  </bibo:Book>
+  <foaf:PersonalProfileDocument rdf:about="foaf.ttl">
+    <foaf:primaryTopic rdf:resource="#me"/>
+    <foaf:maker rdf:resource="#me"/>
+    <dcterms:title>FOAF profile for Danny Ayers</dcterms:title>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-09-23</dcterms:modified>
+    <dcterms:hasFormat>
+      <rdf:Description rdf:about="foaf.rdf">
+        <dcterms:format>application/rdf+xml</dcterms:format>
+      </rdf:Description>
+    </dcterms:hasFormat>
+    <rdfs:seeAlso rdf:resource="foaf_2012.ttl"/>
+  </foaf:PersonalProfileDocument>
+  <foaf:OnlineAccount rdf:about="#academia">
+    <foaf:accountServiceHomepage rdf:resource="https://www.academia.edu/"/>
+    <foaf:accountName>DannyAyers</foaf:accountName>
+    <foaf:page rdf:resource="https://independent.academia.edu/DannyAyers"/>
+  </foaf:OnlineAccount>
+</rdf:RDF>
