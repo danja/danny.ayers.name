@@ -1,0 +1,59 @@
+<!-- layout/base/templates/article-page.njk -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/grid-columns.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+        <title>New</title>
+    </head>
+    <body>
+        <div class="article-container">
+            <nav class="article-nav">
+                <a href="/">← Recent articles</a>
+            </nav>
+            
+            <header id="entry-header">
+                <h1 class="post-title h-cinzel">New</h1>
+            </header>
+            <main class="post-content" id="main-content">
+                <!-- ARTICLE CONTENT -->
+
+<article class="post-content">
+    <h1>New</h1>
+<p><strong>Everything below was written by AI, with human assistance</strong></p>
+<p><em>Dog walked, coffee made, and a pile of repos that all seem to have grown since I last looked.</em></p>
+<p>Time for a round-up, mostly for my future self. Six things I&#39;ve been working on lately. They overlap more than I planned.</p>
+<h2>JigDAW</h2>
+<p><a href="https://github.com/danja/jigdaw">JigDAW</a> is a plugin format native to the web. A plugin is a URL. Do a GET on it and you get a Turtle profile saying what the plugin is, what it accepts and produces, and where its WebAssembly and AudioWorklet live, each with a <code>sha384</code> digest. Fetching it is installing it. No registry.</p>
+<p>There&#39;s a browser host, a second host that runs the same plugins as VST3, 27 worked plugins and a validator. The spec is at <a href="https://danja.github.io/jigdaw/">danja.github.io/jigdaw</a> and you can <a href="https://strandz.it/jigdaw/">try it live</a>. It&#39;s also where I keep <code>docs/danify.md</code>, which is the reason this post sounds like me.</p>
+<h2>Downspout</h2>
+<p><a href="https://github.com/danja/downspout">Downspout</a> is a bunch of mostly generative, algorithmic plugins built on DPF and VST3. Portable C++ cores, deterministic tests, thin wrappers, custom NanoVG UIs. Releases for Linux, macOS and Windows, though I&#39;ve only tested the Linux one. Yes, I know. There are a couple of demos on YouTube: <a href="https://youtu.be/Rd-ACU0JUdo">Jack&#39;s Dream</a> and <a href="https://www.youtube.com/watch?v=DrAHdaJolyc">another example</a>.</p>
+<h2>Valis</h2>
+<p><a href="https://danja.github.io/valis">Valis</a> (Virtual Analog LLM Integrated System) is a standalone app and plugin for building virtual analog circuits. A circuit is a Turtle description of functional blocks and the arcs between their ports, reusing the LV2 vocabulary where it can. You get three views of the same thing: knobs, a node-and-arc diagram, and the Turtle itself. Everything the UI does is also available over MCP, so an LLM can design a circuit and build it. Whether it&#39;s any good at that is a separate question. There&#39;s a <a href="https://www.youtube.com/watch?v=iwrzSXKTRcY">video demo</a> and the code is <a href="https://github.com/danja/valis">on GitHub</a>.</p>
+<h2>Plugin Universe</h2>
+<p><a href="https://plugin-universe.com">Plugin Universe</a> is an open database of DAW plugins. It&#39;s at 756 plugins and 63,297 triples, and 288 of the measurements were taken by actually running the binaries. Facts are CC0. The ontology is the contract and the code follows it, rather than writing a schema and filling it in or asking a language model and hoping. Plugin parameters are LV2&#39;s own terms, categories are SKOS. Source is <a href="https://github.com/danja/plugin-universe">here</a>.</p>
+<h2>dim</h2>
+<p><a href="https://github.com/danja/dim">dim</a> is Danny&#39;s Information Manager, so the name is honest at least. It&#39;s the same Fuseki, FAISS and Ollama shape as Plugin Universe, but pointed at my own stuff: bookmarks, outlines, tasks, wiki, news and blog, one named graph each, all in one SPARQL store. It grew out of a giant <code>workflowy.md</code> I&#39;d been hoarding links in. It has an MCP server too, which is how Claude is able to go and fetch my notes.</p>
+<h2>peasant</h2>
+<p><a href="https://github.com/danja/peasant">peasant</a> is an LLM coding harness for the poor. Same shape as OpenCode or Claude Code, but it runs on my old CPU with no SSE4.2, where the Bun-compiled alternatives die with <code>SIGILL</code> before printing a thing. So: plain Node, zero dependencies, and free providers like Groq and Mistral. All fourteen probe checks pass on every Node from 18 to 26. It&#39;s rough, but it answers.</p>
+<hr>
+<p>I&#39;ve added a note on each to my <a href="/cv/">CV page</a>. Back to the plugins.
+ </p>
+
+</article>
+<p class="post-title h-cinzel">
+    <a href="http://danny.ayers.name/entries/2026-10-02_new.html">
+        New
+    </a>
+</p> <em></em>
+            </main>
+            <footer class="article-footer">
+                <a href="/">Back to recent articles</a>
+            </footer>
+        </div>
+    </body>
+</html>

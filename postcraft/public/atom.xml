@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Danny Ayers - Recent Articles</title>
   <id>https://danny.ayers.name/atom.xml</id>
-  <updated>2026-09-25T18:34:17.168Z</updated>
+  <updated>2026-10-03T08:13:24.448Z</updated>
   <link href="https://danny.ayers.name/atom.xml" rel="self" />
   <link href="https://danny.ayers.name" />
   <subtitle>Latest articles from danny.ayers.name</subtitle>
@@ -10,6 +10,101 @@
     <name>Danny Ayers</name>
     <email>danny.ayers@gmail.com</email>
   </author>
+  <entry>
+    <title>New</title>
+    <id>http://danny.ayers.name/entries/2026-10-02_new</id>
+    <updated>2026-10-02T18:37:27.252Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-10-02_new" />
+    <published>2026-10-02T18:37:27.252Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>New</h1>
+        <p><strong>Everything below was written by AI, with human assistance</strong></p>
+        <p><em>Dog walked, coffee made, and a pile of repos that all seem to have grown since I last looked.</em></p>
+        <p>Time for a round-up, mostly for my future self. Six things I&#39;ve been working on lately. They overlap more than I planned.</p>
+        <h2>JigDAW</h2>
+        <p><a href="https://github.com/danja/jigdaw">JigDAW</a> is a plugin format native to the web. A plugin is a URL. Do a GET on it and you get a Turtle profile saying what the plugin is, what it accepts and produces, and where its WebAssembly and AudioWorklet live, each with a <code>sha384</code> digest. Fetching it is installing it. No registry.</p>
+        <p>There&#39;s a browser host, a second host that runs the same plugins as VST3, 27 worked plugins and a validator. The spec is at <a href="https://danja.github.io/jigdaw/">danja.github.io/jigdaw</a> and you can <a href="https://strandz.it/jigdaw/">try it live</a>. It&#39;s also where I keep <code>docs/danify.md</code>, which is the reason this post sounds like me.</p>
+        <h2>Downspout</h2>
+        <p><a href="https://github.com/danja/downspout">Downspout</a> is a bunch of mostly generative, algorithmic plugins built on DPF and VST3. Portable C++ cores, deterministic tests, thin wrappers, custom NanoVG UIs. Releases for Linux, macOS and Windows, though I&#39;ve only tested the Linux one. Yes, I know. There are a couple of demos on YouTube: <a href="https://youtu.be/Rd-ACU0JUdo">Jack&#39;s Dream</a> and <a href="https://www.youtube.com/watch?v=DrAHdaJolyc">another example</a>.</p>
+        <h2>Valis</h2>
+        <p><a href="https://danja.github.io/valis">Valis</a> (Virtual Analog LLM Integrated System) is a standalone app and plugin for building virtual analog circuits. A circuit is a Turtle description of functional blocks and the arcs between their ports, reusing the LV2 vocabulary where it can. You get three views of the same thing: knobs, a node-and-arc diagram, and the Turtle itself. Everything the UI does is also available over MCP, so an LLM can design a circuit and build it. Whether it&#39;s any good at that is a separate question. There&#39;s a <a href="https://www.youtube.com/watch?v=iwrzSXKTRcY">video demo</a> and the code is <a href="https://github.com/danja/valis">on GitHub</a>.</p>
+        <h2>Plugin Universe</h2>
+        <p><a href="https://plugin-universe.com">Plugin Universe</a> is an open database of DAW plugins. It&#39;s at 756 plugins and 63,297 triples, and 288 of the measurements were taken by actually running the binaries. Facts are CC0. The ontology is the contract and the code follows it, rather than writing a schema and filling it in or asking a language model and hoping. Plugin parameters are LV2&#39;s own terms, categories are SKOS. Source is <a href="https://github.com/danja/plugin-universe">here</a>.</p>
+        <h2>dim</h2>
+        <p><a href="https://github.com/danja/dim">dim</a> is Danny&#39;s Information Manager, so the name is honest at least. It&#39;s the same Fuseki, FAISS and Ollama shape as Plugin Universe, but pointed at my own stuff: bookmarks, outlines, tasks, wiki, news and blog, one named graph each, all in one SPARQL store. It grew out of a giant <code>workflowy.md</code> I&#39;d been hoarding links in. It has an MCP server too, which is how Claude is able to go and fetch my notes.</p>
+        <h2>peasant</h2>
+        <p><a href="https://github.com/danja/peasant">peasant</a> is an LLM coding harness for the poor. Same shape as OpenCode or Claude Code, but it runs on my old CPU with no SSE4.2, where the Bun-compiled alternatives die with <code>SIGILL</code> before printing a thing. So: plain Node, zero dependencies, and free providers like Groq and Mistral. All fourteen probe checks pass on every Node from 18 to 26. It&#39;s rough, but it answers.</p>
+        <hr>
+        <p>I&#39;ve added a note on each to my <a href="/cv/">CV page</a>. Back to the plugins.
+         </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-10-02_new.html">
+                New
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
+  <entry>
+    <title>Constitution</title>
+    <id>http://danny.ayers.name/entries/2026-09-30_constitution</id>
+    <updated>2026-09-30T07:17:41.995Z</updated>
+    <link href="http://danny.ayers.name/entries/2026-09-30_constitution" />
+    <published>2026-09-30T07:17:41.995Z</published>
+    <author>
+      <name>Danny Ayers</name>
+      <email>danny.ayers@gmail.com</email>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <!-- ARTICLE CONTENT -->
+        <article class="post-content">
+            <h1>Constitution</h1>
+        <p>The other day I had a post blocked on Reddit because is was clearly AI-generated text. This was a little annoying as it was an overview of a spec which contained all the information I wished to convey in a well-ordered form. Ok, it was a bit annoying stylistically.</p>
+        <p>So I came up with a workaround. I got Claude to read 262 of my blog posts, and boil them down into a set of rules ( <a href="https://github.com/danja/jigdaw/blob/main/docs/danify.md">https://github.com/danja/jigdaw/blob/main/docs/danify.md</a> ). Claude then used those rules to rewrite the opening of the US Constitution (Article I, Sections 1 and 2) as if I&#39;d written it. I&#39;ve not checked it against a lawyer.</p>
+        <hr>
+        <h2>Article I, Section 1</h2>
+        <p>Right, first thing. All the law-making power in this setup goes to a Congress. It comes in two halves, a Senate and a House of Representatives. That&#39;s it, nobody else gets to make laws.</p>
+        <h2>Article I, Section 2</h2>
+        <p>The House is made up of members chosen every second year by the people of the states. Whoever is allowed to vote for the biggest chamber of their own state&#39;s legislature can vote for the House too. Simple enough, they just borrow the state&#39;s list.</p>
+        <p>To be a Representative you have to be at least 25, you must have been a US citizen for seven years, and you have to live in the state you&#39;re chosen for when the election comes round.</p>
+        <p>Next, how many seats each state gets, and how the tax bill gets split. Both go by population. Population means everyone who&#39;s free, including those bound to a term of service, but leaving out Indians who aren&#39;t taxed, plus three fifths of &quot;all other Persons&quot;. Ew. That last bit is the enslaved, and it&#39;s every bit as grim as it sounds. The 14th Amendment later did away with it.</p>
+        <p>The head count happens within three years of the first meeting of Congress, then again every ten years, in whatever way Congress decides by law. There&#39;s a cap too: no more than one Representative for every 30,000 people, but every state gets at least one. Until the first count was done, the numbers were fixed as follows:</p>
+        <ul>
+        <li>New Hampshire, 3</li>
+        <li>Massachusetts, 8</li>
+        <li>Rhode Island and Providence Plantations, 1</li>
+        <li>Connecticut, 5</li>
+        <li>New York, 6</li>
+        <li>New Jersey, 4</li>
+        <li>Pennsylvania, 8</li>
+        <li>Delaware, 1</li>
+        <li>Maryland, 6</li>
+        <li>Virginia, 10</li>
+        <li>North Carolina, 5</li>
+        <li>South Carolina, 5</li>
+        <li>Georgia, 3</li>
+        </ul>
+        <p>If a seat falls empty mid-term, the state&#39;s governor calls an election to fill it.</p>
+        <p>Last bit. The House picks its own Speaker and its other officers. It&#39;s also the only body that can impeach.
+         </p>
+        </article>
+        <p class="post-title h-cinzel">
+            <a href="http://danny.ayers.name/entries/2026-09-30_constitution.html">
+                Constitution
+            </a>
+        </p> <em></em>
+      </div>
+    </content>
+  </entry>
   <entry>
     <title>Stacks</title>
     <id>http://danny.ayers.name/entries/2026-09-08_stacks</id>
@@ -954,98 +1049,6 @@
         <p class="post-title h-cinzel">
             <a href="http://danny.ayers.name/entries/2025-12-14_dogalog.html">
                 Dogalog
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Flues Synth</title>
-    <id>http://danny.ayers.name/entries/2025-12-12_synth-serendipity</id>
-    <updated>2025-12-12T09:53:33.286Z</updated>
-    <link href="http://danny.ayers.name/entries/2025-12-12_synth-serendipity" />
-    <published>2025-12-12T09:53:33.286Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Flues Synth</h1>
-        <p><strong>tl;dr</strong> I built a sound synthesizer that runs on a Raspberry Pi</p>
-        <p>The GitHub repo <a href="https://github.com/danja/flues/">flues</a> contains most of my recent synth experiments (various platforms, including <a href="https://danja.github.io/flues/">live Web</a>), the Raspi material is under <a href="https://github.com/danja/flues/tree/main/flues-synth">flues-synth</a>.</p>
-        <p>There are binaries of the Raspi synth and builds from Ubuntu of the lv2 plugins in the repo, but these versions are untested (used Claude-authored scripts)- building from source definitely works.</p>
-        <h2>What is Flues?</h2>
-        <p><strong>Flues</strong> (<code>flues-synth</code>) is an experimental polyphonic synth for the <a href="https://www.raspberrypi.com/">Raspberry Pi</a>. It is designed to run headless, without a UI. Input comes from a USB MIDI adapter. Output comes from either the Pi&#39;s headphone jack or a USB audio interface (other sound outputs such as HDMI and I2C HATs should work, but these are untested). It runs comfortably on a Raspi 4 1GB, I haven&#39;t tested on anything else.</p>
-        <p>Internally the synth engine is composed of the following modules :</p>
-        <ul>
-        <li>Disyn oscillators - a collection of novel synthesis algorithms (related to FM)</li>
-        <li>Stove physical modelling subsystem</li>
-        <li>Chatterbox formant filter subsystem</li>
-        <li>Simple AR envelope</li>
-        </ul>
-        <p>The <code>flues-synth</code> <a href="https://github.com/danja/flues/tree/main/flues-synth">README.md</a> has more details. There are <a href="https://danja.github.io/flues/">live Web versions</a> of the different subsystems that give an idea of the kind of sounds available.</p>
-        <p>A set of MIDI Programs provide various configurations of the modules, essentially presets. The parameters of these may be controlled using MIDI CC messages. Each Program exposes 9 core channels which may, for convenience, be mapped to external controllers using the <a href="https://github.com/danja/flues/tree/main/lv2/flues-control">flues-control</a> lv2 plugin in a DAW.</p>
-        <p>(There are 9 channels because that&#39;s how many worked on my old MK-449 keyboard. I have since started using the sliders of an Akai Midimix for the purpose, via <code>flues-control</code>).</p>
-        <p>There is also a <a href="https://github.com/danja/flues/blob/main/flues-synth/web-ui/README.md">browser-based UI</a> set up to supply control messages but this hasn&#39;t been maintained beyond its use in initial experiments.  </p>
-        <p> Parameters are controlled by MIDI CC messages.</p>
-        <h2>What Didn&#39;t Work</h2>
-        <p>What I actually wanted initially, what led me here, was a Eurorack module that could do <a href="https://en.wikipedia.org/wiki/Physical_modelling_synthesis">physical modelling synthesis</a>. It&#39;s a paradigm that really appeals to me, not only because it can make realistic instrument sounds, but because it can make sounds that no physical object could have created. I couldn&#39;t find a module that was affordable, so decided to make one. Long story short, so far I&#39;ve made a total pig&#39;s ear of the hardware side. Mistakes in ordering components, mistakes in fabrication decisions, etc etc.   <em>To be continued...</em>
-         </p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2025-12-12_synth-serendipity.html">
-                Flues Synth
-            </a>
-        </p> <em></em>
-      </div>
-    </content>
-  </entry>
-  <entry>
-    <title>Runny floozy-poly on Raspberry Pi</title>
-    <id>http://danny.ayers.name/entries/2025-12-04_raspberry-pi</id>
-    <updated>2025-12-04T10:40:31.007Z</updated>
-    <link href="http://danny.ayers.name/entries/2025-12-04_raspberry-pi" />
-    <published>2025-12-04T10:40:31.007Z</published>
-    <author>
-      <name>Danny Ayers</name>
-      <email>danny.ayers@gmail.com</email>
-    </author>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <!-- ARTICLE CONTENT -->
-        <article class="post-content">
-            <h1>Runny floozy-poly on Raspberry Pi</h1>
-        <p>Home dir <code>/home/danny/</code></p>
-        <p> aplay -Dhw:2 /usr/share/sounds/alsa/Front_Center.wav</p>
-        <p>sudo apt install pkg-config cmake build-essential lv2-dev libx11-dev libcairo2-dev lilv-utils jackd2 jalv</p>
-        <p>mkdir github
-        cd github</p>
-        <p>git clone <a href="https://github.com/danja/flues.git">https://github.com/danja/flues.git</a></p>
-        <p>cd flues</p>
-        <p>cmake -S lv2/floozy-poly -B lv2/floozy-poly/build
-        cmake --build lv2/floozy-poly/build
-        cmake --install lv2/floozy-poly/build --prefix ~/.lv2   # optional</p>
-        <p>sudo dpkg-reconfigure -p high jackd2</p>
-        <p>lv2ls | grep -i floozy
-        <a href="https://danja.github.io/flues/plugins/floozy-poly">https://danja.github.io/flues/plugins/floozy-poly</a></p>
-        <p>  sudo usermod -aG audio $USER</p>
-        <h1>log out/in</h1>
-        <p> JACK_NO_AUDIO_RESERVATION=1 jackd -S -P40 -dalsa -dhw:2 -r48000 -p512 -n3 -P &amp;</p>
-        <h1>verify it’s up:</h1>
-        <p>jack_lsp</p>
-        <h1>launch the plugin:</h1>
-        <p>JACK_NO_START_SERVER=1 JACK_NO_AUDIO_RESERVATION=1 jalv -n floozy-poly <a href="https://danja.github.io/flues/plugins/floozy-poly">https://danja.github.io/flues/plugins/floozy-poly</a></p>
-        <h2>Bluetooth MIDI</h2>
-        <p>sudo apt install libudev-dev libical-dev libreadline-dev libdbus-1-dev libasound2-dev</p>
-        <p><a href="https://www.bluez.org/download/">https://www.bluez.org/download/</a>
-         </p>
-        </article>
-        <p class="post-title h-cinzel">
-            <a href="http://danny.ayers.name/entries/2025-12-04_raspberry-pi.html">
-                Runny floozy-poly on Raspberry Pi
             </a>
         </p> <em></em>
       </div>
